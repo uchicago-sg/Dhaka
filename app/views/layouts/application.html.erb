@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   	<meta name="description" content="" />
   	<meta name="keywords" content="" />
-  	<meta name="copyright" content="Copyright (c) 2011 Sean Clemmer and Paul Kaplan. All rights reserved.">
+  	<meta name="copyright" content="Copyright (c) 2011 The University of Chicago. All rights reserved.">
 
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
@@ -17,7 +17,14 @@
       <p class="<%= type %>"><%= text %></p>
     <% end %>
 
-<%= yield %>
-
+    <header>
+      <h1><%= link_to SITE_NAME, root_path %></h1>
+    </header>
+    <section>
+      <%= yield %>
+    </section>
+    <footer>
+      <p>Copyright &#169; 2011 The University of Chicago. All rights reserved.</p>
+    </footer>
   </body>
 </html>

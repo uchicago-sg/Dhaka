@@ -10,6 +10,9 @@ test: &test
   <<: *sqlite
   database: db/test.sqlite3
 
+cucumber:
+  <<: *test
+
 staging:
   <<: *sqlite
   database: db/staging.sqlite3
@@ -17,6 +20,3 @@ staging:
 production:
   <<: *sqlite
   database: db/production.sqlite3
-
-cucumber:
-  <<: *test

@@ -1,6 +1,6 @@
 <%= form_for @listing do |f| %>
   <% if @listing.errors.any? %>
-    <h1>Can&#8217;t create listing: <%= pluralize( @listing.errors.count, "error" ) %></h1>
+    <h1>Can&#8217;t create listing: <%= pluralize(@listing.errors.count, 'error') %></h1>
 
     <ul class="errors">
       <% @listing.errors.full_messages.each do |msg| %>

@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
   # GET /listings
   def index
     @listings = Listing.all
-    respond_with @listings.map( &:attributes )
+    respond_with @listings.map(&:attributes)
   end
 
   # GET /listings/new
@@ -17,12 +17,12 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
-    @listing = Listing.new( params[:listing] )
+    @listing = Listing.new(params[:listing])
     if @listing.save
       flash[:notice] = 'Listing successfully created'
-      respond_with( @listing.attributes, :status => :created, :location => @listing )
+      respond_with(@listing.attributes, :status => :created, :location => @listing)
     else
-      respond_with( @listing.errors, :status => :unprocessable_entity ) do | format |
+      respond_with(@listing.errors, :status => :unprocessable_entity) do |format|
         format.html do
           render :action => :new
         end
@@ -32,24 +32,24 @@ class ListingsController < ApplicationController
 
   # GET /listings/:id
   def show
-    @listing = Listing.find( params[:id] )
+    @listing = Listing.find(params[:id])
     respond_with @listing.attributes
   end
 
   # GET /listings/:id/edit
   def edit
-    @listing = Listing.find( params[:id] )
+    @listing = Listing.find(params[:id])
     respond_with @listing.attributes
   end
 
   # POST /listings/:id
-  def listing
-    @listing = Listing.find( params[:listing] )
-    if @listing.listing_attributes( params[:user] )
+  def update
+    @listing = Listing.find(params[:id])
+    if @listing.update_attributes(params[:listing])
       flash[:notice] = 'Listing successfully edited'
-      respond_with( @listing.attributes, :status => :listingd, :location => @listing )
+      respond_with(@listing.attributes, :status => :listingd, :location => @listing)
     else
-      respond_with( @listing.errors, :status => :unprocessable_entity ) do | format |
+      respond_with(@listing.errors, :status => :unprocessable_entity) do |format|
         format.html do
           render :action => :new
         end
@@ -59,6 +59,6 @@ class ListingsController < ApplicationController
 
   # DELETE /listings/:id
   def destroy
-    Listing.delete( params[:id] )
+    Listing.delete(params[:id])
   end
 end

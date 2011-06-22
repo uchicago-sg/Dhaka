@@ -1,6 +1,6 @@
 Dhaka::Application.routes.draw do
   devise_for :profiles
-  resources :prfiles
+  resources :profiles
   resources :listings
 
   root :to => 'listings#index'
