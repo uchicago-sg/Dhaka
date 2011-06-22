@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby -w
+# Use this command to bump the version number up by one
+
+# Calculate new version number
+File.open( 'Version', File::RDONLY | File::CREAT ) do |version_file|
+  $new_version = version_file.readline.to_i + 1 rescue $new_version = 0
+end
+
+# Write
+File.open( 'Version', 'w' ) do |version_file|
+  version_file.write( "%03d\n" % $new_version )
+end

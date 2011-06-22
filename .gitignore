@@ -1,0 +1,13 @@
+.bundle
+.DS_Store
+.project
+.sass-cache/
+webrat.log
+db/*.sqlite3
+log/*.log
+tmp/**/*
+tmp/
+*.tmproj
+*.swp
+*~
+

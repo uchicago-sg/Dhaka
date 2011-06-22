@@ -1,0 +1,19 @@
+# We should eventually move stage and production to use PostgreSQL
+
+development: &sqlite
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  <<: *sqlite
+  database: db/test.sqlite3
+
+stage:
+  <<: *sqlite
+  database: db/stage.sqlite3
+
+production:
+  <<: *sqlite
+  database: db/production.sqlite3
