@@ -2,11 +2,20 @@
 <html>
   <head>
     <title><%= title %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  	<meta name="description" content="" />
+  	<meta name="keywords" content="" />
+  	<meta name="copyright" content="Copyright (c) 2011 Sean Clemmer and Paul Kaplan. All rights reserved.">
+
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <%= yield :head %>
   </head>
   <body>
+    <% flash.each do |type, text| %>
+      <p class="<%= type %>"><%= text %></p>
+    <% end %>
 
 <%= yield %>
 
