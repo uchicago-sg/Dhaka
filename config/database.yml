@@ -10,9 +10,9 @@ test:
   <<: *sqlite
   database: db/test.sqlite3
 
-stage:
+staging:
   <<: *sqlite
-  database: db/stage.sqlite3
+  database: db/staging.sqlite3
 
 production:
   <<: *sqlite

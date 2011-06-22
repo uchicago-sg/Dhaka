@@ -17,11 +17,10 @@ set :scm, :git
 set :repository, "ssh://#{user}@#{domain}:#{port}/home/#{user}/#{application}"
 set :rvm_ruby_string, "1.9.2@#{application.downcase}"
 
-set :stages, %w( development test stage production )
-set :default_stage, 'development'
+set :default_stage, 'staging'
 set :rails_env, default_stage
-set :deploy_to, "/var/deploy/#{application}/#{default_stage}"
-# set :deploy_via, :remote_cache
+set :deploy_to, "/var/deploy/#{application}"
+set :deploy_via, :remote_cache
 
 role :web, 'schedulespy.com'
 role :app, 'schedulespy.com'
