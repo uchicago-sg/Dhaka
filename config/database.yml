@@ -1,4 +1,4 @@
-# We should eventually move stage and production to use PostgreSQL
+# We should eventually move staging and production to use PostgreSQL
 
 development: &sqlite
   adapter: sqlite3
