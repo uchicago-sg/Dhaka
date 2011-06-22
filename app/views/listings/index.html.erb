@@ -1,0 +1,22 @@
+<% @title = "Listings" %>
+
+<% for listing in @listings %>
+    <div id="listing">
+    <h3><%= link_to listing.description, listing_path(listing) %><br></h3>
+    For <%= listing.price %> (Created <%= listing.created_at.strftime('%b %d, %Y at %H:%M') %>)<br>
+
+    <%= listing.details %>
+
+    <%= link_to "Show", listing %>
+    <%# if can? :listing, listing %>
+      <%= link_to "Edit", edit_listing_path(listing) %>
+    <%# end %>
+    <%# if can? :destroy, listing %>
+      <%= link_to "Destroy", listing, :confirm => 'Are you sure?', :method => :delete %>
+    <%# end %>
+    </div>
+<% end %>
+
+<%# if can? :create, Listing %>
+  <p><%= link_to "New Listing", new_listing_path %></p>
+<%# end %>
