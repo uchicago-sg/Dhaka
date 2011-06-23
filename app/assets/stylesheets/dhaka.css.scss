@@ -1,25 +1,96 @@
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
+// Colors
+$lorange   : #eebd9c;
+$orange    : #c76725;
+$green     : #597d3b;
+$lgreen    : #c9eeab;
+$navy      : #172930;
+$plum      : #6e2145;
+$lrust     : #eba9a1;
+$rust      : #a33b2e;
+$gold      : #ffefc3;
+$yellow    : #fff9c3;
+$cardboard : #a49d96;
+$beige     : #d0c2b3;
+$sand      : #eeeae5;
+$gutter    : 1.25%;
+
+
+// Dimensions
+$default-size : 12px;
+$baseline     : 18px;
+$page-width   : 960px;
+$header-height: 126px;
+
+
+// Mixins
+@mixin transition($property:color, $duration:0.3s, $type:ease) {
+  -webkit-transition: $property $duration $type;
+  -moz-transition: $property $duration $type;
+  -o-transition: $property $duration $type;
 }
 
-html {
-  font-family: Helvetica, 'Helvetica Neue', Arial, 'Bitstream Vera Sans', sans-serif;
-  font-size: 12px;
-  line-height: 18px;
+@mixin transition2($property1:color, $duration1:0.3s, $type1:ease, $property2:background-color, $duration2:0.3s, $type2:ease) {
+  -webkit-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
+  -moz-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
+  -o-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
+}
+
+@mixin highlight($color:#fff, $radius:1px, $x-offset:0, $y-offset:1px) {
+  text-shadow: $x-offset $y-offset $radius $color;
+}
+
+@mixin text-highlight($properties:none) {
+  text-shadow: $properties;
+}
+
+@mixin shadow($properties:none) {
+  box-shadow: $properties;
+  -webkit-box-shadow: $properties;
+  -moz-box-shadow: $properties;
 }
 
 
-a {}
+// Helpers
+.clear {
+  clear: both;
+  overflow: hidden;
+  width: 100%;
+}
 
-a:hover {}
+code, .code {
+  font-size: 0.8em;
+  line-height: 1.2em;
+  font-family: "Monaco", monospace; // Debugging
+}
 
-a:active {}
+.adelle {
+  font-family: "adelle-1", "adelle-2"; // Debugging
+}
 
-a:visited {}
+.serif {
+  font-family: Georgia, Times, serif; // Debugging
+}
+
+.sans-serif {
+  font-family: Helvetica, Verdana, sans-serif; // Debugging
+}
 
 
+// Links
+nav a {
+  @include transition(color, 0.2s);
+}
+
+a {
+  text-decoration: none;
+
+  &:hover, &:active {
+    text-decoration: underline;
+  }
+}
+
+
+// Headings
 h1 {}
 
 h2 {}
@@ -33,6 +104,7 @@ h5 {}
 h6 {}
 
 
+// Lists
 ul {}
 
 ol {}
@@ -46,15 +118,16 @@ dt {}
 dd {}
 
 
-i, em, #message {
+// Typography
+p {}
+
+i, em {
   font-style: italic;
 }
 
-b, strong, em, #message {
+b, strong {
   font-weight: bold;
 }
-
-p {}
 
 address {}
 
@@ -65,7 +138,6 @@ del {}
 sup, sub {}
 
 q, cite {}
-
 
 code {}
 
@@ -78,6 +150,7 @@ abbr {}
 dfn {}
 
 
+// Tables
 table {}
 
 caption {}
@@ -97,6 +170,7 @@ tr {}
 td {}
 
 
+// Forms
 form {}
 
 fieldset {}
@@ -128,6 +202,119 @@ optgroup {}
 option {}
 
 
+// Resets
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
 
-// This is where we really get down to business
-body {}
+html, body, img {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+
+
+html {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+body {
+  color: #555;
+  font-size: 1em; // 12px/12px
+  line-height: 1.5em; // 18px/12px
+  font-size: 16px;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto 0 auto;
+  text-align: center;
+
+  .top, .middle, .bottom, .sidebar, .main, .left, .center, .right {
+    margin: 0;
+    display: inline-block;
+  }
+
+  .sidebar, .left, .center {
+    float: left;
+  }
+
+  .top, .middle, .bottom {
+    clear: both;
+    display: block;
+    text-align: left;
+    max-width: $page-width;
+    margin: 0 auto 0 auto;
+  }
+
+  // Debugging
+  .sidebar { background-color: #ccc; width: 30%; }
+  .main    { background-color: #ddd; width: 70%; }
+  .left    { background-color: #aaa; width: 50%; }
+  .center  { background-color: #ccc; width: 0; }
+  .right   { background-color: #bbb; width: 50%; }
+  .top     { background-color: #aaa; }
+  .middle  { /* background-color: #bbb; */ padding: 0; /* background: #fff url('http://www.alistapart.com/d/settingtypeontheweb/images/gridbg.gif'); */ }
+  .bottom  { background-color: #ccc; }
+
+  > header, > section, > footer {
+    clear: both;
+  }
+
+  > header {
+    padding-top: 1em;
+
+    > .wrapper {
+      display: block;
+      max-width: $page-width;
+      margin: 0 auto 0 auto;
+
+      > h1 {
+        font-family: "bello-pro-1","bello-pro-2";
+        float: left;
+        font-size: 2.75em;
+        line-height: 1.5em;
+
+        a {
+          padding: 5px;
+          @include highlight(#ddd, 4px, 0, 0);
+          @include transition(color, 0.3s);
+          color: black;
+          text-decoration: none !important;
+
+          &:hover {
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+
+  > #flashes {}
+
+  > div {
+    text-align: center;
+    margin: 0 auto 0 auto;
+  }
+
+  > footer {
+    font-size: 0.8em;
+    max-width: $page-width;
+    margin: 0 auto 0 auto;
+
+    ul {
+      list-style-type: none;
+    }
+
+    .left, .center, .right {
+      float: left;
+      width: 33%;
+      text-align: left;
+      background-color: transparent;
+    }
+
+    .right  {  width: 34%; float: right; }
+  }
+}
