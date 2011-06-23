@@ -12,14 +12,14 @@ $yellow    : #fff9c3;
 $cardboard : #a49d96;
 $beige     : #d0c2b3;
 $sand      : #eeeae5;
-$gutter    : 1.25%;
 
 
 // Dimensions
-$default-size : 12px;
-$baseline     : 18px;
-$page-width   : 960px;
-$header-height: 126px;
+$gutter         : 1.25%;
+$baseline       : 18px;
+$default-size   : 12px;
+$min-page-width : 960px;
+$max-page-width : 1200px;
 
 
 // Mixins
@@ -50,50 +50,17 @@ $header-height: 126px;
 }
 
 
-// Helpers
-.clear {
-  clear : both;
-  overflow : hidden;
-  width : 100%;
-}
-
-code, .code {
-  font-size: 0.8em;
-  line-height: 1.2em;
-  font-family: "Monaco", monospace; // Debugging
-}
-
-.adelle {
-  font-family: "adelle-1", "adelle-2"; // Debugging
-}
-
-.serif {
-  font-family: Georgia, Times, serif; // Debugging
-}
-
-.sans-serif {
-  font-family: Helvetica, Verdana, sans-serif; // Debugging
-}
-
-
 // Links
-nav a {
-  @include transition(color, 0.2s);
-}
+nav a { @include transition(color, 0.2s); }
 
 a {
   text-decoration: none;
-
-  &:hover, &:active {
-    text-decoration: underline;
-  }
+  &:hover, &:active { text-decoration: underline; }
 }
 
 
 // Headings
-h1, h2, h3, h4, h5, h6 {
-  text-align: center;
-}
+h1, h2, h3, h4, h5, h6 { text-align: center; }
 
 h1 {}
 
@@ -123,15 +90,20 @@ dd {}
 
 
 // Typography
-p {}
+@mixin bello { font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif; }
 
-i, em {
-  font-style: italic;
+.serif { font-family: Georgia, Times, serif; } // Debugging
+
+body, .sans-serif { font-family: Helvetica, Verdana, sans-serif; } // Debugging
+
+p {
+  padding-bottom : 1em;
+  :last-child, :only-child { padding-bottom : 0; }
 }
 
-b, strong {
-  font-weight: bold;
-}
+i, em { font-style: italic; }
+
+b, strong { font-weight: bold; }
 
 address {}
 
@@ -143,7 +115,11 @@ sup, sub {}
 
 q, cite {}
 
-code {}
+code {
+  font-size: 0.8em;
+  line-height: 1.2em;
+  font-family: "Monaco", monospace; // Debugging
+}
 
 samp {}
 
@@ -206,6 +182,7 @@ optgroup {}
 option {}
 
 
+// Layout scheme
 *, html, body, img {
   margin: 0;
   padding: 0;
@@ -217,88 +194,62 @@ html {
   line-height: 18px;
 }
 
-p {
-  padding-bottom : 1em;
+nav, section, aside, article, figure, header, footer, hgroup { display : block; }
 
-  :last-child, :only-child {
-    padding-bottom : 0;
-  }
+nav ul, footer ul { list-style-type : none; }
+
+.clear {
+  clear : both;
+  overflow : hidden;
+  width : 100%;
 }
 
-nav, section, aside, article, figure, header, footer, hgroup {
-  display : block;
+.top, .middle, .bottom, .sidebar, .main, .left, .center, .right {
+  margin: 0;
+  display: inline-block;
 }
 
-nav ul, footer ul {
-  list-style-type : none;
+.sidebar, .left, .center { float: left; }
+
+.top, .middle, .bottom {
+  clear: both;
+  display: block;
+  text-align: left;
+  margin: 0 auto 0 auto;
 }
 
 
 
 
 body {
-  color: #555;
-  font-size: 1em; // 12px/12px
+  font-size: 1.2em; // 12px/12px
   line-height: 1.5em; // 18px/12px
-  font-size: 16px;
   font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0 auto 0 auto;
-  text-align: center;
+  padding: 0 1em 0 1em;
 
-  .top, .middle, .bottom, .sidebar, .main, .left, .center, .right {
-    margin: 0;
-    display: inline-block;
-  }
 
-  .sidebar, .left, .center {
-    float: left;
-  }
-
-  .top, .middle, .bottom {
-    clear: both;
-    display: block;
-    text-align: left;
-    max-width: $page-width;
+  // Elements that need to be page-width
+  > header > .wrapper, #flashes, #content > *, footer {
+    min-width: $min-page-width;
+    max-width: $max-page-width;
     margin: 0 auto 0 auto;
   }
 
-  // Debugging
-  .sidebar { background-color: #ccc; width: 30%; }
-  .main    { background-color: #eee; width: 70%; }
-  .left    { background-color: #aaa; width: 50%; }
-  .center  { background-color: #ccc; width: 0; }
-  .right   { background-color: #bbb; width: 50%; }
-  .top     { background-color: #aaa; }
-  .middle  { background-color: #bbb; }
-  .bottom  { background-color: #ccc; }
-
-  > header, > #flashes, > #content > footer {
-    clear: both;
-  }
+  // Large page sections
+  > header, > #flashes, > #content, > footer { clear: both; }
 
   > header {
-    > .wrapper {
-      display: block;
-      max-width: $page-width;
-      margin: 0 auto 0 auto;
-      text-align: center;
+    h1 {
+      @include bello;
+      font-size: 2.75em;
+      line-height: 1.75em;
 
-      > h1 {
-        font-family: "bello-pro-1","bello-pro-2";
-        font-size: 2.75em;
-        line-height: 1.75em;
-
-        a {
-          @include highlight(#ddd, 4px, 0, 0);
-          @include transition(color, 0.3s);
-          color: black;
-          text-decoration: none !important;
-
-          &:hover {
-            color: $green;
-          }
-        }
+      a {
+        @include highlight(#ddd, 4px, 0, 0);
+        @include transition(color, 0.3s);
+        color: black;
+        text-decoration: none !important;
+        &:hover { color: $green; }
       }
     }
   }
@@ -306,28 +257,23 @@ body {
   > #flashes {}
 
   > #content {
-    text-align: center;
-    margin: 0 auto 0 auto;
+    .sidebar         { background-color: #ccc; width: 30%; }
+    .sidebar ~ .main { background-color: #eee; width: 70%; }
+    .left            { background-color: #aaa; width: 50%; }
+    .left ~ .center  { background-color: #ccc; width: 0; }
+    .left ~ .right   { background-color: #bbb; width: 50%; }
+    .top             { background-color: #aaa; }
+    .middle          { background-color: #bbb; }
+    .bottom          { background-color: #ccc; }
   }
 
   > footer {
-    max-width: $page-width;
-    margin: 0 auto 0 auto;
-
     ul {
       font-size: 0.8em;
       list-style-type: none;
       margin-bottom: 1.25em;
     }
 
-    .left, .center, .right {
-      padding: 0;
-      float: left;
-      width: 33%;
-      text-align: left;
-      background-color: transparent;
-    }
-
-    .right  { width: 34%; float: right; }
+    .left, .center, .right { width: 33.333333333333333%; }
   }
 }
