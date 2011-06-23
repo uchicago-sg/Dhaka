@@ -7,24 +7,46 @@
   	<meta name="keywords" content="" />
   	<meta name="copyright" content="Copyright (c) 2011 The University of Chicago. All rights reserved.">
 
+    <script src="http://use.typekit.com/mnr5ksq.js"></script>
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= yield :head %>
   </head>
   <body>
-    <% flash.each do |type, text| %>
-      <p class="<%= type %>"><%= text %></p>
-    <% end %>
+    <%= render :partial => 'layouts/header' %>
+    <%= render :partial => 'layouts/flashes' %>
 
-    <header>
-      <h1><%= link_to SITE_NAME, root_path %></h1>
-    </header>
-    <section>
-      <%= yield %>
-    </section>
-    <footer>
-      <p>Copyright &#169; 2011 The University of Chicago. All rights reserved.</p>
-    </footer>
+    <div>
+      <div class="top">
+        <%= yield :top %>
+      </div>
+
+      <div class="middle">
+        <%= yield %>
+
+        <aside class="sidebar">
+          <%= yield :sidebar %>
+        </aside>
+
+        <section class="main">
+          <%= yield :main %>
+        </section>
+
+        <div class="left">
+          <%= yield :left %>
+        </div>
+
+        <div class="right">
+          <%= yield :right %>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <%= yield :bottom %>
+      </div>
+    </div>
+
+    <%= render :partial => 'layouts/footer' %>
   </body>
 </html>
