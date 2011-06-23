@@ -2,13 +2,70 @@
 <html>
   <head>
     <title><%= title %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  	<meta name="description" content="" />
+  	<meta name="keywords" content="" />
+  	<meta name="copyright" content="Copyright (c) 2011 The University of Chicago. All rights reserved.">
+
+    <script src="http://use.typekit.com/mnr5ksq.js"></script>
+    <script>
+      try {
+        Typekit.load();
+      } catch( e ) {}
+    </script>
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <%= yield :head %>
   </head>
-  <body>
+  <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
+    <%= render :partial => 'layouts/header' %>
+    <%= render :partial => 'layouts/flashes' %>
 
-<%= yield %>
+    <div id="content">
+      <%= yield %>
 
+      <% if content_for? :top %>
+        <div class="top">
+          <%= yield :top %>
+        </div>
+      <% end %>
+
+      <% if content_for?(:sidebar) or content_for?(:main) or content_for?(:left) or content_for?(:right) %>
+        <div class="middle">
+          <% if content_for? :sidebar %>
+            <aside class="sidebar">
+              <%= yield :sidebar %>
+            </aside>
+          <% end %>
+
+          <% if content_for? :main %>
+            <section class="main">
+              <%= yield :main %>
+            </section>
+          <% end %>
+
+          <% if content_for? :left %>
+            <div class="left">
+              <%= yield :left %>
+            </div>
+          <% end %>
+
+          <% if content_for? :right %>
+            <div class="right">
+              <%= yield :right %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if content_for? :bottom %>
+        <div class="bottom">
+          <%= yield :bottom %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= render :partial => 'layouts/footer' %>
   </body>
 </html>

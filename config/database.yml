@@ -6,9 +6,12 @@ development: &sqlite
   pool: 5
   timeout: 5000
 
-test:
+test: &test
   <<: *sqlite
   database: db/test.sqlite3
+
+cucumber:
+  <<: *test
 
 staging:
   <<: *sqlite
