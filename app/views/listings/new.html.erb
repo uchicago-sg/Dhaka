@@ -1,5 +1,5 @@
 <% @title = "New Listing" %>
-
-<%= render 'form' %>
-
-<p><%= link_to "Back to List", listings_path %></p>
+<% content_for :main do %>
+  <%= render 'form' %>
+  <p><%= link_to "Back to List", listings_path %></p>
+<% end %>

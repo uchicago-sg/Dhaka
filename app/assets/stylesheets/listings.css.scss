@@ -1,1 +1,12 @@
-body#listings {}
+body#listings {
+  .main {
+    width: 100%;
+  }
+
+  .main ~ .sidebar {
+    width: 30%;
+  }
+  .sidebar ~ .main {
+    width: 70%;
+  }
+}
