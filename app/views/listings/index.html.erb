@@ -1,5 +1,3 @@
-<% @title = "Listings" %>
-
 <% content_for :top do %>
   <pre><code>content_for :top</code></pre>
 <% end %>
@@ -15,13 +13,12 @@
 <% content_for :main do %>
   <pre><code>content_for :main</code></pre>
 
+  <h2>New Listings</h2>
   <% for listing in @listings %>
     <div id="listing">
       <h3><%= link_to listing.description, listing_path(listing) %></h3>
       <p>For <%= listing.price %> (Created <%= listing.created_at.strftime('%b %d, %Y at %H:%M') %>)</p>
-
       <%= listing.details %>
-
       <%= link_to "Show", listing %>
       <%# if can? :listing, listing %>
         <%= link_to "Edit", edit_listing_path(listing) %>
@@ -31,11 +28,11 @@
       <%# end %>
     </div>
   <% end %>
-
   <%# if can? :create, Listing %>
     <p><%= link_to "New Listing", new_listing_path %></p>
   <%# end %>
 <% end %>
+
 
 
 

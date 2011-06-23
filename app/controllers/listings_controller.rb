@@ -59,6 +59,9 @@ class ListingsController < ApplicationController
 
   # DELETE /listings/:id
   def destroy
-    Listing.delete(params[:id])
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+    flash[:notice] = 'Listing successfully destroyed'
+    respond_with(@listing)
   end
 end

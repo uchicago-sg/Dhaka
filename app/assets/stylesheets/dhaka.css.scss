@@ -52,9 +52,9 @@ $header-height: 126px;
 
 // Helpers
 .clear {
-  clear: both;
-  overflow: hidden;
-  width: 100%;
+  clear : both;
+  overflow : hidden;
+  width : 100%;
 }
 
 code, .code {
@@ -91,6 +91,10 @@ a {
 
 
 // Headings
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
 h1 {}
 
 h2 {}
@@ -202,25 +206,35 @@ optgroup {}
 option {}
 
 
-// Resets
-* {
+*, html, body, img {
   margin: 0;
   padding: 0;
   border: none;
 }
-
-html, body, img {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-
 
 html {
   font-size: 12px;
   line-height: 18px;
 }
+
+p {
+  padding-bottom : 1em;
+
+  :last-child, :only-child {
+    padding-bottom : 0;
+  }
+}
+
+nav, section, aside, article, figure, header, footer, hgroup {
+  display : block;
+}
+
+nav ul, footer ul {
+  list-style-type : none;
+}
+
+
+
 
 body {
   color: #555;
@@ -251,34 +265,31 @@ body {
 
   // Debugging
   .sidebar { background-color: #ccc; width: 30%; }
-  .main    { background-color: #ddd; width: 70%; }
+  .main    { background-color: #eee; width: 70%; }
   .left    { background-color: #aaa; width: 50%; }
   .center  { background-color: #ccc; width: 0; }
   .right   { background-color: #bbb; width: 50%; }
   .top     { background-color: #aaa; }
-  .middle  { /* background-color: #bbb; */ padding: 0; /* background: #fff url('http://www.alistapart.com/d/settingtypeontheweb/images/gridbg.gif'); */ }
+  .middle  { background-color: #bbb; }
   .bottom  { background-color: #ccc; }
 
-  > header, > section, > footer {
+  > header, > #flashes, > #content > footer {
     clear: both;
   }
 
   > header {
-    padding-top: 1em;
-
     > .wrapper {
       display: block;
       max-width: $page-width;
       margin: 0 auto 0 auto;
+      text-align: center;
 
       > h1 {
         font-family: "bello-pro-1","bello-pro-2";
-        float: left;
         font-size: 2.75em;
-        line-height: 1.5em;
+        line-height: 1.75em;
 
         a {
-          padding: 5px;
           @include highlight(#ddd, 4px, 0, 0);
           @include transition(color, 0.3s);
           color: black;
@@ -294,27 +305,29 @@ body {
 
   > #flashes {}
 
-  > div {
+  > #content {
     text-align: center;
     margin: 0 auto 0 auto;
   }
 
   > footer {
-    font-size: 0.8em;
     max-width: $page-width;
     margin: 0 auto 0 auto;
 
     ul {
+      font-size: 0.8em;
       list-style-type: none;
+      margin-bottom: 1.25em;
     }
 
     .left, .center, .right {
+      padding: 0;
       float: left;
       width: 33%;
       text-align: left;
       background-color: transparent;
     }
 
-    .right  {  width: 34%; float: right; }
+    .right  { width: 34%; float: right; }
   }
 }
