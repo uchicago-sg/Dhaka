@@ -183,7 +183,17 @@ option {}
 
 
 // Layout scheme
-*, html, body, img {
+html, body, div, span,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, b, i,
+a, abbr, address, cite, code,
+del, dfn, em, img, q, samp,
+strong, sub, sup, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, figure, figcaption,
+footer, header, hgroup, menu, nav, section {
   margin: 0;
   padding: 0;
   border: none;
@@ -229,7 +239,7 @@ body {
 
 
   // Elements that need to be page-width
-  > header > .wrapper, #flashes, #content > *, footer {
+  > header > .wrapper, #flashes, #content > .top, #content > .middle, #content > .bottom, footer {
     min-width: $min-page-width;
     max-width: $max-page-width;
     margin: 0 auto 0 auto;
@@ -241,13 +251,15 @@ body {
   > header {
     h1 {
       @include bello;
+      @include highlight(#ddd, 4px, 0, 0);
       font-size: 2.75em;
       line-height: 1.75em;
+      letter-spacing: -1px;
+      color: black;
 
       a {
-        @include highlight(#ddd, 4px, 0, 0);
-        @include transition(color, 0.3s);
         color: black;
+        @include transition(color, 0.3s);
         text-decoration: none !important;
         &:hover { color: $green; }
       }
@@ -256,16 +268,7 @@ body {
 
   > #flashes {}
 
-  > #content {
-    .sidebar         { background-color: #ccc; width: 30%; }
-    .sidebar ~ .main { background-color: #eee; width: 70%; }
-    .left            { background-color: #aaa; width: 50%; }
-    .left ~ .center  { background-color: #ccc; width: 0; }
-    .left ~ .right   { background-color: #bbb; width: 50%; }
-    .top             { background-color: #aaa; }
-    .middle          { background-color: #bbb; }
-    .bottom          { background-color: #ccc; }
-  }
+  > #content {}
 
   > footer {
     ul {
