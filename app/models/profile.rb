@@ -1,4 +1,6 @@
 class Profile < ActiveRecord::Base
+  acts_as_tagger # Sellers can add tags to their listings
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,

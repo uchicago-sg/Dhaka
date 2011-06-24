@@ -1,1 +1,12 @@
-body#listings {}
+body#listings {
+  #content {
+    .sidebar         { background-color: #ccc; width: 30%; }
+    .sidebar ~ .main { background-color: #eee; width: 70%; }
+    .left            { background-color: #aaa; width: 50%; }
+    .left ~ .center  { background-color: #ccc; width: 0; }
+    .left ~ .right   { background-color: #bbb; width: 50%; }
+    .top             { background-color: #aaa; }
+    .middle          { /* background-color: #bbb; */ }
+    .bottom          { background-color: #ccc; }
+  }
+}
