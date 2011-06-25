@@ -1,17 +1,14 @@
 class ListingsController < ApplicationController
   respond_to :html, :json
-  # before_filter :authenticate_user!
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
   # GET /listings
   def index
-    @listings = Listing.all
     respond_with @listings.map(&:attributes)
   end
 
   # GET /listings/new
   def new
-    @listing = Listing.new
     respond_with @listing.attributes
   end
 
@@ -32,19 +29,16 @@ class ListingsController < ApplicationController
 
   # GET /listings/:id
   def show
-    @listing = Listing.find(params[:id])
     respond_with @listing.attributes
   end
 
   # GET /listings/:id/edit
   def edit
-    @listing = Listing.find(params[:id])
     respond_with @listing.attributes
   end
 
   # POST /listings/:id
   def update
-    @listing = Listing.find(params[:id])
     if @listing.update_attributes(params[:listing])
       flash[:notice] = 'Listing successfully edited'
       respond_with(@listing.attributes, :status => :listingd, :location => @listing)
@@ -59,9 +53,8 @@ class ListingsController < ApplicationController
 
   # DELETE /listings/:id
   def destroy
-    @listing = Listing.find(params[:id])
     @listing.destroy
     flash[:notice] = 'Listing successfully destroyed'
-    respond_with(@listing)
+    respond_with @listing
   end
 end

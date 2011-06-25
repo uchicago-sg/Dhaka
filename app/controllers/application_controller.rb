@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  check_authorization
 
   # Force CanCan to fail gracefully
   rescue_from CanCan::AccessDenied do |exception|

@@ -54,7 +54,7 @@ Devise.setup do |config|
   config.stretches = 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "e8e220e2bdd8e0e3cfa526d92df8170899cfadaf46be56256ac11ea11e0ae386a4873f51893b2e406a5a55f4c87edd5e142d00cb9c5801ea4ce4ca69004f552f"
+  # config.pepper = "29f9836e1bd6ef71ea023c36414cc081483a6b85fc0fe3aae42e597cb5f6d888b41c6c2d54624ece60ed6a20c3336ac9a0ae571fa1bf99ef6ceaa444dc61408a"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
@@ -63,14 +63,14 @@ Devise.setup do |config|
   # You can use this to let your user access some features of your application
   # without confirming the account, but blocking it after a certain period
   # (ie 2 days).
-  config.confirm_within = 2.days
+  # config.confirm_within = 2.days
 
   # Defines which key will be used when confirming an account
-  config.confirmation_keys = [ :email ]
+  # config.confirmation_keys = [ :email ]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 2.weeks
+  # config.remember_for = 2.weeks
 
   # If true, a valid remember token can be re-used between multiple browsers.
   # config.remember_across_browsers = true
@@ -122,13 +122,14 @@ Devise.setup do |config|
   # config.unlock_in = 1.hour
 
   # ==> Configuration for :recoverable
+  #
   # Defines which key will be used when recovering the password for an account
   # config.reset_password_keys = [ :email ]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  config.reset_password_within = 2.hours
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
@@ -154,7 +155,7 @@ Devise.setup do |config|
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
-  config.default_scope = :profile
+  # config.default_scope = :user
 
   # Configure sign_out behavior.
   # Sign_out action can be scoped (i.e. /users/sign_out affects only :user scope).
