@@ -6,9 +6,9 @@
   ]
 
   second_column_links = [
-    'Contact Us',
-    'Report Abuse',
-    'FAQ'
+    ['Contact Us', page_path('contact')],
+    ['Report Abuse', reports_path],
+    ['FAQ', answers_path]
   ]
 %>
 
@@ -16,14 +16,14 @@
   <div class="left">
     <ul>
       <% first_column_links.each do |link| %>
-        <li><%= link_to link %></li>
+        <li><%= link_to link, page_path(link.split.first.downcase) %></li>
       <% end %>
     </ul>
   </div>
   <div class="center">
     <ul>
       <% second_column_links.each do |link| %>
-        <li><%= link_to link %></li>
+        <li><%= link_to link[0], link[1] %></li>
       <% end %>
     <ul>
   </div>

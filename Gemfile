@@ -8,6 +8,10 @@ gem 'sqlite3'
 
 gem 'devise'
 gem 'cancan'
+gem 'acts-as-taggable-on'
+gem 'rdiscount'
+gem 'high_voltage'
+gem 'paperclip'
 
 gem 'sprockets', '= 2.0.0.beta.10' # See http://www.rubyinside.com/how-to-rails-3-1-coffeescript-howto-4695.html
 gem 'sass-rails', "~> 3.1.0.rc"
