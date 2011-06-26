@@ -14,7 +14,7 @@
     <%= csrf_meta_tags %>
     <%= yield :head %>
   </head>
-  <body id="<%= @current_controller %>" class="<%= @current_action %>">
+  <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
     <%= render :partial => 'layouts/header' %>
     <%= render :partial => 'layouts/flashes' %>
 

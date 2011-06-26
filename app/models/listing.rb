@@ -1,6 +1,7 @@
 class Listing < ActiveRecord::Base
   acts_as_taggable # Replaces old notion of 'categories'
   attr_accessible :description, :details, :price, :status
+  belongs_to :seller, :class_name => 'User'
 
   def price_dollars(amount_in_cents)
     amount_in_cents / 100

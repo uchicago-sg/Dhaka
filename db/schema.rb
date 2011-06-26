@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110625211347) do
+ActiveRecord::Schema.define(:version => 20110626000738) do
 
   create_table "listings", :force => true do |t|
     t.string   "description"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110625211347) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "seller"
   end
 
   create_table "taggings", :force => true do |t|
@@ -51,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20110625211347) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "roles_mask",                            :default => 4,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
