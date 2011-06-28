@@ -1,11 +1,3 @@
 <header>
-  <div class="wrapper">
-    <h1>
-      <% if root? %>
-        <%= SITE_NAME %>
-      <% else %>
-        <%= link_to SITE_NAME, root_path %>
-      <% end %>
-    </h1>
-  </div>
+  <h1><%= root? ? SITE_NAME : link_to(SITE_NAME, :root) %></h1>
 </header>

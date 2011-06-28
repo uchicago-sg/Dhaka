@@ -1,14 +1,19 @@
 <%
   first_column_links = [
-    'Terms of Serivice',
-    'Privacy Policy',
-    'Safety & Security'
+    ['Terms of Serivice', '/terms'],
+    ['Privacy Policy', '/privacy'],
+    ['Safety & Security', '/safety']
   ]
 
   second_column_links = [
-    ['Contact Us', page_path('contact')],
-    ['Report Abuse', reports_path],
-    ['FAQ', answers_path]
+    ['Issues & Abuse', '/issues'],
+    ['About Marketplace', '/about'],
+    ['FAQs', '/faqs']
+  ]
+
+  third_column_links = [
+    ['System Status', '/status'],
+    ['Place a Listing', new_listing_path]
   ]
 %>
 
@@ -16,7 +21,7 @@
   <div class="left">
     <ul>
       <% first_column_links.each do |link| %>
-        <li><%= link_to link, page_path(link.split.first.downcase) %></li>
+        <li><%= link_to link[0], link[1] %></li>
       <% end %>
     </ul>
   </div>
@@ -27,11 +32,22 @@
       <% end %>
     <ul>
   </div>
+  <div class="center">
+    <ul>
+      <% third_column_links.each do |link| %>
+        <li><%= link_to link[0], link[1] %></li>
+      <% end %>
+      <li>
+        <%= link_to 'Your Profile', user_path(current_user) if user_signed_in? %>
+        <%= link_to 'Seller Login', new_user_session_path unless user_signed_in? %>
+      </li>
+    <ul>
+  </div>
   <div class="right">
     <ul>
-      <li>Built in Chicago</li>
-      <li>&#169; 2011 The University of Chicago.</li>
-      <li>All rights reserved.</li>
+      <li>Design by <%= link_to 'Chicago.app' %></li>
+      <li>&#169; 2011 The University of Chicago</li>
+      <li>All rights reserved</li>
     </ul>
   </div>
 </footer>
