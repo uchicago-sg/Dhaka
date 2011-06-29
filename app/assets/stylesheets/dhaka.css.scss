@@ -50,6 +50,7 @@ $max-page-width : 1200px;
 }
 
 
+
 // Links
 nav a { @include transition(color, 0.2s); }
 
@@ -274,9 +275,92 @@ body {
     ul {
       font-size: 0.8em;
       list-style-type: none;
-      margin-bottom: 1.25em;
+      margin: 1.25em 0;
     }
 
     .left, .center, .right { width: 25%; }
+  }
+}
+
+
+
+#listings {
+  &.index {
+    header {
+      min-width: $min-page-width;
+      max-width: $max-page-width;
+      margin: 0 auto;
+    }
+
+    .sidebar, header h1 { width: 23.75%; padding-right: 1.25%; }
+    .sidebar ~ .main    { width: 75%; }
+
+    .sidebar form {
+      .fields {
+        padding: 0.75em 0.5em;
+        margin-bottom: 0.5em;
+        background-color: #e5e5e5;
+        border: 1px solid #ccc;
+        @include shadow(0 0 8px #ccc);
+
+        fieldset {
+          border-top: 1px solid #ccc;
+          margin-bottom: 1.5em;
+          &:first-of-type { border: none; }
+          &:last-of-type { margin: 0; }
+        }
+
+        label {
+          text-align: right;
+          display: inline-block;
+          padding-right: .25em;
+          width: 25%;
+        }
+
+        input, select, textarea {
+          outline: none;
+          border: 1px solid #bbb;
+          &:focus { @include shadow(0 0 7px #7fb1cc); }
+        }
+
+        fieldset:first-of-type {
+          p:first-child {
+            text-align: center;
+            label { display: none; }
+            input {
+              width: 90%;
+              padding: 0.3em 0.75em;
+              border-radius: 1.25em;
+              border: 1px solid #bbb;
+              margin: 0 auto;
+              outline: none;
+            }
+          }
+        }
+
+        fieldset:last-of-type {
+          padding-top: 0.25em;
+
+          label {
+            text-align: left;
+            display: inline;
+            padding-left: .25em;
+          }
+        }
+      }
+
+      .links {
+        input[type='submit'] { // Search button
+          float: right;
+          margin-top: 0.5em;
+          text-align: right;
+        }
+
+        ul {
+          list-style-type: none;
+          font-size: 0.8em;
+        }
+      }
+    }
   }
 }
