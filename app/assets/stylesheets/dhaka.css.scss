@@ -1,3 +1,9 @@
+// New Colors
+$blue: #187cd0;
+$purple: #901875;
+$red: #ac3324;
+$yellow: #fff9c3;
+
 // Colors
 $lorange   : #eebd9c;
 $orange    : #c76725;
@@ -8,7 +14,6 @@ $plum      : #6e2145;
 $lrust     : #eba9a1;
 $rust      : #a33b2e;
 $gold      : #ffefc3;
-$yellow    : #fff9c3;
 $cardboard : #a49d96;
 $beige     : #d0c2b3;
 $sand      : #eeeae5;
@@ -18,32 +23,33 @@ $sand      : #eeeae5;
 $gutter         : 1.25%;
 $baseline       : 18px;
 $default-size   : 12px;
+$header-height    : 2.75em;
 $min-page-width : 960px;
 $max-page-width : 1200px;
 
 
 // Mixins
-@mixin transition($property:color, $duration:0.3s, $type:ease) {
+@mixin transition-preset($property:color, $duration:0.3s, $type:ease) {
   -webkit-transition: $property $duration $type;
   -moz-transition: $property $duration $type;
   -o-transition: $property $duration $type;
 }
 
-@mixin transition2($property1:color, $duration1:0.3s, $type1:ease, $property2:background-color, $duration2:0.3s, $type2:ease) {
+@mixin transition($property1:color, $duration1:0.3s, $type1:ease, $property2:background-color, $duration2:0.3s, $type2:ease) {
   -webkit-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
   -moz-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
   -o-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
 }
 
-@mixin highlight($color:#fff, $radius:1px, $x-offset:0, $y-offset:1px) {
+@mixin text-shadow-preset($color:#fff, $radius:1px, $x-offset:0, $y-offset:1px) {
   text-shadow: $x-offset $y-offset $radius $color;
 }
 
-@mixin text-highlight($properties:none) {
+@mixin text-shadow($properties:none) {
   text-shadow: $properties;
 }
 
-@mixin shadow($properties:none) {
+@mixin box-shadow($properties:none) {
   box-shadow: $properties;
   -webkit-box-shadow: $properties;
   -moz-box-shadow: $properties;
@@ -230,11 +236,19 @@ nav ul, footer ul { list-style-type : none; }
 }
 
 
+a {
+  color: $blue;
+  &:visited { color: $purple; }
+  &:hover { color: $green; }
+  &:active { color: $red; }
+}
+
+
 
 
 body {
-  font-size: 1.2em; // 12px/12px
-  line-height: 1.5em; // 18px/12px
+  font-size: 1.2em;
+  line-height: 1.5em;
   font-weight: normal;
   padding: 0 1em 0 1em;
 
@@ -252,17 +266,17 @@ body {
   > header {
     > h1 {
       @include bello;
-      @include highlight(#ddd, 4px, 0, 0);
-      font-size: 2.75em;
+      @include text-shadow-preset(rgba(#000,0.1), 0.15em, 0, 0);
+      font-size: $header-height;
       line-height: 1.75em;
       letter-spacing: -1px;
       color: black;
 
       a {
-        color: black;
-        @include transition(color, 0.3s);
+        color: black !important;
+        @include transition(color, 0.2s);
         text-decoration: none !important;
-        &:hover { color: $green; }
+        &:hover { color: $green !important; }
       }
     }
   }
@@ -275,12 +289,22 @@ body {
     ul {
       font-size: 0.8em;
       list-style-type: none;
-      margin: 1.25em 0;
     }
 
-    .left, .center, .right { width: 25%; }
+    .left, .center, .right {
+      padding-top: 0.5em;
+      margin-top: 1em;
+      border-top: 1px solid #ddd;
+      width: 25%;
+    }
   }
 }
+
+
+
+
+
+
 
 
 
@@ -294,21 +318,13 @@ body {
 
     .sidebar, header h1 { width: 23.75%; padding-right: 1.25%; }
     .sidebar ~ .main    { width: 75%; }
+    .main { margin-top: -$header-height - 1em; }
 
     .sidebar form {
       .fields {
-        padding: 0.75em 0.5em;
-        margin-bottom: 0.5em;
         background-color: #e5e5e5;
         border: 1px solid #ccc;
-        @include shadow(0 0 8px #ccc);
-
-        fieldset {
-          border-top: 1px solid #ccc;
-          margin-bottom: 1.5em;
-          &:first-of-type { border: none; }
-          &:last-of-type { margin: 0; }
-        }
+        margin-bottom: 0.25em;
 
         label {
           text-align: right;
@@ -320,37 +336,64 @@ body {
         input, select, textarea {
           outline: none;
           border: 1px solid #bbb;
-          &:focus { @include shadow(0 0 7px #7fb1cc); }
-        }
 
-        fieldset:first-of-type {
-          p:first-child {
-            text-align: center;
-            label { display: none; }
-            input {
-              width: 90%;
-              padding: 0.3em 0.75em;
-              border-radius: 1.25em;
-              border: 1px solid #bbb;
-              margin: 0 auto;
-              outline: none;
-            }
+          &:focus {
+            border-color: $blue;
+            @include box-shadow(0 0 0.5em $blue);
           }
         }
 
-        fieldset:last-of-type {
-          padding-top: 0.25em;
+        .undisturbed { color: #999; }
 
+        select, textarea { width: 100%; }
+
+        fieldset {
+          border-top: 1px solid #ccc;
+          margin: 1em 0.5em;
+          p { font-size: 0.8em; }
+          &:first-of-type { border: none; margin: 0.5em; }
+        }
+
+        #search_keywords {
+          text-align: center;
+          label { display: none; }
+          input {
+            width: 90%;
+            padding: 0.25em 0.75em 0.5em;
+            border-radius: 1em;
+            outline: none;
+          }
+        }
+
+        #search_options{
+          margin-top: -1em;
+          margin-bottom: 0;
+          padding-top: 0.5em;
           label {
             text-align: left;
             display: inline;
             padding-left: .25em;
           }
         }
+
+        a.hide {
+          color: $blue !important;
+          display: block;
+          width: 100%;
+          font-size: 0.8em;
+          line-height: 1.5em;
+          text-align: center;
+          @include transition(background-color, 0.5s, linear);
+
+          &:hover {
+            background-color: $yellow;
+            text-decoration: none;
+          }
+        }
       }
 
       .links {
-        input[type='submit'] { // Search button
+        input[type='submit'] {
           float: right;
           margin-top: 0.5em;
           text-align: right;

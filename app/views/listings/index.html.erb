@@ -1,24 +1,28 @@
 <% content_for :sidebar do %>
-  <%= form_tag do %>
+  <%= form_tag nil, {:id => :search_listings} do %>
     <div class="fields">
-      <%= field_set_tag do %>
-        <p><%= label_tag :keywords %><%= text_field_tag :keywords %></p>
+      <%= field_set_tag nil, {:id => :search_keywords} do %>
+        <p class="responder"><%= label_tag :keywords %><%= text_field_tag nil, :keywords, {:tabindex => 1} %></p>
       <% end %>
-      <%= field_set_tag "Categories (#{link_to 'All'} / #{link_to 'None'})&nbsp;".html_safe do %>
-        <p><%= select_tag :categories, options_for_select(Listing.tag_counts_on(:tags).collect { |tag| tag = [tag.name,tag.id] }), :multiple => true %></p>
+      <%= field_set_tag 'Category&nbsp;'.html_safe do %>
+        <p><%= select_tag :categories, options_for_select(Category.all.collect { |category| [category.description, category.id] })%></p>
       <% end %>
-      <%= field_set_tag "Price (#{link_to 'Reset'})&nbsp;".html_safe do %>
+      <%= field_set_tag "Tags (#{link_to 'All'} / #{link_to 'None'})&nbsp;".html_safe, {:id => :search_tags, :class => :folding} do %>
+        <p><%= select_tag :tags, options_for_select(Listing.tag_counts_on(:tags).collect { |tag| tag = [tag.name, tag.id] }), :multiple => true %></p>
+      <% end %>
+      <%= field_set_tag "Price (#{link_to 'Reset'})&nbsp;".html_safe, {:id => :search_price, :class => :folding} do %>
         <p><%= label_tag :price_from, 'Between' %><%= number_field_tag :price_from %></p>
         <p><%= label_tag :price_to, 'and' %><%= number_field_tag :price_to %> USD</p>
       <% end %>
-      <%= field_set_tag 'Options' do %>
+      <%= field_set_tag nil, {:id => :search_options, :class => :folding} do %>
         <p><%= check_box_tag :signed_sellers_only %><%= label_tag :signed_sellers_only, 'Limit to signed sellers' %></p>
         <p><%= check_box_tag :pictures_only %><%= label_tag :pictures_only, 'Listing must include picture' %></p>
         <p><%= check_box_tag :include_expired_listings %><%= label_tag :include_expired_listings, 'Include expired listings' %></p>
       <% end %>
+      <%= link_to 'More', '#', { :class => 'hide' } %>
     </div>
     <div class="links">
-      <%= submit_tag 'Search' %>
+      <p class="submit"><%= submit_tag 'Search' %></p>
       <ul>
         <li><%= link_to 'Save this search' %></li>
       </ul>

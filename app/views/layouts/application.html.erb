@@ -10,6 +10,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag controller_name %>
     <%= csrf_meta_tags %>
     <%= yield :head %>
   </head>
@@ -23,30 +24,29 @@
           <%= yield :top %>
         </div>
       <% end %>
-      <% if content_for?(:sidebar) or content_for?(:main) or content_for?(:left) or content_for?(:right) %>
-        <div class="middle">
-          <% if content_for? :sidebar %>
-            <aside class="sidebar">
-              <%= yield :sidebar %>
-            </aside>
-          <% end %>
-          <% if content_for? :main %>
-            <section class="main">
-              <%= yield :main %>
-            </section>
-          <% end %>
-          <% if content_for? :left %>
-            <div class="left">
-              <%= yield :left %>
-            </div>
-          <% end %>
-          <% if content_for? :right %>
-            <div class="right">
-              <%= yield :right %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="middle">
+        <% if content_for? :sidebar %>
+          <aside class="sidebar">
+            <%= yield :sidebar %>
+          </aside>
+        <% end %>
+        <% if content_for? :main %>
+          <section class="main">
+            <%= yield %>
+            <%= yield :main %>
+          </section>
+        <% end %>
+        <% if content_for? :left %>
+          <div class="left">
+            <%= yield :left %>
+          </div>
+        <% end %>
+        <% if content_for? :right %>
+          <div class="right">
+            <%= yield :right %>
+          </div>
+        <% end %>
+      </div>
       <% if content_for? :bottom %>
         <div class="bottom">
           <%= yield :bottom %>
