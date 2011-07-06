@@ -1,10 +1,12 @@
 module ApplicationHelper
-  def title
-    @title.nil? ? SITE_NAME : "#{@title} - #{SITE_NAME}"
-  end
-
   def root?
     request.env['PATH_INFO'] == '/' ? true : false
+  end
+
+  def title(new_title=nil)
+    content_for :title do
+      new_title.nil? ? SITE_NAME : "#{new_title} - #{SITE_NAME}"
+    end
   end
 
   def stylesheet(*args)

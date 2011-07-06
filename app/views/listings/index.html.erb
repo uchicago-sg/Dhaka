@@ -4,9 +4,7 @@
       <%= field_set_tag nil, {:id => :search_keywords} do %>
         <p class="responder"><%= label_tag :keywords %><%= text_field_tag nil, :keywords, {:tabindex => 1} %></p>
       <% end %>
-      <%= field_set_tag 'Category&nbsp;'.html_safe do %>
-        <p><%= select_tag :categories, options_for_select(Category.all.collect { |category| [category.description, category.id] })%></p>
-      <% end %>
+      <p id="search_categories"><%= select_tag :categories, options_for_select(Category.all.collect { |category| [category.description, category.id] })%></p>
       <%= field_set_tag "Tags (#{link_to 'All'} / #{link_to 'None'})&nbsp;".html_safe, {:id => :search_tags, :class => :folding} do %>
         <p><%= select_tag :tags, options_for_select(Listing.tag_counts_on(:tags).collect { |tag| tag = [tag.name, tag.id] }), :multiple => true %></p>
       <% end %>

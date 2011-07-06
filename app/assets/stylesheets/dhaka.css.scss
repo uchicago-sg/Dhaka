@@ -1,225 +1,5 @@
-// New Colors
-$blue: #187cd0;
-$purple: #901875;
-$red: #ac3324;
-$yellow: #fff9c3;
-
-// Colors
-$lorange   : #eebd9c;
-$orange    : #c76725;
-$green     : #597d3b;
-$lgreen    : #c9eeab;
-$navy      : #172930;
-$plum      : #6e2145;
-$lrust     : #eba9a1;
-$rust      : #a33b2e;
-$gold      : #ffefc3;
-$cardboard : #a49d96;
-$beige     : #d0c2b3;
-$sand      : #eeeae5;
-
-
-// Dimensions
-$gutter         : 1.25%;
-$baseline       : 18px;
-$default-size   : 12px;
-$header-height    : 2.75em;
-$min-page-width : 960px;
-$max-page-width : 1200px;
-
-
-// Mixins
-@mixin transition-preset($property:color, $duration:0.3s, $type:ease) {
-  -webkit-transition: $property $duration $type;
-  -moz-transition: $property $duration $type;
-  -o-transition: $property $duration $type;
-}
-
-@mixin transition($property1:color, $duration1:0.3s, $type1:ease, $property2:background-color, $duration2:0.3s, $type2:ease) {
-  -webkit-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
-  -moz-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
-  -o-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
-}
-
-@mixin text-shadow-preset($color:#fff, $radius:1px, $x-offset:0, $y-offset:1px) {
-  text-shadow: $x-offset $y-offset $radius $color;
-}
-
-@mixin text-shadow($properties:none) {
-  text-shadow: $properties;
-}
-
-@mixin box-shadow($properties:none) {
-  box-shadow: $properties;
-  -webkit-box-shadow: $properties;
-  -moz-box-shadow: $properties;
-}
-
-
-
-// Links
-nav a { @include transition(color, 0.2s); }
-
-a {
-  text-decoration: none;
-  &:hover, &:active { text-decoration: underline; }
-}
-
-
-// Headings
-h1, h2, h3, h4, h5, h6 { text-align: center; }
-
-h1 {}
-
-h2 {}
-
-h3 {}
-
-h4 {}
-
-h5 {}
-
-h6 {}
-
-
-// Lists
-ul {}
-
-ol {}
-
-li {}
-
-dl {}
-
-dt {}
-
-dd {}
-
-
-// Typography
-@mixin bello { font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif; }
-
-.serif { font-family: Georgia, Times, serif; } // Debugging
-
-body, .sans-serif { font-family: Helvetica, Verdana, sans-serif; } // Debugging
-
-p {
-  padding-bottom : 1em;
-  :last-child, :only-child { padding-bottom : 0; }
-}
-
-i, em { font-style: italic; }
-
-b, strong { font-weight: bold; }
-
-address {}
-
-blockquote {}
-
-del {}
-
-sup, sub {}
-
-q, cite {}
-
-code {
-  font-size: 0.8em;
-  line-height: 1.2em;
-  font-family: "Monaco", monospace; // Debugging
-}
-
-samp {}
-
-var {}
-
-abbr {}
-
-dfn {}
-
-
-// Tables
-table {}
-
-caption {}
-
-col {}
-
-col.alt {}
-
-thead {}
-
-tbody {}
-
-tfoot {}
-
-tr {}
-
-td {}
-
-
-// Forms
-form {}
-
-fieldset {}
-
-legend {}
-
-input.text {}
-
-input.password {}
-
-input.checkbox {}
-
-input.radio {}
-
-input.file {}
-
-input.button {}
-
-input.reset {}
-
-input.submit {}
-
-textarea {}
-
-select {}
-
-optgroup {}
-
-option {}
-
-
-// Layout scheme
-html, body, div, span,
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, b, i,
-a, abbr, address, cite, code,
-del, dfn, em, img, q, samp,
-strong, sub, sup, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, figure, figcaption,
-footer, header, hgroup, menu, nav, section {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-html {
-  font-size: 12px;
-  line-height: 18px;
-}
-
-nav, section, aside, article, figure, header, footer, hgroup { display : block; }
-
-nav ul, footer ul { list-style-type : none; }
-
-.clear {
-  clear : both;
-  overflow : hidden;
-  width : 100%;
-}
+@import 'compass/reset';
+@import 'shared';
 
 .top, .middle, .bottom, .sidebar, .main, .left, .center, .right {
   margin: 0;
@@ -235,15 +15,36 @@ nav ul, footer ul { list-style-type : none; }
   margin: 0 auto 0 auto;
 }
 
+.clear {
+  clear : both;
+  overflow : hidden;
+  width : 100%;
+}
+
+.serif { font-family: Georgia, 'Times New Roman', Times, serif; }
+
+.sans-serif, body { font-family: Helvetica, Arial, 'Lucida Sans', Verdana, sans-serif; }
+
+i, em { font-style: italic; }
+
+b, strong { font-weight: bold; }
+
+nav ul, footer ul { list-style-type : none; }
 
 a {
   color: $blue;
+  text-decoration: none;
+
   &:visited { color: $purple; }
   &:hover { color: $green; }
   &:active { color: $red; }
+  &:hover, &:active { text-decoration: underline; }
 }
 
-
+html {
+  font-size: 12px;
+  line-height: 18px;
+}
 
 
 body {
@@ -251,7 +52,6 @@ body {
   line-height: 1.5em;
   font-weight: normal;
   padding: 0 1em 0 1em;
-
 
   // Elements that need to be page-width
   > header > .wrapper, #flashes, #content > .top, #content > .middle, #content > .bottom, footer {
@@ -266,15 +66,17 @@ body {
   > header {
     > h1 {
       @include bello;
-      @include text-shadow-preset(rgba(#000,0.1), 0.15em, 0, 0);
+      @include text-shadow(rgba(#000, 0.1) 0 0 0.15em);
       font-size: $header-height;
       line-height: 1.75em;
-      letter-spacing: -1px;
+      letter-spacing: -0.05em;
       color: black;
+      font-weight: bold;
+      text-align: center;
 
       a {
         color: black !important;
-        @include transition(color, 0.2s);
+        @include transition-preset-link;
         text-decoration: none !important;
         &:hover { color: $green !important; }
       }
@@ -296,114 +98,6 @@ body {
       margin-top: 1em;
       border-top: 1px solid #ddd;
       width: 25%;
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-#listings {
-  &.index {
-    header {
-      min-width: $min-page-width;
-      max-width: $max-page-width;
-      margin: 0 auto;
-    }
-
-    .sidebar, header h1 { width: 23.75%; padding-right: 1.25%; }
-    .sidebar ~ .main    { width: 75%; }
-    .main { margin-top: -$header-height - 1em; }
-
-    .sidebar form {
-      .fields {
-        background-color: #e5e5e5;
-        border: 1px solid #ccc;
-        margin-bottom: 0.25em;
-
-        label {
-          text-align: right;
-          display: inline-block;
-          padding-right: .25em;
-          width: 25%;
-        }
-
-        input, select, textarea {
-          outline: none;
-          border: 1px solid #bbb;
-
-          &:focus {
-            border-color: $blue;
-            @include box-shadow(0 0 0.5em $blue);
-          }
-        }
-
-        .undisturbed { color: #999; }
-
-        select, textarea { width: 100%; }
-
-        fieldset {
-          border-top: 1px solid #ccc;
-          margin: 1em 0.5em;
-          p { font-size: 0.8em; }
-          &:first-of-type { border: none; margin: 0.5em; }
-        }
-
-        #search_keywords {
-          text-align: center;
-          label { display: none; }
-          input {
-            width: 90%;
-            padding: 0.25em 0.75em 0.5em;
-            border-radius: 1em;
-            outline: none;
-          }
-        }
-
-        #search_options{
-          margin-top: -1em;
-          margin-bottom: 0;
-          padding-top: 0.5em;
-          label {
-            text-align: left;
-            display: inline;
-            padding-left: .25em;
-          }
-        }
-
-        a.hide {
-          color: $blue !important;
-          display: block;
-          width: 100%;
-          font-size: 0.8em;
-          line-height: 1.5em;
-          text-align: center;
-          @include transition(background-color, 0.5s, linear);
-
-          &:hover {
-            background-color: $yellow;
-            text-decoration: none;
-          }
-        }
-      }
-
-      .links {
-        input[type='submit'] {
-          float: right;
-          margin-top: 0.5em;
-          text-align: right;
-        }
-
-        ul {
-          list-style-type: none;
-          font-size: 0.8em;
-        }
-      }
     }
   }
 }

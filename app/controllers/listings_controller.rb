@@ -1,10 +1,14 @@
 class ListingsController < ApplicationController
   respond_to :html, :json
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:index]
 
   # GET /listings
   def index
-    respond_with @listings.map(&:attributes)
+    if params[:search].present?
+    else
+      @listings = Listing.all
+      respond_with @listings.map(&:attributes)
+    end
   end
 
   # GET /listings/new
