@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110702233052) do
+ActiveRecord::Schema.define(:version => 20110710012604) do
 
   create_table "answers", :force => true do |t|
     t.datetime "created_at"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20110702233052) do
     t.datetime "updated_at"
     t.integer  "seller"
   end
+
+  create_table "listings_categories", :id => false, :force => true do |t|
+    t.integer "listing_id"
+    t.integer "category_id"
+  end
+
+  add_index "listings_categories", ["category_id", "listing_id"], :name => "index_listings_categories_on_category_id_and_listing_id"
+  add_index "listings_categories", ["listing_id", "category_id"], :name => "index_listings_categories_on_listing_id_and_category_id"
 
   create_table "reports", :force => true do |t|
     t.datetime "created_at"

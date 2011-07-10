@@ -1,0 +1,19 @@
+<%= form_for @category do |f| %>
+  <% if @category.errors.any? %>
+    <h1>Can&#8217;t create category: <%= pluralize(@category.errors.count, 'error') %></h1>
+    <ul class="errors">
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :details %><br />
+    <%= f.text_area :details %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

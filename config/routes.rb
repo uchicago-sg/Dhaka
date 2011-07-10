@@ -4,7 +4,7 @@ Dhaka::Application.routes.draw do
   devise_for :users
   resources :users
   resources :listings
-  resources :storefronts
+  resources :categories
 
   # Catch pages at root, forward to High Voltage
   %w( terms privacy safety issues about faqs status ).each do |page|

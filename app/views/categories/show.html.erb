@@ -1,0 +1,11 @@
+<% title @category.description %>
+
+<% content_for :main do %>
+  <p><strong>Description:</strong><%= @category.description %></p>
+  <p><strong>Details:</strong> <%= @category.details %></p>
+  <ul class="edit">
+    <li><%= link_to 'Edit', edit_category_path(@category) %></li>
+    <li><%= link_to 'Destroy', @category, :confirm => 'Are you sure?', :method => :delete %></li>
+    <li><%= link_to 'View All', categories_path %></li>
+  </ul>
+<% end %>

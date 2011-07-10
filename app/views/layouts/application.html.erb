@@ -10,7 +10,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag controller_name %>
+    <%= javascript_include_tag controller_name if resource? %>
     <%= csrf_meta_tags %>
     <%= yield :head %>
   </head>

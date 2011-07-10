@@ -1,0 +1,10 @@
+<% content_for :main do %>
+  <ul class="categories">
+    <% @categories.each do |category| -%>
+      <li class="category"><%= link_to category.description, category %> - <%= category.details %></li>
+    <% end -%>
+  </ul>
+  <% if can? :create, Category %>
+    <p><%= link_to 'New Category', new_category_path %></p>
+  <% end %>
+<% end %>

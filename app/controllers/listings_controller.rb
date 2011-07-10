@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   respond_to :html, :json
-  load_and_authorize_resource :except => [:index]
+  load_and_authorize_resource
 
   # GET /listings
   def index
