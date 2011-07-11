@@ -12,11 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110710012604) do
 
-  create_table "answers", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", :force => true do |t|
     t.string   "description"
     t.text     "details"
@@ -29,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20110710012604) do
     t.text     "details"
     t.integer  "price"
     t.integer  "status"
+    t.integer  "seller_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "seller"
   end
 
   create_table "listings_categories", :id => false, :force => true do |t|
@@ -41,11 +36,6 @@ ActiveRecord::Schema.define(:version => 20110710012604) do
 
   add_index "listings_categories", ["category_id", "listing_id"], :name => "index_listings_categories_on_category_id_and_listing_id"
   add_index "listings_categories", ["listing_id", "category_id"], :name => "index_listings_categories_on_listing_id_and_category_id"
-
-  create_table "reports", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

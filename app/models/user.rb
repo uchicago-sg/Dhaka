@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = %w( admin buyer seller )
+  ROLES = %w( admin seller buyer )
   acts_as_tagger
 
   # Include default devise modules
@@ -31,9 +31,5 @@ class User < ActiveRecord::Base
 
   def admin?
     has_role? 'admin'
-  end
-
-  def to_s
-    name
   end
 end

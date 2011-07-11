@@ -18,7 +18,7 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
-    @listing = Listing.new(params[:listing])
+    @listing.seller = current_user
     if @listing.save
       flash[:notice] = 'Listing successfully created'
       respond_with(@listing.attributes, :status => :created, :location => @listing)

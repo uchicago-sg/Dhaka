@@ -5,6 +5,7 @@ class CreateListings < ActiveRecord::Migration
       t.text :details
       t.integer :price
       t.integer :status
+      t.references :seller
 
       t.timestamps
     end

@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   # Don't redirect, just show an error on the same page
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
-    redirect_to request.referer
+    redirect_to(request.referer.nil? ? :root : request.referer)
   end
 end

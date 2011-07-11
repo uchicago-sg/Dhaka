@@ -38,7 +38,7 @@
         <li><%= link_to link[0], link[1] %></li>
       <% end %>
       <li>
-        <%= link_to 'Your Profile', user_path(current_user) if user_signed_in? %>
+        <%= link_to 'Your Profile', current_user if user_signed_in? %>
         <%= link_to 'Seller Login', new_user_session_path unless user_signed_in? %>
       </li>
     <ul>

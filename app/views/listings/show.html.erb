@@ -13,9 +13,13 @@
     <strong>Price:</strong>
     <%= @listing.price %>
   </p>
-  <p>
-    <%= link_to "Edit", edit_listing_path(@listing) %> |
-    <%= link_to "Destroy", @listing, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", listings_path %>
-  </p>
+  <ul class="manage">
+    <% if can? :edit, @listing -%>
+      <li><%= link_to "Edit", edit_listing_path(@listing) %></li>
+    <% end -%>
+    <% if can? :edit, @listing -%>
+      <li><%= link_to "Destroy", @listing, :confirm => 'Are you sure?', :method => :delete %></li>
+    <% end -%>
+    <li><%= link_to "View All", listings_path %></li>
+  </ul>
 <% end %>

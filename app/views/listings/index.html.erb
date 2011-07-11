@@ -35,12 +35,8 @@
       <p>For <%= listing.price %> (Created <%= listing.created_at.strftime('%b %d, %Y at %H:%M') %>)</p>
       <%= listing.details %>
       <%= link_to "Show", listing %>
-      <% if can? :edit, listing %>
-        <%= link_to "Edit", edit_listing_path(listing) %>
-      <% end %>
-      <% if can? :destroy, listing %>
-        <%= link_to "Destroy", listing, :confirm => 'Are you sure?', :method => :delete %>
-      <% end %>
+      <%= link_to "Edit", edit_listing_path(listing) if can? :edit, listing %>
+      <%= link_to "Destroy", listing, :confirm => 'Are you sure?', :method => :delete if can? :destroy, listing %>
     </div>
   <% end %>
   <% if can? :create, Listing %>
