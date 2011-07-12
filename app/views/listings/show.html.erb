@@ -1,25 +1,6 @@
 <% title @listing.description %>
 
 <% content_for :main do %>
-  <p>
-    <strong>Description:</strong>
-    <%= @listing.description %>
-  </p>
-  <p>
-    <strong>Details:</strong>
-    <%= @listing.details %>
-  </p>
-  <p>
-    <strong>Price:</strong>
-    <%= @listing.price %>
-  </p>
-  <ul class="manage">
-    <% if can? :edit, @listing -%>
-      <li><%= link_to "Edit", edit_listing_path(@listing) %></li>
-    <% end -%>
-    <% if can? :edit, @listing -%>
-      <li><%= link_to "Destroy", @listing, :confirm => 'Are you sure?', :method => :delete %></li>
-    <% end -%>
-    <li><%= link_to "View All", listings_path %></li>
-  </ul>
+  <%= render 'listing', :listing => @listing %>
+  <%= link_to "View All", listings_path %>
 <% end %>

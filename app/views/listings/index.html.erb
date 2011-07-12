@@ -1,43 +1,73 @@
 <% content_for :sidebar do %>
   <%= form_tag nil, {:id => :search_listings} do %>
-    <div class="fields">
-      <%= field_set_tag nil, {:id => :search_keywords} do %>
-        <p class="responder"><%= label_tag :keywords %><%= text_field_tag nil, :keywords, {:tabindex => 1} %></p>
+    <span class="fields">
+      <%= field_set_tag nil, {:id => :search_keywords, :class => :responder} do %>
+        <span class="field">
+          <span class="label"><%= label_tag :keywords %></span>
+          <span class="input"><%= text_field_tag nil, :keywords, {:tabindex => 1} %></span>
+          <span class="help"></span>
+        </span>
       <% end %>
-      <p id="search_categories"><%= select_tag :categories, options_for_select(Category.all.collect { |category| [category.description, category.id] })%></p>
+
+      <%= field_set_tag nil, {:id => :search_categories} do %>
+        <span class="field">
+          <span class="label"><%= label_tag :categories %></span>
+          <span class="input"><%= select_tag :categories, options_for_select(Category.all.collect { |category| [category.description, category.id] }), :multiple => true %></span>
+          <span class="help"></span>
+        </span>
+      <% end %>
+
       <%= field_set_tag "Tags (#{link_to 'All'} / #{link_to 'None'})&nbsp;".html_safe, {:id => :search_tags, :class => :folding} do %>
-        <p><%= select_tag :tags, options_for_select(Listing.tag_counts_on(:tags).collect { |tag| tag = [tag.name, tag.id] }), :multiple => true %></p>
+        <span class="field">
+          <span class="label"><%=label_tag :tags %></span>
+          <span class="input"><%= select_tag :tags, options_for_select(Listing.tag_counts_on(:tags).collect { |tag| tag = [tag.name, tag.id] }), :multiple => true %></span>
+          <span class="help"></span>
+        </span>
       <% end %>
+
       <%= field_set_tag "Price (#{link_to 'Reset'})&nbsp;".html_safe, {:id => :search_price, :class => :folding} do %>
-        <p><%= label_tag :price_from, 'Between' %><%= number_field_tag :price_from %></p>
-        <p><%= label_tag :price_to, 'and' %><%= number_field_tag :price_to %> USD</p>
+        <span class="field">
+          <span class="subfield">
+            <span class="label"><%= label_tag :price_from, 'Between' %></span>
+            <span class="input"><%= number_field_tag :price_from %></span>
+          </span>
+          <span class="subfield">
+            <span class="label"><%= label_tag :price_to, 'and' %></span>
+            <span class="input"><%= number_field_tag :price_to %> USD</span>
+          </span>
+        </span>
       <% end %>
+
       <%= field_set_tag nil, {:id => :search_options, :class => :folding} do %>
-        <p><%= check_box_tag :signed_sellers_only %><%= label_tag :signed_sellers_only, 'Limit to signed sellers' %></p>
-        <p><%= check_box_tag :pictures_only %><%= label_tag :pictures_only, 'Listing must include picture' %></p>
-        <p><%= check_box_tag :include_expired_listings %><%= label_tag :include_expired_listings, 'Include expired listings' %></p>
+        <span class="field">
+          <span class="input"><%= check_box_tag :signed_sellers_only %></span>
+          <span class="label"><%= label_tag :signed_sellers_only, 'Limit to signed sellers' %></span>
+        </span>
+        <span class="field">
+          <span class="input"><%= check_box_tag :pictures_only %></span>
+          <span class="label"><%= label_tag :pictures_only, 'Listing must include picture' %></span>
+        </span>
+        <span class="field">
+          <span class="input"><%= check_box_tag :include_expired_listings %></span>
+          <span class="label"><%= label_tag :include_expired_listings, 'Include expired listings' %></span>
+        </span>
       <% end %>
-      <%= link_to 'More', '#', { :class => 'hide' } %>
-    </div>
-    <div class="links">
-      <p class="submit"><%= submit_tag 'Search' %></p>
-      <ul>
+
+      <span class="more"><%= link_to 'More', '#', { :class => 'hide' } %></span>
+    </span>
+
+    <span class="actions">
+      <span class="submit"><%= submit_tag 'Search' %></span>
+      <ul class="manage">
         <li><%= link_to 'Save this search' %></li>
       </ul>
-    </div>
+    </span>
   <% end %>
 <% end %>
 
 <% content_for :main do %>
   <% @listings.each do |listing| %>
-    <div id="listing">
-      <h3><%= link_to listing.description, listing_path(listing) %></h3>
-      <p>For <%= listing.price %> (Created <%= listing.created_at.strftime('%b %d, %Y at %H:%M') %>)</p>
-      <%= listing.details %>
-      <%= link_to "Show", listing %>
-      <%= link_to "Edit", edit_listing_path(listing) if can? :edit, listing %>
-      <%= link_to "Destroy", listing, :confirm => 'Are you sure?', :method => :delete if can? :destroy, listing %>
-    </div>
+    <%= render 'listing', :listing => listing %>
   <% end %>
   <% if can? :create, Listing %>
     <p><%= link_to "New Listing", new_listing_path %></p>

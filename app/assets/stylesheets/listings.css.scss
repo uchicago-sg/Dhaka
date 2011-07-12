@@ -1,5 +1,6 @@
 @import 'shared';
 
+
 #listings {
   &.index {
     header {
@@ -11,97 +12,90 @@
     .sidebar, header h1 { width: 23.75%; padding-right: 1.25%; }
     .sidebar ~ .main    { width: 75%; }
 
-    .sidebar form {
-      .fields {
-        background-color: #e5e5e5;
-        border: 1px solid #ccc;
-        border-radius: 0.2em;
-        margin-bottom: 0.25em;
+    fieldset {
+      width: 90%;
+      margin: 0.75em auto;
+    }
 
-        label {
+    fieldset:first-of-type {
+      border: none;
+      width: 100%;
+      margin: 0.5em auto;
+    }
+
+    select[multiple=multiple] {
+      outline: 0;
+      border: 1px solid #bbb;
+    }
+
+    .field {
+      font-size: 0.925em;
+    }
+
+    #search_keywords {
+      text-align: center;
+      .label { display: none; }
+      input {
+        width: 85%;
+        padding: 0.25em 0.75em 0.5em;
+        border-radius: 1em;
+      }
+    }
+
+    #search_categories {
+      border: none;
+      .label { display: none; }
+    }
+
+    #search_tags .label { display: none; }
+
+    #search_options{
+      .field {
+        display: block;
+        margin-top: 0.5em;
+
+        .input {
+          width: 10%;
           text-align: right;
-          display: inline-block;
-          padding-right: .25em;
-          width: 25%;
+          margin-left: auto;
         }
 
-        input, select, textarea {
-          outline: none;
-          border: 1px solid #bbb;
-
-          &:focus {
-            border-color: $blue;
-            @include box-shadow(0 0 0.5em $blue);
-          }
-        }
-
-        .undisturbed { color: #999; }
-
-        select, textarea { width: 100%; }
-
-        fieldset {
-          border-top: 1px solid #ccc;
-          margin: 1em 0.5em;
-          p { font-size: 0.8em; }
-          &:first-of-type { border: none; margin: 0.5em; }
-        }
-
-        #search_categories {
+        .label {
           width: 90%;
-          margin: 0.5em auto;
-        }
-
-        #search_keywords {
-          text-align: center;
-          label { display: none; }
-          input {
-            width: 90%;
-            padding: 0.25em 0.75em 0.5em;
-            border-radius: 1em;
-            outline: none;
-          }
-        }
-
-        #search_options{
-          margin-top: -1em;
-          margin-bottom: 0;
-          padding-top: 0.5em;
-          label {
-            text-align: left;
-            display: inline;
-            padding-left: .25em;
-          }
-        }
-
-        a.hide {
-          color: $blue !important;
-          display: block;
-          width: 100%;
-          font-size: 0.8em;
-          line-height: 1.5em;
-          text-align: center;
-          @include transition-property(background-color);
-          @include transition-duration(0.3s);
-          @include transition-timing-function(linear);
-
-          &:hover {
-            background-color: $yellow;
-            text-decoration: none;
-          }
+          text-align: left;
+          display: inline-block;
         }
       }
+    }
 
-      .links {
-        input[type='submit'] {
-          float: right;
-          margin-top: 0.5em;
-          text-align: right;
-        }
+    a.hide {
+      color: $blue !important;
+      display: block;
+      width: 100%;
+      font-size: 0.8em;
+      line-height: 1.75em;
+      text-align: center;
+      margin-top: 0.25em;
+      @include transition-property(background-color);
+      @include transition-duration(0.3s);
+      @include transition-timing-function(linear);
 
-        ul {
-          list-style-type: none;
-          font-size: 0.8em;
-        }
+      &:hover {
+        background-color: $yellow;
+        text-decoration: none;
+      }
+    }
+
+    .actions {
+      .submit {
+        float: right;
+        margin-top: 0.25em;
+        text-align: right;
+      }
+
+      ul {
+        list-style-type: none;
+        font-size: 0.8em;
       }
     }
   }

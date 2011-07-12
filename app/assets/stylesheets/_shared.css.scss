@@ -18,11 +18,11 @@ $cardboard : #a49d96;
 $beige     : #d0c2b3;
 $sand      : #eeeae5;
 
-$gutter         : 1.25%;
-$baseline       : 18px;
-$default-size   : 12px;
+$gutter         :  1.25%;
+$baseline       :   18px;
+$default-size   :   12px;
 $header-height  : 2.75em;
-$min-page-width : 960px;
+$min-page-width :  960px;
 $max-page-width : 1200px;
 
 @mixin transition-preset-link {
@@ -30,6 +30,4 @@ $max-page-width : 1200px;
   @include transition-duration(0.2s);
 }
 
-@mixin bello {
-  font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif;
-}
+@mixin bello { font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif; }

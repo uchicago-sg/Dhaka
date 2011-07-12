@@ -1,26 +1,72 @@
+# The real seeds...
+[
+  ['Apartments',    ''],
+  ['Subleases',     ''],
+  ['Appliances',    ''],
+  ['Bikes',         ''],
+  ['Books',         ''],
+  ['Cars',          ''],
+  ['Electronics',   ''],
+  ['Employment',    ''],
+  ['Furniture',     ''],
+  ['Miscellaneous', ''],
+  ['Services',      ''],
+  ['Wanted',        '']
+].each do |category_with_description|
+  Category.new({
+    :description => category_with_description[0],
+    :details     => category_with_description[1]
+  }).save!
+end
+
+
+
+# For testing only!
 admin = User.new({
-  :name => 'sczizzo',
-  :email => 'sczizzo@gmail.com',
-  :password => 'seaman01'
+  :name     => 'admin',
+  :email    => 'admin@marketplace.uchicago.edu',
+  :password => '123456'
 })
 
 admin.roles = %w( admin )
 admin.save!
 
-seller = User.new({
-  :name => 'sclemmer',
-  :email => 'sclemmer@uchicago.edu',
+
+sean = User.new({
+  :name     => 'sczizzo',
+  :email    => 'sczizzo@gmail.com',
   :password => 'seaman01'
 })
 
-seller.roles = %w( seller )
-seller.save!
+sean.roles = %w( seller )
+sean.save!
 
-listing = Listing.new({
-  :description => 'ASDF',
-  :details => '123456',
-  :price => 40000
+
+paul = User.new({
+  :name     => 'plkap74',
+  :email    => 'plkap74@uchicago.edu',
+  :password => 'fishnets'
 })
 
-listing.seller = seller
-listing.save!
+paul.roles = %w( seller )
+paul.save!
+
+
+listing1 = Listing.new({
+  :description => 'Bicycle Seat',
+  :details     => 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed pretium tincidunt nisi at auctor. Proin vehicula pulvinar augue, vel laoreet erat dapibus et.',
+  :price       => 40000
+})
+
+listing1.seller = sean
+listing1.save!
+
+
+listing2 = Listing.new({
+  :description => 'New couch cushions',
+  :details     => 'Etiam sit amet dictum lectus. Curabitur vitae dignissim odio. Duis massa urna, dapibus at sollicitudin vel, lacinia et ante.',
+  :price       => 550000
+})
+
+listing2.seller = paul
+listing2.save!
