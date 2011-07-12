@@ -1,7 +1,7 @@
 class Listing < ActiveRecord::Base
   attr_accessible :description, :details, :price, :status
   belongs_to :seller, :class_name => 'User'
-  has_and_belongs_to_many :categories, :join_table => :listings_categories
+  has_and_belongs_to_many :categories
   acts_as_taggable
 
   def to_param

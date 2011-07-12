@@ -51,13 +51,13 @@ body {
   font-size: 1.2em;
   line-height: 1.5em;
   font-weight: normal;
-  padding: 0 1em 0 1em;
 
   // Elements that need to be page-width
   > header > .wrapper, #flashes, #content > .top, #content > .middle, #content > .bottom, footer {
     min-width: $min-page-width;
     max-width: $max-page-width;
     margin: 0 auto 0 auto;
+    padding: 0 1em;
   }
 
   // Large page sections

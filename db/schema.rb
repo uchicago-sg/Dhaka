@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20110710012604) do
     t.datetime "updated_at"
   end
 
+  create_table "categories_listings", :id => false, :force => true do |t|
+    t.integer "listing_id"
+    t.integer "category_id"
+  end
+
+  add_index "categories_listings", ["category_id", "listing_id"], :name => "index_categories_listings_on_category_id_and_listing_id"
+  add_index "categories_listings", ["listing_id", "category_id"], :name => "index_categories_listings_on_listing_id_and_category_id"
+
   create_table "listings", :force => true do |t|
     t.string   "description"
     t.text     "details"
@@ -28,14 +36,6 @@ ActiveRecord::Schema.define(:version => 20110710012604) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "listings_categories", :id => false, :force => true do |t|
-    t.integer "listing_id"
-    t.integer "category_id"
-  end
-
-  add_index "listings_categories", ["category_id", "listing_id"], :name => "index_listings_categories_on_category_id_and_listing_id"
-  add_index "listings_categories", ["listing_id", "category_id"], :name => "index_listings_categories_on_listing_id_and_category_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

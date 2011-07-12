@@ -3,24 +3,18 @@
 
 #listings {
   &.index {
-    header {
+    > header {
       min-width: $min-page-width;
       max-width: $max-page-width;
       margin: 0 auto;
     }
 
     .sidebar, header h1 { width: 23.75%; padding-right: 1.25%; }
-    .sidebar ~ .main    { width: 75%; }
+    .main    { width: 75%; margin-top: -1.5 * $header-height; }
 
     fieldset {
       width: 90%;
       margin: 0.75em auto;
-    }
-
-    fieldset:first-of-type {
-      border: none;
-      width: 100%;
-      margin: 0.5em auto;
     }
 
     select[multiple=multiple] {
@@ -28,17 +22,21 @@
       border: 1px solid #bbb;
     }
 
-    .field {
+    .fields {
+      @include border-radius(0.2em);
       font-size: 0.925em;
     }
 
     #search_keywords {
+      border: none;
+      width: 100%;
+      margin: 0.5em auto;
       text-align: center;
       .label { display: none; }
       input {
         width: 85%;
         padding: 0.25em 0.75em 0.5em;
-        border-radius: 1em;
+        @include border-radius(1em);
       }
     }
 
@@ -96,6 +94,30 @@
       ul {
         list-style-type: none;
         font-size: 0.8em;
+      }
+    }
+
+    .listing {
+      margin-bottom: 1em;
+      &:last-child { margin-bottom: 0; }
+    }
+
+    > footer {
+      position: fixed;
+      bottom: 0;
+      padding: 0;
+      clear: both;
+      min-width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+
+      .wrapper {
+        min-width: $min-page-width;
+        max-width: $max-page-width;
+        display: block;
+        margin: 0 auto;
+        padding-top: 2em;
+        @include background(linear-gradient(bottom, white 63%, rgba(#fff, 0) 100%));
       }
     }
   }

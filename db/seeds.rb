@@ -58,7 +58,8 @@ listing1 = Listing.new({
   :price       => 40000
 })
 
-listing1.seller = sean
+listing1.seller     = sean
+listing1.categories = [Category.all[0], Category.all[3]]
 listing1.save!
 
 
@@ -68,5 +69,6 @@ listing2 = Listing.new({
   :price       => 550000
 })
 
-listing2.seller = paul
+listing2.seller     = paul
+listing2.categories = [Category.all[2], Category.all[8], Category.all[5]]
 listing2.save!
