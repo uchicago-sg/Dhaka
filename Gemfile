@@ -4,7 +4,6 @@ gem 'rails', '3.1.0.rc4'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'thin'
-gem 'sqlite3'
 
 gem 'devise'
 gem 'cancan'
@@ -21,6 +20,7 @@ gem 'jquery-rails'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
@@ -31,4 +31,8 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'turn', :require => false
+end
+
+group :production, :staging do
+  gem 'pg'
 end

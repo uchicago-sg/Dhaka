@@ -10,7 +10,11 @@
     }
 
     .sidebar, header h1 { width: 23.75%; padding-right: 1.25%; }
-    .main    { width: 75%; margin-top: -1.5 * $header-height; }
+    .main    {
+      width: 75%;
+      margin-top: -1.5 * $header-height;
+      margin-bottom: 2.5 * $header-height;
+    }
 
     fieldset {
       width: 90%;
