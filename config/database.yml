@@ -1,3 +1,5 @@
+# We should eventually move staging and production to use PostgreSQL
+
 development: &sqlite
   adapter: sqlite3
   database: db/development.sqlite3
@@ -11,10 +13,10 @@ test: &test
 cucumber:
   <<: *test
 
-staging: &postgres
-  adapter: postgresql
-  database: staging
+staging:
+  <<: *sqlite
+  database: db/staging.sqlite3
 
 production:
-  <<: *postgres
-  database: production
+  <<: *sqlite
+  database: db/production.sqlite3
