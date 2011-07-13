@@ -22,8 +22,10 @@ $gutter         :  1.25%;
 $baseline       :   18px;
 $default-size   :   12px;
 $header-height  : 2.75em;
+$footer-height  :    6em;
 $min-page-width :  800px;
 $max-page-width : 1200px;
+$sidebar-width  :  300px;
 
 @mixin transition-preset-link {
   @include transition-property(color);

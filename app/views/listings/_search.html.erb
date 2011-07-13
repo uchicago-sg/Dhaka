@@ -1,0 +1,64 @@
+<%= form_tag nil, {:id => :search_listings} do %>
+  <span class="fields">
+    <%= field_set_tag nil, {:id => :search_keywords, :class => :responder} do %>
+      <span class="field">
+        <span class="label"><%= label_tag :keywords %></span>
+        <span class="input"><%= text_field_tag nil, :keywords, {:tabindex => 1} %></span>
+        <span class="help"></span>
+      </span>
+    <% end %>
+
+    <%= field_set_tag nil, {:id => :search_categories} do %>
+      <span class="field">
+        <span class="label"><%= label_tag :categories %></span>
+        <span class="input"><%= select_tag :categories, options_for_select(Category.all.collect { |category| [category.description, category.id] }), :multiple => true %></span>
+        <span class="help"></span>
+      </span>
+    <% end %>
+
+    <%= field_set_tag "Tags (#{link_to 'All'} / #{link_to 'None'})&nbsp;".html_safe, {:id => :search_tags, :class => :folding} do %>
+      <span class="field">
+        <span class="label"><%=label_tag :tags %></span>
+        <span class="input"><%= select_tag :tags, options_for_select(Listing.tag_counts_on(:tags).collect { |tag| tag = [tag.name, tag.id] }), :multiple => true %></span>
+        <span class="help"></span>
+      </span>
+    <% end %>
+
+    <%= field_set_tag "Price (#{link_to 'Reset'})&nbsp;".html_safe, {:id => :search_price, :class => :folding} do %>
+      <span class="field">
+        <span class="subfield">
+          <span class="label"><%= label_tag :price_from, 'Between' %></span>
+          <span class="input"><%= number_field_tag :price_from %></span>
+        </span>
+        <span class="subfield">
+          <span class="label"><%= label_tag :price_to, 'and' %></span>
+          <span class="input"><%= number_field_tag :price_to %> USD</span>
+        </span>
+      </span>
+    <% end %>
+
+    <%= field_set_tag nil, {:id => :search_options, :class => :folding} do %>
+      <span class="field">
+        <span class="input"><%= check_box_tag :signed_sellers_only %></span>
+        <span class="label"><%= label_tag :signed_sellers_only, 'Limit to signed sellers' %></span>
+      </span>
+      <span class="field">
+        <span class="input"><%= check_box_tag :pictures_only %></span>
+        <span class="label"><%= label_tag :pictures_only, 'Listing must include picture' %></span>
+      </span>
+      <span class="field">
+        <span class="input"><%= check_box_tag :include_expired_listings %></span>
+        <span class="label"><%= label_tag :include_expired_listings, 'Include expired listings' %></span>
+      </span>
+    <% end %>
+
+    <span class="more"><%= link_to 'More', '#', { :class => 'hide' } %></span>
+  </span>
+
+  <span class="actions">
+    <span class="submit"><%= submit_tag 'Search' %></span>
+    <ul class="manage">
+      <li><%= link_to 'Save this search' %></li>
+    </ul>
+  </span>
+<% end %>

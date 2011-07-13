@@ -15,40 +15,25 @@
     <%= yield :head %>
   </head>
   <body id="<%= controller_name %>" class="<%= action_name %>">
-    <%= render :partial => 'layouts/header' %>
-    <%= render :partial => 'layouts/flashes' %>
     <div id="content">
-      <% if content_for? :top %>
-        <div class="top">
-          <%= yield :top %>
-        </div>
-      <% end %>
-      <div class="middle">
+      <aside id="sidebar">
+        <h1><%= root? ? SITE_NAME : link_to(SITE_NAME, :root) %></h1>
         <% if content_for? :sidebar %>
-          <aside class="sidebar">
-            <%= yield :sidebar %>
-          </aside>
+          <%= yield :sidebar %>
+        <% else %>
+          <p>&nbsp;</p>
         <% end %>
-        <section class="main">
-          <%= yield %>
-          <%= yield :main if content_for? :main %>
-        </section>
-        <% if content_for? :left %>
-          <div class="left">
-            <%= yield :left %>
-          </div>
-        <% end %>
-        <% if content_for? :right %>
-          <div class="right">
-            <%= yield :right %>
-          </div>
-        <% end %>
-      </div>
-      <% if content_for? :bottom %>
-        <div class="bottom">
-          <%= yield :bottom %>
+      </aside>
+      <section id="main">
+        <div id="flashes">
+          <% flash.each do |type, text| %>
+            <p class="<%= type %>"><%= text %></p>
+          <% end %>
         </div>
-      <% end %>
+        <%= yield %>
+        <%= yield :main %>
+      </section>
+      <div class="clear"></div>
     </div>
     <%= render :partial => 'layouts/footer' %>
   </body>

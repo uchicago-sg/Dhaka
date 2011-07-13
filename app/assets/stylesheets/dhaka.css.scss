@@ -1,19 +1,12 @@
 @import 'compass/reset';
 @import 'shared';
 
-.top, .middle, .bottom, .sidebar, .main, .left, .center, .right {
+#sidebar, #main, .left, .center, .right {
   margin: 0;
   display: inline-block;
 }
 
-.sidebar, .left, .center { float: left; }
-
-.top, .middle, .bottom {
-  clear: both;
-  display: block;
-  text-align: left;
-  margin: 0 auto 0 auto;
-}
+#sidebar, #main, .left, .center { float: left; }
 
 .clear {
   clear : both;
@@ -52,52 +45,99 @@ body {
   line-height: 1.5em;
   font-weight: normal;
 
-  // Elements that need to be page-width
-  > header > .wrapper, #flashes, #content > .top, #content > .middle, #content > .bottom, footer {
+  > header, #content, > footer {
     min-width: $min-page-width;
     max-width: $max-page-width;
     margin: 0 auto 0 auto;
     padding: 0 1em;
+    clear: both;
   }
 
-  // Large page sections
-  > header, > #flashes, > #content, > footer { clear: both; }
-
-  > header {
-    > h1 {
-      @include bello;
-      @include text-shadow(rgba(#000, 0.1) 0 0 0.15em);
-      font-size: $header-height;
-      line-height: 1.75em;
-      letter-spacing: -0.05em;
-      color: black;
-      font-weight: bold;
-      text-align: center;
-
-      a {
-        color: black !important;
-        @include transition-preset-link;
-        text-decoration: none !important;
-        &:hover { color: $green !important; }
-      }
-    }
+  #content {
+    margin-bottom: 1.15 * $footer-height;
   }
-
-  > #flashes {}
-
-  > #content {}
 
   > footer {
+    z-index: 0;
+    position: fixed;
+    bottom: 0;
+    padding: 0;
+    clear: both;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+
+    .fade {
+      padding: 1em;
+      @include background(linear-gradient(bottom, white, rgba(#fff, 0) 100%));
+    }
+
+    .wrapper {
+      min-width: $min-page-width;
+      max-width: $max-page-width;
+      margin: 0 auto;
+      background-color: white;
+    }
+
     ul {
+      height: $footer-height;
       font-size: 0.8em;
       list-style-type: none;
     }
 
     .left, .center, .right {
       padding: 0.5em 0;
-      margin-top: 1em;
       border-top: 1px solid #ddd;
-      width: 25%;
+      width: 24%;
+    }
+
+    .left { padding-left: 1%; }
+    .right { padding-right: 1%; width: 26%; }
+  }
+}
+
+
+#flashes {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1em;
+  @include box-shadow(0 0 0.5em rgba(#000, 0.2));
+
+  p {
+    background-color: $yellow;
+    border: 1px solid darken($yellow, 15%);
+    font-weight: bold;
+    font-size: 0.8em;
+    line-height: 2.25em;
+  }
+}
+
+#sidebar {
+  position: fixed;
+  width: $sidebar-width;
+  z-index: 1000;
+
+  > h1 {
+    @include bello;
+    @include text-shadow(rgba(#000, 0.1) 0 0 0.15em);
+    font-size: $header-height;
+    line-height: 0.7 * $header-height;
+    letter-spacing: -0.05em;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+
+    a {
+      color: black !important;
+      @include transition-preset-link;
+      text-decoration: none !important;
+      &:hover { color: $green !important; }
     }
   }
+}
+
+
+#main {
+  z-index: -1000;
+  margin-left: $sidebar-width + 12px;
 }

@@ -2,123 +2,93 @@
 
 
 #listings {
-  &.index {
-    > header {
-      min-width: $min-page-width;
-      max-width: $max-page-width;
-      margin: 0 auto;
+  fieldset {
+    width: 90%;
+    margin: 0.75em auto;
+  }
+
+  select[multiple=multiple] {
+    outline: 0;
+    border: 1px solid #bbb;
+  }
+
+  .fields {
+    @include border-radius(0.2em);
+    font-size: 0.925em;
+  }
+
+  #search_keywords {
+    border: none;
+    width: 100%;
+    margin: 0.5em auto;
+    text-align: center;
+    .label { display: none; }
+    input {
+      width: 85%;
+      padding: 0.25em 0.75em 0.5em;
+      @include border-radius(1em);
     }
+  }
 
-    .sidebar, header h1 { width: 23.75%; padding-right: 1.25%; }
-    .main    { width: 75%; margin-top: -1.5 * $header-height; }
+  #search_categories {
+    border: none;
+    .label { display: none; }
+  }
 
-    fieldset {
-      width: 90%;
-      margin: 0.75em auto;
-    }
+  #search_tags .label { display: none; }
 
-    select[multiple=multiple] {
-      outline: 0;
-      border: 1px solid #bbb;
-    }
-
-    .fields {
-      @include border-radius(0.2em);
-      font-size: 0.925em;
-    }
-
-    #search_keywords {
-      border: none;
-      width: 100%;
-      margin: 0.5em auto;
-      text-align: center;
-      .label { display: none; }
-      input {
-        width: 85%;
-        padding: 0.25em 0.75em 0.5em;
-        @include border-radius(1em);
-      }
-    }
-
-    #search_categories {
-      border: none;
-      .label { display: none; }
-    }
-
-    #search_tags .label { display: none; }
-
-    #search_options{
-      .field {
-        display: block;
-        margin-top: 0.5em;
-
-        .input {
-          width: 10%;
-          text-align: right;
-          margin-left: auto;
-        }
-
-        .label {
-          width: 90%;
-          text-align: left;
-          display: inline-block;
-        }
-      }
-    }
-
-    a.hide {
-      color: $blue !important;
+  #search_options{
+    .field {
       display: block;
-      width: 100%;
-      font-size: 0.8em;
-      line-height: 1.75em;
-      text-align: center;
-      margin-top: 0.25em;
-      @include transition-property(background-color);
-      @include transition-duration(0.3s);
-      @include transition-timing-function(linear);
+      margin-top: 0.5em;
 
-      &:hover {
-        background-color: $yellow;
-        text-decoration: none;
-      }
-    }
-
-    .actions {
-      .submit {
-        float: right;
-        margin-top: 0.25em;
+      .input {
+        width: 10%;
         text-align: right;
+        margin-left: auto;
       }
 
-      ul {
-        list-style-type: none;
-        font-size: 0.8em;
+      .label {
+        width: 90%;
+        text-align: left;
+        display: inline-block;
       }
     }
+  }
 
-    .listing {
-      margin-bottom: 1em;
-      &:last-child { margin-bottom: 0; }
+  a.hide {
+    color: $blue !important;
+    display: block;
+    width: 100%;
+    font-size: 0.8em;
+    line-height: 1.75em;
+    text-align: center;
+    margin-top: 0.25em;
+    @include transition-property(background-color);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(linear);
+
+    &:hover {
+      background-color: $yellow;
+      text-decoration: none;
+    }
+  }
+
+  .actions {
+    .submit {
+      float: right;
+      margin-top: 0.25em;
+      text-align: right;
     }
 
-    > footer {
-      position: fixed;
-      bottom: 0;
-      padding: 0;
-      clear: both;
-      min-width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-
-      .wrapper {
-        min-width: $min-page-width;
-        max-width: $max-page-width;
-        display: block;
-        margin: 0 auto;
-        padding-top: 2em;
-        @include background(linear-gradient(bottom, white 63%, rgba(#fff, 0) 100%));
-      }
+    ul {
+      list-style-type: none;
+      font-size: 0.8em;
     }
+  }
+
+  .listing {
+    margin-bottom: 1em;
+    &:last-child { margin-bottom: 0; }
   }
 }
