@@ -5,7 +5,8 @@ Time::DATE_FORMATS.merge!({
   :default => '%b %d, %Y at %H:%M'
 })
 
-SITE_NAME = 'Marketplace'
+SITE_NAME    = 'Marketplace'
+STATIC_PAGES = %w( terms privacy safety issues about faqs status )
 
 # Initialize the rails application
 Dhaka::Application.initialize!

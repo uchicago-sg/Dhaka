@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   ROLES = %w( admin seller buyer )
+  has_many :listings, :foreign_key => 'seller_id'
   acts_as_tagger
   @@permalink_field = :name
 
@@ -14,8 +15,8 @@ class User < ActiveRecord::Base
     { :conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0" }
   }
 
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  def roles= new_roles
+    self.roles_mask = (new_roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
 
   def roles
@@ -23,10 +24,10 @@ class User < ActiveRecord::Base
   end
 
   def role_symbols
-    roles.map(&:to_sym)
+    roles.map &:to_sym
   end
 
-  def has_role?(role)
+  def has_role? role
     role_symbols.include? role.to_sym
   end
 

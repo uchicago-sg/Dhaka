@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   authorize_resource
   respond_to :html, :json
 
+
   # GET /categories
   def index
     @category = Category.all
@@ -32,6 +33,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/:id
   def show
+    @listings = @category.listings
     respond_with @category.attributes
   end
 

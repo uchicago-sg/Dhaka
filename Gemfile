@@ -1,11 +1,10 @@
 source :rubygems
 
-gem 'rails', '3.1.0.rc4'  # Only the latest, baby
-gem 'capistrano'          # For Saluki deployment
-gem 'capistrano-ext'      # Useful for multistage deploys
-gem 'thin'                # Only the best
-gem 'sqlite3'             # Probably move to MySQL in production
-
+gem 'rails', '3.1.0.rc4'           # Only the latest, baby
+gem 'capistrano'                   # For Saluki deployment
+gem 'capistrano-ext'               # Useful for multistage deploys
+gem 'thin'                         # Only the best
+gem 'sqlite3'                      # Probably move to MySQL in production
 gem 'devise'                       # User authentication
 gem 'cancan'                       # User authorization
 gem 'acts-as-taggable-on'          # Tags

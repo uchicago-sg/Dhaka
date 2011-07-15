@@ -1,0 +1,5 @@
+<% title @user.name %>
+
+<% @listings.each do |listing| %>
+  <%= render 'listings/listing', :listing => listing %>
+<% end %>

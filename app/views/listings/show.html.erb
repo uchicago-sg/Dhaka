@@ -4,7 +4,5 @@
   <%= render 'search' %>
 <% end %>
 
-<% content_for :main do %>
-  <%= render 'listing', :listing => @listing %>
-  <%= link_to "View All", listings_path %>
-<% end %>
+<%= render 'listing', :listing => @listing %>
+<%= link_to "View All", listings_path %>

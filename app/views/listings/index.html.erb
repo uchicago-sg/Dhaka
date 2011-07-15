@@ -2,11 +2,9 @@
   <%= render 'search' %>
 <% end %>
 
-<% content_for :main do %>
-  <% @listings.each do |listing| %>
-    <%= render 'listing', :listing => listing %>
-  <% end %>
-  <% if can? :create, Listing %>
-    <p><%= link_to "New Listing", new_listing_path %></p>
-  <% end %>
+<% @listings.each do |listing| %>
+  <%= render 'listing', :listing => listing %>
+<% end %>
+<% if can? :create, Listing %>
+  <p><%= link_to "New Listing", new_listing_path %></p>
 <% end %>

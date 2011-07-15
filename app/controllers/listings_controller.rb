@@ -3,6 +3,7 @@ class ListingsController < ApplicationController
   authorize_resource
   respond_to :html, :json
 
+
   # GET /listings
   def index
     if params[:search].present?
