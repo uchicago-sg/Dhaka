@@ -4,7 +4,6 @@
       <span class="field">
         <span class="label"><%= label_tag :keywords %></span>
         <span class="input"><%= text_field_tag nil, :keywords, {:tabindex => 1} %></span>
-        <span class="help"></span>
       </span>
     <% end %>
 
@@ -12,7 +11,6 @@
       <span class="field">
         <span class="label"><%= label_tag :categories %></span>
         <span class="input"><%= select_tag :categories, options_for_select(Category.all.collect { |category| [category.description, category.id] }), :multiple => true %></span>
-        <span class="help"></span>
       </span>
     <% end %>
 
@@ -20,7 +18,6 @@
       <span class="field">
         <span class="label"><%=label_tag :tags %></span>
         <span class="input"><%= select_tag :tags, options_for_select(Listing.tag_counts_on(:tags).collect { |tag| tag = [tag.name, tag.id] }), :multiple => true %></span>
-        <span class="help"></span>
       </span>
     <% end %>
 

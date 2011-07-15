@@ -9,8 +9,11 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   validates :name,
-    :format => { :with => /\A[\w \.]+\z/ },
-    :length => { :minimum => 3, :maximum => 128 }
+    :presence => true,
+    :format   => {
+      :with    => /\A[\w \.\-]+\z/,
+      :message => 'may only contain on alphanumeric characters, spaces, dashes, and underscores'
+    }
 
 
   scope :with_role, lambda { |role|

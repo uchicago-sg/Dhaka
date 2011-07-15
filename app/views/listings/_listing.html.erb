@@ -7,16 +7,14 @@
     <p class="details"><%= listing.details %></p>
     <p class="price"><%= listing.price %></p>
   </div>
-  <% if can? :manage, listing -%>
-    <footer>
-      <ul class="manage">
-        <% if can? :edit, listing -%>
-          <li class="edit"><%= link_to "Edit", edit_listing_path(listing) %></li>
-        <% end %>
-        <% if can? :destroy, listing -%>
-          <li class="destroy"><%= link_to "Destroy", listing, :confirm => 'Are you sure?', :method => :delete %></li>
-        <% end -%>
-      </ul>
-    </footer>
-  <% end -%>
+  <footer>
+    <ul class="manage">
+      <% if can? :edit, listing %>
+        <li class="edit"><%= link_to "Edit", edit_listing_path(listing) %></li>
+      <% end %>
+      <% if can? :destroy, listing %>
+        <li class="destroy"><%= link_to "Destroy", listing, :confirm => 'Are you sure?', :method => :delete %></li>
+      <% end %>
+    </ul>
+  </footer>
 </article>
