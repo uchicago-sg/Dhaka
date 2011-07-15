@@ -1,12 +1,13 @@
 @import 'compass/reset';
 @import 'shared';
 
-/* #sidebar, #main, */ .left, .center, .right {
+
+#sidebar, #main, .left, .center, .right {
   margin: 0;
   display: inline-block;
 }
 
-/* #sidebar, #main, */ .left, .center { float: left; }
+#sidebar, .left, .center { float: left; }
 
 .clear {
   clear : both;
@@ -114,10 +115,8 @@ body {
 }
 
 #sidebar {
-  display: block;
   width: $sidebar-width;
   margin-right: $gutter;
-  float: left;
 
   > h1 {
     @include bello;
@@ -138,14 +137,4 @@ body {
   }
 }
 
-
-$main-width: 100% - $sidebar-width - $gutter;
-
-#main {
-//  z-index: -1000;
-//  max-width: $max-page-width - $sidebar-clearance-width;
-//  min-width: $min-page-width - $sidebar-clearance-width;
-  width: $main-width;
-  display: block;
-  float: left;
-}
+#main { width: 100% - $sidebar-width - $gutter; }

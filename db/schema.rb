@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(:version => 20110715090336) do
 
   create_table "categories", :force => true do |t|
-    t.string   "description"
-    t.text     "details"
+    t.string   "description", :null => false
+    t.text     "details",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"

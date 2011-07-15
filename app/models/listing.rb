@@ -5,6 +5,9 @@ class Listing < ActiveRecord::Base
   acts_as_taggable
   @@permalink_field = :description
 
+  validates :description, :uniqueness => { :case_sensitive => false, :message => '' }
+  validates :price, :numericality => { :only_integer => true, :greater_tan_or_equal_to => 0 }
+
   def to_param
     permalink
   end

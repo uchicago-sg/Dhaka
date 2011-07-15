@@ -3,6 +3,8 @@ class Category < ActiveRecord::Base
   has_and_belongs_to_many :listings
   @@permalink_field = :description
 
+  validates :description, :uniqueness => { :case_sensitive => false, :message => '' }
+
   def to_param
     permalink
   end
