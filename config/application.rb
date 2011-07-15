@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+
 module Dhaka
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -20,7 +21,7 @@ module Dhaka
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
     # Activate observers that should always be running.
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+    config.active_record.observers = :permalink_observer # :cacher, :garbage_collector, :forum_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

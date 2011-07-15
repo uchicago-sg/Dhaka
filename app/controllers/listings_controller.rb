@@ -1,25 +1,27 @@
 class ListingsController < ApplicationController
+  load_resource :find_by => :permalink
+  authorize_resource
   respond_to :html, :json
-  load_and_authorize_resource :except => %w( index )
 
   # GET /listings
   def index
     if params[:search].present?
-      @listings = []
+      @listings = [] # TODO
     else
       @listings = Listing.all
     end
-
     respond_with @listings.map(&:attributes)
   end
 
   # GET /listings/new
   def new
+    @listing = Listing.new
     respond_with @listing.attributes
   end
 
   # POST /listings
   def create
+    @listing = Listing.new params[:listing]
     @listing.seller = current_user
     if @listing.save
       flash[:notice] = 'Listing successfully created'

@@ -11,24 +11,25 @@ document.createElement 'detail'
 document.createElement 'summary'
 document.createElement 'time'
 
-
-states = [ 'undisturbed', 'processing', 'validated', 'rejected' ]
-submenus = ['#search_tags', '#search_price', '#search_options']
-
+# slideUp a bunch of elements
 jQuery.fn.foldUp = ->
   $(this).slideUp 500, ->
     $(this).next('.folding').foldUp()
 
+# slideDown a bunch of elements
 jQuery.fn.foldDown = ->
   $(this).slideDown 500, ->
     $(this).next('.folding').foldDown()
 
 
 $(document).ready ->
-  # Add folding mechanism
-  $('.folding').css( 'height', $('.folding').height() )
-  $('.folding').hide()
+  # Hide mechanism for flashes
+  $('#flashes > p').click -> $(this).slideUp 500
 
+  # Add folding mechanism
+  $('.folding').css('height', $('.folding').height()).hide()
+
+  # Register handlers for folding
   hide_button = $('#search_listings .hide')
   hide_button.attr('href', '')
   hide_button.data('collapsed', true)
@@ -60,64 +61,3 @@ $(document).ready ->
     input.blur ->
       if $(this).val() is '' or $(this).val() is $(this).data('text')
         $(this).removeClass().addClass('undisturbed').val($(this).data('text'))
-
-  # Hide mechanism for flashes
-  $('#flashes > p').click ->
-    $(this).slideUp 500
-
-# $(document).ready(function() {
-
-#
-#
-#   // Slide mechanism on blocks
-#   $('.block').each(function() {
-#     details = $(this).find('> div');
-#     $(this)
-#       .find('> header')
-#       .data('collapsed', false)
-#       .data('details', details)
-#       .click(function() {
-#         if ($(this).data('collapsed')) {
-#           $(this).data('details').foldDown();
-#           $(this).data('collapsed', false);
-#         } else {
-#           $(this).data('details').foldUp();
-#           $(this).data('collapsed', true);
-#         }
-#       })
-#     ;
-#   });
-#
-#
-#   // Primary search box behavior
-#   var search = {
-#     form:   $('#search-form'),
-#     label:  $('#search-form label'),
-#     input:  $('#search-form input[type=text]'),
-#     button: $('#search-form .submit input')
-#   };
-#
-#   search.input.data('text', search.label.text() + '...');
-#   search.input.val(search.input.data('text'));
-#
-#   search.input.focus(function() {
-#     $(this).removeClass();
-#     search.form.removeClass();
-#     if ($(this).val() === $(this).data('text')) {
-#       $(this).val('');
-#     }
-#   });
-#
-#   search.input.blur(function() {
-#     if ($(this).val() === '' || $(this).val() === $(this).data('text')) {
-#       $(this).removeClass().addClass('undisturbed').val($(this).data('text'));
-#       search.form.addClass('undisturbed');
-#     }
-#   });
-#
-#   search.button.submit(function() {
-#     if ($(this).hasClass('undisturbed')) {
-#       $(this).val('');
-#     }
-#   });
-# });

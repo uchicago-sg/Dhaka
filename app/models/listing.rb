@@ -3,8 +3,9 @@ class Listing < ActiveRecord::Base
   belongs_to :seller, :class_name => 'User'
   has_and_belongs_to_many :categories
   acts_as_taggable
+  @@permalink_field = :description
 
   def to_param
-    "#{id}-#{description.downcase.gsub( /[^\w\s]+/, '' ).gsub( /\s+/, '-' )}"
+    permalink
   end
 end

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_resource :find_by => :permalink
+  authorize_resource
   respond_to :html, :json
-  load_and_authorize_resource
 end

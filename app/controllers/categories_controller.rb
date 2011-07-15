@@ -1,20 +1,23 @@
 class CategoriesController < ApplicationController
+  load_resource :find_by => :permalink
+  authorize_resource
   respond_to :html, :json
-  load_and_authorize_resource
 
   # GET /categories
   def index
+    @category = Category.all
     respond_with @categories.map(&:attributes)
   end
 
   # GET /categories/new
   def new
+    @category = Category.new
     respond_with @category.attributes
   end
 
   # POST /categories
   def create
-    @category = Category.new(params[:category])
+    @category = Category.new params[:category]
     if @category.save
       flash[:notice] = 'Category successfully created'
       respond_with(@category.attributes, :status => :created, :location => @category)

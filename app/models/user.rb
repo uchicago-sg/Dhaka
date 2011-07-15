@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w( admin seller buyer )
   acts_as_tagger
+  @@permalink_field = :name
 
   # Include default devise modules
   devise :database_authenticatable, :registerable,
@@ -31,5 +32,9 @@ class User < ActiveRecord::Base
 
   def admin?
     has_role? 'admin'
+  end
+
+  def to_param
+    permalink
   end
 end
