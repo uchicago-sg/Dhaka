@@ -7,7 +7,8 @@ gem 'thin'                         # Only the best
 gem 'sqlite3'                      # Probably move to MySQL in production
 gem 'devise'                       # User authentication
 gem 'cancan'                       # User authorization
-gem 'acts-as-taggable-on'          # Tags
+gem 'acts-as-taggable-on'          # Dead-simple tagging
+gem 'kaminari'                     # Dead-simple pagination
 gem 'rdiscount'                    # Markdown processor
 gem 'high_voltage'                 # Easy static pages
 gem 'paperclip'                    # Easy file attachments

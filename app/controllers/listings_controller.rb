@@ -9,7 +9,7 @@ class ListingsController < ApplicationController
     if params[:search].present?
       @listings = [] # TODO
     else
-      @listings = Listing.all
+      @listings = Listing.order(:description).page(params[:page]).per(50)
     end
     respond_with @listings.map(&:attributes)
   end
