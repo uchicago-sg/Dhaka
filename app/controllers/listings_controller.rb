@@ -40,17 +40,21 @@ class ListingsController < ApplicationController
   def show
     respond_with @listing.attributes
   end
+  
+  require File.dirname(__FILE__) + '/listings_controller'
+  
 
   # GET /listings/:id/edit
   def edit
     respond_with @listing.attributes
   end
-
+  
   # POST /listings/:id
   def update
     if @listing.update_attributes(params[:listing])
-      flash[:notice] = 'Listing successfully edited'
-      respond_with(@listing.attributes, :status => :listingd, :location => @listing)
+      undo_link = view_context.link_to("undo", revert_version_path(@listing.versions.last), :method => :post)
+      flash[:notice] = "Listing successfully edited, <b>#{undo_link}</b>".html_safe
+      respond_with(@listing.attributes, :status => :listing, :location => @listing)
     else
       respond_with(@listing.errors, :status => :unprocessable_entity) do |format|
         format.html do
@@ -63,7 +67,8 @@ class ListingsController < ApplicationController
   # DELETE /listings/:id
   def destroy
     @listing.destroy
-    flash[:notice] = 'Listing successfully destroyed'
+    undo_link = view_context.link_to("undo", revert_version_path(@listing.versions.last), :method => :post)
+    flash[:notice] = "Listing successfully destroyed, <b>#{undo_link}</b>".html_safe
     respond_with @listing
   end
 end

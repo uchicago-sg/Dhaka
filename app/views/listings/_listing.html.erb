@@ -13,7 +13,7 @@
         <li class="edit"><%= link_to "Edit", edit_listing_path(listing) %></li>
       <% end %>
       <% if can? :destroy, listing %>
-        <li class="destroy"><%= link_to "Destroy", listing, :confirm => 'Are you sure?', :method => :delete %></li>
+        <li class="destroy"><%= link_to "Destroy", listing, :method => :delete %></li>
       <% end %>
     </ul>
   </footer>
