@@ -18,7 +18,7 @@ gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 
 gem 'coffee-script'                # Like JavaScript, but better
 gem 'jquery-rails'                 # You know what it is
 gem 'uglifier'                     # Minifier for production
-gem 'paper_trail'                  # For versioning, allows undo behavior
+gem 'paper_trail'                  # For versioning, allows undo behaviors
 
 group :development, :test do
   gem 'rspec-rails'
