@@ -1,7 +1,3 @@
-<% content_for :sidebar do %>
-  <%= render 'search' %>
-<% end %>
-
 <% @listings.each do |listing| %>
   <%= render 'listing', :listing => listing %>
 <% end %>

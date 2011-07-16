@@ -114,6 +114,128 @@ body {
       &:hover { color: $green !important; }
     }
   }
+
+  #search-or-browse {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    @include border-radius(2px);
+
+    .handles {
+      font-size: 0.85em;
+      padding: 0.25em 0.2em 0 0.4em;
+      background-color: rgba(#000, 0.025);
+      border: none;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .handle {
+      @include border-radius(0.2em 0.2em 0 0);
+    }
+    
+    .tab {
+      margin: 0;
+      padding: 0.75em 0.75em 1.25em;
+    }
+  }
+
+
+  fieldset {
+    width: 90%;
+    margin: 0.75em auto;
+  }
+
+  select[multiple=multiple] {
+    outline: 0;
+    border: 1px solid #bbb;
+  }
+
+  .fields {
+    @include border-radius(0.2em);
+    font-size: 0.925em;
+  }
+
+  #search_keywords {
+    font-size: 0.925em;
+    border: none;
+    width: 100%;
+    margin: 0.75em auto 0.5em;
+    text-align: center;
+    .label { display: none; }
+    input {
+      width: 85%;
+      padding: 0.25em 0.7em 0.25em;
+      @include border-radius(1em);
+    }
+  }
+
+  #search_categories {
+    border: none;
+    .label { display: none; }
+  }
+
+  #search_tags .label { display: none; }
+
+  #search_options{
+    .field {
+      display: block;
+      margin-top: 0.5em;
+
+      .input {
+        width: 10%;
+        text-align: right;
+        margin-left: auto;
+      }
+
+      .label {
+        width: 90%;
+        text-align: left;
+        display: inline-block;
+      }
+    }
+  }
+
+  a.hide {
+    color: $blue !important;
+    display: block;
+    width: 100%;
+    font-size: 0.925em;
+    line-height: 1.75em;
+    text-align: center;
+    margin-top: 0.25em;
+    @include transition-property(background-color);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(linear);
+
+    &:hover {
+      background-color: $yellow;
+      text-decoration: none;
+    }
+  }
+
+  .actions {
+    .submit {
+      float: right;
+      margin-top: 0.25em;
+      text-align: right;
+    }
+
+    ul {
+      list-style-type: none;
+      font-size: 0.8em;
+    }
+
+    a {
+      &:link, &:visited { color: $blue; }
+      &:hover { color: $green; }
+      &:active { color: $red; }
+    }
+  }
+
+  .listing {
+    margin-bottom: 1em;
+    &:last-child { margin-bottom: 0; }
+  }
 }
 
 #main { width: 100% - $sidebar-width - $gutter; }

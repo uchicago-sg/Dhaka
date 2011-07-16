@@ -18,11 +18,7 @@
     <div id="content">
       <aside id="sidebar">
         <h1><%= root? ? SITE_NAME : link_to(SITE_NAME, :root) %></h1>
-        <% if content_for? :sidebar %>
-          <%= yield :sidebar %>
-        <% else %>
-          <p>&nbsp;</p>
-        <% end %>
+        <%= render 'layouts/sidebar' %>
       </aside>
       <section id="main">
         <div id="flashes">
@@ -35,6 +31,6 @@
       </section>
       <div class="clear"></div>
     </div>
-    <%= render :partial => 'layouts/footer' %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -23,6 +23,9 @@ jQuery.fn.foldDown = ->
 
 
 $(document).ready ->
+  # Tabify the sidebar
+  $(this).data 'tabs:search-or-browse', $('#search-or-browse').tabs()
+
   # Hide mechanism for flashes
   $('#flashes > p').click -> $(this).slideUp 500
 

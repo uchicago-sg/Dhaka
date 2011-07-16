@@ -13,6 +13,6 @@ Dhaka::Application.routes.draw do
   end
   
   resources :users
-  resources :listings, :path => '/'
   resources :categories
+  resources :listings, :path => '/'
 end
