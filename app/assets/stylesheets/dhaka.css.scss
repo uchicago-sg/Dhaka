@@ -97,7 +97,7 @@ body {
   width: $sidebar-width;
   margin-right: $gutter;
 
-  > h1 {
+  #search-or-browse > header h1 {
     @include bello;
     @include text-shadow(rgba(#000, 0.1) 0 0 0.15em);
     font-size: $header-height;
@@ -106,6 +106,7 @@ body {
     color: black;
     font-weight: bold;
     text-align: center;
+    background-color: rgba(#000, 0.025);
 
     a {
       color: black !important;
@@ -119,14 +120,15 @@ body {
     margin: 0;
     padding: 0;
     font-size: 1em;
-    @include border-radius(2px);
+    border-top: none;
+    @include border-radius(0 0 0.15em 0.15em);
 
     .handles {
       font-size: 0.85em;
       padding: 0.25em 0.2em 0 0.4em;
-      background-color: rgba(#000, 0.025);
       border: none;
       border-bottom: 1px solid #ddd;
+      background-color: rgba(#000, 0.025);
     }
 
     .handle {
@@ -224,12 +226,12 @@ body {
       list-style-type: none;
       font-size: 0.8em;
     }
+  }
 
-    a {
-      &:link, &:visited { color: $blue; }
-      &:hover { color: $green; }
-      &:active { color: $red; }
-    }
+  .tab a {
+    &:link, &:visited { color: $blue; }
+    &:hover { color: $green; }
+    &:active { color: $red; }
   }
 
   .listing {

@@ -17,7 +17,6 @@
   <body id="<%= controller_name %>" class="<%= action_name %>">
     <div id="content">
       <aside id="sidebar">
-        <h1><%= root? ? SITE_NAME : link_to(SITE_NAME, :root) %></h1>
         <%= render 'layouts/sidebar' %>
       </aside>
       <section id="main">

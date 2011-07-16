@@ -12,7 +12,7 @@ Dhaka::Application.routes.draw do
     get "logout"   => "devise/sessions#destroy"
   end
   
-  resources :users
-  resources :categories
-  resources :listings, :path => '/'
+  resources :users,      :only => %w( show edit update )
+  resources :categories, :path => 'browse'
+  resources :listings,   :path => ''
 end
