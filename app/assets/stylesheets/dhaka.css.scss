@@ -131,16 +131,13 @@ body {
       background-color: rgba(#000, 0.025);
     }
 
-    .handle {
-      @include border-radius(0.2em 0.2em 0 0);
-    }
+    .handle { @include border-radius(0.2em 0.2em 0 0); }
     
     .tab {
       margin: 0;
       padding: 0.75em 0.75em 1.25em;
     }
   }
-
 
   fieldset {
     width: 90%;
@@ -240,4 +237,21 @@ body {
   }
 }
 
+#tabs-3 {
+  > div {
+    margin-bottom: 1em;
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
 #main { width: 100% - $sidebar-width - $gutter; }
+
+#debug {
+  margin: 2em auto;
+  max-width: $max-page-width;
+  text-align: left;
+  color: white;
+  background-color: $blue;
+  font-family: Monaco, courier, fixed;
+  pre { padding: 1em; }
+}
