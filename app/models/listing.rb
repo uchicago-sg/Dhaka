@@ -1,4 +1,5 @@
 class Listing < ActiveRecord::Base
+  has_paper_trail
   attr_accessible :description, :details, :price, :status
   belongs_to :seller, :class_name => 'User'
   has_and_belongs_to_many :categories
