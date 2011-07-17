@@ -1,6 +1,5 @@
 <section id="search-or-browse">
   <header>
-    <h1><%= root? ? SITE_NAME : link_to(SITE_NAME, :root) %></h1>
     <nav>
       <ul class="handles">
          <li class="handle <%= 'active' if controller_name == 'listings' %>"><a href="#tabs-1">Search</a></li>
@@ -9,7 +8,6 @@
       </ul>
     </nav>
   </header>
-
   <div id="tabs-1" class="tab">
     <%= form_tag nil, {:id => :search_listings} do %>
       <span class="fields">

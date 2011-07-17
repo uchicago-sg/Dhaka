@@ -33,3 +33,20 @@ $sidebar-width:  26.75%;
 }
 
 @mixin bello { font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif; }
+
+@mixin layout {
+  margin: 0;
+  display: inline-block;
+}
+
+@mixin layout-left {
+  float: left;
+}
+
+@mixin layout-right {}
+
+@mixin layout-clear {
+  clear : both;
+  overflow : hidden;
+  width : 100%;
+}

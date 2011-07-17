@@ -27,8 +27,9 @@ $(document).ready ->
   $(this).data 'tabs:search-or-browse', $('#search-or-browse').tabs()
   $(this).data('tabs:search-or-browse').tabs('select', $(this).find('.active a').attr('href'))
 
-  # Hide mechanism for flashes
+  # Hide mechanism for flashes and debug
   $('#flashes > p').click -> $(this).slideUp 500
+  $('#debug').click -> $(this).fadeOut()
 
   # Add folding mechanism
   $('.folding').hide()

@@ -1,7 +1,7 @@
 <% if target.errors.any? %>
   <article class="form-errors">
     <header>
-      <h1>Can&#8217;t <%= controller_action %> <%= target.class.downcase %>: <%= pluralize target.errors.count, 'error' %></h1>
+      <h1>Can&#8217;t save <%= target.class.to_s.downcase %>: <%= pluralize target.errors.count, 'error' %></h1>
     </header>
     <ul class="errors">
       <% target.errors.full_messages.each do |message| %>

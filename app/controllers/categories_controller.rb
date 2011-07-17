@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
   authorize_resource
   respond_to :html, :json
 
-
   # GET /categories
   def index
     @category = Category.all

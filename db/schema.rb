@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20110716012617) do
   create_table "listings", :force => true do |t|
     t.string   "description"
     t.text     "details"
-    t.integer  "price"
+    t.decimal  "price",        :precision => 8, :scale => 2, :default => 0.0
     t.integer  "status"
     t.integer  "seller_id"
     t.datetime "created_at"

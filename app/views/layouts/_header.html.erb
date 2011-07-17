@@ -1,0 +1,24 @@
+<header id="marketplace">
+  <h1><%= root? ? SITE_NAME : link_to(SITE_NAME, :root) %></h1>
+  <%= form_tag nil, {:id => :search_listings} do %>
+    <%= field_set_tag nil, {:id => :search_categories} do %>
+      <span class="field">
+        <span class="label"><%#= label_tag :categories %></span>
+        <span class="input"><%= select_tag :categories, options_for_select([['All', 0]].concat(Category.all.collect { |category| [category.description, category.id] })) %></span>
+      </span>
+    <% end %>
+    <%= field_set_tag nil, {:id => :search_keywords, :class => :responder} do %>
+      <span class="field">
+        <span class="label"><%= label_tag :keywords %></span>
+        <span class="input"><%= text_field_tag nil, :keywords, {:tabindex => 1} %></span>
+      </span>
+    <% end %>
+    <span class="actions">
+      <span class="submit"><%= submit_tag 'Search' %></span>
+      <ul class="manage">
+        <li><%= link_to 'Advanced search' %></li>
+        <li><%= link_to 'Save this search' %></li>
+      </ul>
+    </span>
+  <% end %>
+</header>

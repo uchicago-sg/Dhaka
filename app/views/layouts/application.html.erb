@@ -15,9 +15,14 @@
     <%= yield :head %>
   </head>
   <body id="<%= controller_name %>" class="<%= action_name %>">
+    <%= render 'layouts/header' %>
     <div id="content">
       <aside id="sidebar">
-        <%= render 'layouts/sidebar' %>
+        <ul class="categories">
+          <% @categories.each do |category| -%>
+            <li class="category"><%= link_to category.description, category %></li>
+          <% end -%>
+        </ul>
       </aside>
       <section id="main">
         <div id="flashes">

@@ -1,7 +1,7 @@
 <article class="listing">
   <h1><%= link_to listing.description, listing %></h1>
   <p class="created_at">Added <span datetime="<%= listing.created_at.to_s(:db) %>" pubdate="pubdate"><%= time_ago_in_words listing.created_at %> ago</span></p>
-  <p class="price"><%= listing.price %></p>
+  <p class="price"><%= listing.price.zero? ? 'Free' : number_to_currency(listing.price) %></p>
   <p class="seller"><%= link_to listing.seller.name, listing.seller %></p>
   <footer>
     <ul class="manage">

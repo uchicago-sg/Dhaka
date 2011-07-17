@@ -10,7 +10,6 @@ class Listing < ActiveRecord::Base
   validates :details, :presence => true
   validates :price,
     :numericality => {
-      :only_integer => true,
       :greater_tan_or_equal_to => 0,
       :message => 'must be a number >= 0'
     }
