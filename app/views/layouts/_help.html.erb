@@ -17,7 +17,7 @@
   ]
 %>
 
-<div id="buyer-help">
+<div id="buyer-help" class="left">
   <ul>
     <% first_column_links.each do |link| %>
       <li><%= link_to link[0], link[1] %></li>
@@ -25,7 +25,7 @@
   </ul>
 </div>
 
-<div id="marketplace-help">
+<div id="marketplace-help" class="center">
   <ul>
     <% second_column_links.each do |link| %>
       <li><%= link_to link[0], link[1] %></li>
@@ -33,7 +33,7 @@
   <ul>
 </div>
 
-<div id="seller-help">
+<div id="seller-help" class="center">
   <ul>
     <% third_column_links.each do |link| %>
       <li><%= link_to link[0], link[1] %></li>
@@ -45,7 +45,7 @@
   <ul>
 </div>
 
-<div id="copyright">
+<div id="copyright" class="right">
   <ul>
     <li>Design by <%= link_to 'Chicago.app' %></li>
     <li>&#169; 2011 The University of Chicago</li>
