@@ -32,6 +32,6 @@ private
   end
 
   def reserved_permalink? permalink, model
-    model.all.map(&:permalink).include? permalink
+    model.all.map(&:permalink).concat(RESERVED_PATHS).include? permalink
   end
 end

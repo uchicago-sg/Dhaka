@@ -14,7 +14,7 @@
     = javascript_include_tag controller_name if resource?
     = csrf_meta_tags
     = yield :head
-  %body{:id => controller_name, :class => action_name}
+  %body{:id => controller_name, :class => action_name}<
     = render 'layouts/header'
     #content
       %aside#sidebar
@@ -27,8 +27,5 @@
             %p{:class => type}= text
         = yield
       .clear
-    %footer
-      = render 'layouts/help'
-    - if Rails.env.development?
-      #debug
-        = debug params
+    = render 'layouts/footer'
+    #debug><= debug params if Rails.env.development?

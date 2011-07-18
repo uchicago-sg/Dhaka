@@ -14,14 +14,14 @@ module Dhaka
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/app/observers)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
     # Activate observers that should always be running.
-    config.active_record.observers = :permalink_observer, :listing_observer # :cacher, :garbage_collector, :forum_observer
+    config.active_record.observers = :listing_observer, :permalink_observer # :cacher, :garbage_collector, :forum_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -39,5 +39,11 @@ module Dhaka
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    # Configure generator defaults
+    config.generators do |g|
+      g.tamplate_enginge :haml
+      g.test_framework :rspec, :fixture => false
+    end
   end
 end

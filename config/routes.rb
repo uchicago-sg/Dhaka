@@ -3,7 +3,7 @@ Dhaka::Application.routes.draw do
   
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
   
-  %w( terms privacy safety issues about faqs status ).each do |page|
+  STATIC_PAGES.each do |page|
     match page => 'high_voltage/pages#show', :id => page
   end
 
