@@ -1,4 +1,5 @@
 class VersionsController < ApplicationController
+  # GET /versions/:id/revert
   def revert
     @version = Version.find params[:id]
     @version.reify.save!

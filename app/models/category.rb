@@ -6,7 +6,6 @@ class Category < ActiveRecord::Base
   validates :description,
     :presence   => true,
     :uniqueness => { :case_sensitive => false }
-  validates :details, :presence => true
 
   def to_param
     permalink

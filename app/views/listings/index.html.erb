@@ -1,9 +1,0 @@
-<% @listings.each do |listing| %>
-  <%= render 'listing', :listing => listing %>
-<% end %>
-
-<%= paginate @listings %>
-
-<% if can? :create, Listing %>
-  <p><%= link_to "New Listing", new_listing_path %></p>
-<% end %>

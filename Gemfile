@@ -16,9 +16,12 @@ gem 'sprockets', '= 2.0.0.beta.10' # The asset pipline
 gem 'sass-rails', "~> 3.1.0.rc"    # Like CSS, but better
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31' # Hotsauce
 gem 'coffee-script'                # Like JavaScript, but better
+gem 'coffee-filter'                # Use CoffeeScript in HAML
 gem 'jquery-rails'                 # You know what it is
 gem 'uglifier'                     # Minifier for production
-gem 'paper_trail'                  # For versioning, allows undo behaviors
+gem 'haml'                         # Slim and sexy templates
+gem 'haml-rails'                   # Use HAML in generators
+gem 'paper_trail'                  # For versioning, undo
 
 group :development, :test do
   gem 'rspec-rails'
