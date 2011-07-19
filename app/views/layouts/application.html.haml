@@ -1,20 +1,20 @@
 !!! 5
-%html
+%html{html_attrs}
   %head
     %title= title
-    %meta{:http_equiv => "Content-Type", :content => "text/html; charset=UTF-8"}
-    %meta{:name => "description", :content => ""}
-    %meta{:name => "keywords",    :content => ""}
-    %meta{:name => "copyright",   :content => "Copyright (c) 2011 The University of Chicago. All rights reserved."}
-    %script{:type => "text/javascript", :src => "http://use.typekit.com/mnr5ksq.js"}
-    %script{:type => "text/javascript"}
+    %meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    %meta(name='description' content='')
+    %meta(name='keywords'    content='')
+    %meta(name='copyright'   content='Copyright (c) 2011 The University of Chicago. All rights reserved.')
+    %script(type='text/javascript' src='http://use.typekit.com/mnr5ksq.js')
+    %script(type='text/javascript')
       try{Typekit.load();}catch(e){}
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name if resource?
     = csrf_meta_tags
     = yield :head
-  %body{:id => controller_name, :class => action_name}<
+  %body(id=controller_name class=action_name)<
     = render 'layouts/header'
     #content
       %aside#sidebar
@@ -28,4 +28,5 @@
         = yield
       .clear
     = render 'layouts/footer'
-    #debug><= debug params if Rails.env.development?
+    - if Rails.env.development?
+      #debug><= debug params

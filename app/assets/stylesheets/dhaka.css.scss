@@ -2,25 +2,17 @@
 @import 'shared';
 
 
-#sidebar, #main, .left, .center, .right {
-  @include layout;
-}
+#sidebar, #main, .left, .center, .right { @include layout; }
 
-#sidebar, .left, .center {
-  @include layout-left;
-}
+#sidebar, .left, .center { @include layout-left; }
 
-.right, #main {
-  @include layout-right;
-}
+#main, .right { @include layout-right; }
 
-.clear {
-  @include layout-clear;
-}
+.clear { @include layout-clear; }
 
-.serif { font-family: Georgia, 'Times New Roman', Times, serif; }
+.serif { @include serif; }
 
-.sans-serif, body { font-family: Helvetica, Arial, 'Lucida Sans', Verdana, sans-serif; }
+.sans-serif, body { @include sans-serif; }
 
 i, em { font-style: italic; }
 
@@ -43,7 +35,6 @@ html {
   line-height: 18px;
 }
 
-
 body {
   font-size: 1.2em;
   line-height: 1.5em;
@@ -52,31 +43,13 @@ body {
   > header, #content, > footer {
     min-width: $min-page-width;
     max-width: $max-page-width;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
   }
 
   > header {
     margin-top: 0.75em;
   }
-
-  > footer {
-    ul {
-      height: $footer-height;
-      font-size: 0.8em;
-      list-style-type: none;
-    }
-
-    .left, .center, .right {
-      padding: 0.5em 0;
-      width: 24%;
-    }
-
-    .left { padding-left: 1%; }
-    .right { padding-right: 1%; width: 26%; }
-  }
 }
-
-
 
 #flashes {
   width: 100%;
@@ -94,20 +67,19 @@ body {
 }
 
 #marketplace {
+  max-width: $max-page-width;
+  min-width: $min-page-width;
+
   #search_categories, #search_keywords, .actions { @include layout; }
   #search_categories { @include layout-left; }
   #search_keywords { @include layout-left; }
+
   .actions {
     @include layout-right;
     .submit, .manage { @include layout; }
     .submit { @include layout-left; }
     .manage { @include layout-right; }
   }
-}
-
-#marketplace {
-  max-width: $max-page-width;
-  min-width: $min-page-width;
 
   > h1, #search_listings {
     @include layout;
@@ -134,6 +106,10 @@ body {
     }
   }
 
+  #search_categories, #search_keywords {
+    @include layout;
+  }
+
   #search_listings {
     @include layout-right;
     width: 100% - $sidebar-width - $gutter;
@@ -141,17 +117,24 @@ body {
     height: 2.75 * $header-height;
   }
 
-  #search_categories, #search_keywords {
-    @include layout;
-  }
-
   #search_categories {
     @include layout-left;
   }
 }
 
+#content {
+  clear: both;
+  text-align: left;
+}
+
 #sidebar, #main {
   margin: 0.75em 0;
+}
+
+#sidebar {
+  width: $sidebar-width - 2 * $gutter;
+  background-color: $yellow;
+  padding: 0.75em $gutter;
 }
 
 #main {
@@ -159,135 +142,21 @@ body {
   padding: 0 $gutter;
 }
 
-#sidebar {
-  width: $sidebar-width - 2 * $gutter;
-  background-color: $yellow;
-  padding: 0.75em $gutter;
-
-  #search-or-browse {
-    margin: 0;
-    padding: 0;
-    font-size: 1em;
-    border: none;
-
-    .handles {
-      font-size: 0.85em;
-      padding: 0.25em 0.2em 0 0.4em;
-      border: none;
-      border-bottom: 1px solid #ddd;
-      background-color: rgba(#000, 0.025);
-    }
-
-    .handle { @include border-radius(0.2em 0.2em 0 0); }
-    
-    .tab {
-      margin: 0;
-      padding: 0.75em 0.75em 1.25em;
-    }
-  }
-
-  fieldset {
-    width: 90%;
-    margin: 0.75em auto;
-  }
-
-  select[multiple=multiple] {
-    outline: 0;
-    border: 1px solid #bbb;
-  }
-
-  .fields {
-    @include border-radius(0.2em);
-    font-size: 0.925em;
-  }
-
-  #search_keywords {
-    font-size: 0.925em;
-    border: none;
-    width: 100%;
-    margin: 0.75em auto 0.5em;
-    text-align: center;
-    .label { display: none; }
-    input {
-      width: 85%;
-      padding: 0.25em 0.7em 0.25em;
-      @include border-radius(1em);
-    }
-  }
-
-  #search_categories {
-    border: none;
-    .label { display: none; }
-  }
-
-  #search_tags .label { display: none; }
-
-  #search_options{
-    .field {
-      display: block;
-      margin-top: 0.5em;
-
-      .input {
-        width: 10%;
-        text-align: right;
-        margin-left: auto;
-      }
-
-      .label {
-        width: 90%;
-        text-align: left;
-        display: inline-block;
-      }
-    }
-  }
-
-  a.hide {
-    color: $blue !important;
-    display: block;
-    width: 100%;
-    font-size: 0.925em;
-    line-height: 1.75em;
-    text-align: center;
-    margin-top: 0.25em;
-    @include transition-property(background-color);
-    @include transition-duration(0.3s);
-    @include transition-timing-function(linear);
-
-    &:hover {
-      background-color: $yellow;
-      text-decoration: none;
-    }
-  }
-
-  .actions {
-    .submit {
-      float: right;
-      margin-top: 0.25em;
-      text-align: right;
-    }
-
+body {
+  > footer {
     ul {
-      list-style-type: none;
+      height: $footer-height;
       font-size: 0.8em;
+      list-style-type: none;
     }
-  }
 
-  .tab a {
-    &:link, &:visited { color: $blue; }
-    &:hover { color: $green; }
-    &:active { color: $red; }
-  }
+    .left, .center, .right {
+      padding: 0.5em 0;
+      width: 24%;
+    }
 
-  .listing {
-    margin-bottom: 1em;
-    &:last-child { margin-bottom: 0; }
-  }
-}
-
-#tabs-3 {
-  > div {
-    margin-bottom: 1em;
-    &:last-child { margin-bottom: 0; }
+    .left { padding-left: 1%; }
+    .right { padding-right: 1%; width: 26%; }
   }
 }
 

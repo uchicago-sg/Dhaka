@@ -33,6 +33,10 @@ $sidebar-width:     23%;
   @include transition-duration(0.2s);
 }
 
+@mixin serif { font-family: Georgia, 'Times New Roman', Times, serif; }
+
+@mixin sans-serif { font-family: Helvetica, Arial, 'Lucida Sans', Verdana, sans-serif; }
+
 @mixin bello { font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif; }
 
 @mixin layout {

@@ -1,18 +1,3 @@
-# See http://stackoverflow.com/questions/1302022/best-way-to-generate-slugs-human-readable-ids-in-rails
-class String
-  def to_slug
-    slug = self.strip
-    slug.gsub! /['`]/, ''              # Remove apostrophes
-    slug.gsub! /\s*@\s*/, " at "       # @ -> at
-    slug.gsub! /\s*&\s*/, " and "      # & -> and
-    slug.gsub! /\s*\W\s*/, '-'         # Replace nasty stuff with dashes
-    slug.gsub! /-+/, '-'               # Merge multiple dashes
-    slug.gsub! /\A[-_\.]+|[-_\.]+\z/, '' # Strip leading/trailing crap
-    slug.downcase
-  end
-end
-
-
 class PermalinkObserver < ActiveRecord::Observer
   observe :user, :category, :listing
 
