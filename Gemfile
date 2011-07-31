@@ -20,17 +20,18 @@ gem 'haml'                          # Slim and sexy templates
 gem 'haml-rails'                    # Use HAML in generators
 gem 'paper_trail'                   # For versioning, undo
 
-group :development, :test, :cucumber do
+group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'ruby-debug19'
 end
 
-group :test, :cucumber do
+group :test do
   gem 'factory_girl_rails'
-  gem 'cucumber-rails'
-  gem 'capybara'
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'cucumber'
+  gem 'cucumber-rails'
   gem 'turn', :require => false
 end
 

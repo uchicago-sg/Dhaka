@@ -15,6 +15,10 @@ class String
     slug.gsub! /\s+/, '-'              # Convert whitespace to dashes
     slug.downcase                      # Oh yeah, and lowercase
   end
+
+  def markdown
+    RDiscount.new(self).to_html.html_safe
+  end
 end
 
 # Add custom date formatters

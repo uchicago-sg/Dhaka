@@ -237,6 +237,7 @@ DEPENDENCIES
   coffee-filter
   coffee-script
   compass!
+  cucumber
   cucumber-rails
   database_cleaner
   devise

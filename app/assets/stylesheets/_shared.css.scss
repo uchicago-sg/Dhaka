@@ -45,10 +45,13 @@ $sidebar-width:     23%;
 }
 
 @mixin layout-left {
+  @include layout;
   float: left;
 }
 
-@mixin layout-right {}
+@mixin layout-right {
+  @include layout;
+}
 
 @mixin layout-clear {
   clear : both;

@@ -35,14 +35,14 @@ module Dhaka
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
 
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Configure generator defaults
     config.generators do |g|
-      g.tamplate_enginge :haml
+      g.template_enginge :haml
       g.test_framework :rspec, :fixture => false
     end
   end
