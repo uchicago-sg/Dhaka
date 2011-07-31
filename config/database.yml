@@ -13,10 +13,6 @@ test: &test
 cucumber:
   <<: *test
 
-staging:
-  <<: *sqlite
-  database: db/staging.sqlite3
-
 production:
   <<: *sqlite
   database: db/production.sqlite3
