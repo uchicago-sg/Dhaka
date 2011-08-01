@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110716012617) do
+ActiveRecord::Schema.define(:version => 20110801200100) do
 
   create_table "categories", :force => true do |t|
     t.string   "description", :null => false
@@ -28,10 +28,22 @@ ActiveRecord::Schema.define(:version => 20110716012617) do
   add_index "categories_listings", ["category_id", "listing_id"], :name => "index_categories_listings_on_category_id_and_listing_id"
   add_index "categories_listings", ["listing_id", "category_id"], :name => "index_categories_listings_on_listing_id_and_category_id"
 
+  create_table "images", :force => true do |t|
+    t.integer  "listing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "images", ["listing_id"], :name => "index_images_on_listing_id"
+
   create_table "listings", :force => true do |t|
     t.string   "description"
     t.text     "details"
-    t.decimal  "price",        :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "price"
     t.integer  "status"
     t.integer  "seller_id"
     t.datetime "created_at"

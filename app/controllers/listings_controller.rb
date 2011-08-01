@@ -15,7 +15,8 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    respond_with @listing.attributes
+    @listing = Listing.new()
+    3.times { @listing.images.build }
   end
 
   # POST /listings

@@ -1,9 +1,12 @@
 class Listing < ActiveRecord::Base
-  attr_accessible :description, :details, :price, :status
+  attr_accessible :description, :details, :price, :status, :images_attributes
   belongs_to :seller, :class_name => 'User'
   has_and_belongs_to_many :categories
+  has_many :images, :dependent => :destroy 
+  accepts_nested_attributes_for :images, :allow_destroy => :true
   has_paper_trail
   acts_as_taggable
+  
 
   @@permalink_field = :description
 
