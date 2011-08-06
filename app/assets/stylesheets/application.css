@@ -1,4 +1,6 @@
 /*
- *= require_tree .
+ *= require nivo
+ *= require orman
+ *= require 'dhaka'
  *= depend_on '_shared'
  */

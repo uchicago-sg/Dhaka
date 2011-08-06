@@ -16,6 +16,7 @@ end
 
 DEFAULT_ROLE = 'buyer'.to_role
 
+# Generate a slug suitable for permalinks
 # See http://stackoverflow.com/questions/1302022/best-way-to-generate-slugs-human-readable-ids-in-rails
 # and https://github.com/ludo/to_slug/
 class String
@@ -30,7 +31,10 @@ class String
     slug.gsub! /\s+/, '-'              # Convert whitespace to dashes
     slug.downcase                      # Oh yeah, and lowercase
   end
+end
 
+# Run a string through the Markdown filter and return for output
+class String
   def markdown
     RDiscount.new(self).to_html.html_safe
   end
@@ -46,7 +50,7 @@ SITE_NAME      = 'Marketplace'
 STATIC_PAGES   = %w( terms privacy safety issues about faqs status )
 DEVISE_PAGES   = %w( register login logout )
 RESERVED_PATHS = STATIC_PAGES + DEVISE_PAGES + \
-  %w( versions browse search users categories listings ) # Controller names
+  %w( versions browse search users categories listings ) # Special routes
 
 # Wrap errors in <span>s instead of <div>s
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>" }

@@ -4,7 +4,7 @@ gem 'rails', '3.1.0.rc5'            # Only the latest, baby
 gem 'heroku'                        # Deployment platform
 gem 'devise'                        # User authentication
 gem 'cancan'                        # User authorization
-gem 'acts-as-taggable-on'           # Dead-simple tagging
+gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git', :branch => 'master' # Dead-simple tagging
 gem 'kaminari'                      # Dead-simple pagination
 gem 'rdiscount'                     # Markdown processor
 gem 'high_voltage'                  # Easy static pages
