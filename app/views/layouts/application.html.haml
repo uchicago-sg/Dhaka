@@ -22,9 +22,10 @@
           - @categories.each do |category|
             %li.category= link_to category.description, category
       %section#main
-        #flashes
-          - flash.each do |type, text|
-            %p{:class => type}= text
+        - unless flash.empty?
+          #flashes
+            - flash.each do |type, text|
+              %p{:class => type}= text
         = yield
       .clear
     = render 'layouts/footer'

@@ -17,6 +17,8 @@ private
   end
 
   def reserved_permalink? permalink, model
-    model.all.map(&:permalink).concat(RESERVED_PATHS).include? permalink
+    return true if model.find_by_permalink permalink
+    return true if RESERVED_PATHS.include? permalink
+    false
   end
 end

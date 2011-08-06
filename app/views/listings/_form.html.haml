@@ -1,5 +1,5 @@
 = form_for @listing, :html => { :multipart => true } do |f|
-  = render 'shared/form_errors', :target => @listing
+  = render 'shared/form_errors', :resource => @listing
   %span.field
     %span.label= f.label :description
     %span.input= f.text_field :description
@@ -9,7 +9,7 @@
   %span.field
     %span.label= f.label :price
     %span.input= f.number_field :price
-  %span.field  
+  %span.field
     = f.fields_for :images do |image|
       %span.label= image.label :photo, "Image File"
       %span.input= image.file_field :photo

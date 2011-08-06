@@ -1,6 +1,9 @@
 %article.listing
   %h1= link_to listing.description, listing
   %div.details= listing.details.markdown
+  - listing.images.each do |image|
+    .image
+      = image_tag image.photo.url(:thumb)
   %p.created_at Added <span datetime="#{listing.created_at.to_s(:db)}" pubdate="pubdate">#{time_ago_in_words listing.created_at} ago</span>
   %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
   %p.seller= link_to listing.seller.name, listing.seller

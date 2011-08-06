@@ -1,6 +1,21 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
+# Predefined roles for CanCan
+ROLES = %w( admin buyer seller )
+
+class String
+  def role?
+    ROLES.include?(self)
+  end
+
+  def to_role
+    role? ? 2 ** ROLES.index(self) : 0
+  end
+end
+
+DEFAULT_ROLE = 'buyer'.to_role
+
 # See http://stackoverflow.com/questions/1302022/best-way-to-generate-slugs-human-readable-ids-in-rails
 # and https://github.com/ludo/to_slug/
 class String
@@ -32,6 +47,9 @@ STATIC_PAGES   = %w( terms privacy safety issues about faqs status )
 DEVISE_PAGES   = %w( register login logout )
 RESERVED_PATHS = STATIC_PAGES + DEVISE_PAGES + \
   %w( versions browse search users categories listings ) # Controller names
+
+# Wrap errors in <span>s instead of <div>s
+ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>" }
 
 # Initialize the rails application
 Dhaka::Application.initialize!

@@ -1,6 +1,4 @@
-- 'Categories'
-%ul.categories
-  - @categories.each do |category|
-    %li.category  #{link_to category.description, category} - #{category.details}
+- title 'Categories'
+= render @categories
 - if can? :create, Category
   %p= link_to 'New Category', new_category_path
