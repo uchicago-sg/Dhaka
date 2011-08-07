@@ -13,7 +13,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    3.times { @listing.images.build }
+    4.times { @listing.images.build }
     respond_with @listing.attributes
   end
 
@@ -39,6 +39,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/:id/edit
   def edit
+    4.times { @listing.images.build }
     respond_with @listing.attributes
   end
 
