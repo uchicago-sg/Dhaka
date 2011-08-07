@@ -5,8 +5,9 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
-    @q        = Listing.search params[:q]
-    @listings = @q.result(:distinct => true).order('created_at DESC').page(params[:page])
+    params[:q].delete :categories_id_eq if params[:q] and params[:q][:categories_id_eq] == '0' # Remove constraints when attempting to collect all categories
+    @search   = Listing.search params[:q]
+    @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
     respond_with @listings.map &:attributes
   end
 
@@ -49,9 +50,7 @@ class ListingsController < ApplicationController
       respond_with @listing.attributes, :status => :listing, :location => @listing
     else
       respond_with @listing.errors, :status => :unprocessable_entity do |format|
-        format.html do
-          render :action => :new
-        end
+        format.html { render :action => :new }
       end
     end
   end
@@ -62,5 +61,13 @@ class ListingsController < ApplicationController
     undo_link      = view_context.link_to "undo", revert_version_path(@listing.versions.last), :method => :post
     flash[:notice] = "Listing successfully destroyed, #{undo_link}".html_safe
     respond_with @listing
+  end
+
+  # GET|POST /listings/search
+  def search
+    params[:q].delete :categories_id_eq if params[:q] and params[:q][:categories_id_eq] == '0' # Remove constraints when attempting to collect all categories
+    @search   = Listing.search params[:q]
+    @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
+    respond_with @listings.map &:attributes
   end
 end

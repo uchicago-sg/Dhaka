@@ -1,16 +1,3 @@
 %header#marketplace
   %h1= root? ? SITE_NAME : link_to(SITE_NAME, :root)
-  - if controller_name == 'listings'
-    = search_form_for @q, {:id => :search_listings} do |f|
-      = field_set_tag nil, {:id => :search_categories} do
-        %span.field
-          %span.label= f.label :category
-          %span.input= f.select :categories_id_eq, options_for_select( [['All', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ) )
-      = field_set_tag nil, {:id => :search_keywords} do
-        %span.field
-          %span.label= f.label :keywords
-          %span.input= f.text_field :details_or_description_cont, {:tabindex => 1}
-      %span.submit= f.submit 'Search'
-      %ul.actions
-        %li.advanced= link_to 'Advanced search'
-        %li.save= link_to 'Save this search'
+  = yield :header
