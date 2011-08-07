@@ -5,18 +5,15 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
-    if params[:search].present?
-      @listings = Listing.all # TODO
-    else
-      @listings = Listing.order('created_at DESC').page(params[:page])
-    end
+    @q        = Listing.search params[:q]
+    @listings = @q.result(:distinct => true).order('created_at DESC').page(params[:page])
     respond_with @listings.map &:attributes
   end
 
   # GET /listings/new
   def new
-    @listing = Listing.new()
     3.times { @listing.images.build }
+    respond_with @listing.attributes
   end
 
   # POST /listings
@@ -43,7 +40,7 @@ class ListingsController < ApplicationController
   def edit
     respond_with @listing.attributes
   end
-  
+
   # POST /listings/:id
   def update
     if @listing.update_attributes params[:listing]

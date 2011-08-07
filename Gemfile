@@ -19,6 +19,8 @@ gem 'uglifier'                      # Minifier for production
 gem 'haml'                          # Slim and sexy templates
 gem 'haml-rails'                    # Use HAML in generators
 gem 'paper_trail'                   # For versioning, undo
+gem 'squeel'                        # Successor to MetaWhere
+gem 'ransack'                       # Successor to MetaSearch
 
 group :development, :test do
   gem 'sqlite3'
