@@ -65,9 +65,8 @@ class ListingsController < ApplicationController
 
   # GET|POST /listings/search
   def search
-    params[:q].delete :categories_id_eq if params[:q] and params[:q][:categories_id_eq] == '0' # Remove constraints when attempting to collect all categories
-    @search   = Listing.search params[:q]
-    @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
+    @listings = Listing.all
+    # TODO Create pridicates in the Ransack configuration
     respond_with @listings.map &:attributes
   end
 end

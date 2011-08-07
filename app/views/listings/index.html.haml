@@ -10,8 +10,7 @@
         %span.input= f.text_field :details_or_description_cont, {:tabindex => 1}
     %span.submit= f.submit 'Search'
     %ul.actions
-      %li.advanced= link_to 'Advanced search'
-      %li.save= link_to 'Save this search'
+      %li.advanced= link_to 'Advanced search', search_listings_path
 
 = render @listings
 = paginate @listings

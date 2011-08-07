@@ -36,7 +36,10 @@ class User < ActiveRecord::Base
     has_role? 'admin'
   end
 
-  # For prettier URLs
+  def signed?
+    false
+  end
+
   def to_param
     permalink
   end

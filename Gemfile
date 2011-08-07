@@ -4,7 +4,7 @@ gem 'rails', '3.1.0.rc5'            # Only the latest, baby
 gem 'heroku'                        # Deployment platform
 gem 'devise'                        # User authentication
 gem 'cancan'                        # User authorization
-gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git', :branch => 'master' # Dead-simple tagging
+gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git' # Dead-simple tagging
 gem 'kaminari'                      # Dead-simple pagination
 gem 'rdiscount'                     # Markdown processor
 gem 'high_voltage'                  # Easy static pages
@@ -19,8 +19,8 @@ gem 'uglifier'                      # Minifier for production
 gem 'haml'                          # Slim and sexy templates
 gem 'haml-rails'                    # Use HAML in generators
 gem 'paper_trail'                   # For versioning, undo
-gem 'squeel'                        # Successor to MetaWhere
-gem 'ransack'                       # Successor to MetaSearch
+gem 'squeel',  :git => 'git://github.com/ernie/squeel.git'  # Successor to MetaWhere
+gem 'ransack', :git => 'git://github.com/ernie/ransack.git' # Successor to MetaSearch
 
 group :development, :test do
   gem 'sqlite3'
