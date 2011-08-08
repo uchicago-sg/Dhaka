@@ -3,11 +3,11 @@
     = field_set_tag nil, {:id => :search_categories} do
       %span.field
         %span.label= f.label :category
-        %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ) )
+        %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ) ), {}, {:tabindex => 1}
     = field_set_tag nil, {:id => :search_keywords} do
       %span.field
         %span.label= f.label :keywords
-        %span.input= f.text_field :details_or_description_cont, {:tabindex => 1}
+        %span.input= f.text_field :details_or_description_cont, {:tabindex => 2}
     %span.submit= f.submit 'Search'
     %ul.actions
       %li.advanced= link_to 'Advanced search', search_listings_path

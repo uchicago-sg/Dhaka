@@ -3,4 +3,5 @@
 //= require easing
 //= require bxSlider
 //= require waypoints
+//= require numeric
 //= require 'dhaka'

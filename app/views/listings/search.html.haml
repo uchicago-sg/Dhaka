@@ -12,9 +12,9 @@
     = field_set_tag nil, {:id => :search_price} do
       %span.field
         %span.label= label_tag 'between'
-        %span.input= f.number_field :price_to_f_gt, {:tabindex => 3}
+        %span.input= f.text_field :price_to_f_gt, {:tabindex => 3, :class => 'currency'}
         %span.label= label_tag 'and'
-        %span.input= f.number_field :price_to_f_lt, {:tabindex => 4}
+        %span.input= f.text_field :price_to_f_lt, {:tabindex => 4, :class => 'currency'}
     = field_set_tag nil, {:id => :search_options} do
       %span.field
         %span.input= f.check_box :seller_signed_true, {:tabindex => 5}

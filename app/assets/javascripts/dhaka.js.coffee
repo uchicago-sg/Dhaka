@@ -27,38 +27,40 @@ $(document).ready ->
   $('#flashes > p').click -> $(this).slideUp 500
   $('#debug').click -> $(this).fadeOut()
 
-  # Add folding mechanism
-  $('.folding').hide()
+  $('.currency').numeric { negative: false }
 
-  # Register handlers for folding
-  hide_button = $('#search_listings .hide')
-  hide_button.attr('href', '')
-  hide_button.data('collapsed', true)
-  hide_button.click (e) ->
-    e.preventDefault()
-    if $(this).data 'collapsed'
-      $(this).text 'Less'
-      $('.folding').foldDown()
-      $(this).data 'collapsed', false
-    else
-      $(this).text 'More'
-      $('.folding').foldUp()
-      $(this).data 'collapsed', true
-
-  # For responsive inputs
-  $('.responder').each ->
-    label = $(this).find('label').hide()
-    input = $(this).find('input[type=text]')
-
-    input.data('text',label.text())
-    input.val(input.data('text'))
-    input.removeClass()
-    input.addClass('undisturbed')
-
-    input.focus ->
-      $(this).removeClass()
-      $(this).val('') if $(this).val() is $(this).data('text')
-
-    input.blur ->
-      if $(this).val() is '' or $(this).val() is $(this).data('text')
-        $(this).removeClass().addClass('undisturbed').val($(this).data('text'))
+  # # Add folding mechanism
+  # $('.folding').hide()
+  #
+  # # Register handlers for folding
+  # hide_button = $('#search_listings .hide')
+  # hide_button.attr('href', '')
+  # hide_button.data('collapsed', true)
+  # hide_button.click (e) ->
+  #   e.preventDefault()
+  #   if $(this).data 'collapsed'
+  #     $(this).text 'Less'
+  #     $('.folding').foldDown()
+  #     $(this).data 'collapsed', false
+  #   else
+  #     $(this).text 'More'
+  #     $('.folding').foldUp()
+  #     $(this).data 'collapsed', true
+  #
+  # # For responsive inputs
+  # $('.responder').each ->
+  #   label = $(this).find('label').hide()
+  #   input = $(this).find('input[type=text]')
+  #
+  #   input.data('text',label.text())
+  #   input.val(input.data('text'))
+  #   input.removeClass()
+  #   input.addClass('undisturbed')
+  #
+  #   input.focus ->
+  #     $(this).removeClass()
+  #     $(this).val('') if $(this).val() is $(this).data('text')
+  #
+  #   input.blur ->
+  #     if $(this).val() is '' or $(this).val() is $(this).data('text')
+  #       $(this).removeClass().addClass('undisturbed').val($(this).data('text'))
