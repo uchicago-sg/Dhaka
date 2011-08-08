@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110807234439) do
+ActiveRecord::Schema.define(:version => 20110808204944) do
 
   create_table "categories", :force => true do |t|
     t.string   "description", :null => false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20110807234439) do
     t.datetime "updated_at"
     t.string   "permalink"
     t.string   "reference_id"
+    t.datetime "renewed_at"
+    t.integer  "renewals",                                   :default => 0
   end
 
   create_table "taggings", :force => true do |t|

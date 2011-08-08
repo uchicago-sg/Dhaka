@@ -20,10 +20,16 @@ class Listing < ActiveRecord::Base
 
   scope :with_images, joins(:images).group('listings.id')
   scope :signed, joins(:seller).where('users.signed = ?', true)
-  scope :unexpired, where('listings.created_at >= ?', 1.week.ago)
 
-  def self.expired
-    unscoped.where 'listings.created_at < ?', 1.week.ago
+  # Listing lifecycle
+  # TODO Ensure mutual exclusivity
+  scope :unexpired, where('listings.renewed_at >= ?', 1.week.ago)
+  scope :expired,   where(:renewed_at => 2.weeks.ago..1.week.ago)
+  scope :retiring,  where('listings.renewed_at < ?', 2.weeks.ago) # Run this unscoped, because...
+  default_scope    where('listings.renewed_at >= ?', 2.weeks.ago) # retired listings are exluded by default
+
+  def self.retired
+    unscoped.retiring
   end
 
   def to_param
