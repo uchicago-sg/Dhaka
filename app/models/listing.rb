@@ -19,12 +19,8 @@ class Listing < ActiveRecord::Base
     }
 
   scope :with_images, joins(:images).group('listings.id')
-
-  default_scope where('listings.created_at >= ?', 1.week.ago)
-
-  def self.unexpired
-    self # Default scope takes care of this
-  end
+  scope :signed, joins(:seller).where('users.signed = ?', true)
+  scope :unexpired, where('listings.created_at >= ?', 1.week.ago)
 
   def self.expired
     unscoped.where 'listings.created_at < ?', 1.week.ago

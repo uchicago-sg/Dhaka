@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
-    @search   = Listing.search params[:q]
+    @search   = Listing.unexpired.search params[:q]
     @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
     respond_with @listings
   end
@@ -69,7 +69,7 @@ class ListingsController < ApplicationController
     @images_present  = params[:images_present]  and ( params[:images_present]  == '1' or params[:images_present]  == 'on' )
 
     listings  = Listing
-    listings  = listings.unscoped    if @include_expired
+    listings  = listings.unexpired unless @include_expired
     listings  = listings.with_images if @images_present
 
     @search   = listings.search params[:q]
