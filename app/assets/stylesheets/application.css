@@ -1,3 +1,5 @@
-/*= require_self
- *= require_tree .
+/*
+ *= require bxSlider
+ *= require 'dhaka'
+ *= depend_on '_shared'
  */

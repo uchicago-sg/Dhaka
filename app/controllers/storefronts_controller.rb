@@ -1,2 +1,0 @@
-class StorefrontsController < ApplicationController
-end

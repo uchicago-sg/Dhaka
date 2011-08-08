@@ -1,0 +1,30 @@
+- listing = Listing.new
+- content_for :header do
+  = search_form_for @search, :url => search_listings_path, :html => {:method => :post} do |f|
+    = field_set_tag nil, {:id => :search_categories} do
+      %span.field
+        %span.label= f.label :categories_id_in, 'Include Categories'
+        %span.input= f.collection_select :categories_id_in, Category.all, :id, :description, {}, {:tabindex => 1, :multiple => true}
+    = field_set_tag nil, {:id => :search_keywords} do
+      %span.field
+        %span.label= f.label :keywords
+        %span.input= f.text_field :details_or_description_cont, {:tabindex => 2}
+    = field_set_tag nil, {:id => :search_price} do
+      %span.field
+        %span.label= label_tag 'between'
+        %span.input= f.number_field :price_to_f_gt, {:tabindex => 3}
+        %span.label= label_tag 'and'
+        %span.input= f.number_field :price_to_f_lt, {:tabindex => 4}
+    = field_set_tag nil, {:id => :search_options} do
+      %span.field
+        %span.input= f.check_box :seller_signed_true, {:tabindex => 5}
+        %span.label= f.label :seller_signed_true, 'Limit to signed sellers'
+        %span.input= check_box_tag :images_present, params[:images_present], @images_present
+        %span.label= label_tag :images_present, 'Listing must include image'
+        %span.input= check_box_tag :include_expired, params[:include_expired], @include_expired
+        %span.label= label_tag :include_expired, 'Include expired listings'
+    %span.submit= f.submit 'Search'
+    %ul.actions
+      %li.save= link_to 'Save this search'
+
+= render @listings

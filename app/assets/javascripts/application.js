@@ -1,3 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require easing
+//= require bxSlider
+//= require waypoints
+//= require 'dhaka'

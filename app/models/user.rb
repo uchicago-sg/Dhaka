@@ -1,39 +1,50 @@
 class User < ActiveRecord::Base
-  ROLES = %w( admin buyer seller )
+  attr_accessible :reference_id, :name, :email, :password, :password_confirmation, :remember_me
+  has_many :listings, :foreign_key => 'seller_id'
   acts_as_tagger
 
-  # Include default devise modules
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  attr_readonly :permalink
+  @@permalink_field = :name
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
+  validates :name,
+    :presence => true,
+    :format   => {
+      :with    => /\A[\w \.\-]+\z/,
+      :message => 'may only contain on alphanumeric characters, spaces, dashes, and underscores'
+    }
+
+  # Simple roles setup for use with CanCan
   scope :with_role, lambda { |role|
-    { :conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0" }
+    { :conditions => "roles_mask & #{role.to_role} > 0" }
   }
 
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  def roles= new_roles
+    self.roles_mask = (new_roles & ROLES).map(&:to_role).sum
   end
 
   def roles
-    ROLES.reject { |r| ((self.roles_mask || 0) & 2**ROLES.index(r)).zero? }
+    ROLES.reject { |r| ((self.roles_mask || 0) & r.to_role).zero? }
   end
 
-  def role_symbols
-    roles.map(&:to_sym)
-  end
-
-  def has_role?(role)
-    role_symbols.include? role.to_sym
+  def has_role? role
+    roles.include? role
   end
 
   def admin?
     has_role? 'admin'
   end
 
-  def to_s
-    name
+  def signed?
+    signed
+  end
+
+  def to_param
+    permalink
+  end
+
+  def as_json options={}
+    self.attributes.keep_if { |k,v| k != 'id' }
   end
 end

@@ -1,0 +1,19 @@
+- content_for :header do
+  = search_form_for @search, {:id => :search_listings} do |f|
+    = field_set_tag nil, {:id => :search_categories} do
+      %span.field
+        %span.label= f.label :category
+        %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ) )
+    = field_set_tag nil, {:id => :search_keywords} do
+      %span.field
+        %span.label= f.label :keywords
+        %span.input= f.text_field :details_or_description_cont, {:tabindex => 1}
+    %span.submit= f.submit 'Search'
+    %ul.actions
+      %li.advanced= link_to 'Advanced search', search_listings_path
+
+= render @listings
+= paginate @listings
+- if can? :create, Listing
+  %ul.actions
+    %li.new= link_to 'New Listing', new_listing_path

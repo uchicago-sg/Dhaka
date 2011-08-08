@@ -1,0 +1,22 @@
+= form_for @listing, :html => { :multipart => true } do |f|
+  = render 'shared/form_errors', :resource => @listing
+  %span.field
+    %span.label= f.label :description
+    %span.input= f.text_field :description
+  %span.field
+    %span.label= f.label :details
+    %span.input= f.text_area :details
+  %span.field
+    %span.label= f.label :price
+    %span.input= f.number_field :price
+  %span.field
+    = f.fields_for :images do |image|
+      - if image.object.new_record?
+        %span.label= image.label :photo, "Image File"
+        %span.input= image.file_field :photo
+        %br
+      - else
+        %span= link_to(image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original) )
+        %span= image.check_box :_destroy
+        %br
+  %span.submit= f.submit

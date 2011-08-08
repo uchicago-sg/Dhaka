@@ -1,0 +1,4 @@
+- title 'Categories'
+= render @categories
+- if can? :create, Category
+  %p= link_to 'New Category', new_category_path

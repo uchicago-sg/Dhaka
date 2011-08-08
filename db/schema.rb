@@ -10,26 +10,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626013410) do
+ActiveRecord::Schema.define(:version => 20110807234439) do
 
-  create_table "answers", :force => true do |t|
+  create_table "categories", :force => true do |t|
+    t.string   "description", :null => false
+    t.text     "details",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
+
+  create_table "categories_listings", :id => false, :force => true do |t|
+    t.integer "listing_id"
+    t.integer "category_id"
+  end
+
+  add_index "categories_listings", ["category_id", "listing_id"], :name => "index_categories_listings_on_category_id_and_listing_id"
+  add_index "categories_listings", ["listing_id", "category_id"], :name => "index_categories_listings_on_listing_id_and_category_id"
+
+  create_table "images", :force => true do |t|
+    t.integer  "listing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  add_index "images", ["listing_id"], :name => "index_images_on_listing_id"
 
   create_table "listings", :force => true do |t|
     t.string   "description"
     t.text     "details"
-    t.integer  "price"
+    t.decimal  "price",        :precision => 8, :scale => 2, :default => 0.0
     t.integer  "status"
+    t.integer  "seller_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "seller"
-  end
-
-  create_table "reports", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "permalink"
+    t.string   "reference_id"
   end
 
   create_table "taggings", :force => true do |t|
@@ -50,8 +70,8 @@ ActiveRecord::Schema.define(:version => 20110626013410) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -63,10 +83,23 @@ ActiveRecord::Schema.define(:version => 20110626013410) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.integer  "roles_mask",                            :default => 4,  :null => false
+    t.integer  "roles_mask",                            :default => 4,     :null => false
+    t.string   "permalink"
+    t.boolean  "signed",                                :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
 end

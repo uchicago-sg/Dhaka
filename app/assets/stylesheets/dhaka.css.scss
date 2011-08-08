@@ -1,202 +1,33 @@
-// Colors
-$lorange   : #eebd9c;
-$orange    : #c76725;
-$green     : #597d3b;
-$lgreen    : #c9eeab;
-$navy      : #172930;
-$plum      : #6e2145;
-$lrust     : #eba9a1;
-$rust      : #a33b2e;
-$gold      : #ffefc3;
-$yellow    : #fff9c3;
-$cardboard : #a49d96;
-$beige     : #d0c2b3;
-$sand      : #eeeae5;
+@import 'compass/reset';
+@import 'shared';
 
 
-// Dimensions
-$gutter         : 1.25%;
-$baseline       : 18px;
-$default-size   : 12px;
-$min-page-width : 960px;
-$max-page-width : 1200px;
+#sidebar, #main, .left, .center, .right { @include layout; }
 
+#sidebar, .left, .center { @include layout-left; }
 
-// Mixins
-@mixin transition($property:color, $duration:0.3s, $type:ease) {
-  -webkit-transition: $property $duration $type;
-  -moz-transition: $property $duration $type;
-  -o-transition: $property $duration $type;
-}
+#main, .right { @include layout-right; }
 
-@mixin transition2($property1:color, $duration1:0.3s, $type1:ease, $property2:background-color, $duration2:0.3s, $type2:ease) {
-  -webkit-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
-  -moz-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
-  -o-transition: $property1 $duration1 $type1, $property2 $duration2 $type2;
-}
+.clear { @include layout-clear; }
 
-@mixin highlight($color:#fff, $radius:1px, $x-offset:0, $y-offset:1px) {
-  text-shadow: $x-offset $y-offset $radius $color;
-}
+.serif { @include serif; }
 
-@mixin text-highlight($properties:none) {
-  text-shadow: $properties;
-}
-
-@mixin shadow($properties:none) {
-  box-shadow: $properties;
-  -webkit-box-shadow: $properties;
-  -moz-box-shadow: $properties;
-}
-
-
-// Links
-nav a { @include transition(color, 0.2s); }
-
-a {
-  text-decoration: none;
-  &:hover, &:active { text-decoration: underline; }
-}
-
-
-// Headings
-h1, h2, h3, h4, h5, h6 { text-align: center; }
-
-h1 {}
-
-h2 {}
-
-h3 {}
-
-h4 {}
-
-h5 {}
-
-h6 {}
-
-
-// Lists
-ul {}
-
-ol {}
-
-li {}
-
-dl {}
-
-dt {}
-
-dd {}
-
-
-// Typography
-@mixin bello { font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif; }
-
-.serif { font-family: Georgia, Times, serif; } // Debugging
-
-body, .sans-serif { font-family: Helvetica, Verdana, sans-serif; } // Debugging
-
-p {
-  padding-bottom : 1em;
-  :last-child, :only-child { padding-bottom : 0; }
-}
+.sans-serif, body { @include sans-serif; }
 
 i, em { font-style: italic; }
 
 b, strong { font-weight: bold; }
 
-address {}
+nav ul, footer ul { list-style-type : none; }
 
-blockquote {}
+a {
+  color: $blue;
+  text-decoration: none;
 
-del {}
-
-sup, sub {}
-
-q, cite {}
-
-code {
-  font-size: 0.8em;
-  line-height: 1.2em;
-  font-family: "Monaco", monospace; // Debugging
-}
-
-samp {}
-
-var {}
-
-abbr {}
-
-dfn {}
-
-
-// Tables
-table {}
-
-caption {}
-
-col {}
-
-col.alt {}
-
-thead {}
-
-tbody {}
-
-tfoot {}
-
-tr {}
-
-td {}
-
-
-// Forms
-form {}
-
-fieldset {}
-
-legend {}
-
-input.text {}
-
-input.password {}
-
-input.checkbox {}
-
-input.radio {}
-
-input.file {}
-
-input.button {}
-
-input.reset {}
-
-input.submit {}
-
-textarea {}
-
-select {}
-
-optgroup {}
-
-option {}
-
-
-// Layout scheme
-html, body, div, span,
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, b, i,
-a, abbr, address, cite, code,
-del, dfn, em, img, q, samp,
-strong, sub, sup, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, figure, figcaption,
-footer, header, hgroup, menu, nav, section {
-  margin: 0;
-  padding: 0;
-  border: none;
+  &:visited { color: $purple; }
+  &:hover { color: $green; }
+  &:active { color: $red; }
+  &:hover, &:active { text-decoration: underline; }
 }
 
 html {
@@ -204,79 +35,137 @@ html {
   line-height: 18px;
 }
 
-nav, section, aside, article, figure, header, footer, hgroup { display : block; }
-
-nav ul, footer ul { list-style-type : none; }
-
-.clear {
-  clear : both;
-  overflow : hidden;
-  width : 100%;
-}
-
-.top, .middle, .bottom, .sidebar, .main, .left, .center, .right {
-  margin: 0;
-  display: inline-block;
-}
-
-.sidebar, .left, .center { float: left; }
-
-.top, .middle, .bottom {
-  clear: both;
-  display: block;
-  text-align: left;
-  margin: 0 auto 0 auto;
-}
-
-
-
-
 body {
-  font-size: 1.2em; // 12px/12px
-  line-height: 1.5em; // 18px/12px
+  font-size: 1.2em;
+  line-height: 1.5em;
   font-weight: normal;
-  padding: 0 1em 0 1em;
 
-
-  // Elements that need to be page-width
-  > header > .wrapper, #flashes, #content > .top, #content > .middle, #content > .bottom, footer {
+  > header, #content, > footer {
     min-width: $min-page-width;
     max-width: $max-page-width;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
   }
-
-  // Large page sections
-  > header, > #flashes, > #content, > footer { clear: both; }
 
   > header {
-    h1 {
-      @include bello;
-      @include highlight(#ddd, 4px, 0, 0);
-      font-size: 2.75em;
-      line-height: 1.75em;
-      letter-spacing: -1px;
-      color: black;
+    margin-top: 0.75em;
+  }
+}
 
-      a {
-        color: black;
-        @include transition(color, 0.3s);
-        text-decoration: none !important;
-        &:hover { color: $green; }
-      }
+#flashes {
+  width: 100%;
+  text-align: center;
+
+  p {
+    background-color: $yellow;
+    border: 1px solid darken($yellow, 15%);
+    font-weight: bold;
+    font-size: 0.8em;
+    line-height: 2.25em;
+    margin-bottom: 1em;
+    @include box-shadow(0 0 1em rgba(#000, 0.1));
+  }
+}
+
+#marketplace {
+  max-width: $max-page-width;
+  min-width: $min-page-width;
+
+  #search_categories, #search_keywords, .actions { @include layout; }
+  #search_categories { @include layout-left; }
+  #search_keywords { @include layout-left; }
+
+  .actions {
+    @include layout-right;
+    .submit, .manage { @include layout; }
+    .submit { @include layout-left; }
+    .manage { @include layout-right; }
+  }
+
+  > h1, #search_listings {
+    @include layout;
+    font-size: $header-size;
+    line-height: $header-height;
+    letter-spacing: -0.05em;
+  }
+
+  > h1 {
+    @include layout-left;
+    @include bello;
+    @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    width: $sidebar-width;
+    padding-right: $gutter;
+    
+    a {
+      color: black !important;
+      @include transition-preset-link;
+      text-decoration: none !important;
+      &:hover { color: $green !important; }
     }
   }
 
-  > #flashes {}
+  #search_categories, #search_keywords {
+    @include layout;
+  }
 
-  > #content {}
+  #search_listings {
+    @include layout-right;
+    width: 100% - $sidebar-width - $gutter;
+    font-size: 1em;
+    height: 2.75 * $header-height;
+  }
 
+  #search_categories {
+    @include layout-left;
+  }
+}
+
+#content {
+  clear: both;
+  text-align: left;
+}
+
+#sidebar, #main {
+  margin: 0.75em 0;
+}
+
+#sidebar {
+  width: $sidebar-width - 2 * $gutter;
+  background-color: $yellow;
+  padding: 0.75em $gutter;
+}
+
+#main {
+  width: 100% - $sidebar-width - 2 * $gutter;
+  padding: 0 $gutter;
+}
+
+body {
   > footer {
     ul {
+      height: $footer-height;
       font-size: 0.8em;
       list-style-type: none;
-      margin-bottom: 1.25em;
     }
 
-    .left, .center, .right { width: 33.333333333333333%; }
+    .left, .center, .right {
+      padding: 0.5em 0;
+      width: 24%;
+    }
+
+    .left { padding-left: 1%; }
+    .right { padding-right: 1%; width: 26%; }
   }
+}
+
+#debug {
+  margin: 2em auto;
+  max-width: $max-page-width;
+  text-align: left;
+  color: white;
+  background-color: $blue;
+  font-family: Monaco, courier, fixed;
+  pre { padding: 1em; }
 }

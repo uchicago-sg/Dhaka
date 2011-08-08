@@ -1,0 +1,61 @@
+@import "compass/css3";
+
+
+$red:    #ac3324;
+$blue:   #187cd0;
+$green:  #597d3b;
+$purple: #901875;
+$yellow: #fff9c3;
+
+$lorange:   #eebd9c;
+$orange:    #c76725;
+$lgreen:    #c9eeab;
+$navy:      #172930;
+$plum:      #6e2145;
+$lrust:     #eba9a1;
+$rust:      #a33b2e;
+$gold:      #ffefc3;
+$cardboard: #a49d96;
+$beige:     #d0c2b3;
+$sand:      #eeeae5;
+
+$gutter:          1.25%;
+$baseline:         18px;
+$default-size:     12px;
+$header-height:  1.75em;
+$header-size:    2.75em;
+$footer-height:     6em;
+$min-page-width:  900px;
+$max-page-width: 1200px;
+$sidebar-width:     23%;
+
+@mixin transition-preset-link {
+  @include transition-property(color);
+  @include transition-duration(0.2s);
+}
+
+@mixin serif { font-family: Georgia, 'Times New Roman', Times, serif; }
+
+@mixin sans-serif { font-family: Helvetica, Arial, 'Lucida Sans', Verdana, sans-serif; }
+
+@mixin bello { font-family: "bello-pro-1", "bello-pro-2", Helvetica, Arial, Verdana, sans-serif; }
+
+@mixin layout {
+  margin: 0;
+  display: inline-block;
+}
+
+@mixin layout-left {
+  @include layout;
+  float: left;
+}
+
+@mixin layout-right {
+  @include layout;
+}
+
+@mixin layout-clear {
+  clear : both;
+  overflow : hidden;
+  width : 100%;
+}

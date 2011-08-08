@@ -1,17 +1,36 @@
 class Listing < ActiveRecord::Base
-  acts_as_taggable # Replaces old notion of 'categories'
-  attr_accessible :description, :details, :price, :status
+  attr_accessible :description, :details, :price, :status, :images_attributes
   belongs_to :seller, :class_name => 'User'
+  has_and_belongs_to_many :categories
+  has_many :images, :dependent => :destroy
+  accepts_nested_attributes_for :images, :allow_destroy => :true
+  has_paper_trail
+  acts_as_taggable
 
-  def price_dollars(amount_in_cents)
-    amount_in_cents / 100
-  end
+  attr_readonly :permalink
+  @@permalink_field = :description
 
-  def price_dollars=(amount_in_cents)
-    price = (amount_in_cents * 100).to_i
+  validates :description, :presence => true
+  validates :details, :presence => true
+  validates :price,
+    :numericality => {
+      :greater_tan_or_equal_to => 0,
+      :message => 'must be a number >= 0'
+    }
+
+  scope :with_images, joins(:images).group('listings.id')
+  scope :signed, joins(:seller).where('users.signed = ?', true)
+  scope :unexpired, where('listings.created_at >= ?', 1.week.ago)
+
+  def self.expired
+    unscoped.where 'listings.created_at < ?', 1.week.ago
   end
 
   def to_param
-    "#{id}-#{description.downcase.gsub( /[^\w\s]+/, '' ).gsub( /\s+/, '-' )}"
+    permalink
+  end
+
+  def as_json options={}
+    self.attributes.keep_if { |k,v| k != 'id' }
   end
 end
