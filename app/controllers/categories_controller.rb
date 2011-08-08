@@ -6,13 +6,13 @@ class CategoriesController < ApplicationController
   # GET /categories
   def index
     @category = Category.all
-    respond_with @categories.map(&:attributes)
+    respond_with @categories
   end
 
   # GET /categories/new
   def new
     @category = Category.new
-    respond_with @category.attributes
+    respond_with @category
   end
 
   # POST /categories
@@ -20,9 +20,9 @@ class CategoriesController < ApplicationController
     @category = Category.new params[:category]
     if @category.save
       flash[:notice] = 'Category successfully created'
-      respond_with(@category.attributes, :status => :created, :location => @category)
+      respond_with @category, :status => :created, :location => @category
     else
-      respond_with(@category.errors, :status => :unprocessable_entity) do |format|
+      respond_with @category.errors, :status => :unprocessable_entity do |format|
         format.html do
           render :action => :new
         end
@@ -33,21 +33,21 @@ class CategoriesController < ApplicationController
   # GET /categories/:id
   def show
     @listings = @category.listings
-    respond_with @category.attributes
+    respond_with @category
   end
 
   # GET /categories/:id/edit
   def edit
-    respond_with @category.attributes
+    respond_with @category
   end
 
   # POST /categories/:id
   def update
     if @category.update_attributes(params[:category])
       flash[:notice] = 'Category successfully edited'
-      respond_with(@category.attributes, :status => :categoryd, :location => @category)
+      respond_with @category, :status => :categoryd, :location => @category
     else
-      respond_with(@category.errors, :status => :unprocessable_entity) do |format|
+      respond_with @category.errors, :status => :unprocessable_entity do |format|
         format.html do
           render :action => :new
         end

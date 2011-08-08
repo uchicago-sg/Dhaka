@@ -18,7 +18,13 @@ class Listing < ActiveRecord::Base
       :message => 'must be a number >= 0'
     }
 
+  scope :with_images, joins(:images).group("listings.id")
+
   def to_param
     permalink
+  end
+
+  def as_json options={}
+    self.attributes.keep_if { |k,v| k != 'id' }
   end
 end

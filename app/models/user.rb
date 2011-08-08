@@ -43,4 +43,8 @@ class User < ActiveRecord::Base
   def to_param
     permalink
   end
+
+  def as_json options={}
+    self.attributes.keep_if { |k,v| k != 'id' }
+  end
 end

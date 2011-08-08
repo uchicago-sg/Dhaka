@@ -38,7 +38,8 @@ sean = User.new({
   :password => 'seaman01'
 })
 
-sean.roles = %w( seller )
+sean.signed = true
+sean.roles  = %w( seller )
 sean.save!
 
 

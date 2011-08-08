@@ -5,16 +5,15 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
-    params[:q].delete :categories_id_eq if params[:q] and params[:q][:categories_id_eq] == '0' # Remove constraints when attempting to collect all categories
     @search   = Listing.search params[:q]
     @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
-    respond_with @listings.map &:attributes
+    respond_with @listings
   end
 
   # GET /listings/new
   def new
     4.times { @listing.images.build }
-    respond_with @listing.attributes
+    respond_with @listing
   end
 
   # POST /listings
@@ -22,7 +21,7 @@ class ListingsController < ApplicationController
     @listing.seller = current_user
     if @listing.save
       flash[:notice] = 'Listing successfully created'
-      respond_with @listing.attributes, :status => :created, :location => @listing
+      respond_with @listing, :status => :created, :location => @listing
     else
       respond_with @listing.errors, :status => :unprocessable_entity do |format|
         format.html do
@@ -34,13 +33,13 @@ class ListingsController < ApplicationController
 
   # GET /listings/:id
   def show
-    respond_with @listing.attributes
+    respond_with @listing
   end
 
   # GET /listings/:id/edit
   def edit
     4.times { @listing.images.build }
-    respond_with @listing.attributes
+    respond_with @listing
   end
 
   # POST /listings/:id
@@ -48,7 +47,7 @@ class ListingsController < ApplicationController
     if @listing.update_attributes params[:listing]
       undo_link      = view_context.link_to "undo", revert_version_path(@listing.versions.last), :method => :post
       flash[:notice] = "Listing successfully edited, #{undo_link}".html_safe
-      respond_with @listing.attributes, :status => :listing, :location => @listing
+      respond_with @listing, :status => :listing, :location => @listing
     else
       respond_with @listing.errors, :status => :unprocessable_entity do |format|
         format.html { render :action => :new }
@@ -66,8 +65,10 @@ class ListingsController < ApplicationController
 
   # GET|POST /listings/search
   def search
-    @listings = Listing.all
-    # TODO Create pridicates in the Ransack configuration
-    respond_with @listings.map &:attributes
+    # TODO: Use with_images scope if params[:images_present] and params[:images_present] == '1'
+    # TODO: Use without_expired unless params[:include_expired] and parmas[:include_expired] == '1'
+    @search   = Listing.search params[:q]
+    @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
+    respond_with @listings
   end
 end

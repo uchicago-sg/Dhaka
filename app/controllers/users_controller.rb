@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    @listings = @user.listings
-    respond_with @user.attributes
+    respond_with @user
   end
 end

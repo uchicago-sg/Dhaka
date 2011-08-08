@@ -14,4 +14,17 @@ Ransack.configure do |config|
   #                      # Force a specific column type for type-casting of supplied values.
   #                      # (Default: use type from DB column)
   #                      :type => :string
+
+  config.add_predicate 'to_f_gt',
+    :arel_predicate => 'gt',
+    :type           => :float
+
+  config.add_predicate 'to_f_lt',
+    :arel_predicate => 'lt',
+    :type           => :float
+
+  config.add_predicate 'positive_and_eq',
+    :arel_predicate => 'eq',
+    :validator      => proc {|v| v.to_i > 0},
+    :type           => :integer
 end
