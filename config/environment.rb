@@ -53,7 +53,7 @@ RESERVED_PATHS = STATIC_PAGES + DEVISE_PAGES + \
   %w( versions browse search users categories listings ) # Special routes
 
 # Wrap errors in <span>s instead of <div>s
-ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>" }
+ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>".html_safe }
 
 # Initialize the rails application
 Dhaka::Application.initialize!

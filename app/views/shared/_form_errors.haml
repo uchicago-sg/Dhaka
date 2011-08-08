@@ -1,7 +1,7 @@
 - if resource.errors.any?
   %article.form-errors
     %header
-      %h1 Can&#8217;t save <%= resource.class.to_s.downcase %>: <%= pluralize resource.errors.count, 'error' %>
+      %h1 Can&#8217;t save #{resource.class.to_s.downcase}: #{pluralize resource.errors.count, 'error'}
     %ul.errors
       - resource.errors.full_messages.each do |message|
-        %li.error.message= messsage
+        %li.error.message= message

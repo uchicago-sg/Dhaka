@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def signed?
-    false
+    signed
   end
 
   def to_param

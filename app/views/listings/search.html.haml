@@ -19,9 +19,9 @@
       %span.field
         %span.input= f.check_box :seller_signed_true, {:tabindex => 5}
         %span.label= f.label :seller_signed_true, 'Limit to signed sellers'
-        %span.input= check_box_tag :images_present
+        %span.input= check_box_tag :images_present, params[:images_present], @images_present
         %span.label= label_tag :images_present, 'Listing must include image'
-        %span.input= check_box_tag :include_expired
+        %span.input= check_box_tag :include_expired, params[:include_expired], @include_expired
         %span.label= label_tag :include_expired, 'Include expired listings'
     %span.submit= f.submit 'Search'
     %ul.actions

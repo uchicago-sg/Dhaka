@@ -65,9 +65,14 @@ class ListingsController < ApplicationController
 
   # GET|POST /listings/search
   def search
-    # TODO: Use with_images scope if params[:images_present] and params[:images_present] == '1'
-    # TODO: Use without_expired unless params[:include_expired] and parmas[:include_expired] == '1'
-    @search   = Listing.search params[:q]
+    @include_expired = params[:include_expired] and ( params[:include_expired] == '1' or params[:include_expired] == 'on' )
+    @images_present  = params[:images_present]  and ( params[:images_present]  == '1' or params[:images_present]  == 'on' )
+
+    listings  = Listing
+    listings  = listings.unscoped    if @include_expired
+    listings  = listings.with_images if @images_present
+
+    @search   = listings.search params[:q]
     @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
     respond_with @listings
   end

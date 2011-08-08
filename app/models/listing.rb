@@ -18,7 +18,17 @@ class Listing < ActiveRecord::Base
       :message => 'must be a number >= 0'
     }
 
-  scope :with_images, joins(:images).group("listings.id")
+  scope :with_images, joins(:images).group('listings.id')
+
+  default_scope where('listings.created_at >= ?', 1.week.ago)
+
+  def self.unexpired
+    self # Default scope takes care of this
+  end
+
+  def self.expired
+    unscoped.where 'listings.created_at < ?', 1.week.ago
+  end
 
   def to_param
     permalink
