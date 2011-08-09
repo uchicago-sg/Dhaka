@@ -1,4 +1,8 @@
 @import 'shared';
 
 
-#listings {}
+#listings {
+  .images {
+    width: 20%;
+  }
+}
