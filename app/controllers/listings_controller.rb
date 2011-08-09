@@ -65,8 +65,8 @@ class ListingsController < ApplicationController
 
   # GET|POST /listings/search
   def search
-    @include_expired = params[:include_expired] and ( params[:include_expired] == '1' or params[:include_expired] == 'on' )
-    @images_present  = params[:images_present]  and ( params[:images_present]  == '1' or params[:images_present]  == 'on' )
+    @include_expired = params[:include_expired].present? and ( params[:include_expired] == '1' or params[:include_expired] == 'on' )
+    @images_present  = params[:images_present].present?  and ( params[:images_present]  == '1' or params[:images_present]  == 'on' )
 
     listings  = Listing
     listings  = listings.unexpired unless @include_expired

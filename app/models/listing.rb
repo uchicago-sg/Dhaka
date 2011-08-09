@@ -22,7 +22,6 @@ class Listing < ActiveRecord::Base
   scope :signed, joins(:seller).where('users.signed = ?', true)
 
   # Listing lifecycle
-  # TODO Ensure mutual exclusivity
   scope :unexpired, where('listings.renewed_at >= ?', 1.week.ago)
   scope :expired,   where(:renewed_at => 2.weeks.ago..1.week.ago)
   scope :retiring,  where('listings.renewed_at < ?', 2.weeks.ago) # Run this unscoped, because...

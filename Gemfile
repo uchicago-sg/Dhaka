@@ -27,6 +27,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'ruby-debug19'
+  gem 'timecop'
 end
 
 group :test do
