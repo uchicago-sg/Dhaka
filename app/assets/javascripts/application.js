@@ -4,4 +4,5 @@
 //= require bxSlider
 //= require waypoints
 //= require numeric
+//= require timeago
 //= require 'dhaka'

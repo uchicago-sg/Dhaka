@@ -26,8 +26,8 @@ $(document).ready ->
   # Hide mechanism for flashes and debug
   $('#flashes > p').click -> $(this).slideUp 500
   $('#debug').click -> $(this).fadeOut()
-
   $('.currency').numeric { negative: false }
+  $('.time-ago').timeago()
 
   # # Add folding mechanism
   # $('.folding').hide()
