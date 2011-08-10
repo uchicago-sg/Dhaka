@@ -1,5 +1,5 @@
 atom_feed :language => 'en-US' do |feed|
-  feed.title "UChicago Marketplace"
+  feed.title "Marketplace - #{@title}"
   feed.updated Time.now
 
   @listings.each do |item|

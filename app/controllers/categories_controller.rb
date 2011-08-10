@@ -34,6 +34,7 @@ class CategoriesController < ApplicationController
   def show
     @listings = @category.listings
     @description = "New Listings in #{@category.description}}"
+    @title = @category.description
     respond_to do |format|
       format.html
       format.atom { render :layout => false }
