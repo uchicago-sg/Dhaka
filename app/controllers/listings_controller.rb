@@ -36,7 +36,7 @@ class ListingsController < ApplicationController
     respond_with @listing
   end
 
-  # GET /listings/:id/edit
+  # GET /listings/:id/editw
   def edit
     4.times { @listing.images.build }
     respond_with @listing
