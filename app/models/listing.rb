@@ -38,4 +38,5 @@ class Listing < ActiveRecord::Base
   def as_json options={}
     self.attributes.keep_if { |k,v| k != 'id' }
   end
+  
 end
