@@ -76,20 +76,5 @@ class ListingsController < ApplicationController
     @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
     respond_with @listings
   end
-  
-  # GET /listings/feed
-  def feed
-    unless params[:category]
-      @listings = Listing.order("created_at desc")
-      @description = "New Listings on Marketplace"
-    else 
-      @listings = Category.find_by_description(params[:category]).listings
-      @description = "New Listings in #{params[:category]}"
-    end
-    respond_to do |format|
-      format.atom { render :layout => false }
-      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
-    end
-  end
 
 end

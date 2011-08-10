@@ -1,8 +1,6 @@
 Dhaka::Application.routes.draw do
   root :to => 'listings#index', :via => :get
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
-  match 'feed/:category'   => 'listings#feed', :as => :feed, :defaults => { :format => 'atom' }
-  match 'feed'   => 'listings#feed', :as => :feed, :defaults => { :format => 'atom' }
   STATIC_PAGES.each do |page|
     match page => 'high_voltage/pages#show', :id => page
   end
