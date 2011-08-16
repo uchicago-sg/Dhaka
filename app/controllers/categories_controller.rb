@@ -33,7 +33,13 @@ class CategoriesController < ApplicationController
   # GET /categories/:id
   def show
     @listings = @category.listings
-    respond_with @category
+    @description = "New Listings in #{@category.description}}"
+    @title = @category.description
+    respond_to do |format|
+      format.html
+      format.atom { render :layout => false }
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    end
   end
 
   # GET /categories/:id/edit

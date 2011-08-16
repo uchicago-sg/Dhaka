@@ -36,7 +36,7 @@ class ListingsController < ApplicationController
     respond_with @listing
   end
 
-  # GET /listings/:id/edit
+  # GET /listings/:id/editw
   def edit
     4.times { @listing.images.build }
     respond_with @listing
@@ -76,4 +76,5 @@ class ListingsController < ApplicationController
     @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
     respond_with @listings
   end
+
 end
