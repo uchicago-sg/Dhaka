@@ -11,9 +11,39 @@ document.createElement 'detail'
 document.createElement 'summary'
 document.createElement 'time'
 
+jQuery.fn.exists = ->
+  jQuery(this).length > 0
+
 $(document).ready ->
   # Hide mechanism for flashes and debug
   $('#flashes > p').click -> $(this).slideUp 500
   $('#debug').click -> $(this).fadeOut()
   $('.currency').numeric { negative: false }
   $('.time-ago').attr('title', '').timeago()
+
+  marketplace_wordmark_el = 'body > header > h1'
+  if $(marketplace_wordmark_el).find('a').exists()
+    $(marketplace_wordmark_el).find('a').lettering()
+  else
+    $(marketplace_wordmark_el).lettering()
+
+  listing_search_form = $('form#listing_search')
+  listing_search_form.find('.inside_label').each ->
+    input = $(this).find 'input'
+    label = $(this).find 'label'
+    input.data 'default_text', label.text()
+
+    input.focus ->
+      console.log $(this).val()
+      if $(this).val() is $(this).data('default_text')
+        $(this).removeClass()
+        $(this).val ''
+
+    input.blur ->
+      console.log $(this).val()
+      if $(this).val() is ''
+        $(this).addClass 'undisturbed'
+        $(this).val $(this).data('default_text')
+
+    listing_search_form.submit -> input.focus()
+    input.blur()

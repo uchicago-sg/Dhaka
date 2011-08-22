@@ -48,6 +48,17 @@ body {
 
   > header {
     margin-top: 0.75em;
+    .char1  { margin-left:   0.01em; } // M
+    .char2  { margin-left: -0.025em; } // a
+    .char3  { margin-left:  -0.01em; } // r
+    .char4  { margin-left:   0.01em; } // k
+    .char5  { margin-left:  -0.01em; } // e
+    .char6  { margin-left:   0.03em; } // t
+    .char7  { margin-left:  0.015em; } // p
+    .char8  { margin-left:  -0.01em; } // l
+    .char9  { margin-left:   0.02em; } // a
+    .char10 { margin-left:        0; } // c
+    .char11 { margin-left:        0; } // e
   }
 }
 
@@ -90,35 +101,20 @@ body {
 
   > h1 {
     @include layout-left;
-    @include bello;
+    @include kreon;
     @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
     color: black;
     font-weight: bold;
     text-align: center;
     width: $sidebar-width;
     padding-right: $gutter;
-    
+
     a {
       color: black !important;
       @include transition-preset-link;
       text-decoration: none !important;
       &:hover { color: $green !important; }
     }
-  }
-
-  #search_categories, #search_keywords {
-    @include layout;
-  }
-
-  #search_listings {
-    @include layout-right;
-    width: 100% - $sidebar-width - $gutter;
-    font-size: 1em;
-    height: 2.75 * $header-height;
-  }
-
-  #search_categories {
-    @include layout-left;
   }
 }
 
@@ -135,6 +131,12 @@ body {
   width: $sidebar-width - 2 * $gutter;
   background-color: $yellow;
   padding: 0.75em $gutter;
+
+  a {
+    &:visited { color: $blue; }
+    &:hover { color: $green; }
+    &:active { color: $red; }
+  }
 }
 
 #main {
@@ -144,19 +146,22 @@ body {
 
 body {
   > footer {
+    background: transparent image-url('wordmark.png') left top no-repeat;
+
     ul {
       height: $footer-height;
       font-size: 0.8em;
       list-style-type: none;
+      text-align: right;
+      width: 100%;
     }
 
     .left, .center, .right {
       padding: 0.5em 0;
-      width: 24%;
+      width: 12%;
     }
 
-    .left { padding-left: 1%; }
-    .right { padding-right: 1%; width: 26%; }
+    .left { width: 64%; }
   }
 }
 

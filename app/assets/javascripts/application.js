@@ -5,4 +5,5 @@
 //= require waypoints
 //= require numeric
 //= require timeago
+//= require lettering
 //= require 'dhaka'

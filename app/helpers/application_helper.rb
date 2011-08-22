@@ -1,6 +1,6 @@
 module ApplicationHelper
   def root?
-    request.env['PATH_INFO'] == '/' ? true : false
+    request.env['PATH_INFO'] == '/' and not request.env['QUERY_STRING'].present? ? true : false
   end
 
   def resource?
