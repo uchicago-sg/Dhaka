@@ -2,3 +2,4 @@
   %header
     %h1= link_to category.description, category
   %p= category.details
+  %p= link_to 'Atom feed', category_path(category, :format => :atom)

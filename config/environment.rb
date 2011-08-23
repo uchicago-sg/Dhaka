@@ -42,7 +42,7 @@ end
 
 # Add custom date formatters
 Time::DATE_FORMATS.merge!({
-  :default => '%b %d, %Y at %H:%M'
+  :default       => '%b %d, %Y at %H:%M'
 })
 
 # Unfortunate but useful contstants

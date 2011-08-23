@@ -7,7 +7,6 @@ class Ability
     can :read, :all
     can :create, User
     can :search, :all
-    can :feed, :all
 
     if user.has_role? 'seller'
       can :create, Listing

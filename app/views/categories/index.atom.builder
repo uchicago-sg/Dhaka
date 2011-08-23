@@ -1,5 +1,5 @@
 atom_feed :language => 'en-US' do |feed|
-  feed.title "#{SITE_NAME} - #{@category.description}"
+  feed.title "#{SITE_NAME} - All Categories"
   feed.updated Time.now
 
   @listings.each do |item|

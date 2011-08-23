@@ -6,7 +6,11 @@ class CategoriesController < ApplicationController
   # GET /categories
   def index
     @category = Category.all
-    respond_with @categories
+    @listings = Listing.order('created_at DESC')
+    respond_with @categories do |format|
+      format.atom
+      format.rss  { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
+    end
   end
 
   # GET /categories/new
@@ -32,13 +36,10 @@ class CategoriesController < ApplicationController
 
   # GET /categories/:id
   def show
-    @listings = @category.listings
-    @description = "New Listings in #{@category.description}}"
-    @title = @category.description
-    respond_to do |format|
-      format.html
-      format.atom { render :layout => false }
-      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    @listings = @category.listings.order('created_at DESC')
+    respond_with @category do |format|
+      format.atom
+      format.rss  { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
     end
   end
 

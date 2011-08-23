@@ -1,4 +1,6 @@
 - title 'Categories'
+
+= link_to 'All Categories'.html_safe, categories_path(:format => :atom)
 = render @categories
 - if can? :create, Category
   %p= link_to 'New Category', new_category_path
