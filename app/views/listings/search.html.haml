@@ -31,10 +31,10 @@
         %span.input= check_box_tag :include_expired, params[:include_expired], @include_expired, {:tabindex => 8}
         %span.label= label_tag :include_expired, 'Include expired listings'
       %span.subfield
-        %span.label= label_tag :sort_by, 'Sort'
-        %span.input= select_tag :sort_by, options_for_select( [['Most Recent', 0], ['Lowest Price', 1], ['Highest Price', 2]], params[:sort_by] ), {:tabindex => 9}
+        %span.label= label_tag :order, 'Sort'
+        %span.input= select_tag :order, options_for_select( [['Most Recent', 0], ['Lowest Price', 1], ['Highest Price', 2]], params[:order] ), {:tabindex => 9}
     %ul.actions
       %li.submit= f.submit 'Search', {:tabindex => 10}
       %li.save= link_to 'Save this search'
 
-= render @listings
+= render 'browser', :listings => @listings

@@ -16,8 +16,4 @@
     %ul.actions
       %li.advanced= link_to 'Advanced search', search_listings_path
 
-= render @listings
-= paginate @listings
-- if can? :create, Listing
-  %ul.actions
-    %li.new= link_to 'New Listing', new_listing_path
+= render 'browser', :listings => @listings

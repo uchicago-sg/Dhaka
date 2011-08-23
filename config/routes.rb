@@ -11,7 +11,7 @@ Dhaka::Application.routes.draw do
     get "login"    => "devise/sessions#new"
     get "logout"   => "devise/sessions#destroy"
   end
-  
+
   resources :users,      :only => %w( show edit update )
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do

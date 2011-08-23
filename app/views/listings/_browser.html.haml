@@ -1,0 +1,5 @@
+= render listings
+= paginate listings
+- if can? :create, Listing
+  %ul.actions
+    %li.new= link_to 'New Listing', new_listing_path
