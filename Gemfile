@@ -1,7 +1,6 @@
 source :rubygems
 
 gem 'rails', '~> 3.1.0.rc'          # Only the latest, baby
-gem 'heroku'                        # Deployment platform
 gem 'devise'                        # User authentication
 gem 'cancan'                        # User authorization
 gem 'kaminari'                      # Dead-simple pagination
@@ -39,6 +38,5 @@ group :test do
 end
 
 group :production do
-  gem 'thin'
   gem 'pg'
 end

@@ -1,14 +1,18 @@
 - content_for :header do
   = search_form_for @search, {:id => :search_listings} do |f|
-    = field_set_tag nil, {:id => :search_categories} do
+    = field_set_tag nil, {:id => :search_order} do
       %span.field
-        %span.label= f.label :categories_id_positive_and_eq, 'Category'
-        %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ) ), {}, {:tabindex => 1}
+        %span.label= label_tag :order, 'Sort'
+        %span.input= select_tag :order, options_for_select( [['Most Recent', 0], ['Lowest Price', 1], ['Highest Price', 2]], params[:order] ), {:tabindex => 1}
     = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
       %span.field
         %span.label= f.label :details_or_description_cont, 'Keywords'
         %span.input= f.text_field :details_or_description_cont, {:tabindex => 2}
-    %span.submit= f.submit 'Search', {:tabindex => 3}
+    = field_set_tag nil, {:id => :search_categories} do
+      %span.field
+        %span.label= f.label :categories_id_positive_and_eq, 'Category'
+        %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ) ), {}, {:tabindex => 3}
+    %span.submit= f.submit 'Search', {:tabindex => 4}
     %ul.actions
       %li.advanced= link_to 'Advanced search', search_listings_path
 

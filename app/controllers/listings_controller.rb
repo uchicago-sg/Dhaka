@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  before_filter :process_order_param, :only   => %w( index search )
   load_resource :find_by => :permalink, :except => %w( index )
   authorize_resource
   respond_to :html, :json
@@ -6,7 +7,7 @@ class ListingsController < ApplicationController
   # GET /listings
   def index
     @search   = Listing.unexpired.search params[:q]
-    @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
+    @listings = @search.result(:distinct => true).order(@order).page(params[:page])
     respond_with @listings
   end
 
@@ -71,10 +72,21 @@ class ListingsController < ApplicationController
     listings  = Listing
     listings  = listings.unexpired unless @include_expired
     listings  = listings.with_images if @images_present
-
     @search   = listings.search params[:q]
-    @listings = @search.result(:distinct => true).order('created_at DESC').page(params[:page])
+    @listings = @search.result(:distinct => true).order(@order).page(params[:page])
     respond_with @listings
   end
 
+
+private
+  def process_order_param
+    @order = case params[:order].to_i
+    when 2
+      'listings.price DESC, created_at DESC'
+    when 1
+      'listings.price ASC, created_at DESC'
+    else
+      'created_at DESC'
+    end
+  end
 end

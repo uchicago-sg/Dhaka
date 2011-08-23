@@ -8,19 +8,14 @@
     @include layout-right;
     width: 100% - $sidebar-width - $gutter;
     font-size: 1em;
+    > div:first-child { @include layout-clear; }
   }
 
   &.index {
-    #search_categories, #search_keywords {
-      @include layout;
+    #search_order, #search_categories, #search_keywords {
+      @include layout-left;
       label { display: none; }
     }
-
-    #search_listings {
-      height: 2.75 * $header-height;
-    }
-
-    #search_categories { @include layout-left; }
   }
 
 

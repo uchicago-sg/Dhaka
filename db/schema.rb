@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20110808204944) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.integer  "roles_mask",                            :default => 4,     :null => false
+    t.integer  "roles_mask",                            :default => 2,     :null => false
     t.string   "permalink"
     t.boolean  "signed",                                :default => false
   end

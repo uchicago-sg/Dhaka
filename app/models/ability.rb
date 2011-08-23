@@ -5,8 +5,8 @@ class Ability
     user ||= User.new
     can :manage, :all if user.admin?
     can :read, :all
-    can :search, :all
     can :create, User
+    can :search, :all
     can :feed, :all
 
     if user.has_role? 'seller'
