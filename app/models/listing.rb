@@ -1,6 +1,9 @@
 class Listing < ActiveRecord::Base
   ORDER_BY      = [['Most Recent', 'created_at DESC'], ['Lowest Price', 'listings.price ASC, created_at DESC'], ['Highest Price', 'listings.price DESC, created_at DESC']]
-  ORDER_OPTIONS = ORDER_BY.each_with_index { |e, i| [e, i] }
+  ORDER_OPTIONS = []
+  ORDER_BY.each_with_index do |e, i|
+    ORDER_OPTIONS << [e[0], i]
+  end
 
   attr_accessible :description, :details, :price, :status, :images_attributes, :category_ids
   belongs_to :seller, :class_name => 'User'

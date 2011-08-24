@@ -3,7 +3,7 @@
     = field_set_tag nil, {:id => :search_order} do
       %span.field
         %span.label= label_tag :order, 'Sort'
-        %span.input= select_tag :order, options_for_select( [['Most Recent', 0], ['Lowest Price', 1], ['Highest Price', 2]], params[:order] ), {:tabindex => 1}
+        %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => 1}
     = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
       %span.field
         %span.label= f.label :details_or_description_cont, 'Keywords'
