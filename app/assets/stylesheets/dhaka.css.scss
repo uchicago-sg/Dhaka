@@ -122,7 +122,7 @@ body {
 
 #sidebar {
   @media all and (min-width: 768px) {
-    width: $sidebar-width - 2 * $gutter;
+    width: $sidebar-width;
   }
 
   background-color: $yellow;
@@ -138,36 +138,35 @@ body {
 
 #main {
   @media all and (min-width: 768px) {
-    width: 100% - $sidebar-width - 2 * $gutter;
-    padding: 0 $gutter;
+    width: 100% - $sidebar-width - $gutter;
+    padding-left: $gutter;
   }
 }
 
 body {
   > footer {
     @include layout-clear;
+    margin-top: 1em;
     margin-bottom: 2.5em;
+    text-align: center;
 
     ul {
-      height: $footer-height;
       font-size: 0.8em;
       list-style-type: none;
-      text-align: center;
-      @media all and(min-width: 768px) {
-        text-align: right;
-      }
     }
 
     .left, .center, .right {
       padding: 0.5em 0;
       @media all and (min-width: 768px) {
-        width: 12%;
+        width: 15%;
+        height: $footer-height;
+        text-align: right;
       }
     }
 
     .left {
       @media all and (min-width: 768px) {
-        width: 64%;
+        width: 70%;
         background: image-url('wordmark.png') no-repeat;
       }
     }
