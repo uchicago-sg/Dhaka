@@ -248,6 +248,7 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   kaminari
+  nokogiri
   paper_trail
   paperclip
   pg
