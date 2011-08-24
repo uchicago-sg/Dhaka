@@ -2,8 +2,6 @@
 @import 'shared';
 
 
-#sidebar, #main, .left, .center, .right { @include layout; }
-
 #sidebar, .left, .center { @include layout-left; }
 
 #main, .right { @include layout-right; }
@@ -79,19 +77,16 @@ body {
 #marketplace {
   max-width: $page-width;
 
-  #search_categories, #search_keywords, .actions { @include layout; }
   #search_categories { @include layout-left; }
   #search_keywords { @include layout-left; }
 
   .actions {
     @include layout-right;
-    .submit, .manage { @include layout; }
     .submit { @include layout-left; }
     .manage { @include layout-right; }
   }
 
   > h1, #search_listings {
-    @include layout;
     font-size: $header-size;
     line-height: $header-height;
     letter-spacing: -0.05em;
@@ -158,16 +153,23 @@ body {
       font-size: 0.8em;
       list-style-type: none;
       text-align: center;
-      @media all and (min-width: 768px) { text-align: right; }
+      @media all and(min-width: 768px) {
+        text-align: right;
+      }
     }
 
     .left, .center, .right {
       padding: 0.5em 0;
-      @media all and (min-width: 768px) { width: 12%; }
+      @media all and (min-width: 768px) {
+        width: 12%;
+      }
     }
 
     .left {
-      @media all and (min-width: 768px) { width: 64%; background: image-url('wordmark.png') no-repeat; }
+      @media all and (min-width: 768px) {
+        width: 64%;
+        background: image-url('wordmark.png') no-repeat;
+      }
     }
   }
 

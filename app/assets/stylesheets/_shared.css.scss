@@ -45,22 +45,17 @@ $sidebar-width:     26%;
   width : 100%;
 }
 
-@mixin layout {
+@mixin layout-left {
   @media all and (min-width: 768px) {
     margin: 0;
     display: inline-block;
-  }
-}
-
-@mixin layout-left {
-  @media all and (min-width: 768px) {
-    @include layout;
     float: left;
   }
 }
 
 @mixin layout-right {
   @media all and (min-width: 768px) {
-    @include layout;
+    margin: 0;
+    display: inline-block;
   }
 }
