@@ -10,6 +10,15 @@
     = stylesheet_link_tag controller_name if resource?
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name if resource?
+    :javascript
+        var uvOptions = {};
+        (function() {
+         var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+         uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/0cmgBnGZirSJmAkYqnrTg.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+        })();
+
+    
     = csrf_meta_tags
     = yield :head
   %body(id=controller_name class=action_name)<
