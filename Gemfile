@@ -16,6 +16,7 @@ gem 'uglifier'                      # Minifier for production
 gem 'haml'                          # Slim and sexy templates
 gem 'haml-rails'                    # Use HAML in generators
 gem 'paper_trail'                   # For versioning, undo
+gem 'nokogiri'                      # Scraping old marketplace
 
 gem 'ransack', :git => 'git://github.com/ernie/ransack.git'                               # Successor to MetaSearch
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31' # Hotsauce
