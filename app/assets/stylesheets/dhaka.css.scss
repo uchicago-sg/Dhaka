@@ -110,14 +110,31 @@ body {
     width: $sidebar-width;
   }
 
-  background-color: $yellow;
+  .category {
+    background-color: $yellow;
 
-  ul { padding: 0.75em 1em; }
+    a {
+      display:block;
+      padding: 0.1em 0.7em;
+      &:first-child { padding-top: 0.2em; }
+      &:last-child { padding-bottom: 0.2em; }
+
+      &:hover { background-color: darken($yellow, 20%); }
+    }
+
+    &.selected a {
+      font-weight: bold;
+      background-color: lighten($blue, 20%);
+      color: white !important;
+      text-decoration: none;
+      cursor: default;
+    }
+  }
 
   a {
     &:visited { color: $blue; }
-    &:hover { color: $green; }
-    &:active { color: $red; }
+    &:hover { color: $red; }
+    &:active { color: $green; }
   }
 }
 

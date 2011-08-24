@@ -22,7 +22,10 @@
         - else
           %ul.categories
             - @categories.each do |category|
-              %li.category= link_to category.description, category
+              - if params[:id] == category.description.downcase
+                %li.category.selected= link_to category.description, category
+              - else
+                %li.category= link_to category.description, category
       %section#main
         - unless flash.empty?
           #flashes

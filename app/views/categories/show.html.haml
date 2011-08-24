@@ -1,8 +1,6 @@
 - title @category.description
-%p <strong>Description:</strong> #{@category.description}
-%p <strong>Details:</strong> #{@category.details}
-%ul.edit
+%ul.actions
   - if can? :manage, @category
-    %li= link_to 'Edit', edit_category_path(@category)
-    %li= link_to 'Destroy', @category, :confirm => 'Are you sure?', :method => :delete
+    %li.edit= link_to 'Edit', edit_category_path(@category)
+    %li.destroy= link_to 'Destroy', @category, :confirm => 'Are you sure?', :method => :delete
 = render 'listings/browser', :listings => @listings
