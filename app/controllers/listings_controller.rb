@@ -80,13 +80,8 @@ class ListingsController < ApplicationController
 
 private
   def process_order_param
-    @order = case params[:order].to_i
-    when 2
-      'listings.price DESC, created_at DESC'
-    when 1
-      'listings.price ASC, created_at DESC'
-    else
-      'created_at DESC'
-    end
+    i  = params[:order].to_i || 0
+    i %= Listing::ORDER_BY.length
+    @order = Listing::ORDER_BY[i][1]
   end
 end

@@ -163,6 +163,49 @@ body {
 
     .left { width: 64%; }
   }
+
+  #content {
+    .field, .subfield {
+      display: block;
+      padding: 0.25em 0;
+    }
+  }
+}
+
+table#listings-browser {
+  tr.listing {
+    & {
+      td { padding: 1em 0; }
+
+      &:first-child {
+        td { padding-top: 0; }
+      }
+
+      &:last-child {
+        td { padding-top: 0; }
+      }
+    }
+
+    .image {
+      width: 15%;
+      text-align: center;
+    }
+
+    .description_and_details {
+      width: 52%;
+      text-align: left;
+    }
+
+    .created_at {
+      width: 18%;
+      text-align: right;
+    }
+
+    .price {
+      width: 15%;
+      text-align: right;
+    }
+  }
 }
 
 #debug {

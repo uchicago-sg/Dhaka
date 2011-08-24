@@ -20,13 +20,13 @@
 
 
   &.search {
+    .field, .subfield {
+      display: block;
+      padding: 0.25em 0.5em;
+    }
+
     #search_categories, #search_keywords_seller_and_price, #search_options {
       width: 34%;
-
-      .field, .subfield {
-        display: block;
-        padding: 0.25em 0.5em;
-      }
     }
 
     #search_price { input { width: 15%; } }

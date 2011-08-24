@@ -42,7 +42,7 @@ end
 
 # Add custom date formatters
 Time::DATE_FORMATS.merge!({
-  :default       => '%b %d, %Y at %H:%M'
+  :default => '%b %d, %Y at %H:%M'
 })
 
 # Unfortunate but useful contstants
@@ -50,7 +50,7 @@ SITE_NAME      = 'Marketplace'
 STATIC_PAGES   = %w( terms privacy safety issues about faqs status )
 DEVISE_PAGES   = %w( register login logout )
 RESERVED_PATHS = STATIC_PAGES + DEVISE_PAGES + \
-  %w( versions browse search users categories listings ) # Special routes
+  %w( versions browse search users categories listings index show new create edit update delete ) # Special routes
 
 # Wrap errors in <span>s instead of <div>s
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>".html_safe }

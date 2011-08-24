@@ -1,5 +1,8 @@
 class Listing < ActiveRecord::Base
-  attr_accessible :description, :details, :price, :status, :images_attributes
+  ORDER_BY      = [['Most Recent', 'created_at DESC'], ['Lowest Price', 'listings.price ASC, created_at DESC'], ['Highest Price', 'listings.price DESC, created_at DESC']]
+  ORDER_OPTIONS = ORDER_BY.each_with_index { |e, i| [e, i] }
+
+  attr_accessible :description, :details, :price, :status, :images_attributes, :category_ids
   belongs_to :seller, :class_name => 'User'
   has_and_belongs_to_many :categories
   has_many :images, :dependent => :destroy
@@ -38,5 +41,4 @@ class Listing < ActiveRecord::Base
   def as_json options={}
     self.attributes.keep_if { |k,v| k != 'id' }
   end
-  
 end
