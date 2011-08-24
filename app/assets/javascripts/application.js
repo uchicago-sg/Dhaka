@@ -1,3 +1,4 @@
+//= require uservoice
 //= require jquery
 //= require jquery_ujs
 //= require easing
