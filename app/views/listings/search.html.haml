@@ -33,6 +33,6 @@
         %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => 9}
     %ul.actions
       %li.submit= f.submit 'Search', {:tabindex => 10}
-      %li.save= link_to 'Save this search'
+      %li.save#subscribe-to-search= link_to 'Subscribe to this search', search_listings_path(:format => :atom)
 
 = render 'browser', :listings => @listings

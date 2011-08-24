@@ -74,7 +74,10 @@ class ListingsController < ApplicationController
     listings  = listings.with_images if @images_present
     @search   = listings.search params[:q]
     @listings = @search.result(:distinct => true).page(params[:page])
-    respond_with @listings
+    respond_with @listings do |format|
+      format.atom
+      format.rss { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
+    end
   end
 
 

@@ -7,14 +7,17 @@
   #listing_search {
     @include layout-clear;
     display: inline-block;
-    padding: 0.5em 0;
     margin: 0 auto;
     font-size: 1em;
-    background-color: #f6f6f6;
     > div:first-child { @include layout-clear; }
   }
 
   &.index {
+    #listing_search {
+      background-color: #f6f6f6;
+      padding: 0.5em 0;
+    }
+
     #search_order, #search_categories, #search_keywords, .actions {
       @include layout-left;
       label { display: none; }
@@ -43,6 +46,7 @@
 
 
   &.search {
+    #sidebar { background-color: #f6f6f6; }
     #listing_search { padding: 0; }
     #listing_search fieldset { padding: 0.3em 1em }
     .field { display: block; }

@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     @listings = Listing.order('created_at DESC')
     respond_with @categories do |format|
       format.atom
-      format.rss  { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
+      format.rss { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
     end
   end
 
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
     @listings = @category.listings.order('created_at DESC').page(params[:page])
     respond_with @category do |format|
       format.atom
-      format.rss  { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
+      format.rss { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
     end
   end
 

@@ -42,21 +42,6 @@ body {
     max-width: $page-width;
     margin: 0 auto;
   }
-
-  > header {
-    margin-top: 0.75em;
-    .char1  { margin-left:   0.01em; } // M
-    .char2  { margin-left: -0.025em; } // a
-    .char3  { margin-left:  -0.01em; } // r
-    .char4  { margin-left:   0.01em; } // k
-    .char5  { margin-left:  -0.01em; } // e
-    .char6  { margin-left:   0.03em; } // t
-    .char7  { margin-left:  0.015em; } // p
-    .char8  { margin-left:  -0.01em; } // l
-    .char9  { margin-left:   0.03em; } // a
-    .char10 { margin-left: -0.025em; } // c
-    .char11 { margin-left:  -0.01em; } // e
-  }
 }
 
 #flashes {
