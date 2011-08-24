@@ -8,8 +8,11 @@
     %meta(name='copyright'   content='Copyright (c) 2011 The University of Chicago. All rights reserved.')
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag controller_name if resource?
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Kreon:400,700'
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name if resource?
+    /%script var uvOptions = {}; (function() { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/9CQi4VyVBJf90vxWlRF6A.js';  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);})();
+    %script var uvOptions = {}; (function() { var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true; uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/kD8jlghBFOCYadd6hA5heQ.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);})();
     = csrf_meta_tags
     = yield :head
   %body(id=controller_name class=action_name)<

@@ -41,8 +41,7 @@ body {
   font-weight: normal;
 
   > header, #content, > footer {
-    min-width: $min-page-width;
-    max-width: $max-page-width;
+    max-width: $page-width;
     margin: 0 auto;
   }
 
@@ -78,8 +77,7 @@ body {
 }
 
 #marketplace {
-  max-width: $max-page-width;
-  min-width: $min-page-width;
+  max-width: $page-width;
 
   #search_categories, #search_keywords, .actions { @include layout; }
   #search_categories { @include layout-left; }
@@ -100,20 +98,19 @@ body {
   }
 
   > h1 {
+    margin-top: -50px 0 0 -50px;
     @include layout-left;
     @include kreon;
     @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
     color: black;
     font-weight: bold;
     text-align: center;
-    width: $sidebar-width;
     width: 100%;
-    padding-right: $gutter;
 
     a {
       color: black !important;
-      @include transition-preset-link;
       text-decoration: none !important;
+      @include transition-preset-link;
       &:hover { color: $green !important; }
     }
   }
@@ -129,7 +126,10 @@ body {
 }
 
 #sidebar {
-  width: $sidebar-width - 2 * $gutter;
+  @media all and (min-width: 768px) {
+    width: $sidebar-width - 2 * $gutter;
+  }
+
   background-color: $yellow;
 
   ul { padding: 0.75em 1em; }
@@ -142,29 +142,32 @@ body {
 }
 
 #main {
-  width: 100% - $sidebar-width - 2 * $gutter;
-  padding: 0 $gutter;
+  @media all and (min-width: 768px) {
+    width: 100% - $sidebar-width - 2 * $gutter;
+    padding: 0 $gutter;
+  }
 }
 
 body {
   > footer {
     @include layout-clear;
+    margin-bottom: 2.5em;
 
     ul {
       height: $footer-height;
       font-size: 0.8em;
       list-style-type: none;
-      text-align: right;
+      text-align: center;
+      @media all and (min-width: 768px) { text-align: right; }
     }
 
     .left, .center, .right {
       padding: 0.5em 0;
-      width: 12%;
+      @media all and (min-width: 768px) { width: 12%; }
     }
 
     .left {
-      width: 64%;
-      background: image-url('wordmark.png') no-repeat;
+      @media all and (min-width: 768px) { width: 64%; background: image-url('wordmark.png') no-repeat; }
     }
   }
 
@@ -214,7 +217,7 @@ table#listings-browser {
 
 #debug {
   margin: 2em auto;
-  max-width: $max-page-width;
+  max-width: $page-width;
   text-align: left;
   color: white;
   background-color: $blue;

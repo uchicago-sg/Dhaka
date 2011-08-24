@@ -1,5 +1,4 @@
 @import "compass/css3";
-@import url('http://fonts.googleapis.com/css?family=Kreon:400,700');
 
 
 $red:    #ac3324;
@@ -26,8 +25,7 @@ $default-size:     12px;
 $header-height:  1.75em;
 $header-size:    2.75em;
 $footer-height:     6em;
-$min-page-width:  900px;
-$max-page-width: 1200px;
+$page-width:     1200px;
 $sidebar-width:     26%;
 
 @mixin transition-preset-link {
@@ -41,22 +39,28 @@ $sidebar-width:     26%;
 
 @mixin kreon { font-family: 'Kreon', Helvetica, Arial, Verdana, sans-serif; }
 
-@mixin layout {
-  margin: 0;
-  display: inline-block;
-}
-
-@mixin layout-left {
-  @include layout;
-  float: left;
-}
-
-@mixin layout-right {
-  @include layout;
-}
-
 @mixin layout-clear {
   clear : both;
   overflow : hidden;
   width : 100%;
+}
+
+@mixin layout {
+  @media all and (min-width: 768px) {
+    margin: 0;
+    display: inline-block;
+  }
+}
+
+@mixin layout-left {
+  @media all and (min-width: 768px) {
+    @include layout;
+    float: left;
+  }
+}
+
+@mixin layout-right {
+  @media all and (min-width: 768px) {
+    @include layout;
+  }
 }

@@ -6,11 +6,11 @@
 
   #listing_search {
     @include layout-clear;
+    display: inline-block;
+    padding: 0.5em 0;
     margin: 0 auto;
-    padding: 0.5em;
     font-size: 1em;
     background-color: #f6f6f6;
-    border: 1px solid #ddd;
     > div:first-child { @include layout-clear; }
   }
 
@@ -22,21 +22,24 @@
       input { width: 100%; }
     }
 
-    #search_order      { width: 15%; }
-    #search_keywords   { width: 40%; margin-left: 0.5%; margin-right: 1%; }
-    #search_categories { width: 15%; }
-    .actions {
-      margin-left: 1%;
-      width: 27.5%;
+    @media all and (min-width: 768px) {
+      #search_order      { width: 15%; margin-left: 1%; }
+      #search_keywords   { width: 40%; margin-left: 0.5%; margin-right: 1%; }
+      #search_categories { width: 15%; }
+      .actions           {
+        margin-left: 1%;
+        width: 25.5%;
 
-      li {
-        @include layout-left;
-        width: 25%;
-      }
+        li {
+          @include layout-left;
+          width: 25%;
+        }
 
-      .advanced {
-        width: 75%;
-        text-align: right;
+        .advanced {
+          width: 100%;
+          margin-right: 1%;
+          text-align: right;
+        }
       }
     }
   }

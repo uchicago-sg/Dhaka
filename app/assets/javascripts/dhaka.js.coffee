@@ -52,13 +52,11 @@ $(document).ready ->
     input.data 'default_text', label.text()
 
     input.focus ->
-      console.log $(this).val()
       if $(this).val() is $(this).data('default_text')
         $(this).removeClass()
         $(this).val ''
 
     input.blur ->
-      console.log $(this).val()
       if $(this).val() is ''
         $(this).addClass 'undisturbed'
         $(this).val $(this).data('default_text')
