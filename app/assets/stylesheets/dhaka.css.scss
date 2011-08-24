@@ -56,9 +56,9 @@ body {
     .char6  { margin-left:   0.03em; } // t
     .char7  { margin-left:  0.015em; } // p
     .char8  { margin-left:  -0.01em; } // l
-    .char9  { margin-left:   0.02em; } // a
-    .char10 { margin-left:        0; } // c
-    .char11 { margin-left:        0; } // e
+    .char9  { margin-left:   0.03em; } // a
+    .char10 { margin-left: -0.025em; } // c
+    .char11 { margin-left:  -0.01em; } // e
   }
 }
 
@@ -107,6 +107,7 @@ body {
     font-weight: bold;
     text-align: center;
     width: $sidebar-width;
+    width: 100%;
     padding-right: $gutter;
 
     a {
@@ -130,7 +131,8 @@ body {
 #sidebar {
   width: $sidebar-width - 2 * $gutter;
   background-color: $yellow;
-  padding: 0.75em $gutter;
+
+  ul { padding: 0.75em 1em; }
 
   a {
     &:visited { color: $blue; }
@@ -146,14 +148,13 @@ body {
 
 body {
   > footer {
-    background: transparent image-url('wordmark.png') left top no-repeat;
+    @include layout-clear;
 
     ul {
       height: $footer-height;
       font-size: 0.8em;
       list-style-type: none;
       text-align: right;
-      width: 100%;
     }
 
     .left, .center, .right {
@@ -161,7 +162,10 @@ body {
       width: 12%;
     }
 
-    .left { width: 64%; }
+    .left {
+      width: 64%;
+      background: image-url('wordmark.png') no-repeat;
+    }
   }
 
   #content {

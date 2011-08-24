@@ -3,7 +3,7 @@
     - listings.each do |listing|
       %tr.listing
         %td.image
-          .image= image_tag listing.images.first.photo.url(:thumb) unless listing.images.empty?
+          / .image= image_tag listing.images.first.photo.url(:thumb) unless listing.images.empty?
         %td.description_and_details
           .description= link_to listing.description, listing
           .details= listing.details.markdown

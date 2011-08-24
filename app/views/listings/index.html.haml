@@ -11,9 +11,9 @@
     = field_set_tag nil, {:id => :search_categories} do
       %span.field
         %span.label= f.label :categories_id_positive_and_eq, 'Category'
-        %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ) ), {}, {:tabindex => 3}
-    %span.submit= f.submit 'Search', {:tabindex => 4}
+        %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => 3}
     %ul.actions
+      %li.submit= f.submit 'Search', {:tabindex => 4}
       %li.advanced= link_to 'Advanced search', search_listings_path
 
 = render 'browser', :listings => @listings

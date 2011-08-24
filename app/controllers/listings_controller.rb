@@ -73,7 +73,7 @@ class ListingsController < ApplicationController
     listings  = listings.unexpired unless @include_expired
     listings  = listings.with_images if @images_present
     @search   = listings.search params[:q]
-    @listings = @search.result(:distinct => true).order(@order).page(params[:page])
+    @listings = @search.result(:distinct => true).page(params[:page])
     respond_with @listings
   end
 

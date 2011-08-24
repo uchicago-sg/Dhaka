@@ -28,7 +28,7 @@ $header-size:    2.75em;
 $footer-height:     6em;
 $min-page-width:  900px;
 $max-page-width: 1200px;
-$sidebar-width:     23%;
+$sidebar-width:     26%;
 
 @mixin transition-preset-link {
   @include transition-property(color);

@@ -16,9 +16,12 @@
     = render 'layouts/header'
     #content
       %aside#sidebar
-        %ul.categories
-          - @categories.each do |category|
-            %li.category= link_to category.description, category
+        - if content_for? :sidebar
+          = yield :sidebar
+        - else
+          %ul.categories
+            - @categories.each do |category|
+              %li.category= link_to category.description, category
       %section#main
         - unless flash.empty?
           #flashes

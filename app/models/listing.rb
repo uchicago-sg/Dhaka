@@ -24,7 +24,7 @@ class Listing < ActiveRecord::Base
       :message => 'must be a number >= 0'
     }
 
-  scope :with_images, joins(:images).group('listings.id')
+  scope :with_images, joins(:images)
   scope :signed, joins(:seller).where('users.signed = ?', true)
 
   # Listing lifecycle
