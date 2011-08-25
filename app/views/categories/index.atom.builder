@@ -1,14 +1,7 @@
 atom_feed :language => 'en-US' do |feed|
-  feed.title "#{SITE_NAME} - All Categories"
-  feed.updated Time.now
-
-  @listings.each do |item|
-    feed.entry item do |entry|
-      entry.title "#{item.description} - $#{item.price}"
-      entry.content item.details
-      entry.author do |author|
-        author.name item.seller.name
-      end
-    end
-  end
+  render :partial => 'shared/listings', :locals => {
+    :feed       => feed,
+    :feed_title => 'All Categories',
+    :feed_items => @listings
+  }
 end

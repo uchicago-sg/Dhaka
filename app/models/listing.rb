@@ -4,6 +4,7 @@ class Listing < ActiveRecord::Base
   ORDER_BY.each_with_index do |e, i|
     ORDER_OPTIONS << [e[0], i]
   end
+  DEFAULT_ORDER = ORDER_BY[0][1]
 
   attr_accessible :description, :details, :price, :status, :images_attributes, :category_ids
   belongs_to :seller, :class_name => 'User'
