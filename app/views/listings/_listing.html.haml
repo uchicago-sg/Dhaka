@@ -1,11 +1,11 @@
 %article.listing
   %h1= link_to listing.description, listing
-  %div.details= listing.details.markdown
   - unless listing.images.empty?
     %ul.images
       - listing.images.each do |image|
         .image
           %a{:id => "imageLink", :href => image.photo.url(:original) }=image_tag image.photo.url(:small)
+  %div.details= listing.details.markdown
   %p.created_at Added <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
   %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
   %p.seller= link_to listing.seller.name, listing.seller
