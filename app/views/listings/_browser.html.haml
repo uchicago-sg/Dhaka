@@ -1,17 +1,20 @@
-%table#listings-browser
-  %tbody
-    - listings.each do |listing|
-      %tr.listing
-        %td.image
-          .image= image_tag listing.images.first.photo.url(:thumb) unless listing.images.empty?
-        %td.description_and_details
-          .description= link_to listing.description, listing
-          .details= listing.details.markdown
-          %ul.actions
-            - if can? :edit, listing
-              %li.edit= link_to 'Edit', edit_listing_path(listing)
-            - if can? :destroy, listing
-              %li.destroy= link_to 'Destroy', listing, :method => :delete
-        %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
-        %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
-= paginate listings
+- if listings.empty?
+  %h1.sorry No results found
+- else
+  %table#listings-browser
+    %tbody
+      - listings.each do |listing|
+        %tr.listing
+          %td.image
+            .image= image_tag listing.images.first.photo.url(:thumb) unless listing.images.empty?
+          %td.description_and_details
+            .description= link_to listing.description, listing
+            .details= truncate strip_tags(listing.details.markdown), :length => 125, :omission => '...'
+            %ul.actions
+              - if can? :edit, listing
+                %li.edit= link_to 'Edit', edit_listing_path(listing)
+              - if can? :destroy, listing
+                %li.destroy= link_to 'Destroy', listing, :method => :delete
+          %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
+          %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+  = paginate listings

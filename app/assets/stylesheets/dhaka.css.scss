@@ -122,12 +122,16 @@ body {
       &:hover { background-color: darken($yellow, 20%); }
     }
 
+    &.active a {
+      background-color: darken($yellow, 10%);
+    }
+
     &.selected a {
       font-weight: bold;
-      background-color: lighten($blue, 20%);
       color: white !important;
       text-decoration: none;
       cursor: default;
+      background-color: lighten($blue, 20%);
     }
   }
 
