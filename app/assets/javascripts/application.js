@@ -9,3 +9,4 @@
 //= require lettering
 //= require mediaqueries
 //= require 'dhaka'
+//= require fancybox
