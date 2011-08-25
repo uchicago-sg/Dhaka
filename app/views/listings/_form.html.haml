@@ -20,5 +20,7 @@
           %span.input= image.file_field :photo
         - else
           %span= link_to(image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original) )
-          %span= image.check_box :_destroy
+          %span
+            =image.check_box :_destroy
+            %span Remove Image
   %span.submit= f.submit :tabindex => 5
