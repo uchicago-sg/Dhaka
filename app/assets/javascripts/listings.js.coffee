@@ -1,7 +1,19 @@
 $(document).ready ->
+  # Set number of images in the slider
+  images_count = $('.image').length
+  if images_count < 3
+    sliderQuantity = images_count
+  else
+    sliderQuantity = 3
+  
+  # Fancybox the image link
+  $("a#imageLink").fancybox()
+  
   $('.images').bxSlider
     infiniteLoop: false
     hideControlOnEnd: true
+    displaySlideQty: images_count
+    moveSlideQty: 1
 
   # Redirect the user to the Atom feed by passing in the serialized advanced search form
   $('#subscribe-to-search a').click ->
