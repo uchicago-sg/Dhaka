@@ -9,6 +9,7 @@
   %p.created_at Added <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
   %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
   %p.seller= link_to listing.seller.name, listing.seller
+  %p.email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
   %footer
     %ul.actions
       - if can? :edit, listing

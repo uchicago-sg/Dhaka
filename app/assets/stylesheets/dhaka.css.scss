@@ -82,6 +82,7 @@ body {
     @include layout-left;
     @include kreon;
     @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
+
     color: black;
     font-weight: bold;
     text-align: center;
