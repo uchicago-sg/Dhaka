@@ -1,6 +1,7 @@
 //= require uservoice
 //= require jquery
 //= require jquery_ujs
+//= require cookie
 //= require easing
 //= require bxSlider
 //= require waypoints

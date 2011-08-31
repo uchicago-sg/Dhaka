@@ -38,7 +38,13 @@ $(document).ready ->
   $('#debug').click -> $(this).fadeOut()
   $('.currency').numeric { negative: false }
   $('.time-ago').attr('title', '').timeago()
-  $('li.hidden a').fancybox()
+  returning = switch parseInt($.cookie 'visit')
+    when 1 then false
+    else true
+  if $("body").attr('id') == "listings" and $("body").attr('class') == "index" and returning == false
+    $.get '/welcome', (data) -> 
+      $.fancybox content: data
+  
   marketplace_wordmark_el = 'body > header > h1'
   if $(marketplace_wordmark_el).find('a').exists()
     $(marketplace_wordmark_el).find('a').lettering()
