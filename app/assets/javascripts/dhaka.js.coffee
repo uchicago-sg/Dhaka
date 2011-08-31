@@ -41,10 +41,10 @@ $(document).ready ->
   returning = switch parseInt($.cookie('visit'), 10)
     when 1 then false
     else true
-  if $("body").attr('id') is "listings" and $("body").attr('class') is "index" and returning is false
+  if $("body").attr('id') is "listings" and $("body").attr('class') is "index" # and returning is false
     $.get '/welcome', (data) -> 
-      $.fancybox content: data
-  
+      $.fancybox
+        content: data
   marketplace_wordmark_el = 'body > header > h1'
   if $(marketplace_wordmark_el).find('a').exists()
     $(marketplace_wordmark_el).find('a').lettering()
