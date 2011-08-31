@@ -21,3 +21,4 @@
   %ul.right
     - first_column_links.each do |link|
       %li= link_to link[0], link[1]
+      %li.hidden= link_to "Welcome", "/welcome"
