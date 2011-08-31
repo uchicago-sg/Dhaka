@@ -58,7 +58,7 @@ Time::DATE_FORMATS.merge!({
 
 # Unfortunate but useful contstants
 SITE_NAME      = 'Marketplace'
-STATIC_PAGES   = %w( terms privacy safety issues about faqs status )
+STATIC_PAGES   = %w( terms privacy safety issues about faqs status welcome)
 DEVISE_PAGES   = %w( register login logout )
 RESERVED_PATHS = STATIC_PAGES + DEVISE_PAGES + \
   %w( versions browse search users categories listings index show new create edit update delete ) # Special routes
