@@ -38,10 +38,10 @@ $(document).ready ->
   $('#debug').click -> $(this).fadeOut()
   $('.currency').numeric { negative: false }
   $('.time-ago').attr('title', '').timeago()
-  returning = switch parseInt($.cookie 'visit')
+  returning = switch parseInt($.cookie('visit'), 10)
     when 1 then false
     else true
-  if $("body").attr('id') == "listings" and $("body").attr('class') == "index" and returning == false
+  if $("body").attr('id') is "listings" and $("body").attr('class') is "index" and returning is false
     $.get '/welcome', (data) -> 
       $.fancybox content: data
   
