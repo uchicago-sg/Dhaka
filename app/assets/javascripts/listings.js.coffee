@@ -5,7 +5,7 @@ $(document).ready ->
     sliderQuantity = images_count
   else
     sliderQuantity = 3
-  
+    
   # Fancybox the image link
   $("a#imageLink").fancybox()
   

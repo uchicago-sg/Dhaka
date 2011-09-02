@@ -12,6 +12,7 @@
             .description= link_to listing.description, listing
             .details= truncate strip_tags(listing.details.markdown), :length => 125, :omission => '...'
             %ul.actions
+              %li.favorite= link_to 'Compare', compare_path(listing.id), :method => :post, :remote => true,  :id => "compare"
               - if can? :edit, listing
                 %li.edit= link_to 'Edit', edit_listing_path(listing)
               - if can? :destroy, listing
