@@ -7,7 +7,7 @@ $(document).ready ->
     sliderQuantity = 3
     
   # Fancybox the image link
-  $("a#imageLink").fancybox()
+  $("a#image-link").fancybox()
   
   $('.images').bxSlider
     infiniteLoop: false
