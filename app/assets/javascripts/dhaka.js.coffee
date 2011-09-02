@@ -38,6 +38,8 @@ $(document).ready ->
   $('#debug').click -> $(this).fadeOut()
   $('.currency').numeric { negative: false }
   $('.time-ago').attr('title', '').timeago()
+  
+  # Splash Page
   returning = switch parseInt($.cookie('visit'), 10)
     when 1 then false
     else true
