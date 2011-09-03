@@ -25,12 +25,13 @@ $(document).ready ->
     $('#sidebar .category').each ->
       $(this).addClass('active') if $(this).find('a').text() is selected_category
   
-  if $('.images-block').exists()
-    $('.image-upload').hide()
-    $('.image-upload').first().show()
+  if $('body.new').exists()
+    if $('.images-block').exists()
+      $('.image-upload').hide()
+      $('.image-upload').first().show()
   
-  # Needs some work
-  $('span#add-image a').click -> 
-    $('.image-upload:visible').last().next().show()
-    return false
+    # Needs some work
+    $('span#add-image a').click -> 
+      $('.image-upload:visible').last().next().show()
+      return false
     
