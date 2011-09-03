@@ -24,3 +24,13 @@ $(document).ready ->
     selected_category = $('select#q_categories_id_positive_and_eq option[selected=selected]').text()
     $('#sidebar .category').each ->
       $(this).addClass('active') if $(this).find('a').text() is selected_category
+  
+  if $('.images-block').exists()
+    $('.image-upload').hide()
+    $('.image-upload').first().show()
+  
+  # Needs some work
+  $('span#add-image a').click -> 
+    $('.image-upload:visible').last().next().show()
+    return false
+    
