@@ -26,4 +26,8 @@ module ApplicationHelper
       javascript_include_tag *args
     end
   end
+  
+  def categories_search_link category
+    link_to category.description, listings_path( :q => {:categories_id_positive_and_eq => category.id } )
+  end
 end
