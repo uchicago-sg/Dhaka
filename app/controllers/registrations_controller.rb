@@ -5,4 +5,5 @@ class RegistrationsController < Devise::RegistrationsController
       @user.roles = %w( seller )
       @user.save # I've always wondered, is there something to force the save so i don't have to call it seperately?
     end
+  end
 end
