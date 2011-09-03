@@ -41,6 +41,7 @@ $(document).ready ->
 
   # First-time visitor welcome splash
   unless $.cookie('visited')
+    $.cookie 'visited', true, {expires: 730}
     $(document).ready ->
       $.fancybox
         content: '
