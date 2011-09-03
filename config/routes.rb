@@ -5,7 +5,7 @@ Dhaka::Application.routes.draw do
     match page => 'high_voltage/pages#show', :id => page
   end
 
-  devise_for :users,  :controllers => {:registrations => "registrations"}
+  devise_for :users
   devise_scope :user do
     get "register" => "devise/registrations#new"
     get "login"    => "devise/sessions#new"
@@ -14,9 +14,9 @@ Dhaka::Application.routes.draw do
 
   resource :compare, :controller => 'comparisons', :only => %w( create show )
 
-  resources :users,       :only => %w( show edit update )
-  resources :categories,  :path => 'browse'
-  resources :listings,    :path => '' do
+  resources :users,      :only => %w( show edit update )
+  resources :categories, :path => 'browse'
+  resources :listings,   :path => '' do
     collection do
       match 'search' => 'listings#search', :via => [:get, :post], :as => :search
     end

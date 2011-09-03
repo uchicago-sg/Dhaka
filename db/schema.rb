@@ -44,15 +44,14 @@ ActiveRecord::Schema.define(:version => 20110808204944) do
   create_table "listings", :force => true do |t|
     t.string   "description"
     t.text     "details"
-    t.decimal  "price",        :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
     t.integer  "status"
     t.integer  "seller_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
-    t.string   "reference_id"
     t.datetime "renewed_at"
-    t.integer  "renewals",                                   :default => 0
+    t.integer  "renewals",                                  :default => 0
   end
 
   create_table "taggings", :force => true do |t|
