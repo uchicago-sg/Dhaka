@@ -23,9 +23,11 @@
           %ul.categories
             - @categories.each do |category|
               - if params[:id] == category.description.downcase
-                %li.category.selected= link_to category.description, category
+              -# Basically replaced the 'category' url with a pseudo-search link
+              -# This can probably be DRYed up by making a helper or something
+                %li.category.selected= link_to category.description, listings_path( :q => {:categories_id_positive_and_eq => category.id } )
               - else
-                %li.category= link_to category.description, category
+                %li.category= link_to category.description, listings_path( :q => {:categories_id_positive_and_eq => category.id } )
       %section#main
         - unless flash.empty?
           #flashes
