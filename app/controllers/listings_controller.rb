@@ -6,7 +6,6 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
-    @search   = Listing.unexpired.search params[:q]
     @listings = @search.result(:distinct => true).order(@order).page(params[:page])
     respond_with @listings
   end
