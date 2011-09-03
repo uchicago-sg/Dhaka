@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'rails'         # Only the latest, baby
+gem 'capistrano'    # Deploying to Saluki for now
 gem 'foreman'       # Simple process management
 gem 'cancan'        # User authorization
 gem 'kaminari'      # Dead-simple pagination
