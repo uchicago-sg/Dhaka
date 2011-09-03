@@ -1,6 +1,6 @@
 %header#marketplace
   %h1= root? ? SITE_NAME : link_to(SITE_NAME, :root)
-  - unless controller_name == 'pages' or action_name == 'search'
+  - if %w( index new show edit ).include? action_name
     = search_form_for @search, {:id => :search_listings} do |f|
       = field_set_tag nil, {:id => :search_order} do
         %span.field
@@ -17,4 +17,3 @@
       %ul.actions
         %li.submit= f.submit 'Search', {:tabindex => 4}
         %li.advanced= link_to 'Advanced search', search_listings_path
-  / = yield :header

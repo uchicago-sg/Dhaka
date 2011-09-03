@@ -149,11 +149,7 @@ body {
       &:hover { background-color: darken($yellow, 20%); }
     }
 
-    &.active a {
-      background-color: darken($yellow, 10%);
-    }
-
-    &.selected a {
+    &.active a, &.selected a {
       font-weight: bold;
       color: white !important;
       text-decoration: none;
