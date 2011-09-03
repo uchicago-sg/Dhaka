@@ -12,9 +12,9 @@
   %span.field
     %span.label= f.label :price
     %span.input= f.text_field :price, {:class => 'currency', :tabindex => 4}
-  %span.field
+  %span.field.images-block
     = f.fields_for :images do |image|
-      %span.subfield
+      %span.subfield.image-upload
         - if image.object.new_record?
           %span.label= image.label :photo, "Image File"
           %span.input= image.file_field :photo
@@ -23,4 +23,5 @@
           %span
             =image.check_box :_destroy
             %span Remove Image
+    %span#add-image= link_to "Add Another Image"
   %span.submit= f.submit :tabindex => 5
