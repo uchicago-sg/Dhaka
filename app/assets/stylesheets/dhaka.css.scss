@@ -227,24 +227,21 @@ body {
     padding: 0.5em 0;
   }
 
-  #search_order, #search_categories, #search_keywords, .actions {
+  #search_order, #search_categories, #search_keywords, #listing_search .actions {
     @include layout-left;
     label { display: none; }
     select { width: 100%; }
     input { width: 100%; }
   }
 
-  .actions li { @include layout-left; }
+  #listing_search .actions li { @include layout-left; }
 
   @media all and (min-width: 768px) {
     #search_order      { width: 15%; padding-left: 1%; padding-right: 0.5%; }
     #search_keywords   { width: 40%; padding-right: 1%; }
     #search_categories { width: 15%; padding-right: 1%; }
-
-    .actions {
-      margin: 0 1%;
+    #listing_search .actions {
       width: 25.5%;
-
       li { width: 25%; }
       .advanced {
         width: 75%;
@@ -255,6 +252,9 @@ body {
 }
 
 table#listings-browser {
+  width: 100%;
+  max-width: 100%;
+
   tr.listing {
     & {
       td { padding: 1em 0; }

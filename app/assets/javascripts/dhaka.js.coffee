@@ -53,6 +53,10 @@ $(document).ready ->
           </div>
         '
 
+  # Change behavior of compare link
+  $('#compare').bind 'ajax:success', -> window.location.href = '/compare'
+  $('#compare').bind 'ajax:failure', -> $(this).addClass 'failure'
+
   # Add search form behavior
   listing_search_form = $('form#listing_search')
   listing_search_form.find('.inside_label').each ->

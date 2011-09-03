@@ -4,7 +4,6 @@
 #listings {
   .images { width: 30%; }
 
-
   &.search {
     #sidebar { background-color: #f6f6f6; }
     #listing_search { padding: 0; }
@@ -32,7 +31,7 @@
       .subfield { clear: both; }
     }
 
-    ul.actions {
+    #listing_search .actions {
       li { float: right; }
       .submit { margin: 0 0.5em 0.5em; }
     }

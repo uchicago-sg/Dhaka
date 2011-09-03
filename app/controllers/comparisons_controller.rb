@@ -2,7 +2,7 @@ class ComparisonsController < ApplicationController
   # POST /compare
   def create
     session[:compare] ||= []
-    session[:compare] << params[:id].to_i
+    session[:compare] << params['id'].to_i
     render :nothing => true
   end
 
@@ -10,9 +10,11 @@ class ComparisonsController < ApplicationController
   def show
     @listings = []
     if session[:compare]
+      session[:compare].uniq!
       session[:compare].each do |listing_id|
-        @listings << Listing.find(listing_id) unless id.blank?
+        @listings << Listing.find(listing_id) rescue nil
       end
     end
+    @listings.compact!
   end
 end
