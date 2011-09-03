@@ -211,6 +211,7 @@ body {
       padding: 0.25em 0;
     }
   }
+  
 }
 
 table#listings-browser {
@@ -257,4 +258,44 @@ table#listings-browser {
   background-color: $blue;
   font-family: Monaco, courier, fixed;
   pre { padding: 1em; }
+}
+
+#listing_search {
+  @include layout-clear;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 1em;
+  > div:first-child { @include layout-clear; }
+}
+
+.index, .show, .edit, .new {
+  #listing_search {
+    background-color: #f6f6f6;
+    padding: 0.5em 0;
+  }
+
+  #search_order, #search_categories, #search_keywords, .actions {
+    @include layout-left;
+    label { display: none; }
+    select { width: 100%; }
+    input { width: 100%; }
+  }
+
+  .actions li { @include layout-left; }
+
+  @media all and (min-width: 768px) {
+    #search_order      { width: 15%; margin-left: 1%; }
+    #search_keywords   { width: 40%; margin-left: 0.5%; margin-right: 1%; }
+    #search_categories { width: 15%; }
+    .actions           {
+      margin: 0 1%;
+      width: 25.5%;
+
+      li { width: 25%; }
+      .advanced {
+        width: 75%;
+        text-align: right;
+      }
+    }
+  }
 }
