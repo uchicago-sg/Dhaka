@@ -45,6 +45,31 @@ body {
   }
 }
 
+#splash {
+  text-align: justify;
+  max-width: 470px;
+  padding: 1em;
+
+  h1, h2 {
+    text-align: center;
+    line-height: 1.5em;
+  }
+
+  h1 {
+    font-size: 1.75em;
+    @include kreon;
+  }
+
+  h2 {
+    padding-bottom: 0.5em;
+  }
+
+  p {
+    clear: both;
+    padding: 0.5em 0;
+  }
+}
+
 #flashes {
   width: 100%;
   text-align: center;

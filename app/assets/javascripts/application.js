@@ -7,7 +7,6 @@
 //= require waypoints
 //= require numeric
 //= require timeago
-//= require lettering
 //= require mediaqueries
 //= require 'dhaka'
 //= require fancybox

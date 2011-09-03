@@ -11,10 +11,9 @@ Dhaka::Application.routes.draw do
     get "login"    => "devise/sessions#new"
     get "logout"   => "devise/sessions#destroy"
   end
-  
-  post "comparisons/:id" => "comparisons#create", :as => "compare"   
-  match "/comparisons"    => "comparisons#index"
-  
+
+  resource :compare, :controller => 'comparisons', :only => %w( create show )
+
   resources :users,       :only => %w( show edit update )
   resources :categories,  :path => 'browse'
   resources :listings,    :path => '' do
