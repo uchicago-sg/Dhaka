@@ -5,7 +5,7 @@
     %meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
     %meta(name='description' content='')
     %meta(name='keywords'    content='')
-    %meta(name='copyright'   content='Copyright (c) 2011 The University of Chicago. All rights reserved.')
+    / %meta(name='copyright'   content='Copyright (c) 2011 The University of Chicago. All rights reserved.')
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag controller_name if resource?
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Kreon:400,700'
@@ -21,6 +21,7 @@
           = yield :sidebar
         - else
           %ul.categories
+            %li.category.all= categories_search_link
             - @categories.each do |category|
               - if params[:id] == category.description.downcase
                 %li.category.selected= categories_search_link(category)
