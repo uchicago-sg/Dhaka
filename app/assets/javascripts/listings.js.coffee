@@ -21,9 +21,9 @@ $(document).ready ->
     $('.truncated-details').toggle()
     $('.extras').slideToggle()
     if $(this).hasClass('show-more')
-      $(this).html('Show Less').addClass('show-less').removeClass('show-more')
+      $(this).html('Less').addClass('show-less').removeClass('show-more')
     else
-      $(this).html('Show More').addClass('show-more').removeClass('show-less')
+      $(this).html('More').addClass('show-more').removeClass('show-less')
     false
 
   # Redirect the user to the Atom feed by passing in the serialized advanced search form
