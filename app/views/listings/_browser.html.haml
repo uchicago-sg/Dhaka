@@ -10,7 +10,10 @@
               .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
           %td.description_and_details
             .description= link_to listing.description, listing
-            .details= truncate strip_tags(listing.details.markdown), :length => 125, :omission => '...'
+            .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission => '...'
+            .show-more= link_to "Show More", "", :class => "show-more", :id => "expand"
+            .extras
+              .details= strip_tags(listing.details.markdown)
             %ul.actions
               %li.compare= link_to 'Compare', compare_path(:id => listing.id), :method => :post, :remote => true
               - if can? :edit, listing

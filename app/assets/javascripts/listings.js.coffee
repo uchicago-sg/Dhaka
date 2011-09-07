@@ -14,6 +14,17 @@ $(document).ready ->
     hideControlOnEnd: true
     displaySlideQty: images_count
     moveSlideQty: 1
+  
+  # slideDown for more info
+  $('.extras').hide()
+  $('a#expand').click -> 
+    $('.truncated-details').toggle()
+    $('.extras').slideToggle()
+    if $(this).hasClass('show-more')
+      $(this).html('Show Less').addClass('show-less').removeClass('show-more')
+    else
+      $(this).html('Show More').addClass('show-more').removeClass('show-less')
+    false
 
   # Redirect the user to the Atom feed by passing in the serialized advanced search form
   $('#subscribe-to-search a').click ->
