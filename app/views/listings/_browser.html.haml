@@ -3,8 +3,8 @@
 - else
   %table#listings-browser
     %tbody
-      - listings.each do |listing|
-        %tr.listing
+      - listings.each_with_index do |listing, i|
+        %tr.listing{:id => "listing-#{i}"}
           %td.image
             -unless listing.images.empty?
               .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
@@ -15,13 +15,12 @@
               .details= listing.details.markdown
               .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
             %ul.actions
-              .show-more= link_to "More", "", :class => "show-more", :id => "expand"
-              %li.compare= link_to 'Compare', compare_path(:id => listing.id), :method => :post, :remote => true
+              %li.toggle= link_to "More", "", :class => "show-more"
+              %li.compare= button_to 'Compare', compare_path(:id => listing.id), :method => :post
               - if can? :edit, listing
                 %li.edit= link_to 'Edit', edit_listing_path(listing)
               - if can? :destroy, listing
                 %li.destroy= link_to 'Destroy', listing, :method => :delete
-            
           %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
           %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
   = paginate listings

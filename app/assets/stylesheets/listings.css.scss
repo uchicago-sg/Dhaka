@@ -2,7 +2,8 @@
 
 
 #listings {
-  .images { width: 30%; }
+  &.show .images { width: 30%; }
+
   &.search {
     #sidebar { background-color: #f6f6f6; }
     #listing_search { padding: 0; }

@@ -1,4 +1,5 @@
 class Listing < ActiveRecord::Base
+  MAX_IMAGES    = 9
   ORDER_BY      = [['Most Recent', 'created_at DESC'], ['Lowest Price', 'listings.price ASC, created_at DESC'], ['Highest Price', 'listings.price DESC, created_at DESC']]
   ORDER_OPTIONS = []
   ORDER_BY.each_with_index do |e, i|

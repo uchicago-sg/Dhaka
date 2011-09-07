@@ -4,7 +4,7 @@
     %ul.images
       - listing.images.each do |image|
         .image
-          %a{:id => "image-link", :href => image.photo.url(:original) }=image_tag image.photo.url(:small)
+          %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:small)
   %div.details= listing.details.markdown
   %p.created_at Added <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
   %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)

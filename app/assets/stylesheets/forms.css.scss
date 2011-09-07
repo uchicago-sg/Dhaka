@@ -1,40 +1,14 @@
 @import 'shared';
 
+.form-errors {
+  padding: 0.5em;
+  margin-bottom: 1em;
+  background-color: $lorange;
+  .reason { font-weight: bold; }
+}
 
-#sidebar {
-  form {
-    .undisturbed { color: #999; }
-  }
-
-  fieldset { border-top: 1px solid #ccc; }
-
-  .label {
-    text-align: right;
-    display: inline-block;
-    padding-right: .25em;
-    width: 25%;
-  }
-
-  .input {
-    input, select, textarea { border: 1px solid #bbb; }
-
-    select, textarea { width: 100%; }
-
-    input, textarea {
-      outline: none;
-
-      &:focus {
-        border-color: $blue;
-        @include box-shadow(0 0 0.5em $blue);
-      }
-    }
-  }
-
-  .fields {
-    display: block;
-    clear: both;
-    background-color: #e5e5e5;
-    border: 1px solid #ccc;
-    margin-bottom: 0.25em;
-  }
+.field_with_errors {
+  display: inline-block;
+  background-color: $red;
+  padding: 5px;
 }

@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
-    4.times { @listing.images.build }
+    Listing::MAX_IMAGES.times { @listing.images.build }
     respond_with @listing
   end
 
@@ -38,7 +38,9 @@ class ListingsController < ApplicationController
 
   # GET /listings/:id/editw
   def edit
-    4.times { @listing.images.build }
+    if @listing.images.length < Listing::MAX_IMAGES
+      (Listing::MAX_IMAGES - @listing.images.length).times { @listing.images.build }
+    end
     respond_with @listing
   end
 

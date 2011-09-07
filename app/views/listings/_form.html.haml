@@ -1,27 +1,26 @@
 = form_for @listing, :html => { :multipart => true } do |f|
   = render 'shared/form_errors', :resource => @listing
-  %span.field
-    %span.label= f.label :category_ids, 'Category'
-    %span.input= f.collection_select :category_ids, Category.all, :id, :description, {}, {:tabindex => 1}
-  %span.field
-    %span.label= f.label :description
-    %span.input= f.text_field :description, {:tabindex => 2}
-  %span.field
-    %span.label= f.label :details
-    %span.input= f.text_area :details, {:tabindex => 3}
-  %span.field
-    %span.label= f.label :price
-    %span.input= f.text_field :price, {:class => 'currency', :tabindex => 4}
-  %span.field.images-block
+  .field.category
+    .label= f.label :category_ids, 'Category'
+    .input= f.collection_select :category_ids, Category.all, :id, :description, {}, {:tabindex => 1}
+  .field.description
+    .label= f.label :description
+    .input= f.text_field :description, {:tabindex => 2}
+  .field.price
+    .label= f.label :price
+    .input= f.text_field :price, {:class => 'currency', :tabindex => 4}
+  .field.details
+    .label= f.label :details
+    .input= f.text_area :details, {:tabindex => 3}
+  .field.images
     = f.fields_for :images do |image|
-      %span.subfield.image-upload
-        - if image.object.new_record?
-          %span.label= image.label :photo, "Image File"
-          %span.input= image.file_field :photo
-        - else
-          %span= link_to(image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original) )
-          %span
-            =image.check_box :_destroy
-            %span Remove Image
-    %span#add-image= link_to "Add Another Image"
-  %span.submit= f.submit :tabindex => 5
+      - if image.object.new_record?
+        .subfield.image-upload
+          .label= image.label :photo, "Image File"
+          .input= image.file_field :photo
+      - else
+        .subfield.image
+          .preview= link_to image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original)
+          .remove #{image.check_box :_destroy} Remove image
+    #add-image= link_to "Add Another Image"
+  .submit= f.submit :tabindex => 5

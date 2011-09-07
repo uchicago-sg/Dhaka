@@ -3,7 +3,7 @@ class ComparisonsController < ApplicationController
   def create
     session[:compare] ||= []
     session[:compare] << params['id'].to_i
-    render :nothing => true
+    redirect_to compare_url
   end
 
   # GET /compare

@@ -2,5 +2,6 @@
  *= require bxSlider
  *= require fancybox
  *= require 'dhaka'
+ *= require 'forms'
  *= depend_on '_shared'
  */
