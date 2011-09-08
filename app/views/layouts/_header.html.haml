@@ -1,5 +1,5 @@
 %ul#site-toolbar.actions
-  %li.compare= link_to 'Starred', compare_path
+  %li.starred= link_to 'Starred', starred_path
 %ul#user-toolbar.actions
   - if user_signed_in?
     %li.show= link_to current_user.name, current_user

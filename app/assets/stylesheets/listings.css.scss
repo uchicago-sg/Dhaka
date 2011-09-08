@@ -2,7 +2,15 @@
 
 
 #listings {
-  &.show .images { width: 30%; }
+  &.show {
+    .images { width: 200px; }
+    .bx-wrapper { margin: 0 auto; }
+    .slider {
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
 
   &.search {
     #sidebar { background-color: #f6f6f6; }

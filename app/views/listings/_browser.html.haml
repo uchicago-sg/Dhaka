@@ -18,9 +18,9 @@
               %li.toggle= link_to 'More', "#listing-#{i}", :class => 'show-more'
               %li.compare
                 - if session[:compare] and session[:compare].include?(listing.id)
-                  = link_to 'Unstar', compare_path(:id => listing.id), :method => :put, :class => 'unstar'
+                  = link_to 'Unstar', starred_path(:id => listing.id), :method => :put, :class => 'unstar'
                 - else
-                  = link_to 'Star', compare_path(:id => listing.id), :method => :post, :class => 'star'
+                  = link_to 'Star', starred_path(:id => listing.id), :method => :post, :class => 'star'
               - if can? :edit, listing
                 %li.edit= link_to 'Edit', edit_listing_path(listing)
               - if can? :destroy, listing
