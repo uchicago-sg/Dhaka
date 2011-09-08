@@ -36,79 +36,9 @@ $(document).ready ->
 
   # Limit the price input
   $('.currency').autoNumeric()
-  
+
   # Hide image upload inputs, and allow the user to reveal them
   if $('#listings.new').exists() or $('#listings.edit').exists()
-    # Markdown help
-    $('a#markdown').fancybox
-      content: '
-      <div class="syntax-cheatsheet">
-      <h1>Syntax Cheatsheet:</h1> 
- 
-      <h2>Phrase Emphasis</h2> 
- 
-      <pre><code>*italic*   **bold**
-      _italic_   __bold__
-      </code></pre> 
- 
-      <h2>Links</h2> 
- 
-      <pre><code>An [example](http://url.com/ "Title")
-      </code></pre> 
-
-      <h2>Headers</h2> 
- 
-      <p>Setext-style:</p> 
- 
-      <pre><code>Header 1
-      ========
- 
-      Header 2
-      --------
-      </code></pre> 
- 
-      <p>atx-style (closing #s are optional):</p> 
- 
-      <pre><code># Header 1 #
- 
-      ## Header 2 ##
- 
-      ###### Header 6
-      </code></pre> 
- 
-      <h2>Lists</h2> 
- 
-      <p>Ordered, without paragraphs:</p> 
- 
-      <pre><code>1.  Foo
-      2.  Bar
-      </code></pre> 
- 
-      <p>Unordered, with paragraphs:</p> 
- 
-      <pre><code>*   A list item.
- 
-          With multiple paragraphs.
- 
-      *   Bar
-      </code></pre> 
- 
- 
-      <h2>Blockquotes</h2> 
- 
-      <pre><code>
-      &gt; Email-style angle brackets
-      &gt; are used for blockquotes.
- 
-      &gt; &gt; And, they can be nested.
- 
-      &gt; #### Headers in blockquotes
-      &gt; 
-      &gt; * You can quote a list.
-      &gt; * Etc.
-      </code></pre> 
- 
-      </div>'
     $('.image-upload').hide()
     $('.image-upload').first().show()
     $('#add-image a').click ->

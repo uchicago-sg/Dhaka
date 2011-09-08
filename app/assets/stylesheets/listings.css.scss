@@ -45,39 +45,3 @@
     }
   }
 }
-
-.syntax-cheatsheet {
-  text-align: justify;
-  max-width: 470px;
-  padding: 1em;
-
-
-  h1 {
-    text-align: center;
-    line-height: 1.5em;
-    font-size: 2em;
-    @include kreon;
-  }
-
-  h2 {
-    text-align: left;
-    font-size: 1.15em;
-    line-height: 1.5em;
-    padding-top: 0.3em;
-    font-weight: 800;
-  }
-
-  p {
-    clear: both;
-    padding: 0.5em 0;
-  }
-  pre {
-        border:1px dashed #E1E1E1;
-        color:#333344;
-        background:#FAFAFA;
-        font-family:monospace;
-        overflow:auto;
-        font-size:11px;
-        padding:0.5em;
-  }
-}

@@ -11,17 +11,17 @@
     .input= f.text_field :price, {:class => 'currency', :tabindex => 4}
   .field.details
     .label= f.label :details
+    %a(href='http://en.wikipedia.org/wiki/Markdown' title='Markdown on Wikipedia' target='_blank') Formatting with Markdown
     .input= f.text_area :details, {:tabindex => 3}
-    .markdown-help= link_to "Markup Help", "", :id => "markdown"
   .field.images
     = f.fields_for :images do |image|
       - if image.object.new_record?
         .subfield.image-upload
-          .label= image.label :photo, "Image File"
+          .label= image.label :photo, 'Image File'
           .input= image.file_field :photo
       - else
         .subfield.image
           .preview= link_to image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original)
           .remove #{image.check_box :_destroy} Remove image
-    #add-image= link_to "Add Another Image"
+    #add-image= link_to 'Add Another Image'
   .submit= f.submit :tabindex => 5
