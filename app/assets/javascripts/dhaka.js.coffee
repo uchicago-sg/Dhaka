@@ -51,3 +51,22 @@ $(document).ready ->
             <p>We encourage you to look around and test out the site: Register an account, place listing, or even just browse. Let us know if what you love, hate, or miss by clicking on the orange &#8220;Feedback&#8221; button at the bottom of your screen. Thanks, and enjoy!</p>
           </div>
         '
+  # Add search form behavior
+  listing_search_form = $('form#listing_search')
+  listing_search_form.find('.inside_label').each ->
+    input = $(this).find 'input'
+    label = $(this).find 'label'
+    input.data 'default_text', label.text()
+
+    input.focus ->
+      if $(this).val() is $(this).data('default_text')
+        $(this).removeClass()
+        $(this).val ''
+
+    input.blur ->
+      if $(this).val() is ''
+        $(this).addClass 'undisturbed'
+        $(this).val $(this).data('default_text')
+
+    listing_search_form.submit -> input.focus()
+    input.blur()

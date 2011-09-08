@@ -3,8 +3,8 @@
 - else
   %table#listings-browser
     %tbody
-      - listings.each_with_index do |listing, i|
-        %tr.listing{:id => "listing-#{i}"}
+      - listings.each do |listing|
+        %tr.listing{:id => listing.permalink}
           %td.image
             -unless listing.images.empty?
               .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
@@ -15,7 +15,7 @@
               .details= listing.details.markdown
               .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
             %ul.actions
-              %li.toggle= link_to 'More', "#listing-#{i}", :class => 'show-more'
+              %li.toggle= link_to 'More', "##{listing.permalink}", :class => 'show-more'
               %li.compare
                 - if session[:compare] and session[:compare].include?(listing.id)
                   = link_to 'Unstar', starred_path(:id => listing.id), :method => :put, :class => 'unstar'
