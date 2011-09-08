@@ -70,3 +70,18 @@ $(document).ready ->
 
     listing_search_form.submit -> input.focus()
     input.blur()
+
+  # Add behavior to "More or Less" link on the listing browser
+  $('#listings-browser .listing').each ->
+    listing = $(this)
+    toggle  = listing.find '.toggle a'
+    details = listing.find '.truncated-details'
+    extras  = listing.find '.extras'
+
+    toggle.click (e) ->
+      details.toggle()
+      extras.toggle()
+      if $(this).hasClass 'show-more'
+        $(this).removeClass('show-more').addClass('show-less').text('Less')
+      else
+        $(this).removeClass('show-less').addClass('show-more').text('More')

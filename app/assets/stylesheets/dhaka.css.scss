@@ -22,7 +22,6 @@ nav ul, footer ul { list-style-type : none; }
 a {
   color: $blue;
   text-decoration: none;
-
   &:visited { color: $purple; }
   &:hover { color: $green; }
   &:active { color: $red; }
@@ -73,16 +72,17 @@ body {
 #flashes {
   width: 100%;
   text-align: center;
+  @include layout-clear;
 
   p {
-    background-color: $yellow;
-    border: 1px solid darken($yellow, 15%);
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.95em;
     line-height: 2.25em;
     margin-bottom: 1em;
-    @include box-shadow(0 0 1em rgba(#000, 0.1));
   }
+
+  .error { color: white; background-color: lighten($red, 10%); }
+  .notice { color: black; background-color: $yellow; }
 }
 
 #site-toolbar, #user-toolbar {
@@ -95,7 +95,10 @@ body {
   }
 }
 
-#user-toolbar { text-align: right; }
+#user-toolbar {
+  text-align: right;
+  li:first-child { margin-right: 0.75em; }
+}
 
 #marketplace {
   max-width: $page-width;
@@ -149,7 +152,7 @@ body {
     width: $sidebar-width;
   }
 
-  .category {
+  .category, .page {
     background-color: $yellow;
 
     a {
@@ -285,6 +288,13 @@ table#listings-browser {
       }
     }
 
+    .toggle {
+      width: 100%;
+      font-size: 0.95em;
+      line-height: 1.25em;
+      text-align: right;
+    }
+
     .image {
       width: 15%;
       text-align: center;
@@ -293,6 +303,15 @@ table#listings-browser {
     .description_and_details {
       width: 52%;
       text-align: left;
+      color: #444;
+    }
+
+    .description {
+      font-weight: bold;
+      a         { color: black; }
+      a:visited { color: $purple; }
+      a:hover   { color: $green; text-decoration: underline; }
+      a:active  { color: $red; }
     }
 
     .created_at {
@@ -303,6 +322,8 @@ table#listings-browser {
     .price {
       width: 15%;
       text-align: right;
+      font-weight: bold;
+      color: lighten($green, 10%);
     }
   }
 }

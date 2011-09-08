@@ -13,21 +13,6 @@ $(document).ready ->
   # Open an image in the Fancybox
   $('a.fancybox-image').fancybox()
 
-  # Add behavior to "More or Less" link on the listing browser
-  $('#listings-browser .listing').each ->
-    listing = $(this)
-    toggle  = listing.find '.toggle a'
-    details = listing.find '.truncated-details'
-    extras  = listing.find '.extras'
-
-    toggle.click (e) ->
-      details.toggle()
-      extras.toggle()
-      if $(this).hasClass 'show-more'
-        $(this).removeClass('show-more').addClass('show-less').text('Less')
-      else
-        $(this).removeClass('show-less').addClass('show-more').text('More')
-
   # Highlight the current category in the sidebar if selected in simple search form
   if $('#listings.index').exists()
     selected_category = $('select#q_categories_id_positive_and_eq option[selected=selected]').text()

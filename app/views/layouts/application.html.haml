@@ -10,6 +10,8 @@
       = auto_discovery_link_tag :atom, {:format => 'atom'}
     - elsif resource?
       = auto_discovery_link_tag :atom, {:controller => 'categories', :action => 'index', :format => 'atom'}
+    = javascript_include_tag 'application'
+    = javascript_include_tag controller_name if resource?
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag controller_name if resource?
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Kreon:400,700'
@@ -21,6 +23,8 @@
       %aside#sidebar
         - if content_for? :sidebar
           = yield :sidebar
+        - elsif controller_name == 'pages'
+          = render 'pages/sidebar'
         - else
           %ul.categories
             %li.category.all= categories_search_link
@@ -30,14 +34,8 @@
               - else
                 %li.category= categories_search_link(category)
       %section#main
-        - unless flash.empty?
-          #flashes
-            - flash.each do |type, text|
-              %p{:class => type}= text
         = yield
       .clear
     = render 'layouts/footer'
     - if Rails.env.development?
       #debug><= debug params
-    = javascript_include_tag 'application'
-    = javascript_include_tag controller_name if resource?

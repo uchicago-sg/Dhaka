@@ -1,0 +1,14 @@
+:ruby
+  page_links = [
+    ['Welcome Message', '/welcome'],
+    ['Safety & Security', '/safety'],
+    ['Terms of Serivice', '/terms'],
+    ['Privacy Policy', '/privacy']
+  ]
+
+%ul.pages
+  - page_links.each do |link|
+    - if link[1].gsub('/','') == params[:id]
+      %li.selected.page= link_to link[0], link[1]
+    - else
+      %li.page= link_to link[0], link[1]

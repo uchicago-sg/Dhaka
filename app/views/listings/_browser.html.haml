@@ -14,8 +14,8 @@
             .extras(style="display:none")
               .details= listing.details.markdown
               .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
+            .toggle= link_to 'More', "##{listing.permalink}", :class => 'show-more'
             %ul.actions
-              %li.toggle= link_to 'More', "##{listing.permalink}", :class => 'show-more'
               %li.compare
                 - if session[:starred] and session[:starred].include?(listing.permalink)
                   = link_to 'Unstar', starred_path(:permalink => listing.permalink), :method => :put, :class => 'unstar'

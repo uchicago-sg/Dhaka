@@ -6,12 +6,13 @@
   ]
   second_column_links = [
     ['Welcome Message', '/welcome'],
-    ['Place a Listing', new_listing_path],
+    ['Place a Listing', user_signed_in? ? new_listing_path : '/register'],
     ['Atom Feeds', '/feeds']
   ]
 
 %footer
   %ul#copyright.left
+    %li A <a href="http://sg.uchicago.edu/" title="UChicago Student Government">Student Government</a> initiative
     %li &#169; 2011 The University of Chicago
     %li All rights reserved
   %ul.center
