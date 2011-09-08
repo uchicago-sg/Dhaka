@@ -8,7 +8,7 @@
     / %meta(name='copyright'   content='Copyright (c) 2011 The University of Chicago. All rights reserved.')
     - if action_name == 'search'
       = auto_discovery_link_tag :atom, {:format => 'atom'}
-    - else
+    - elsif resource?
       = auto_discovery_link_tag :atom, {:controller => 'categories', :action => 'index', :format => 'atom'}
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag controller_name if resource?

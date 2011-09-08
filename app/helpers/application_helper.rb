@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def resource?
-    %w( listings users categories ).include? controller_name
+    APP_RESOURCES.include? controller_name
   end
 
   def title(new_title=nil)
