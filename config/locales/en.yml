@@ -3,3 +3,6 @@
 
 en:
   hello: "Hello world"
+  unauthorized:
+    create:
+        listing: "Must be a logged in user to create a listing"

@@ -8,7 +8,7 @@ Dhaka::Application.routes.draw do
 
   devise_for :users
   devise_scope :user do
-    get "register" => "devise/registrations#new"
+    get "register" => "devise/registrations#new", :as => 'register'
     get "login"    => "devise/sessions#new"
     get "logout"   => "devise/sessions#destroy"
   end
