@@ -12,6 +12,7 @@
   .field.details
     .label= f.label :details
     .input= f.text_area :details, {:tabindex => 3}
+    .markdown-help= link_to "Markup Help", "", :id => "markdown"
   .field.images
     = f.fields_for :images do |image|
       - if image.object.new_record?
