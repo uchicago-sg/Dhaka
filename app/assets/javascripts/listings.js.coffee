@@ -44,3 +44,26 @@ $(document).ready ->
       $('.image-upload:visible').last().next().show()
       if $('.image-upload').size() is $('.image-upload:visible').size() then $(this).remove()
       false
+
+  # Add search form behavior
+  listing_search_form = $('form#listing_search')
+  listing_search_form.find('.inside_label').each ->
+    input = $(this).find 'input'
+    label = $(this).find 'label'
+    input.data 'default_text', label.text()
+
+    input.focus ->
+      if $(this).val() is $(this).data('default_text')
+        $(this).removeClass()
+        $(this).val ''
+
+    input.blur ->
+      if $(this).val() is ''
+        $(this).addClass 'undisturbed'
+        $(this).val $(this).data('default_text')
+
+    listing_search_form.submit -> input.focus()
+    input.blur()
+
+  # Limit the price input
+  $('.currency').autoNumeric()

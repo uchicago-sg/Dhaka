@@ -5,7 +5,7 @@
 //= require easing
 //= require bxSlider
 //= require waypoints
-//= require numeric
+//= require autoNumeric
 //= require timeago
 //= require mediaqueries
 //= require 'dhaka'

@@ -3,8 +3,8 @@
 - else
   %table#listings-browser
     %tbody
-      - listings.each_with_index do |listing, i|
-        %tr.listing{:id => "listing-#{i}"}
+      - listings.each do |listing, i|
+        %tr.listing
           %td.image
             -unless listing.images.empty?
               .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
