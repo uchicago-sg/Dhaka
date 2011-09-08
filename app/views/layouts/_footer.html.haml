@@ -5,6 +5,7 @@
     ['Privacy Policy', '/privacy']
   ]
   second_column_links = [
+    ['Welcome Message', '/welcome'],
     ['Place a Listing', new_listing_path],
     ['Atom Feeds', categories_path]
   ]
@@ -16,8 +17,6 @@
   %ul.center
     - second_column_links.each do |link|
       %li= link_to link[0], link[1]
-    %li= link_to 'Your Profile', current_user if user_signed_in?
-    %li= link_to 'Seller Login', new_user_session_path unless user_signed_in?
   %ul.right
     - first_column_links.each do |link|
       %li= link_to link[0], link[1]

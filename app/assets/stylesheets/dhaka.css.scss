@@ -85,6 +85,17 @@ body {
   }
 }
 
+#toolbar {
+  text-align: right;
+  max-width: $page-width;
+  list-style-type: none;
+  margin: 0 auto -1em;
+
+  li {
+    display: inline-block;
+  }
+}
+
 #marketplace {
   max-width: $page-width;
 

@@ -3,19 +3,19 @@
 - else
   %table#listings-browser
     %tbody
-      - listings.each do |listing, i|
-        %tr.listing
+      - listings.each_with_index do |listing, i|
+        %tr.listing{:id => "listing-#{i}"}
           %td.image
             -unless listing.images.empty?
               .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
           %td.description_and_details
             .description= link_to listing.description, listing
             .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
-            .extras
+            .extras(style="display:none")
               .details= listing.details.markdown
               .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
             %ul.actions
-              %li.toggle= link_to "More", "", :class => "show-more"
+              %li.toggle= link_to 'More', "#listing-#{i}", :class => 'show-more'
               %li.compare= button_to 'Compare', compare_path(:id => listing.id), :method => :post
               - if can? :edit, listing
                 %li.edit= link_to 'Edit', edit_listing_path(listing)

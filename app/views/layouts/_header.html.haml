@@ -1,3 +1,10 @@
+%ul#toolbar.actions
+  - if user_signed_in?
+    %li.show= link_to current_user.name, current_user
+    %li.logout= link_to 'Logout', '/logout'
+  - else
+    %li.register= link_to 'Register', '/register'
+    %li.login= link_to 'Login', '/login'
 %header#marketplace
   %h1= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   - if %w( index new show edit ).include? action_name
