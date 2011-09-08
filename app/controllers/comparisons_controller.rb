@@ -27,5 +27,8 @@ class ComparisonsController < ApplicationController
       end
     end
     @listings.compact!
+    @listings.keep_if { |l| can? :read, l }
+    session[:compare] = @listings.map &:id
+    @listings.reverse!
   end
 end

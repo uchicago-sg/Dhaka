@@ -21,7 +21,6 @@ $(document).ready ->
     extras  = listing.find '.extras'
 
     toggle.click (e) ->
-      e.preventDefault()
       details.toggle()
       extras.toggle()
       if $(this).hasClass 'show-more'
