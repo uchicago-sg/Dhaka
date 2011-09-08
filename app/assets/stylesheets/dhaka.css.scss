@@ -85,16 +85,17 @@ body {
   }
 }
 
-#toolbar {
-  text-align: right;
+#site-toolbar, #user-toolbar {
   max-width: $page-width;
   list-style-type: none;
-  margin: 0 auto -1em;
+  margin: 0 auto -1.5em;
 
   li {
     display: inline-block;
   }
 }
+
+#user-toolbar { text-align: right; }
 
 #marketplace {
   max-width: $page-width;

@@ -1,4 +1,6 @@
-%ul#toolbar.actions
+%ul#site-toolbar.actions
+  %li.compare= link_to 'Starred', compare_path
+%ul#user-toolbar.actions
   - if user_signed_in?
     %li.show= link_to current_user.name, current_user
     %li.logout= link_to 'Logout', '/logout'

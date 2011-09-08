@@ -3,7 +3,18 @@ class ComparisonsController < ApplicationController
   def create
     session[:compare] ||= []
     session[:compare] << params['id'].to_i
-    redirect_to compare_url
+    flash[:notice] = 'Successfully starred listing.'
+    redirect_to :back
+  end
+
+  # GET /compare/:id
+  def update
+    if session[:compare].delete params['id'].to_i
+      flash[:notice] = 'Successfully unstarred listing.'
+    else
+      flash[:notice] = 'No such listing to unstar.'
+    end
+    redirect_to :back
   end
 
   # GET /compare

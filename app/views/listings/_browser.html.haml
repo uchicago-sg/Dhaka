@@ -16,11 +16,15 @@
               .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
             %ul.actions
               %li.toggle= link_to 'More', "#listing-#{i}", :class => 'show-more'
-              %li.compare= button_to 'Compare', compare_path(:id => listing.id), :method => :post
+              %li.compare
+                - if session[:compare] and session[:compare].include?(listing.id)
+                  = link_to 'Unstar', compare_path(:id => listing.id), :method => :put, :class => 'unstar'
+                - else
+                  = link_to 'Star', compare_path(:id => listing.id), :method => :post, :class => 'star'
               - if can? :edit, listing
                 %li.edit= link_to 'Edit', edit_listing_path(listing)
               - if can? :destroy, listing
                 %li.destroy= link_to 'Destroy', listing, :method => :delete
           %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
           %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
-  = paginate listings
+  = paginate listings if params[:page]
