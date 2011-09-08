@@ -42,44 +42,21 @@ $(document).ready ->
     # Markdown help
     $('a#markdown').fancybox
       content: '
-      <h2>Syntax Cheatsheet:</h2> 
+      <div class="syntax-cheatsheet">
+      <h1>Syntax Cheatsheet:</h1> 
  
-      <h3>Phrase Emphasis</h3> 
+      <h2>Phrase Emphasis</h2> 
  
       <pre><code>*italic*   **bold**
       _italic_   __bold__
       </code></pre> 
  
-      <h3>Links</h3> 
- 
-      <p>Inline:</p> 
+      <h2>Links</h2> 
  
       <pre><code>An [example](http://url.com/ "Title")
       </code></pre> 
- 
-      <p>Reference-style labels (titles are optional):</p> 
- 
-      <pre><code>An [example][id]. Then, anywhere
-      else in the doc, define the link:
- 
-        [id]: http://example.com/  "Title"
-      </code></pre> 
- 
-      <h3>Images</h3> 
- 
-      <p>Inline (titles are optional):</p> 
- 
-      <pre><code>![alt text](/path/img.jpg "Title")
-      </code></pre> 
- 
-      <p>Reference-style:</p> 
- 
-      <pre><code>![alt text][id]
- 
-      [id]: /url/to/img.jpg "Title"
-      </code></pre> 
- 
-      <h3>Headers</h3> 
+
+      <h2>Headers</h2> 
  
       <p>Setext-style:</p> 
  
@@ -99,7 +76,7 @@ $(document).ready ->
       ###### Header 6
       </code></pre> 
  
-      <h3>Lists</h3> 
+      <h2>Lists</h2> 
  
       <p>Ordered, without paragraphs:</p> 
  
@@ -116,21 +93,11 @@ $(document).ready ->
       *   Bar
       </code></pre> 
  
-      <p>You can nest them:</p> 
  
-      <pre><code>*   Abacus
-          * answer
-      *   Bubbles
-          1.  bunk
-          2.  bupkis
-              * BELITTLER
-          3. burper
-      *   Cunning
-      </code></pre> 
+      <h2>Blockquotes</h2> 
  
-      <h3>Blockquotes</h3> 
- 
-      <pre><code>&gt; Email-style angle brackets
+      <pre><code>
+      &gt; Email-style angle brackets
       &gt; are used for blockquotes.
  
       &gt; &gt; And, they can be nested.
@@ -141,43 +108,6 @@ $(document).ready ->
       &gt; * Etc.
       </code></pre> 
  
-      <h3>Code Spans</h3> 
- 
-      <pre><code>`&lt;code&gt;` spans are delimited
-      by backticks.
- 
-      You can include literal backticks
-      like `` `this` ``.
-      </code></pre> 
- 
-      <h3>Preformatted Code Blocks</h3> 
- 
-      <p>Indent every line of a code block by at least 4 spaces or 1 tab.</p> 
- 
-      <pre><code>This is a normal paragraph.
- 
-          This is a preformatted
-          code block.
-      </code></pre> 
- 
-      <h3>Horizontal Rules</h3> 
- 
-      <p>Three or more dashes or asterisks:</p> 
- 
-      <pre><code>---
- 
-      * * *
- 
-      - - - - 
-      </code></pre> 
- 
-      <h3>Manual Line Breaks</h3> 
- 
-      <p>End a line with two or more spaces:</p> 
- 
-      <pre><code>Roses are red,   
-      Violets are blue.
-      </code></pre> 
       </div>'
     $('.image-upload').hide()
     $('.image-upload').first().show()
