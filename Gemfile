@@ -21,6 +21,7 @@ gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
 
+gem 'tinymce-rails'
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31' # Hotsauce
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'   # Dead-simple tagging
 

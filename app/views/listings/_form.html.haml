@@ -1,5 +1,3 @@
-- include_javascripts 'tiny_mce/tiny_mce', 'listings_form'
-
 = form_for @listing, :html => { :multipart => true } do |f|
   = render 'shared/form_errors', :resource => @listing
   .field.category

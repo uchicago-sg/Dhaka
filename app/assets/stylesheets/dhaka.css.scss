@@ -150,16 +150,16 @@ body {
 #content {
   clear: both;
   text-align: left;
+}
 
-  #main ol, #main ul {
-    list-style: disc outside none;
-    ol, ul, li { margin-left: 1.5em; }
-  }
+#main ol, #main ul {
+  list-style: disc outside none;
+  ol, ul, li { margin-left: 1.5em; }
+}
 
-  ul.actions, ul.devise-links {
-    list-style: none;
-    ol, ul, li { margin-left: 0; }
-  }
+.actions, .devise-links {
+  list-style: none !important;
+  ol, ul, li { margin-left: 0 !important; }
 }
 
 #sidebar, #main {

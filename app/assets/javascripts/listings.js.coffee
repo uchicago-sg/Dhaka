@@ -1,3 +1,5 @@
+#= require tinymce-jquery
+
 $(document).ready ->
   # Redirect the user to the Atom feed by passing in the serialized advanced search form
   $('#subscribe-to-search a').click ->
@@ -30,6 +32,13 @@ $(document).ready ->
       $('.image-upload:visible').last().next().show()
       if $('.image-upload').size() is $('.image-upload:visible').size() then $(this).remove()
       false
+
+  $('textarea').tinymce
+    theme: 'advanced'
+    theme_advanced_toolbar_location: 'top'
+    theme_advanced_buttons1: 'undo,redo,separator,bold,italic,underline,separator,bullist,numlist,outdent,indent,separator,link,unlink'
+    theme_advanced_buttons2: ''
+    theme_advanced_buttons3: ''
 
   # Before submitting, strip the number formatting added by autoNumeric
   $('form#new_listing').submit ->
