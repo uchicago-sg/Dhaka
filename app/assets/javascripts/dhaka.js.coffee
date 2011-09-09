@@ -34,7 +34,6 @@ jQuery.timeago.settings.strings =
 
 $(document).ready ->
   # Hide mechanism for flashes and debug
-  $('#flashes > p').click -> $(this).slideUp 500
   $('#debug').click -> $(this).fadeOut()
   $('.time-ago').attr('title', '').timeago()
 
@@ -102,3 +101,6 @@ $(document).ready ->
       console.log $(this).closest('.listing').slideUp()
     else
       $(this).removeClass('unstar').addClass('star').text('Star').attr('data-method', 'post')
+
+  # Slick new flashes mechanism with Sticky
+  $('#flashes > p').hide().each -> $(this).sticky()

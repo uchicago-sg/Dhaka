@@ -12,3 +12,4 @@
 //= require 'dhaka'
 //= require fancybox
 //= require showdown
+//= require sticky
