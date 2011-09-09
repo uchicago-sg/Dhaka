@@ -12,6 +12,9 @@
   .field.details
     .label= f.label :details
     %a(href='http://en.wikipedia.org/wiki/Markdown' title='Markdown on Wikipedia' target='_blank') Formatting with Markdown
+    | 
+    %a(href='#' id='show-preview') Preview
+    .processed-markdown
     .input= f.text_area :details, {:tabindex => 3}
   .field.images
     = f.fields_for :images do |image|

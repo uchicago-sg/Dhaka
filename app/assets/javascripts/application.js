@@ -11,3 +11,4 @@
 //= require mediaqueries
 //= require 'dhaka'
 //= require fancybox
+//= require showdown

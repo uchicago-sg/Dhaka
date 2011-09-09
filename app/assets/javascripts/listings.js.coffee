@@ -30,7 +30,23 @@ $(document).ready ->
       $('.image-upload:visible').last().next().show()
       if $('.image-upload').size() is $('.image-upload:visible').size() then $(this).remove()
       false
-
+      
+  # Showdown.js for live markdown processing
+  converter = new Showdown.converter()
+  # If there is anything already in the box, start with that (ie #edit)
+  $(".processed-markdown").html converter.makeHtml($("#listing_details").val())
+  # and every time something happens
+  $("#listing_details").keyup ->
+    txt = $("#listing_details").val()
+    html = converter.makeHtml(txt)
+    $(".processed-markdown").html(html)
+  
+  # Default hide preview, show on link click
+  $('.processed-markdown').hide()
+  $('a#show-preview').click -> 
+    $('.processed-markdown').toggle()
+    false
+    
   # Before submitting, strip the number formatting added by autoNumeric
   $('form#new_listing').submit ->
     input = $(this).find('input.currency')
