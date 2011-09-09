@@ -1,19 +1,18 @@
 class ComparisonsController < ApplicationController
-  # POST /compare
+  # POST /compare/:permalink
   def create
     session[:starred] ||= []
     session[:starred] << params[:permalink]
-    # flash[:notice] = 'Successfully starred listing.'
-    #     redirect_to :back
-    render :nothing => true
+    flash[:notice] = 'Successfully starred listing'
+    redirect_to :back
   end
 
-  # GET /compare/:permalink
+  # PUT /compare/:permalink
   def update
     if session[:starred].delete params[:permalink]
-      flash[:notice] = 'Successfully unstarred listing.'
+      flash[:notice] = 'Successfully unstarred listing'
     else
-      flash[:notice] = 'No such listing to unstar.'
+      flash[:notice] = 'No such listing to unstar'
     end
     redirect_to :back
   end

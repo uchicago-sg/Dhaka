@@ -90,3 +90,15 @@ $(document).ready ->
     $(this).toggleClass 'sticky', direction is  'down'
     $(this).tie 'width', '#listings-browser', 'width'
     e.stopPropagation()
+
+  # Ajaxify "starred" links
+  # TODO Add notifications (part of notifications system, perhaps?)
+  $('.starred').delegate 'a.star', 'ajax:success', ->
+    $(this).removeClass('star').addClass('unstar').text('Unstar').attr('data-method', 'put')
+
+  $('.starred').delegate 'a.unstar', 'ajax:success', ->
+    # Hide the listing when unstarred on /starred, otherwise rework the link
+    if $('#comparisons.show').exists()
+      console.log $(this).closest('.listing').slideUp()
+    else
+      $(this).removeClass('unstar').addClass('star').text('Star').attr('data-method', 'post')
