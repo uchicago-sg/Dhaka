@@ -3,8 +3,9 @@ class ComparisonsController < ApplicationController
   def create
     session[:starred] ||= []
     session[:starred] << params[:permalink]
-    flash[:notice] = 'Successfully starred listing.'
-    redirect_to :back
+    # flash[:notice] = 'Successfully starred listing.'
+    #     redirect_to :back
+    render :nothing => true
   end
 
   # GET /compare/:permalink

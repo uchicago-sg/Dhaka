@@ -35,3 +35,17 @@ $(document).ready ->
   $('form#new_listing').submit ->
     input = $(this).find('input.currency')
     input.val input.val().replace(',','')
+  
+  # For submitting starred links ajaxily
+  $('a.star').click -> 
+    $.ajax
+      type: 'POST'
+      url: $(this).attr 'href'
+    $(this).removeClass('star').addClass('unstar')
+    false
+  $('a.unstar').click -> 
+    $.ajax
+      type: 'PUT'
+      url: $(this).attr 'href'
+    $(this).removeClass('unsstar').addClass('star')
+    false
