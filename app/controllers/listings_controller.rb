@@ -68,6 +68,7 @@ class ListingsController < ApplicationController
   # GET /listings/renew/:id
   def renew
     @listing.update_attribute(:renewed_at, Time.now)
+    flash[:notice] = 'Listing successfully renewed'
     redirect_to :back
   end
 
