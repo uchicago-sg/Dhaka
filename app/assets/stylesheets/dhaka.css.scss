@@ -88,11 +88,20 @@ body {
 #site-toolbar, #user-toolbar {
   max-width: $page-width;
   list-style-type: none;
-  margin: 0 auto -1.5em;
+  margin: 0 auto -2em;
+  line-height: 2em;
 
   li {
     display: inline-block;
   }
+}
+
+#site-toolbar a {
+  padding-left: 24px;
+  background: image_url('star-textured.png') left top no-repeat;
+  background-position: -2px -4px;
+  &:hover  { background-image: image_url('star-grey.png'); }
+  &:active { background-image: image_url('star-black.png'); }
 }
 
 #user-toolbar {
@@ -101,6 +110,7 @@ body {
 }
 
 #marketplace {
+  margin-top: 0.75em;
   max-width: $page-width;
 
   #search_categories { @include layout-left; }
@@ -119,7 +129,6 @@ body {
   }
 
   > h1 {
-    margin-top: -50px 0 0 -50px;
     @include layout-left;
     @include kreon;
     @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
@@ -276,16 +285,11 @@ table#listings-browser {
   max-width: 100%;
 
   tr.listing {
-    & {
-      td { padding: 1em 0; }
+    td:first-child { padding-left: 0.5em; }
+    td:last-child { padding-right: 0.5em; }
 
-      &:first-child {
-        td { padding-top: 0; }
-      }
-
-      &:last-child {
-        td { padding-top: 0; }
-      }
+    &.signed {
+      background-color: lighten($blue, 50%);
     }
 
     .toggle {
@@ -297,6 +301,8 @@ table#listings-browser {
 
     .image {
       width: 15%;
+      min-height: 100px;
+      padding: 0.5em 0;
       text-align: center;
     }
 
@@ -304,10 +310,13 @@ table#listings-browser {
       width: 52%;
       text-align: left;
       color: #444;
+      padding: 0.5em 0;
     }
 
     .description {
+      display: inline-block;
       font-weight: bold;
+      line-height: 24px;
       a         { color: black; }
       a:visited { color: $purple; }
       a:hover   { color: $green; text-decoration: underline; }
@@ -324,6 +333,29 @@ table#listings-browser {
       text-align: right;
       font-weight: bold;
       color: lighten($green, 10%);
+    }
+
+    .starred a {
+      background: image_url('star-textured.png') left top no-repeat;
+      background-position: -4px -4px;
+      height: 24px;
+      width: 24px;
+      display: block;
+      text-indent: 10000%;
+      overflow: hidden;
+    }
+
+    .starred a.unstar { background-image: image_url('star-black.png'); }
+    .starred a:hover, .starred a:active  { background-image: image_url('star-grey.png'); }
+
+    .actions {
+      font-size: 1em;
+      line-height: 1.5em;
+      margin-top: -1.25em;
+      li {
+        display: inline-block;
+        margin-right: 0.3em;
+      }
     }
   }
 }

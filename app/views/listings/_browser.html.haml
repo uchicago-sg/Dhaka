@@ -4,7 +4,12 @@
   %table#listings-browser
     %tbody
       - listings.each do |listing|
-        %tr.listing{:id => listing.permalink}
+        %tr.listing{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
+          %td.starred
+            - if session[:starred] and session[:starred].include?(listing.permalink)
+              = link_to 'Unstar', starred_path(:permalink => listing.permalink), :method => :put, :class => 'unstar'
+            - else
+              = link_to 'Star', starred_path(:permalink => listing.permalink), :method => :post, :class => 'star'
           %td.image
             -unless listing.images.empty?
               .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
@@ -15,16 +20,12 @@
               .details= listing.details.markdown
               .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
             .toggle= link_to 'More', "##{listing.permalink}", :class => 'show-more'
-            %ul.actions
-              %li.compare
-                - if session[:starred] and session[:starred].include?(listing.permalink)
-                  = link_to 'Unstar', starred_path(:permalink => listing.permalink), :method => :put, :class => 'unstar'
-                - else
-                  = link_to 'Star', starred_path(:permalink => listing.permalink), :method => :post, :class => 'star'
-              - if can? :edit, listing
-                %li.edit= link_to 'Edit', edit_listing_path(listing)
-              - if can? :destroy, listing
-                %li.destroy= link_to 'Destroy', listing, :method => :delete
+            - if can? :edit, listing or can? :destroy, listing
+              %ul.actions
+                - if can? :edit, listing
+                  %li.edit= link_to 'Edit', edit_listing_path(listing)
+                - if can? :destroy, listing
+                  %li.destroy= link_to 'Destroy', listing, :method => :delete
           %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
           %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
   = paginate listings if params[:page]

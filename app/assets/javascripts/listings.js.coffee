@@ -30,3 +30,8 @@ $(document).ready ->
       $('.image-upload:visible').last().next().show()
       if $('.image-upload').size() is $('.image-upload:visible').size() then $(this).remove()
       false
+
+  # Before submitting, strip the number formatting added by autoNumeric
+  $('form#new_listing').submit ->
+    input = $(this).find('input.currency')
+    input.val input.val().replace(',','')
