@@ -1,3 +1,5 @@
+- include_javascripts 'tiny_mce/tiny_mce', 'listings_form'
+
 = form_for @listing, :html => { :multipart => true } do |f|
   = render 'shared/form_errors', :resource => @listing
   .field.category
@@ -11,9 +13,7 @@
     .input= f.text_field :price, {:class => 'currency', :tabindex => 4}
   .field.details
     .label= f.label :details
-    %a(href='http://en.wikipedia.org/wiki/Markdown' title='Markdown on Wikipedia' target='_blank') Formatting with Markdown
     .input= f.text_area :details, {:tabindex => 3}
-    .processed-markdown
   .field.images
     = f.fields_for :images do |image|
       - if image.object.new_record?
