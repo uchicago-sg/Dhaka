@@ -15,5 +15,6 @@
     %ul.actions
       - if can? :edit, listing
         %li.edit= link_to 'Edit', edit_listing_path(listing)
+        %li.renew= link_to 'Renew', renew_listings_path(listing)
       - if can? :destroy, listing
         %li.destroy= link_to 'Destroy', listing, :method => :delete
