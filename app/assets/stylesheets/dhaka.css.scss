@@ -31,6 +31,7 @@ a {
 html {
   font-size: 12px;
   line-height: 18px;
+  margin-top: 2px;
 }
 
 body {
@@ -88,10 +89,10 @@ body {
 #site-toolbar, #user-toolbar {
   max-width: $page-width;
   list-style-type: none;
-  margin: 0 auto -2em;
-  line-height: 2em;
+  margin: 0 auto -1.5em;
 
-  li {
+  li, li a {
+    line-height: 1.5em;
     display: inline-block;
   }
 }
@@ -99,7 +100,6 @@ body {
 #site-toolbar a {
   padding-left: 24px;
   background: image_url('star-textured.png') left top no-repeat;
-  background-position: -2px -4px;
   &:hover  { background-image: image_url('star-grey.png'); }
   &:active { background-image: image_url('star-black.png'); }
 }
@@ -284,10 +284,57 @@ table#listings-browser {
   width: 100%;
   max-width: 100%;
 
-  tr.listing {
+  tr {
     td:first-child { padding-left: 0.5em; }
     td:last-child { padding-right: 0.5em; }
+  }
 
+  thead {
+    display: none;
+
+    @media all and (min-width: 768px) {
+      display: table-header-group;
+
+      tr {
+        background-color: white;
+        border-bottom: 1px solid #ccc;
+
+        td {
+          font-size: 1em;
+          line-height: 1.75em;
+          font-weight: bold;
+        }
+      }
+
+      tr.sticky {
+        display: block;
+        position: fixed;
+        width: 100%;
+        top: 0;
+      }
+    }
+  }
+
+  td.created_at, td.price { text-align: right; }
+
+  tr.sticky {
+    td {
+      @include layout-left;
+      width: 20%;
+    }
+
+    .starred { width: 3.1%; }
+
+    .image { width: 15%; }
+
+    .description_and_details { width: 50%; }
+
+    .created_at { width: 16.75%; }
+
+    .price { width: 13%; }
+  }
+
+  tr.listing {
     &.signed {
       background-color: lighten($blue, 50%);
     }
@@ -301,9 +348,7 @@ table#listings-browser {
 
     .image {
       width: 15%;
-      min-height: 100px;
       padding: 0.5em 0;
-      text-align: center;
     }
 
     .description_and_details {
@@ -337,9 +382,10 @@ table#listings-browser {
 
     .starred a {
       background: image_url('star-textured.png') left top no-repeat;
-      background-position: -4px -4px;
-      height: 24px;
-      width: 24px;
+      height: 20px;
+      width: 20px;
+      padding: 2px;
+      margin-right: 0.25em;
       display: block;
       text-indent: 10000%;
       overflow: hidden;

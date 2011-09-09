@@ -85,3 +85,8 @@ $(document).ready ->
         $(this).removeClass('show-more').addClass('show-less').text('Less')
       else
         $(this).removeClass('show-less').addClass('show-more').text('More')
+
+  $('#listings-browser thead tr').waypoint (e, direction) ->
+    $(this).toggleClass 'sticky', direction is  'down'
+    $(this).tie 'width', '#listings-browser', 'width'
+    e.stopPropagation()

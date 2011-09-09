@@ -6,6 +6,7 @@
 //= require bxSlider
 //= require waypoints
 //= require autoNumeric
+//= require tie
 //= require timeago
 //= require mediaqueries
 //= require 'dhaka'

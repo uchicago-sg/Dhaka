@@ -2,6 +2,13 @@
   %h1.sorry No results found
 - else
   %table#listings-browser
+    %thead
+      %tr
+        %td.starred &nbsp;
+        %td.image Image
+        %td.description_and_details Details
+        %td.created_at Posted
+        %td.price Price
     %tbody
       - listings.each do |listing|
         %tr.listing{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
