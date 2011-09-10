@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_filter :process_order_param, :only   => %w( index search )
-  load_resource :find_by => :permalink, :except => %w( index show expire unexpire )
+  load_resource :find_by => :permalink, :only => %w( new create )
   authorize_resource
   respond_to :html, :json
 
@@ -34,7 +34,7 @@ class ListingsController < ApplicationController
   # GET /listings/:id
   def show
     if user_signed_in?
-      @listing = Listing.unscoped.find_by_permalink params[:id]
+      @listing = Listing.unretired.find_by_permalink params[:id]
     else
       @listing = Listing.find_by_permalink params[:id]
     end
@@ -42,8 +42,9 @@ class ListingsController < ApplicationController
     respond_with @listing
   end
 
-  # GET /listings/:id/editw
+  # GET /listings/:id/edit
   def edit
+    @listing = Listing.unretired.find_by_permalink params[:id]
     if @listing.images.length < Listing::MAX_IMAGES
       (Listing::MAX_IMAGES - @listing.images.length).times { @listing.images.build }
     end
@@ -80,7 +81,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/expire/:id
   def expire
-    @listing = Listing.unscoped.find_by_permalink params[:id]
+    @listing = Listing.unretired.find_by_permalink params[:id]
     @listing.expire.save
     flash[:notice] = 'Listing successfully expired'
     if request.env["HTTP_REFERER"]
@@ -92,7 +93,7 @@ class ListingsController < ApplicationController
 
   # POST /listings/expire/:id
   def unexpire
-    @listing = Listing.unscoped.find_by_permalink params[:id]
+    @listing = Listing.unretired.find_by_permalink params[:id]
     @listing.unexpire.save
     flash[:notice] = 'Listing successfully unexpired'
     if request.env["HTTP_REFERER"]

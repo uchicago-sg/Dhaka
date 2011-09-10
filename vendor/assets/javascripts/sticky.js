@@ -57,7 +57,7 @@
 			{
 			// Building and inserting sticky note
 			$('.sticky-queue').prepend('<div class="sticky border-' + position + '" id="' + uniqID + '"></div>');
-			$('#' + uniqID).append('<img src="assets/close.png" class="sticky-close" rel="' + uniqID + '" title="Close" />');
+			$('#' + uniqID).append('<img src="/assets/close.png" class="sticky-close" rel="' + uniqID + '" title="Close" />');
 			$('#' + uniqID).append('<div class="sticky-note" rel="' + uniqID + '">' + note + '</div>');
 			
 			// Smoother animation

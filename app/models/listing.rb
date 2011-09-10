@@ -36,6 +36,7 @@ class Listing < ActiveRecord::Base
   scope :unexpired, where('listings.renewed_at >= ?', 1.week.ago)
   scope :expired,   where(:renewed_at => 2.weeks.ago..1.week.ago)
   scope :retiring,  where('listings.renewed_at < ?', 2.weeks.ago)
+  scope :unretiring, where('listings.renewed_at >= ?', 2.weeks.ago)
 
   # Check your scopes, because retired listings are exluded by default
   default_scope where('listings.renewed_at >= ? AND listings.expired = ?', 2.weeks.ago, false)
@@ -79,6 +80,10 @@ class Listing < ActiveRecord::Base
 
   def self.retired
     unscoped.retiring
+  end
+
+  def self.unretired
+    unscoped.unretiring
   end
 
   def to_param

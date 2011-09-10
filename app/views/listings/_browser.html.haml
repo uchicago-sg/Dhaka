@@ -31,7 +31,7 @@
               %ul.actions
                 - if can? :edit, listing
                   %li.edit= link_to 'Edit', edit_listing_path(listing)
-                - if can? :renew, listing
+                - if can? :renew, listing and listing.renewable?
                   %li.renew= listing.renewable? ? 'Renew' : link_to('Renew', renew_listings_path(listing), :remote => true)
                 - if can? :expire, listing and can? :unexpire, listing
                   %li.expiration= listing.explicitly_expired? ? link_to('Unexpire', unexpire_listings_path(listing), :method => :post, :remote => true, :class => 'unexpire') : link_to('Expire', expire_listings_path(listing), :remote => true, :class => 'expire')
