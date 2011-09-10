@@ -44,7 +44,7 @@ class Listing < ActiveRecord::Base
   end
 
   def renewable?
-    return true if published and renewed_at >= 2.weeks.ago and renewed_at < 1.week.ago
+    return true if published? and renewed_at >= 2.weeks.ago and renewed_at < 1.week.ago
     false
   end
 

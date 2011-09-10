@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         @listings = Listing.unexpired.where :seller_id => @user.id
       end
     else
-      @listings = @user.listings
+      @listings = @user.listings.searchable
     end
     @listings = @listings.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @user

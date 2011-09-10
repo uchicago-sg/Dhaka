@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   def index
     @category = Category.all
-    @listings = Listing.order(Listing::DEFAULT_ORDER).page(params[:page])
+    @listings = Listing.searchable.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @categories do |format|
       format.atom
       format.rss { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/:id
   def show
-    @listings = @category.listings.order(Listing::DEFAULT_ORDER).page(params[:page])
+    @listings = @category.listings.searchable.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @category do |format|
       format.atom
       format.rss { redirect_to category_path(@category, :format => :atom), :status => :moved_permanently }
