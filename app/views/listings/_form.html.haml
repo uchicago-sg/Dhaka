@@ -2,16 +2,16 @@
   = render 'shared/form_errors', :resource => @listing
   .field.category
     .label= f.label :category_ids, 'Category'
-    .input= f.collection_select :category_ids, Category.all, :id, :description, {}, {:tabindex => 1}
+    .input= f.collection_select :category_ids, Category.all, :id, :description, {}, {:tabindex => autotab}
   .field.description
     .label= f.label :description
-    .input= f.text_field :description, {:tabindex => 2}
+    .input= f.text_field :description, {:tabindex => autotab}
   .field.price
     .label= f.label :price
-    .input= f.text_field :price, {:class => 'currency', :tabindex => 4}
+    .input= f.text_field :price, {:class => 'currency', :tabindex => autotab}
   .field.details
     .label= f.label :details
-    .input= f.text_area :details, {:tabindex => 3}
+    .input= f.text_area :details, {:tabindex => autotab}
   .field.images
     = f.fields_for :images do |image|
       - if image.object.new_record?
@@ -23,4 +23,4 @@
           .preview= link_to image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original)
           .remove #{image.check_box :_destroy} Remove image
     #add-image= link_to 'Add Another Image'
-  .submit= f.submit :tabindex => 5
+  .submit= f.submit :tabindex => autotab

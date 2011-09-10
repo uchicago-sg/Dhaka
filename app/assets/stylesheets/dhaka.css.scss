@@ -99,9 +99,9 @@ body {
 
 #site-toolbar a {
   padding-left: 24px;
-  background: image_url('star-textured.png') left top no-repeat;
-  &:hover  { background-image: image_url('star-grey.png'); }
-  &:active { background-image: image_url('star-black.png'); }
+  background: image_url('star.png') left top no-repeat;
+  &:hover  { background-position: 0 -20px; }
+  &:active { background-position: 0 -40px; }
 }
 
 #user-toolbar {
@@ -345,9 +345,8 @@ table#listings-browser {
   }
 
   tr.listing {
-    &.signed {
-      background-color: lighten($blue, 50%);
-    }
+    &:nth-child(odd) { background-color: #f6f6f6; }
+    &.signed { background-color: lighten($blue, 50%); }
 
     .toggle {
       width: 100%;
@@ -391,18 +390,17 @@ table#listings-browser {
     }
 
     .starred a {
-      background: image_url('star-textured.png') left top no-repeat;
+      background: image_url('star.png') left top no-repeat;
       height: 20px;
       width: 20px;
-      padding: 2px;
-      margin-right: 0.25em;
+      margin-right: 0.5em;
       display: block;
       text-indent: 10000%;
       overflow: hidden;
     }
 
-    .starred a.unstar { background-image: image_url('star-black.png'); }
-    .starred a:hover, .starred a:active  { background-image: image_url('star-grey.png'); }
+    .starred a.unstar { background-position: 0 -20px; }
+    .starred a:hover, .starred a:active  { background-position: 0 -40px; }
 
     .actions {
       font-size: 1em;

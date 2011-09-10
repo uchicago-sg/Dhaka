@@ -36,4 +36,10 @@ module ApplicationHelper
     category_description = category.nil? ? 'All Categories' : category.description
     link_to category_description, categories_search_path(category)
   end
+
+  # See http://stackoverflow.com/questions/223984/automatic-method-to-set-the-tabindex-using-form-helpers
+  def autotab
+    @current_tab ||= 0
+    @current_tab += 1
+  end
 end

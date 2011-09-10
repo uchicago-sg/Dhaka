@@ -13,7 +13,8 @@ $(document).ready ->
     moveSlideQty: 1
 
   # Open an image in the Fancybox
-  $('a.fancybox-image').fancybox()
+  $('a.fancybox-image').fancybox
+    centerOnScroll: true
 
   # Highlight the current category in the sidebar if selected in simple search form
   if $('#listings.index').exists()

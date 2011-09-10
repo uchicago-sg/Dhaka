@@ -42,6 +42,7 @@ $(document).ready ->
     $.cookie 'visited', true, {expires: 730}
     $(document).ready ->
       $.fancybox
+        centerOnScroll: true
         content: '
           <div id="splash">
             <h1>Welcome to the new Marketplace</h1>
@@ -94,6 +95,7 @@ $(document).ready ->
   # TODO Add notifications (part of notifications system, perhaps?)
   $('.starred').delegate 'a.star', 'ajax:success', ->
     $(this).removeClass('star').addClass('unstar').text('Unstar').attr('data-method', 'put')
+    $.sticky 'Successfully starred listing'
 
   $('.starred').delegate 'a.unstar', 'ajax:success', ->
     # Hide the listing when unstarred on /starred, otherwise rework the link
@@ -101,6 +103,12 @@ $(document).ready ->
       console.log $(this).closest('.listing').slideUp()
     else
       $(this).removeClass('unstar').addClass('star').text('Star').attr('data-method', 'post')
+    $.sticky 'Successfully unstarred listing'
+
+  # Notify of successful renewal and disallow another renewal by removing the link
+  $('.renew').bind 'ajax:success', ->
+    $.sticky 'Successfully renewed listing'
+    $(this).html $(this).find('a').text()
 
   # Slick new flashes mechanism with Sticky
   $('#flashes > p').hide().each -> $(this).sticky()

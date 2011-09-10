@@ -10,6 +10,7 @@ class Ability
 
     if user.has_role? 'seller'
       can :create, Listing
+      can :renew, Listing, :seller_id => user.id
       can :update, Listing, :seller_id => user.id
       can :manage, User, :id => user.id
     end
