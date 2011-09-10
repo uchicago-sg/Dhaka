@@ -101,6 +101,7 @@ $(document).ready ->
     # Hide the listing when unstarred on /starred, otherwise rework the link
     if $('#comparisons.show').exists()
       $(this).closest('.listing').slideUp().remove()
+      if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
     else
       $(this).removeClass('unstar').addClass('star').text('Star').attr('data-method', 'post')
     $.sticky 'Successfully unstarred listing'
@@ -122,7 +123,21 @@ $(document).ready ->
     $(this).removeClass('unpublish').addClass('publish').text('Publish').attr('data-method', 'GET')
     listing = $(this).closest('.listing')
     listing.find('.renew').hide()
-    unless $('#users.show').exists() then listing.slideUp().remove()
+    unless $('#users.show').exists()
+      listing.slideUp().remove()
+      if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
 
   # Slick new flashes mechanism with Sticky
   $('#flashes > p').hide().each -> $(this).sticky()
+
+  # Throw in a tip every once in a while
+  tips = [
+    'Listings with light blue backgrounds were created by signed sellers',
+    'You can star listings to save them for review later',
+    'Subscribe to any Advanced Search to get real-time updates'
+  ]
+
+  a = Math.random() * 1000
+  b = Math.random() * 500
+  c = Math.round(a % tips.length)
+  if a < b  and c isnt null then $.sticky('<strong>Tip:</strong> ' + tips[c])

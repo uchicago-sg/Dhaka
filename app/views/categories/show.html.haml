@@ -1,4 +1,6 @@
 - title @category.description
+%h1= @category.description
+%p= @category.details
 %ul.actions
   - if can? :manage, @category
     %li.edit= link_to 'Edit', edit_category_path(@category)

@@ -1,4 +1,5 @@
-- title 'Edit Category'
+- title "Edit #{@category.description.capitalize}"
+%h1 Edit #{@category.description.capitalize}
 = render 'form'
 %ul.actions
   %li.show= link_to 'Show', @category

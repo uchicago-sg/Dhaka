@@ -5,8 +5,12 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    if user_signed_in? and @user.id == current_user.id
-      @listings = Listing.unexpired.where :seller_id => @user.id
+    if user_signed_in?
+      if current_user.admin?
+        @listings = Listing
+      else
+        @listings = Listing.unexpired.where :seller_id => @user.id
+      end
     else
       @listings = @user.listings
     end
