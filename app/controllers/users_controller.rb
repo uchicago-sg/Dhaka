@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users/:id
   def show
     if user_signed_in? and @user.id == current_user.id
-      @listings = Listing.unretired.where :seller_id => @user.id
+      @listings = Listing.unexpired.where :seller_id => @user.id
     else
       @listings = @user.listings
     end

@@ -39,7 +39,7 @@ $(document).ready ->
 
   # First-time visitor welcome splash
   unless $.cookie('visited')
-    $.cookie 'visited', true, {expires: 730}
+    $.cookie 'visited', true, {publishs: 730}
     $(document).ready ->
       $.fancybox
         centerOnScroll: true
@@ -110,19 +110,19 @@ $(document).ready ->
     $.sticky 'Successfully renewed listing'
     $(this).html $(this).find('a').text()
 
-  # Notify of expiration or unexpiration
-  $('.expiration').delegate 'a.expire', 'ajax:success', ->
+  # Notify of publicize or unpublicize
+  $('.publish').closest('.listing').find('.renew').hide()
+  $('.publicize').delegate 'a.publish', 'ajax:success', ->
+    $.sticky 'Successfully published listing'
+    $(this).removeClass('publish').addClass('unpublish').text('Unpublish').attr('data-method', 'POST')
+    $(this).closest('.listing').find('.renew').show()
+
+  $('.publicize').delegate 'a.unpublish', 'ajax:success', ->
+    $.sticky 'Successfully unpublished listing'
+    $(this).removeClass('unpublish').addClass('publish').text('Publish').attr('data-method', 'GET')
     listing = $(this).closest('.listing')
-    $.sticky 'Successfully expired listing'
-    $(this).removeClass('expire').addClass('unexpire').text('Unexpire').attr('data-method', 'POST')
     listing.find('.renew').hide()
     unless $('#users.show').exists() then listing.slideUp().remove()
-
-  $('.unexpire').closest('.listing').find('.renew').hide()
-  $('.expiration').delegate 'a.unexpire', 'ajax:success', ->
-    $.sticky 'Successfully unexpired listing'
-    $(this).removeClass('unexpire').addClass('expire').text('Expire').attr('data-method', 'GET')
-    $(this).closest('.listing').find('.renew').show()
 
   # Slick new flashes mechanism with Sticky
   $('#flashes > p').hide().each -> $(this).sticky()

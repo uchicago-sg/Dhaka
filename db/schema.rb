@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910022543) do
+ActiveRecord::Schema.define(:version => 20110910175621) do
 
   create_table "categories", :force => true do |t|
     t.string   "description", :null => false
@@ -44,15 +44,15 @@ ActiveRecord::Schema.define(:version => 20110910022543) do
   create_table "listings", :force => true do |t|
     t.string   "description"
     t.text     "details"
-    t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "price",       :default => 0.0
     t.integer  "status"
     t.integer  "seller_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
     t.datetime "renewed_at"
-    t.integer  "renewals",                                  :default => 0
-    t.boolean  "expired",                                   :default => false
+    t.integer  "renewals",    :default => 0
+    t.boolean  "published",   :default => true
   end
 
   create_table "taggings", :force => true do |t|

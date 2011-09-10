@@ -32,24 +32,24 @@ class Listing < ActiveRecord::Base
   scope :signed, joins(:seller).where('users.signed = ?', true)
 
   # Listing lifecycle
-  # FYI There may be some incredibly small (like milliseconds) overlap here...
-  scope :unexpired, where('listings.renewed_at >= ?', 1.week.ago)
-  scope :expired,   where(:renewed_at => 2.weeks.ago..1.week.ago)
-  scope :retiring,  where('listings.renewed_at < ?', 2.weeks.ago)
-  scope :unretiring, where('listings.renewed_at >= ?', 2.weeks.ago)
+  scope :published,   where(:published => true)
+  scope :unpublished, where(:published => false)
+  scope :available,   where('listings.renewed_at >= ?', 1.week.ago)  # Less than a week old
+  scope :renewable,   where(:renewed_at => 2.weeks.ago..1.week.ago)  # Between one and two weeks old
+  scope :unexpired,   where('listings.renewed_at >= ?', 2.weeks.ago) # Less than two weeks old
+  scope :expired,     where('listings.renewed_at < ?', 2.weeks.ago)  # More than two weeks old
 
-  # Check your scopes, because retired listings are exluded by default
-  default_scope where('listings.renewed_at >= ? AND listings.expired = ?', 2.weeks.ago, false)
+  def unpublished?
+    not published?
+  end
 
   def renewable?
-    if expired == false
-      if renewed_at >= 2.weeks.ago
-        if renewed_at < 1.week.ago
-          return true
-        end
-      end
-    end
+    return true if published and renewed_at >= 2.weeks.ago and renewed_at < 1.week.ago
     false
+  end
+
+  def self.searchable
+    self.published.available
   end
 
   def renew
@@ -57,33 +57,14 @@ class Listing < ActiveRecord::Base
     self
   end
 
-  # An unfortunate name, looking back on it, as we've already got an "expired" scope
-  # Think of this as an explicit expiration flag
-  def expire
-    self.expired = true
+  def publish
+    self.published = true
     self
   end
 
-  def unexpire
-    self.expired = false
+  def unpublish
+    self.published = false
     self
-  end
-
-  def explicitly_expired?
-    expired?
-  end
-
-  scope :explicitly_expiring, where(:expired => true)
-  def self.explicitly_expired
-    unscoped.explicitly_expiring
-  end
-
-  def self.retired
-    unscoped.retiring
-  end
-
-  def self.unretired
-    unscoped.unretiring
   end
 
   def to_param

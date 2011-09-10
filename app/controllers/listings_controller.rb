@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_filter :process_order_param, :only   => %w( index search )
-  load_resource :find_by => :permalink, :only => %w( new create )
+  before_filter :find_readable_listing, :only => %w( show )
+  load_resource :find_by => :permalink, :except => %w( show search )
   authorize_resource
   respond_to :html, :json
 
@@ -33,18 +34,11 @@ class ListingsController < ApplicationController
 
   # GET /listings/:id
   def show
-    if user_signed_in?
-      @listing = Listing.unretired.find_by_permalink params[:id]
-    else
-      @listing = Listing.find_by_permalink params[:id]
-    end
-    raise CanCan::AccessDenied.new(nil, :show, Listing) unless @listing
     respond_with @listing
   end
 
   # GET /listings/:id/edit
   def edit
-    @listing = Listing.unretired.find_by_permalink params[:id]
     if @listing.images.length < Listing::MAX_IMAGES
       (Listing::MAX_IMAGES - @listing.images.length).times { @listing.images.build }
     end
@@ -79,24 +73,22 @@ class ListingsController < ApplicationController
     redirect_to :back
   end
 
-  # GET /listings/expire/:id
-  def expire
-    @listing = Listing.unretired.find_by_permalink params[:id]
-    @listing.expire.save
-    flash[:notice] = 'Listing successfully expired'
-    if request.env["HTTP_REFERER"]
+  # GET /listings/publish/:id
+  def publish
+    @listing.publish.save
+    flash[:notice] = 'Listing successfully published'
+    if request.env['HTTP_REFERER']
       redirect_to :back
     else
       redirect_to :root
     end
   end
 
-  # POST /listings/expire/:id
-  def unexpire
-    @listing = Listing.unretired.find_by_permalink params[:id]
-    @listing.unexpire.save
-    flash[:notice] = 'Listing successfully unexpired'
-    if request.env["HTTP_REFERER"]
+  # POST /listings/publish/:id
+  def unpublish
+    @listing.unpublish.save
+    flash[:notice] = 'Listing successfully unpublished'
+    if request.env['HTTP_REFERER']
       redirect_to :back
     else
       redirect_to :root
@@ -108,7 +100,7 @@ class ListingsController < ApplicationController
     @include_expired = params[:include_expired].present? and ( params[:include_expired] == '1' or params[:include_expired] == 'on' )
     @images_present  = params[:images_present].present?  and ( params[:images_present]  == '1' or params[:images_present]  == 'on' )
 
-    listings  = Listing
+    listings  = Listing.searchable
     listings  = listings.unexpired unless @include_expired
     listings  = listings.with_images if @images_present
     @search   = listings.search params[:q]
@@ -125,5 +117,17 @@ private
     i  = params[:order].to_i || 0
     i %= Listing::ORDER_BY.length
     @order = Listing::ORDER_BY[i][1]
+  end
+
+  # If a listing is published, great! Everyone can read it
+  # If not, it's only accessible to those with publisher rights
+  def find_readable_listing
+    scope    = Listing.searchable
+    scope    = Listing.unexpired if user_signed_in?
+    @listing = scope.searchable.find_by_permalink params[:id]
+
+    # Should probably be 404s, but whatever...
+    raise CanCan::AccessDenied.new(nil, :show, Listing) unless @listing
+    raise CanCan::AccessDenied.new(nil, :show, Listing) if @listing.unpublished? and cannot? :publish, @listing
   end
 end

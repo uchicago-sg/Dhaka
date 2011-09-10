@@ -40,6 +40,13 @@ class User < ActiveRecord::Base
     signed
   end
 
+  # Make can? available to models
+  # See http://stackoverflow.com/questions/3293400/access-cancans-can-method-from-a-model
+  def ability
+    @ability ||= Ability.new(self)
+  end
+  delegate :can?, :cannot?, :to => :ability
+
   def to_param
     permalink
   end
