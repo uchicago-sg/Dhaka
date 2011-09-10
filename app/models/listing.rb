@@ -40,6 +40,17 @@ class Listing < ActiveRecord::Base
   # Check your scopes, because retired listings are exluded by default
   default_scope where('listings.renewed_at >= ? AND listings.expired = ?', 2.weeks.ago, false)
 
+  def renewable?
+    if expired == false
+      if renewed_at >= 2.weeks.ago
+        if renewed_at < 1.week.ago
+          return true
+        end
+      end
+    end
+    false
+  end
+
   def renew
     self.renewed_at = Time.now
     self
@@ -50,6 +61,20 @@ class Listing < ActiveRecord::Base
   def expire
     self.expired = true
     self
+  end
+
+  def unexpire
+    self.expired = false
+    self
+  end
+
+  def explicitly_expired?
+    expired?
+  end
+
+  scope :explicitly_expiring, where(:expired => true)
+  def self.explicitly_expired
+    unscoped.explicitly_expiring
   end
 
   def self.retired

@@ -110,10 +110,19 @@ $(document).ready ->
     $.sticky 'Successfully renewed listing'
     $(this).html $(this).find('a').text()
 
-  # Notify of successful expiration and disallow another expiration by removing the listing
-  $('.expire').bind 'ajax:success', ->
+  # Notify of expiration or unexpiration
+  $('.expiration').delegate 'a.expire', 'ajax:success', ->
+    listing = $(this).closest('.listing')
     $.sticky 'Successfully expired listing'
-    $(this).closest('.listing').slideUp().remove()
+    $(this).removeClass('expire').addClass('unexpire').text('Unexpire').attr('data-method', 'POST')
+    listing.find('.renew').hide()
+    unless $('#users.show').exists() then listing.slideUp().remove()
+
+  $('.unexpire').closest('.listing').find('.renew').hide()
+  $('.expiration').delegate 'a.unexpire', 'ajax:success', ->
+    $.sticky 'Successfully unexpired listing'
+    $(this).removeClass('unexpire').addClass('expire').text('Expire').attr('data-method', 'GET')
+    $(this).closest('.listing').find('.renew').show()
 
   # Slick new flashes mechanism with Sticky
   $('#flashes > p').hide().each -> $(this).sticky()

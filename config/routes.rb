@@ -19,8 +19,9 @@ Dhaka::Application.routes.draw do
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
     collection do
-      match 'renew/:id'  => 'listings#renew',  :as => :renew
-      match 'expire/:id' => 'listings#expire', :as => :expire
+      match 'renew/:id'  => 'listings#renew',    :as => :renew
+      get   'expire/:id' => 'listings#expire',   :as => :expire
+      post  'expire/:id' => 'listings#unexpire', :as => :unexpire
       match 'search' => 'listings#search', :via => [:get, :post], :as => :search
     end
   end
