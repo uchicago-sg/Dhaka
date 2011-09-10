@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/amatsuda/kaminari
+  revision: fe01a41046d127239343a4380dd18e456f270f82
+  specs:
+    kaminari (0.12.4)
+      railties (>= 3.0.0)
+
+GIT
   remote: git://github.com/chriseppstein/compass.git
   revision: 22e2458b77519e8eb8463170c1a1fe4bab105f3e
   branch: rails31
@@ -126,8 +133,6 @@ GEM
     json (1.5.4)
     json_pure (1.5.4)
       spruz (~> 0.2.8)
-    kaminari (0.12.4)
-      rails (>= 3.0.0)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     mail (2.3.0)
@@ -267,7 +272,7 @@ DEPENDENCIES
   haml-rails
   high_voltage
   jquery-rails
-  kaminari
+  kaminari!
   nokogiri
   paper_trail
   paperclip

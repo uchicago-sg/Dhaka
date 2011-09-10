@@ -11,6 +11,7 @@
     .input= f.text_field :price, {:class => 'currency', :tabindex => autotab}
   .field.details
     .label= f.label :details
+    = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'
     .input= f.text_area :details, {:tabindex => autotab}
   .field.images
     = f.fields_for :images do |image|

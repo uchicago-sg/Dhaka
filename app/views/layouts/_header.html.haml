@@ -9,13 +9,11 @@
     %li.login= link_to 'Login', '/login'
 %header#marketplace
   %h1= root? ? SITE_NAME : link_to(SITE_NAME, :root)
-
   - unless flash.empty?
     #flashes
       - flash.each do |type, text|
         %p{:class => type}= text
-
-  - unless controller_name == 'pages' or action_name == 'search'
+  - unless %w( pages categories ).include? controller_name or action_name == 'search'
     = search_form_for @search, {:id => :search_listings} do |f|
       = field_set_tag nil, {:id => :search_order} do
         %span.field

@@ -13,13 +13,14 @@ Dhaka::Application.routes.draw do
     get "login"    => "devise/sessions#new"
     get "logout"   => "devise/sessions#destroy"
   end
-  
+
   resource :starred, :controller => 'comparisons', :only => %w( create show update )
   resources :users,      :only => %w( show edit update )
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
     collection do
       match 'renew/:id'  => 'listings#renew',  :as => :renew
+      match 'expire/:id' => 'listings#expire', :as => :expire
       match 'search' => 'listings#search', :via => [:get, :post], :as => :search
     end
   end

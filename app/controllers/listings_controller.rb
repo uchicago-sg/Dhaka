@@ -64,11 +64,18 @@ class ListingsController < ApplicationController
     flash[:notice] = "Listing successfully destroyed, #{undo_link}".html_safe
     respond_with @listing
   end
-  
+
   # GET /listings/renew/:id
   def renew
-    @listing.update_attribute(:renewed_at, Time.now)
+    @listing.renew.save
     flash[:notice] = 'Listing successfully renewed'
+    redirect_to :back
+  end
+
+  # GET /listings/expire/:id
+  def expire
+    @listing.expire.save
+    flash[:notice] = 'Listing successfully expired'
     redirect_to :back
   end
 

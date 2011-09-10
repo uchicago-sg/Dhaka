@@ -35,8 +35,22 @@ class Listing < ActiveRecord::Base
   # FYI There may be some incredibly small (like milliseconds) overlap here...
   scope :unexpired, where('listings.renewed_at >= ?', 1.week.ago)
   scope :expired,   where(:renewed_at => 2.weeks.ago..1.week.ago)
-  scope :retiring,  where('listings.renewed_at < ?', 2.weeks.ago) # Run this unscoped, because...
-  default_scope    where('listings.renewed_at >= ?', 2.weeks.ago) # retired listings are exluded by default
+  scope :retiring,  where('listings.renewed_at < ?', 2.weeks.ago)
+
+  # Check your scopes, because retired listings are exluded by default
+  default_scope where('listings.renewed_at >= ? AND listings.expired = ?', 2.weeks.ago, false)
+
+  def renew
+    self.renewed_at = Time.now
+    self
+  end
+
+  # An unfortunate name, looking back on it, as we've already got an "expired" scope
+  # Think of this as an explicit expiration flag
+  def expire
+    self.expired = true
+    self
+  end
 
   def self.retired
     unscoped.retiring

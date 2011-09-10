@@ -100,7 +100,7 @@ $(document).ready ->
   $('.starred').delegate 'a.unstar', 'ajax:success', ->
     # Hide the listing when unstarred on /starred, otherwise rework the link
     if $('#comparisons.show').exists()
-      console.log $(this).closest('.listing').slideUp()
+      $(this).closest('.listing').slideUp().remove()
     else
       $(this).removeClass('unstar').addClass('star').text('Star').attr('data-method', 'post')
     $.sticky 'Successfully unstarred listing'
@@ -109,6 +109,11 @@ $(document).ready ->
   $('.renew').bind 'ajax:success', ->
     $.sticky 'Successfully renewed listing'
     $(this).html $(this).find('a').text()
+
+  # Notify of successful expiration and disallow another expiration by removing the listing
+  $('.expire').bind 'ajax:success', ->
+    $.sticky 'Successfully expired listing'
+    $(this).closest('.listing').slideUp().remove()
 
   # Slick new flashes mechanism with Sticky
   $('#flashes > p').hide().each -> $(this).sticky()

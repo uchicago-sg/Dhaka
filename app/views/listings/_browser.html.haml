@@ -31,9 +31,12 @@
               %ul.actions
                 - if can? :edit, listing
                   %li.edit= link_to 'Edit', edit_listing_path(listing)
+                - if can? :renew, listing
                   %li.renew= link_to 'Renew', renew_listings_path(listing), :remote => true
+                - if can? :expire, listing
+                  %li.expire= link_to 'Expire', expire_listings_path(listing), :remote => true
                 - if can? :destroy, listing
                   %li.destroy= link_to 'Destroy', listing, :method => :delete
           %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
           %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
-  = paginate listings if params[:page]
+  = paginate listings

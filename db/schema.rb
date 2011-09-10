@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110808204944) do
+ActiveRecord::Schema.define(:version => 20110910022543) do
 
   create_table "categories", :force => true do |t|
     t.string   "description", :null => false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20110808204944) do
     t.string   "permalink"
     t.datetime "renewed_at"
     t.integer  "renewals",                                  :default => 0
+    t.boolean  "expired",                                   :default => false
   end
 
   create_table "taggings", :force => true do |t|

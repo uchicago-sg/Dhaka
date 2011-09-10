@@ -34,12 +34,15 @@ $(document).ready ->
       if $('.image-upload').size() is $('.image-upload:visible').size() then $(this).remove()
       false
 
-  $('textarea').tinymce
-    theme: 'advanced'
-    theme_advanced_toolbar_location: 'top'
-    theme_advanced_buttons1: 'undo,redo,separator,bold,italic,underline,separator,bullist,numlist,outdent,indent,separator,link,unlink'
-    theme_advanced_buttons2: ''
-    theme_advanced_buttons3: ''
+  # Add TinyMCE on desktop
+  if $(window).width() > 768
+    $('.markdown-help').hide()
+    $('textarea').tinymce
+      theme: 'advanced'
+      theme_advanced_toolbar_location: 'top'
+      theme_advanced_buttons1: 'undo,redo,separator,bold,italic,underline,separator,bullist,numlist,outdent,indent,separator,link,unlink'
+      theme_advanced_buttons2: ''
+      theme_advanced_buttons3: ''
 
   # Before submitting, strip the number formatting added by autoNumeric
   $('form#new_listing').submit ->

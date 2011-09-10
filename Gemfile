@@ -4,7 +4,6 @@ gem 'rails'         # Only the latest, baby
 gem 'capistrano'    # Deploying to Saluki for now
 gem 'foreman'       # Simple process management
 gem 'cancan'        # User authorization
-gem 'kaminari'      # Dead-simple pagination
 gem 'rdiscount'     # Markdown processor
 gem 'high_voltage'  # Easy static pages
 gem 'paperclip'     # Easy file attachments
@@ -22,6 +21,7 @@ gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
 
 gem 'tinymce-rails'
+gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari' # Dead-simple pagination
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31' # Hotsauce
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'   # Dead-simple tagging
 
