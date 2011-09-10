@@ -259,7 +259,7 @@ body {
   > div:first-child { @include layout-clear; }
 }
 
-.index, .show, .edit, .new {
+.index, .show, .edit, .new, .create, #passwords, #registrations, #sessions {
   #listing_search {
     background-color: #f6f6f6;
     padding: 0.5em 0;

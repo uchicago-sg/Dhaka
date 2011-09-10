@@ -53,4 +53,5 @@ Dhaka::Application.configure do
 
   # For Devise (change later)
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.smtp_settings       = { :enable_starttls_auto => false }
 end
