@@ -3,7 +3,7 @@ feed.updated Time.now
 feed_items.each do |item|
   feed.entry item do |entry|
     entry.title "#{item.description} - #{number_to_currency(item.price)}"
-    entry.content item.details
+    entry.content item.details.markdown, :type => 'html'
     entry.author do |author|
       author.name item.seller.name
     end

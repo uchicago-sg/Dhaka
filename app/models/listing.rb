@@ -39,6 +39,10 @@ class Listing < ActiveRecord::Base
   scope :unexpired,   where('listings.renewed_at >= ?', 2.weeks.ago) # Less than two weeks old
   scope :expired,     where('listings.renewed_at < ?', 2.weeks.ago)  # More than two weeks old
 
+  def expired?
+    renewed_at < 2.weeks.ago
+  end
+
   def unpublished?
     not published?
   end

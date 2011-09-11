@@ -12,6 +12,7 @@
 
 .sans-serif, body { @include sans-serif; }
 
+
 i, em { font-style: italic; }
 
 b, strong { font-weight: bold; }
@@ -26,6 +27,7 @@ a {
   &:active { color: $red; }
   &:hover, &:active { text-decoration: underline; }
 }
+
 
 html {
   font-size: 12px;
@@ -43,6 +45,7 @@ body {
     margin: 0 auto;
   }
 }
+
 
 #splash {
   text-align: justify;
@@ -69,6 +72,7 @@ body {
   }
 }
 
+
 #flashes {
   width: 100%;
   text-align: center;
@@ -84,6 +88,7 @@ body {
   .error { color: white; background-color: lighten($red, 10%); }
   .notice { color: black; background-color: $yellow; }
 }
+
 
 #site-toolbar, #user-toolbar {
   max-width: $page-width;
@@ -107,6 +112,7 @@ body {
   text-align: right;
   li:first-child { margin-right: 0.75em; }
 }
+
 
 #marketplace {
   margin-top: 0.75em;
@@ -146,9 +152,24 @@ body {
   }
 }
 
+
 #content {
   clear: both;
   text-align: left;
+
+  .field, .subfield {
+    display: block;
+    padding: 0.25em 0;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-weight: bold;
+  }
+
+  h2 { font-size: 1.25em; }
+  h3 { font-size: 1em; }
 }
 
 #main ol, #main ul {
@@ -160,6 +181,7 @@ body {
   list-style: none !important;
   ol, ul, li { margin-left: 0 !important; }
 }
+
 
 #sidebar, #main {
   margin: 0.75em 0;
@@ -205,51 +227,6 @@ body {
   }
 }
 
-body {
-  > footer {
-    @include layout-clear;
-    margin-top: 1em;
-    margin-bottom: 2.5em;
-    text-align: center;
-
-    ul {
-      font-size: 0.8em;
-      list-style-type: none;
-    }
-
-    .left, .center, .right {
-      padding: 0.5em 0;
-      @media all and (min-width: 768px) {
-        width: 15%;
-        height: $footer-height;
-        text-align: right;
-      }
-    }
-
-    .left {
-      @media all and (min-width: 768px) {
-        width: 70%;
-        background: image-url('wordmark.png') no-repeat;
-      }
-    }
-  }
-}
-
-#content {
-  .field, .subfield {
-    display: block;
-    padding: 0.25em 0;
-  }
-
-  h1, h2, h3 {
-    font-size: 1.5em;
-    line-height: 1.5em;
-    font-weight: bold;
-  }
-
-  h2 { font-size: 1.25em; }
-  h3 { font-size: 1em; }
-}
 
 #listing_search {
   @include layout-clear;
@@ -259,7 +236,7 @@ body {
   > div:first-child { @include layout-clear; }
 }
 
-.index, .show, .edit, .new, .create, #passwords, #registrations, #sessions {
+.index, .show, .edit, .new, .create, .dashboard, #passwords, #registrations, #sessions {
   #listing_search {
     background-color: #f6f6f6;
     padding: 0.5em 0;
@@ -288,6 +265,7 @@ body {
     }
   }
 }
+
 
 table#listings-browser {
   width: 100%;
@@ -411,7 +389,41 @@ table#listings-browser {
       }
     }
   }
+
+  tr.expired * {
+    color: #999 !important;
+  }
 }
+
+
+body > footer {
+  @include layout-clear;
+  margin-top: 1em;
+  margin-bottom: 2.5em;
+  text-align: center;
+
+  ul {
+    font-size: 0.8em;
+    list-style-type: none;
+  }
+
+  .left, .center, .right {
+    padding: 0.5em 0;
+    @media all and (min-width: 768px) {
+      width: 15%;
+      height: $footer-height;
+      text-align: right;
+    }
+  }
+
+  .left {
+    @media all and (min-width: 768px) {
+      width: 70%;
+      background: image-url('wordmark.png') no-repeat;
+    }
+  }
+}
+
 
 #debug {
   margin: 2em auto;

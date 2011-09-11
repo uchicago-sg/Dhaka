@@ -82,9 +82,9 @@ $(document).ready ->
       details.toggle()
       extras.toggle()
       if $(this).hasClass 'show-more'
-        $(this).removeClass('show-more').addClass('show-less').text('Less')
+        $(this).removeClass('show-more').addClass('show-less').html('&#171; Less')
       else
-        $(this).removeClass('show-less').addClass('show-more').text('More')
+        $(this).removeClass('show-less').addClass('show-more').html('More &#187;')
 
   $('#listings-browser thead tr').waypoint (e, direction) ->
     $(this).toggleClass 'sticky', direction is  'down'
@@ -115,15 +115,19 @@ $(document).ready ->
   $('.publish').closest('.listing').find('.renew').hide()
   $('.publicize').delegate 'a.publish', 'ajax:success', ->
     $.sticky 'Successfully published listing'
-    $(this).removeClass('publish').addClass('unpublish').text('Unpublish').attr('data-method', 'POST')
+    $(this).removeClass('publish').addClass('unpublish').text('Unpublish')
+    publish = $(this).attr 'href'
+    $(this).attr('href', $(this).attr('data-unpublish')).attr('data-publish', publish)
     $(this).closest('.listing').find('.renew').show()
 
   $('.publicize').delegate 'a.unpublish', 'ajax:success', ->
     $.sticky 'Successfully unpublished listing'
-    $(this).removeClass('unpublish').addClass('publish').text('Publish').attr('data-method', 'GET')
+    $(this).removeClass('unpublish').addClass('publish').text('Publish')
+    unpublish = $(this).attr 'href'
+    $(this).attr('href', $(this).attr('data-publish')).attr('data-unpublish', unpublish)
     listing = $(this).closest('.listing')
     listing.find('.renew').hide()
-    unless $('#users.show').exists()
+    unless $('#users.dashboard').exists()
       listing.slideUp().remove()
       if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
 
@@ -142,6 +146,6 @@ $(document).ready ->
   ]
 
   a = Math.random() * 1000
-  b = Math.random() * 500
-  c = Math.floor(a % tips.length)
+  b = Math.random() * 100
+  c = Math.floor((a + b) % tips.length)
   if a < b then $.sticky('<strong>Tip:</strong> ' + tips[c])

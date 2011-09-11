@@ -5,16 +5,14 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    if user_signed_in?
-      if current_user.admin?
-        @listings = Listing
-      else
-        @listings = Listing.unexpired.where :seller_id => @user.id
-      end
-    else
-      @listings = @user.listings.searchable
-    end
-    @listings = @listings.order(Listing::DEFAULT_ORDER).page(params[:page])
+    @listings = @user.listings.searchable.order(Listing::DEFAULT_ORDER).page(params[:page])
+    respond_with @user
+  end
+
+  # GET /dashboard
+  def dashboard
+    @user     = current_user
+    @listings = @user.listings.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @user
   end
 end

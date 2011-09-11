@@ -1,0 +1,13 @@
+%tr.listing.expired{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
+  %td.starred
+    .clear
+  %td.image
+    .clear
+  %td.description_and_details
+    .description= listing.description
+    .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
+    .extras(style="display:none")
+      .details= listing.details.markdown
+    .toggle= link_to 'More &#187;'.html_safe, "##{listing.permalink}", :class => 'show-more'
+  %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
+  %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)

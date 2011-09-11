@@ -11,32 +11,8 @@
         %td.price Price
     %tbody
       - listings.each do |listing|
-        %tr.listing{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
-          %td.starred
-            - if session[:starred] and session[:starred].include?(listing.permalink)
-              = link_to 'Unstar', starred_path(:permalink => listing.permalink), :method => :put, :class => 'unstar', :remote => true
-            - else
-              = link_to 'Star', starred_path(:permalink => listing.permalink), :method => :post, :class => 'star', :remote => true
-          %td.image
-            -unless listing.images.empty?
-              .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
-          %td.description_and_details
-            .description= link_to listing.description, listing
-            .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
-            .extras(style="display:none")
-              .details= listing.details.markdown
-              .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
-            .toggle= link_to 'More', "##{listing.permalink}", :class => 'show-more'
-            - if can? :edit, listing or can? :destroy, listing
-              %ul.actions
-                - if can? :edit, listing
-                  %li.edit= link_to 'Edit', edit_listing_path(listing)
-                - if can? :renew, listing
-                  %li.renew= !listing.renewable? ? 'Renew' : link_to('Renew', renew_listings_path(listing), :remote => true)
-                - if can? :publish, listing and can? :unpublish, listing
-                  %li.publicize= listing.published? ? link_to('Unpublish', unpublish_listings_path(listing), :method => :post, :remote => true, :class => 'unpublish') : link_to('Publish', publish_listings_path(listing), :remote => true, :class => 'publish')
-                - if can? :destroy, listing
-                  %li.destroy= link_to 'Destroy', listing, :method => :delete
-          %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
-          %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+        - if listing.expired?
+          = render 'listings/expired_row', :listing => listing
+        - else
+          = render 'listings/row', :listing => listing
   = paginate listings
