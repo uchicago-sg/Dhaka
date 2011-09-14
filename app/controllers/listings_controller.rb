@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
   authorize_resource
   respond_to :html, :json
 
+
   # GET /listings
   def index
     @listings = @search.result(:distinct => true).order(@order).page(params[:page])

@@ -45,6 +45,6 @@ $(document).ready ->
       theme_advanced_buttons3: ''
 
   # Before submitting, strip the number formatting added by autoNumeric
-  $('form#new_listing').submit ->
+  $('form#new_listing, form.edit_listing').submit ->
     input = $(this).find('input.currency')
     input.val input.val().replace(',','')
