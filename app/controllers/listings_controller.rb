@@ -51,7 +51,7 @@ class ListingsController < ApplicationController
     if @listing.update_attributes params[:listing]
       undo_link      = view_context.link_to "undo", revert_version_path(@listing.versions.last), :method => :post
       flash[:notice] = "Listing successfully edited, #{undo_link}".html_safe
-      respond_with @listing, :status => :listing, :location => @listing
+      respond_with @listing, :status => :ok, :location => @listing
     else
       respond_with @listing.errors, :status => :unprocessable_entity do |format|
         format.html { render :action => :new }

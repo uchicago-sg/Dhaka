@@ -86,10 +86,10 @@ $(document).ready ->
       else
         $(this).removeClass('show-less').addClass('show-more').html('More &#187;')
 
-  $('#listings-browser thead tr').waypoint (e, direction) ->
-    $(this).toggleClass 'sticky', direction is  'down'
-    $(this).tie 'width', '#listings-browser', 'width'
-    e.stopPropagation()
+  # $('#listings-browser thead tr').waypoint (e, direction) ->
+  #   $(this).toggleClass 'sticky', direction is  'down'
+  #   $(this).tie 'width', '#listings-browser', 'width'
+  #   e.stopPropagation()
 
   # Ajaxify "starred" links
   # TODO Add notifications (part of notifications system, perhaps?)

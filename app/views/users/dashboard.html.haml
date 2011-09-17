@@ -1,2 +1,10 @@
 - title "Your Dashboard"
+- content_for :sidebar do
+  %h1 #{@user.name}&#8217;s Dashboard
+  %ul.actions
+    %li.profile= link_to 'View your profile', @user
+    - if can? :edit, @user
+      %li.edit= link_to 'Edit your account', edit_user_path(@user)
+    - if can? :create, Listing
+      %li.create= link_to 'Place a listing', new_listing_path
 = render 'listings/browser', :listings => @listings

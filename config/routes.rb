@@ -1,18 +1,18 @@
 Dhaka::Application.routes.draw do
   root :to => 'listings#index', :via => :get
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
-  get 'feeds' => 'categories#index'
-  get 'dashboard' => 'users#dashboard'
+  get 'feeds'     => 'categories#index', :as => 'feeds'
+  get 'dashboard' => 'users#dashboard',  :as => 'dashboard'
 
   STATIC_PAGES.each do |page|
-    match page => 'high_voltage/pages#show', :id => page
+    match page => 'high_voltage/pages#show', :id => page, :as => "#{page}_page"
   end
 
   devise_for :users
   devise_scope :user do
     get "register" => "devise/registrations#new", :as => 'register'
-    get "login"    => "devise/sessions#new"
-    get "logout"   => "devise/sessions#destroy"
+    get "login"    => "devise/sessions#new",      :as => 'login'
+    get "logout"   => "devise/sessions#destroy",  :as => 'logout'
   end
 
   resource :starred, :controller => 'comparisons', :only => %w( create show update )

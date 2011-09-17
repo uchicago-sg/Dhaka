@@ -1,0 +1,6 @@
+= form_for @user do |f|
+  = render 'shared/form_errors', :resource => @user
+  .field.name
+    .label= f.label :name
+    .input= f.text_field :name, {:tabindex => autotab}
+  .submit= f.submit :tabindex => autotab

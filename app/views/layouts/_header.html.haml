@@ -2,18 +2,19 @@
   %li.starred= link_to 'Starred', starred_path
 %ul#user-toolbar.actions
   - if user_signed_in?
-    %li.show= link_to current_user.name, '/dashboard'
-    %li.logout= link_to 'Logout', '/logout'
+    %li.show= link_to current_user.name, current_user
+    %li.dashboard= link_to 'Dashboard', dashboard_path
+    %li.logout= link_to 'Logout', logout_path
   - else
-    %li.register= link_to 'Register', '/register'
-    %li.login= link_to 'Login', '/login'
+    %li.register= link_to 'Register', register_path
+    %li.login= link_to 'Login', login_path
 %header#marketplace
   %h1= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   - unless flash.empty?
     #flashes
       - flash.each do |type, text|
         %p{:class => type}= text
-  - unless %w( pages categories ).include? controller_name or action_name == 'search'
+  - unless %w( pages categories ).include? controller_name or action_name == 'search' or action_name == 'dashboard'
     = search_form_for @search, {:id => :search_listings} do |f|
       = field_set_tag nil, {:id => :search_order} do
         %span.field

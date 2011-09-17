@@ -9,6 +9,25 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  # GET /users/:id/edit
+  def edit
+    respond_with @user
+  end
+
+  # POST /users/:id
+  def update
+    if @user.update_attributes params[:user]
+      flash[:notice] = 'User successfully edited'
+      respond_with @user, :status => :ok, :location => dashboard_path
+    else
+      respond_with @category.errors, :status => :unprocessable_entity do |format|
+        format.html do
+          render :action => :new
+        end
+      end
+    end
+  end
+
   # GET /dashboard
   def dashboard
     @user     = current_user

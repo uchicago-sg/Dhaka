@@ -110,7 +110,7 @@ body {
 
 #user-toolbar {
   text-align: right;
-  li:first-child { margin-right: 0.75em; }
+  li + li { margin-left: 0.5em; }
 }
 
 
@@ -177,14 +177,13 @@ body {
   ol, ul, li { margin-left: 1.5em; }
 }
 
-.actions, .devise-links, .categories {
-  list-style: none !important;
-  ol, ul, li { margin-left: 0 !important; }
-}
-
-
 #sidebar, #main {
   margin: 0.75em 0;
+
+  .actions, .devise-links, .categories {
+    list-style: none !important;
+    ol, ul, li { margin-left: 0 !important; }
+  }
 }
 
 #sidebar {
@@ -192,7 +191,7 @@ body {
     width: $sidebar-width;
   }
 
-  .category, .page {
+  .category, .page, .actions {
     background-color: $yellow;
 
     a {

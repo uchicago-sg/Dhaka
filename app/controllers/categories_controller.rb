@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
   def update
     if @category.update_attributes(params[:category])
       flash[:notice] = 'Category successfully edited'
-      respond_with @category, :status => :categoryd, :location => @category
+      respond_with @category, :status => :ok, :location => @category
     else
       respond_with @category.errors, :status => :unprocessable_entity do |format|
         format.html do
