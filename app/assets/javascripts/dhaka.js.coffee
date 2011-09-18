@@ -141,8 +141,7 @@ $(document).ready ->
     'Subscribe to any Advanced Search to get real-time updates',
     'Visit the <a href="/feeds" title="Atom Feeds">Atom Feeds</a> page to subscribe to categories',
     'Look out for scams. Visit our <a href="/safety" title="Safety & Security">Safety &amp; Security</a> page.',
-    'See the <a href="/welcome" title="Welcome Message">Welcome Message</a> for more information on the new design',
-    'Google Chrome users can search the Marketplace from the addressbar by pressing tab after the homepage URL'
+    'See the <a href="/welcome" title="Welcome Message">Welcome Message</a> for more information on the new design'
   ]
 
   a = Math.random() * 1000

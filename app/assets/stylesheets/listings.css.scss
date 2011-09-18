@@ -3,12 +3,50 @@
 
 #listings {
   &.show {
+    header .starred a {
+      background: image-url('star_small.png') left top no-repeat;
+      padding-left: 20px;
+      &:hover, &.unstar  { background-position: 0 -16px; }
+      &:active, &:hover.unstar { background-position: 0 -32px; }
+    }
+
     .images { width: 200px; }
-    .details {margin-bottom: 1em; }
+
     .bx-wrapper { margin: 0 auto; }
+
     .slider {
       text-align: center;
       margin: 0 auto;
+    }
+
+    .price { font-size: 1.25em; padding-bottom: 0.2em; }
+
+    #metadata {
+      margin: 0 auto;
+      text-align: right;
+    }
+
+    .actions + #metadata {
+      @include layout-right;
+      width: 70%;
+    }
+
+    article > footer {
+      margin-top: 0.5em;
+      padding-top: 0.5em;
+      border-top: 1px solid #ddd;
+
+      .actions {
+        @include layout-left;
+        width: 30%;
+      }
+
+      @media all and (max-width: 767px) {
+        #metadata, .actions {
+          width: 100%;
+          text-align: center;
+        }
+      }
     }
   }
 

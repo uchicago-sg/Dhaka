@@ -1,0 +1,10 @@
+- if can? :edit, listing or can? :destroy, listing
+  %ul.actions
+    - if can? :edit, listing
+      %li.edit= link_to 'Edit', edit_listing_path(listing)
+    - if can? :renew, listing
+      %li.renew= !listing.renewable? ? 'Renew' : link_to('Renew', renew_listings_path(listing), :remote => true)
+    - if can? :publish, listing and can? :unpublish, listing
+      %li.publicize= listing.published? ? link_to('Unpublish', unpublish_listings_path(listing), :remote => true, :class => 'unpublish', 'data-publish' =>  publish_listings_path(listing)) : link_to('Publish', publish_listings_path(listing), :remote => true, :class => 'publish', 'data-unpublish' =>  unpublish_listings_path(listing))
+    - if can? :destroy, listing
+      %li.destroy= link_to 'Destroy', listing, :method => :delete

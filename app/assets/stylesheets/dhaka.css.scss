@@ -277,15 +277,25 @@ body {
     input { width: 100%; }
   }
 
-  #listing_search .actions li { @include layout-left; }
+  #search_order,
+  #search_keywords,
+  #search_categories { margin: 0 2%; }
+  #search_keywords { width: 95%; }
+  #listing_search .actions {
+    text-align: center;
+    .submit { width: 25%; margin: 0 auto; }
+    li { @include layout-left; }
+  }
 
   @media all and (min-width: 768px) {
+    #search_order, #search_keywords, #search_categories { margin: 0; }
     #search_order      { width: 15%; padding-left: 1%; padding-right: 0.5%; }
     #search_keywords   { width: 40%; padding-right: 1%; }
     #search_categories { width: 15%; padding-right: 1%; }
     #listing_search .actions {
       width: 25.5%;
       li { width: 25%; }
+      .submit { margin: 0; }
       .advanced {
         width: 75%;
         text-align: right;
@@ -466,6 +476,7 @@ body > footer {
   margin-top: 1em;
   margin-bottom: 2.5em;
   text-align: center;
+  padding-top: 0.5em;
 
   ul {
     font-size: 0.8em;

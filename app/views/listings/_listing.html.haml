@@ -1,5 +1,7 @@
 %article.listing
-  %h1.description= listing.description
+  %header
+    %p.starred= render 'listings/listing_star', :listing => listing
+    %h1.description= listing.description
   - unless listing.images.empty?
     .slider
       %ul.images
@@ -7,13 +9,9 @@
           .image
             %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:small)
   %div.details= listing.details.markdown
-  %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
-  %p.created_at Posted <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time> in #{listing.categories.map { |c| categories_search_link(c) }.to_sentence.html_safe}
-  %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
   %footer
-    %ul.actions
-      - if can? :edit, listing
-        %li.edit= link_to 'Edit', edit_listing_path(listing)
-        %li.renew= link_to 'Renew', renew_listings_path(listing)
-      - if can? :destroy, listing
-        %li.destroy= link_to 'Destroy', listing, :method => :delete
+    = render 'listings/listing_actions', :listing => listing
+    #metadata
+      %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+      %p.created_at Posted <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time> in #{listing.categories.map { |c| categories_search_link(c) }.to_sentence.html_safe}
+      %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
