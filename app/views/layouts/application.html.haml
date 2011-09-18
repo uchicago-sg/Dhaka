@@ -2,9 +2,10 @@
 %html{html_attrs}
   %head
     %title= title
-    %meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    %meta(charset='utf-8')
     %meta(name='description' content='')
     %meta(name='keywords'    content='')
+    %meta(name='viewport'    content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
     / %meta(name='copyright'   content='Copyright (c) 2011 The University of Chicago. All rights reserved.')
     - if action_name == 'search'
       = auto_discovery_link_tag :atom, {:format => 'atom'}

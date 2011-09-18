@@ -114,7 +114,7 @@ body {
 }
 
 @media all and (max-width: 480px) {
-  #user-toolbar .show { display: none; }
+  #uvTab, #user-toolbar .show { display: none !important; }
 }
 
 
