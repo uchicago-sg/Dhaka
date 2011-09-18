@@ -12,6 +12,14 @@
 
 .sans-serif, body { @include sans-serif; }
 
+h1 { font-size: 2em; }
+h2 { font-size: 1.75em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.75em; }
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.25em; }
 
 i, em { font-style: italic; }
 
@@ -103,7 +111,7 @@ body {
 
 #site-toolbar a {
   padding-left: 24px;
-  background: image_url('star.png') left top no-repeat;
+  background: image-url('star.png') left top no-repeat;
   &:hover  { background-position: 0 -20px; }
   &:active { background-position: 0 -40px; }
 }
@@ -157,6 +165,17 @@ body {
 }
 
 
+#top {
+  @include layout-clear;
+  text-align: center;
+  margin-bottom: 0.25em;
+
+  h1, h2 {
+    @include kreon;
+  }
+}
+
+
 #content {
   clear: both;
   text-align: left;
@@ -195,7 +214,7 @@ body {
     width: $sidebar-width;
   }
 
-  .category, .page, .actions {
+  .category, .page, > .actions {
     background-color: $yellow;
 
     a {
@@ -378,7 +397,7 @@ table#listings-browser {
     }
 
     .starred a {
-      background: image_url('star.png') left top no-repeat;
+      background: image-url('star.png') left top no-repeat;
       height: 20px;
       width: 20px;
       margin-right: 0.5em;
@@ -408,6 +427,11 @@ table#listings-browser {
 
 @media all and (max-width: 767px) {
   table#listings-browser {
+    tr {
+      td:first-child { padding-left: 0; }
+      td:last-child { padding-right: 0; }
+    }
+
     tr, td {
       float: left;
       display: block;
@@ -449,7 +473,8 @@ body > footer {
   }
 
   .left, .center, .right {
-    padding: 0.5em 0;
+    margin: 0.5em 0;
+
     @media all and (min-width: 768px) {
       width: 15%;
       height: $footer-height;

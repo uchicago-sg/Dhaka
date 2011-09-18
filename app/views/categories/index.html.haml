@@ -1,5 +1,6 @@
 - title 'Atom Feeds'
-- content_for :sidebar do render 'pages/sidebar' end
+- content_for :sidebar do
+  = render 'pages/sidebar'
 %h1 Atom Feeds
 %ul.categories
   %li= link_to 'All Categories'.html_safe, categories_path(:format => :atom)

@@ -1,2 +1,4 @@
-- title @user.name
+- title "#{@user.name}'s Listings"
+- content_for :top do
+  %h2 #{@user.name}&#8217;s Listings
 = render 'listings/browser', :listings => @listings

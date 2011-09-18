@@ -14,20 +14,24 @@
     #flashes
       - flash.each do |type, text|
         %p{:class => type}= text
-  - unless %w( pages categories ).include? controller_name or action_name == 'search' or action_name == 'dashboard'
-    = search_form_for @search, {:id => :search_listings} do |f|
-      = field_set_tag nil, {:id => :search_order} do
-        %span.field
-          %span.label= label_tag :order, 'Sort'
-          %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
-      = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
-        %span.field
-          %span.label= f.label :details_or_description_cont, 'Word or phrase'
-          %span.input= f.text_field :details_or_description_cont, {:tabindex => autotab}
-      = field_set_tag nil, {:id => :search_categories} do
-        %span.field
-          %span.label= f.label :categories_id_positive_and_eq, 'Category'
-          %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
-      %ul.actions
-        %li.submit= f.submit 'Search', {:tabindex => autotab}
-        %li.advanced= link_to 'Advanced search', search_listings_path
+  - if content_for? :top
+    #top
+      = yield :top
+  - else
+    - unless %w( pages categories users ).include? controller_name or action_name == 'search' or action_name == 'dashboard'
+      = search_form_for @search, {:id => :search_listings} do |f|
+        = field_set_tag nil, {:id => :search_order} do
+          %span.field
+            %span.label= label_tag :order, 'Sort'
+            %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
+        = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
+          %span.field
+            %span.label= f.label :details_or_description_cont, 'Word or phrase'
+            %span.input= f.text_field :details_or_description_cont, {:tabindex => autotab}
+        = field_set_tag nil, {:id => :search_categories} do
+          %span.field
+            %span.label= f.label :categories_id_positive_and_eq, 'Category'
+            %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
+        %ul.actions
+          %li.submit= f.submit 'Search', {:tabindex => autotab}
+          %li.advanced= link_to 'Advanced search', search_listings_path

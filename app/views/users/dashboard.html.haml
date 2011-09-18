@@ -1,6 +1,7 @@
 - title "Your Dashboard"
+- content_for :top do
+  %h1 Your Dashboard
 - content_for :sidebar do
-  %h1 #{@user.name}&#8217;s Dashboard
   %ul.actions
     %li.profile= link_to 'View your profile', @user
     - if can? :edit, @user
