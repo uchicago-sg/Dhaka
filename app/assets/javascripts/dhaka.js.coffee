@@ -94,7 +94,7 @@ $(document).ready ->
   # Ajaxify "starred" links
   # TODO Add notifications (part of notifications system, perhaps?)
   $('.starred').delegate 'a.star', 'ajax:success', ->
-    $(this).removeClass('star').addClass('unstar').text('Unstar').attr('data-method', 'put')
+    $(this).removeClass('star').addClass('unstar').text('Unstar this listing').attr('data-method', 'put')
     $.sticky 'Successfully starred listing'
 
   $('.starred').delegate 'a.unstar', 'ajax:success', ->
@@ -103,7 +103,7 @@ $(document).ready ->
       $(this).closest('.listing').slideUp().remove()
       if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
     else
-      $(this).removeClass('unstar').addClass('star').text('Star').attr('data-method', 'post')
+      $(this).removeClass('unstar').addClass('star').text('Star this listing').attr('data-method', 'post')
     $.sticky 'Successfully unstarred listing'
 
   # Notify of successful renewal and disallow another renewal by removing the link

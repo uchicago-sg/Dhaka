@@ -113,6 +113,10 @@ body {
   li + li { margin-left: 0.5em; }
 }
 
+@media all and (max-width: 480px) {
+  #user-toolbar .show { display: none; }
+}
+
 
 #marketplace {
   margin-top: 0.75em;
@@ -223,6 +227,12 @@ body {
   @media all and (min-width: 768px) {
     width: 100% - $sidebar-width - $gutter;
     padding-left: $gutter;
+  }
+
+
+  .listing .price {
+    font-weight: bold;
+    color: lighten($green, 10%);
   }
 }
 
@@ -353,6 +363,10 @@ table#listings-browser {
       a:active  { color: $red; }
     }
 
+    .extras { display: none; }
+
+    .seller { margin-top: 0.5em; }
+
     .created_at {
       width: 18%;
       text-align: right;
@@ -361,8 +375,6 @@ table#listings-browser {
     .price {
       width: 15%;
       text-align: right;
-      font-weight: bold;
-      color: lighten($green, 10%);
     }
 
     .starred a {
@@ -391,6 +403,36 @@ table#listings-browser {
 
   tr.expired * {
     color: #999 !important;
+  }
+}
+
+@media all and (max-width: 767px) {
+  table#listings-browser {
+    tr, td {
+      float: left;
+      display: block;
+      clear: both;
+      width: 100% !important;
+      max-width: 100%;
+      text-align: left;
+    }
+
+    .starred a {
+      text-indent: 0 !important;
+      background: transparent !important;
+      display: inline !important;
+    }
+
+    .image { padding: 0 !important; }
+    .description_and_details > div { width: 100%; }
+    .truncated-details { display: none; }
+    .extras { display: block !important; }
+
+    .toggle, .actions { display: none; }
+
+    tr + tr {
+      margin-top: 1em;
+    }
   }
 }
 

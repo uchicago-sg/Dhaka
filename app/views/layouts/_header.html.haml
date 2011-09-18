@@ -1,5 +1,3 @@
-%ul#site-toolbar.actions
-  %li.starred= link_to 'Starred', starred_path
 %ul#user-toolbar.actions
   - if user_signed_in?
     %li.show= link_to current_user.name, current_user
@@ -8,6 +6,8 @@
   - else
     %li.register= link_to 'Register', register_path
     %li.login= link_to 'Login', login_path
+%ul#site-toolbar.actions
+  %li.starred= link_to 'Starred', starred_path
 %header#marketplace
   %h1= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   - unless flash.empty?

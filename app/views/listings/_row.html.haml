@@ -1,18 +1,18 @@
 %tr.listing{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
   %td.starred
     - if session[:starred] and session[:starred].include?(listing.permalink)
-      = link_to 'Unstar', starred_path(:permalink => listing.permalink), :method => :put, :class => 'unstar', :remote => true
+      = link_to 'Unstar this listing', starred_path(:permalink => listing.permalink), :method => :put, :class => 'unstar', :remote => true
     - else
-      = link_to 'Star', starred_path(:permalink => listing.permalink), :method => :post, :class => 'star', :remote => true
+      = link_to 'Star this listing', starred_path(:permalink => listing.permalink), :method => :post, :class => 'star', :remote => true
   %td.image
     -unless listing.images.empty?
       .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
   %td.description_and_details
     .description= link_to listing.description, listing
     .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
-    .extras(style="display:none")
+    .extras
       .details= listing.details.markdown
-      .email= mail_to listing.seller.email, "Email #{listing.seller.name}", :encode => 'javascript'
+      .seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
     .toggle= link_to 'More &#187;'.html_safe, "##{listing.permalink}", :class => 'show-more'
     - if can? :edit, listing or can? :destroy, listing
       %ul.actions
