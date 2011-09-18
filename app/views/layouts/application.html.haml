@@ -30,10 +30,7 @@
           %ul.categories
             %li.category.all= categories_search_link
             - @categories.each do |category|
-              - if params[:id] == category.description.downcase
-                %li.category.selected= categories_search_link(category)
-              - else
-                %li.category= categories_search_link(category)
+              %li.category= categories_search_link(category)
       %section#main
         = yield
       .clear

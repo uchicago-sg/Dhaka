@@ -8,7 +8,7 @@
             %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:small)
   %div.details= listing.details.markdown
   %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
-  %p.created_at Posted <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
+  %p.created_at Posted <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time> in #{listing.categories.map { |c| categories_search_link(c) }.to_sentence.html_safe}
   %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
   %footer
     %ul.actions

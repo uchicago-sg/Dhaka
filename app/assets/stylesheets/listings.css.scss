@@ -4,6 +4,7 @@
 #listings {
   &.show {
     .images { width: 200px; }
+    .details {margin-bottom: 1em; }
     .bx-wrapper { margin: 0 auto; }
     .slider {
       text-align: center;

@@ -33,8 +33,11 @@ module ApplicationHelper
   end
 
   def categories_search_link category=nil
-    category_description = category.nil? ? 'All Categories' : category.description
-    link_to category_description, categories_search_path(category)
+    if category.nil?
+      link_to 'All Categories', listings_path
+    else
+      link_to category.description, categories_search_path(category)
+    end
   end
 
   # See http://stackoverflow.com/questions/223984/automatic-method-to-set-the-tabindex-using-form-helpers
