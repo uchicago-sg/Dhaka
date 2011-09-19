@@ -1,17 +1,17 @@
-%article.listing
-  %header
+%article.listing.container
+  %header.row
     %p.starred= render 'listings/listing_star', :listing => listing
     %h1.description= listing.description
   - unless listing.images.empty?
-    .slider
+    .slider.row
       %ul.images
         - listing.images.each do |image|
           .image
             %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:small)
-  %div.details= listing.details.markdown
-  %footer
-    = render 'listings/listing_actions', :listing => listing
-    #metadata
+  %div.details.row= listing.details.markdown
+  %footer.row
+    .sixcol= render 'listings/listing_actions', :listing => listing
+    #metadata.sixcol.last
       %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
       %p.created_at Posted <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time> in #{listing.categories.map { |c| categories_search_link(c) }.to_sentence.html_safe}
       %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})

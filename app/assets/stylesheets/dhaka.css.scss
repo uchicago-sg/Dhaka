@@ -2,14 +2,10 @@
 @import 'shared';
 
 
-#sidebar, .left, .center { @include layout-left; }
-
-#main, .right { @include layout-right; }
-
-.clear { @include layout-clear; }
+.container .container, .container .container > * { padding: 0; }
+.row .row { min-width: 0; }
 
 .serif { @include serif; }
-
 .sans-serif, body { @include sans-serif; }
 
 h1 { font-size: 2em; }
@@ -47,11 +43,7 @@ body {
   font-size: 1.2em;
   line-height: 1.5em;
   font-weight: normal;
-
-  > header, #content, > footer {
-    max-width: $page-width;
-    margin: 0 auto;
-  }
+  margin-bottom: 2.5em;
 }
 
 
@@ -63,14 +55,11 @@ body {
   h1, h2 {
     text-align: center;
     line-height: 1.5em;
-  }
-
-  h1 {
-    font-size: 1.75em;
     @include kreon;
   }
 
   h2 {
+    font-size: 1.15em;
     padding-bottom: 0.5em;
   }
 
@@ -81,27 +70,9 @@ body {
 }
 
 
-#flashes {
-  width: 100%;
+#toolbar ul {
   text-align: center;
-  @include layout-clear;
-
-  p {
-    font-weight: bold;
-    font-size: 0.95em;
-    line-height: 2.25em;
-    margin-bottom: 1em;
-  }
-
-  .error { color: white; background-color: lighten($red, 10%); }
-  .notice { color: black; background-color: $yellow; }
-}
-
-
-#site-toolbar, #user-toolbar {
-  max-width: $page-width;
   list-style-type: none;
-  margin: 0 auto -1.5em;
 
   li, li a {
     line-height: 1.5em;
@@ -116,44 +87,20 @@ body {
   &:active { background-position: 0 -40px; }
 }
 
-#user-toolbar {
-  text-align: right;
-  li + li { margin-left: 0.5em; }
-}
-
-@media all and (max-width: 480px) {
-  #uvTab, #user-toolbar .show { display: none !important; }
-}
+#user-toolbar li + li { margin-left: 0.5em; }
 
 
-#marketplace {
-  margin-top: 0.75em;
-  max-width: $page-width;
-
-  #search_categories { @include layout-left; }
-  #search_keywords { @include layout-left; }
-
-  .actions {
-    @include layout-right;
-    .submit { @include layout-left; }
-    .manage { @include layout-right; }
-  }
-
-  > h1, #search_listings {
-    font-size: $header-size;
-    line-height: $header-height;
-    letter-spacing: -0.05em;
-  }
+body > header {
+  h1, h2, h3, h4, h5, h6 { @include kreon; }
 
   > h1 {
-    @include layout-left;
-    @include kreon;
-    @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
-
     color: black;
     font-weight: bold;
     text-align: center;
-    width: 100%;
+    font-size: $header-size;
+    line-height: 1.25em;
+    letter-spacing: -0.05em;
+    @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
 
     a {
       color: black !important;
@@ -164,15 +111,9 @@ body {
   }
 }
 
-
 #top {
-  @include layout-clear;
   text-align: center;
   margin-bottom: 0.25em;
-
-  h1, h2 {
-    @include kreon;
-  }
 }
 
 
@@ -180,28 +121,20 @@ body {
   clear: both;
   text-align: left;
 
-  .field, .subfield {
-    display: block;
-    padding: 0.25em 0;
-  }
-
-  h1, h2, h3 {
-    font-size: 1.5em;
+  h1, h2, h3, h4, h5, h6 {
     line-height: 1.5em;
     font-weight: bold;
   }
 
-  h2 { font-size: 1.25em; }
-  h3 { font-size: 1em; }
-}
-
-#main ol, #main ul {
-  list-style: disc outside none;
-  ol, ul, li { margin-left: 1.5em; }
+  .field, .subfield {
+    display: block;
+    padding: 0.25em 0;
+  }
 }
 
 #sidebar, #main {
-  margin: 0.75em 0;
+  margin-top: 0.75em;
+  margin-bottom: 1em;
 
   .actions, .devise-links, .categories {
     list-style: none !important;
@@ -210,11 +143,7 @@ body {
 }
 
 #sidebar {
-  @media all and (min-width: 768px) {
-    width: $sidebar-width;
-  }
-
-  .category, .page, > .actions {
+  > .categories, > .pages, > .actions {
     background-color: $yellow;
 
     a {
@@ -226,7 +155,7 @@ body {
       &:hover { background-color: darken($yellow, 20%); }
     }
 
-    &.selected a {
+    .selected a {
       font-weight: bold;
       color: white !important;
       text-decoration: none;
@@ -240,150 +169,78 @@ body {
     &:hover { color: $red; }
     &:active { color: $green; }
   }
-}
 
-#main {
-  @media all and (min-width: 768px) {
-    width: 100% - $sidebar-width - $gutter;
-    padding-left: $gutter;
-  }
+  form .actions {
+    display: inline-block;
+    width: 100%;
+    clear: both;
+    text-align: right;
 
-
-  .listing .price {
-    font-weight: bold;
-    color: lighten($green, 10%);
+    .save { padding-right: 0.25em; }
   }
 }
 
+#main ol, #main ul {
+  list-style: disc outside none;
 
-#listing_search {
-  @include layout-clear;
-  display: inline-block;
-  margin: 0 auto;
-  font-size: 1em;
-  > div:first-child { @include layout-clear; }
-}
-
-.index, .show, .edit, .new, .create, .dashboard, #passwords, #registrations, #sessions {
-  #listing_search {
-    background-color: #f6f6f6;
-    padding: 0.5em 0;
-  }
-
-  #search_order, #search_categories, #search_keywords, #listing_search .actions {
-    @include layout-left;
-    label { display: none; }
-    select { width: 100%; }
-    input { width: 100%; }
-  }
-
-  #search_order,
-  #search_keywords,
-  #search_categories { margin: 0 2%; }
-  #search_keywords { width: 95%; }
-  #listing_search .actions {
-    text-align: center;
-    .submit { width: 25%; margin: 0 auto; }
-    li { @include layout-left; }
-  }
-
-  @media all and (min-width: 768px) {
-    #search_order, #search_keywords, #search_categories { margin: 0; }
-    #search_order      { width: 15%; padding-left: 1%; padding-right: 0.5%; }
-    #search_keywords   { width: 40%; padding-right: 1%; }
-    #search_categories { width: 15%; padding-right: 1%; }
-    #listing_search .actions {
-      width: 25.5%;
-      li { width: 25%; }
-      .submit { margin: 0; }
-      .advanced {
-        width: 75%;
-        text-align: right;
-      }
-    }
-  }
+  ol, ul, li { margin-left: 1.5em; }
 }
 
 
-table#listings-browser {
-  width: 100%;
-  max-width: 100%;
+body > footer {
+  padding-top: 0.5em;
+  margin-top: 0.5em;
+  text-align: center;
+  border-top: 1px solid #ccc;
 
-  tr {
-    td:first-child { padding-left: 0.5em; }
-    td:last-child { padding-right: 0.5em; }
+  ul {
+    font-size: 0.8em;
+    list-style-type: none;
   }
 
-  thead {
-    display: none;
+  .spacer { display: none; }
+}
 
-    @media all and (min-width: 768px) {
-      display: table-header-group;
 
-      tr {
-        background-color: white;
-        border-bottom: 1px solid #ccc;
+#debug {
+  color: white;
+  background-color: $blue;
+  font-family: Monaco, courier, fixed;
+  margin-top: 1em;
+  pre { padding: 1em; }
+}
 
-        td {
-          font-size: 1em;
-          line-height: 1.75em;
-          font-weight: bold;
-        }
-      }
 
-      tr.sticky {
-        display: block;
-        position: fixed;
-        width: 100%;
-        top: 0;
-      }
-    }
-  }
 
+.listing .price {
+  font-weight: bold;
+  color: lighten($green, 10%);
+}
+
+#simple_search {
+  background-color: #f6f6f6;
+  padding: 0.5em 0;
+  text-align: left;
+}
+
+#listings-browser {
+  thead { display: none; }
+  tr, td { display: block; }
   td.created_at, td.price { text-align: right; }
-
-  tr.sticky {
-    td {
-      @include layout-left;
-      width: 20%;
-    }
-
-    .starred { width: 3.1%; }
-
-    .image { width: 15%; }
-
-    .description_and_details { width: 50%; }
-
-    .created_at { width: 16.75%; }
-
-    .price { width: 13%; }
-  }
 
   tr.listing {
     &:nth-child(odd) { background-color: #f6f6f6; }
+
     &.signed { background-color: lighten($blue, 50%); }
 
-    .toggle {
-      width: 100%;
-      font-size: 0.95em;
-      line-height: 1.25em;
-      text-align: right;
-    }
-
-    .image {
-      width: 15%;
-      padding: 0.5em 0;
-    }
+    td, .image { padding: 0.25em 0; }
 
     .description_and_details {
-      width: 52%;
       text-align: left;
-      color: #444;
-      padding: 0.5em 0;
+      color: #333;
     }
 
     .description {
-      display: inline-block;
       font-weight: bold;
       line-height: 24px;
       a         { color: black; }
@@ -396,118 +253,119 @@ table#listings-browser {
 
     .seller { margin-top: 0.5em; }
 
-    .created_at {
-      width: 18%;
-      text-align: right;
-    }
-
-    .price {
-      width: 15%;
-      text-align: right;
-    }
-
     .starred a {
       background: image-url('star.png') left top no-repeat;
       height: 20px;
       width: 20px;
-      margin-right: 0.5em;
+      margin: 0 0.5em;
       display: block;
       text-indent: 10000%;
       overflow: hidden;
     }
 
     .starred a.unstar { background-position: 0 -20px; }
-    .starred a:hover, .starred a:active  { background-position: 0 -40px; }
+    .starred a:hover, .starred a:active { background-position: 0 -40px; }
 
-    .actions {
-      font-size: 1em;
-      line-height: 1.5em;
-      margin-top: -1.25em;
-      li {
-        display: inline-block;
-        margin-right: 0.3em;
-      }
+    .actions, .toggle { margin-top: 0.5em; }
+
+    .toggle { text-align: right; }
+
+    .actions, .actions + .toggle {
+      display: inline-block;
+      float: left;
+      width: 50%;
     }
   }
 
-  tr.expired * {
-    color: #999 !important;
-  }
+  tr.expired * { color: #999 !important; }
 }
 
+
+
+@media all and (max-width: 480px) {
+  #uvTab, #user-toolbar .show { display: none !important; }
+}
+
+
 @media all and (max-width: 767px) {
-  table#listings-browser {
-    tr {
-      td:first-child { padding-left: 0; }
-      td:last-child { padding-right: 0; }
-    }
-
-    tr, td {
-      float: left;
-      display: block;
-      clear: both;
-      width: 100% !important;
-      max-width: 100%;
-      text-align: left;
-    }
-
+  #listings-browser {
     .starred a {
       text-indent: 0 !important;
       background: transparent !important;
       display: inline !important;
     }
 
-    .image { padding: 0 !important; }
+    .seller { text-align: right; }
     .description_and_details > div { width: 100%; }
     .truncated-details { display: none; }
     .extras { display: block !important; }
-
     .toggle, .actions { display: none; }
-
-    tr + tr {
-      margin-top: 1em;
-    }
+    tr + tr { margin-top: 1em; }
   }
 }
 
 
-body > footer {
-  @include layout-clear;
-  margin-top: 1em;
-  margin-bottom: 2.5em;
-  text-align: center;
-  padding-top: 0.5em;
+@media all and (min-width: 768px) {
+  ul#user-toolbar { text-align: right; }
+  ul#site-toolbar { text-align: left; }
 
-  ul {
-    font-size: 0.8em;
-    list-style-type: none;
-  }
+  #simple_search {
+    #search_order, #search_keywords, #search_categories, .actions {
+      padding-right: 1%;
+      display: inline-block;
+      float: left;
+      margin: 0;
 
-  .left, .center, .right {
-    margin: 0.5em 0;
+      label { display: none; }
+      input, select { width: 100%; }
+    }
 
-    @media all and (min-width: 768px) {
-      width: 15%;
-      height: $footer-height;
-      text-align: right;
+    #search_order      { width: 15%; padding-left: 1%; padding-right: 0.5%; }
+    #search_keywords   { width: 40%; }
+    #search_categories { width: 15%; }
+
+    .actions {
+      width: 25.5%;
+
+      input { width: 100%; }
+
+      .submit, .advanced {
+        display: inline-block;
+        float: left;
+        width: 25%;
+      }
+
+      .advanced { text-align: right; width: 75%; }
     }
   }
 
-  .left {
-    @media all and (min-width: 768px) {
-      width: 70%;
-      background: image-url('wordmark.png') no-repeat;
+  #listings-browser {
+    thead {
+      display: table-header-group;
+
+      tr {
+        background-color: white;
+        border-bottom: 1px solid #ccc;
+
+        td {
+          font-size: 1em;
+          line-height: 1.75em;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .listing + .listing { border-top: 1px solid #ddd; }
+  }
+
+  body > footer {
+    border-top: none;
+    text-align: right;
+
+    .spacer {
+      display: block;
+      min-height: 58px;
+      background: image-url('wordmark.png') left top no-repeat;
     }
   }
-}
-
-
-#debug {
-  margin: 2em auto;
-  max-width: $page-width;
-  text-align: left;
-  color: white;
-  background-color: $blue;
-  font-family: Monaco, courier, fixed;
-  pre { padding: 1em; }
 }

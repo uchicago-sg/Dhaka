@@ -19,42 +19,20 @@
       margin: 0 auto;
     }
 
-    .price { font-size: 1.25em; padding-bottom: 0.2em; }
-
-    #metadata {
-      margin: 0 auto;
-      text-align: right;
-    }
-
-    .actions + #metadata {
-      @include layout-right;
-      width: 70%;
-    }
-
     article > footer {
       margin-top: 0.5em;
       padding-top: 0.5em;
       border-top: 1px solid #ddd;
-
-      .actions {
-        @include layout-left;
-        width: 30%;
-      }
-
-      @media all and (max-width: 767px) {
-        #metadata, .actions {
-          width: 100%;
-          text-align: center;
-        }
-      }
+      text-align: center;
     }
   }
 
 
   &.search {
-    #sidebar { background-color: #f6f6f6; }
-    #listing_search { padding: 0; }
+    #listing_search { background-color: #f6f6f6; }
+
     #listing_search fieldset { padding: 0.3em 1em }
+
     .field { display: block; }
 
     #search_categories {
@@ -70,7 +48,7 @@
 
     #search_keywords_seller_and_price {
       input { width: 99%; margin: 0; padding: 0; }
-      input.currency { width: 5em; }
+      input.currency { min-width: 5em; width: 20%; }
     }
 
     #search_options {
@@ -82,5 +60,13 @@
       li { float: right; }
       .submit { margin: 0 0.5em 0.5em; }
     }
+  }
+}
+
+
+@media all and (min-width: 768px) {
+  #listings.show article > footer {
+    #metadata { text-align: right; }
+    .actions  { text-align: left; }
   }
 }

@@ -11,8 +11,7 @@ document.createElement 'detail'
 document.createElement 'summary'
 document.createElement 'time'
 
-jQuery.fn.exists = ->
-  jQuery(this).length > 0
+jQuery.fn.exists = -> jQuery(this).length > 0
 
 jQuery.timeago.settings.strings =
   prefixAgo: null
@@ -51,6 +50,7 @@ $(document).ready ->
             <p>We encourage you to look around and test out the site: Register an account, place listing, or even just browse. Let us know if what you love, hate, or miss by clicking on the orange &#8220;Feedback&#8221; button at the bottom of your screen. Thanks, and enjoy!</p>
           </div>
         '
+
   # Add search form behavior
   listing_search_form = $('form#listing_search')
   listing_search_form.find('.inside_label').each ->
@@ -85,11 +85,6 @@ $(document).ready ->
         $(this).removeClass('show-more').addClass('show-less').html('&#171; Less')
       else
         $(this).removeClass('show-less').addClass('show-more').html('More &#187;')
-
-  # $('#listings-browser thead tr').waypoint (e, direction) ->
-  #   $(this).toggleClass 'sticky', direction is  'down'
-  #   $(this).tie 'width', '#listings-browser', 'width'
-  #   e.stopPropagation()
 
   # Ajaxify "starred" links
   # TODO Add notifications (part of notifications system, perhaps?)
@@ -132,7 +127,7 @@ $(document).ready ->
       if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
 
   # Slick new flashes mechanism with Sticky
-  $('#flashes > p').hide().each -> $(this).sticky()
+  $('.flash').hide().each -> $(this).sticky()
 
   # Throw in a tip every once in a while
   tips = [
@@ -145,6 +140,6 @@ $(document).ready ->
   ]
 
   a = Math.random() * 1000
-  b = Math.random() * 100
+  b = Math.random() * 75
   c = Math.floor((a + b) % tips.length)
   if a < b then $.sticky('<strong>Tip:</strong> ' + tips[c])

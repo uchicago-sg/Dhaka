@@ -2,14 +2,14 @@
   %h1.sorry No results found
 - else
   %table#listings-browser
-    %thead
-      %tr
-        %td.starred
-        %td.image Image
-        %td.description_and_details Details
-        %td.created_at Posted
-        %td.price Price
-    %tbody
+    %thead.container
+      %tr.row
+        %td.starred.onecol Star
+        %td.image.twocol Image
+        %td.description_and_details.fivecol Details
+        %td.created_at.twocol Posted
+        %td.price.twocol.last Price
+    %tbody.container
       - listings.each do |listing|
         - if listing.expired?
           = render 'listings/expired_row', :listing => listing

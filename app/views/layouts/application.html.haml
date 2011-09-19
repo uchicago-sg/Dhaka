@@ -18,10 +18,10 @@
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Kreon:400,700'
     = csrf_meta_tags
     = yield :head
-  %body(id=controller_name class=action_name)<
+  %body(id=controller_name class="container #{action_name}")<
     = render 'layouts/header'
-    #content
-      %aside#sidebar
+    #content.row
+      %aside#sidebar.threecol
         - if content_for? :sidebar
           = yield :sidebar
         - elsif controller_name == 'pages'
@@ -31,9 +31,8 @@
             %li.category.all= categories_search_link
             - @categories.each do |category|
               %li.category= categories_search_link(category)
-      %section#main
+      %section#main.ninecol.last
         = yield
-      .clear
     = render 'layouts/footer'
     - if Rails.env.development?
-      #debug><= debug params
+      #debug.row><= debug params

@@ -1,16 +1,16 @@
-%tr.listing{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
-  %td.starred
+%tr.row.listing{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
+  %td.starred.onecol
     = render 'listings/listing_star', :listing => listing
-  %td.image
+  %td.image.twocol
     -unless listing.images.empty?
       .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
-  %td.description_and_details
+  %td.description_and_details.fivecol
     .description= link_to listing.description, listing
     .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
     .extras
       .details= listing.details.markdown
       .seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
-    .toggle= link_to 'More &#187;'.html_safe, "##{listing.permalink}", :class => 'show-more'
     = render 'listings/listing_actions', :listing => listing
-  %td.created_at <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
-  %td.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+    .toggle= link_to 'More &#187;'.html_safe, "##{listing.permalink}", :class => 'show-more'
+  %td.created_at.twocol <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
+  %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)

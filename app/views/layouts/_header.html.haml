@@ -1,37 +1,39 @@
-%ul#user-toolbar.actions
-  - if user_signed_in?
-    %li.show= link_to current_user.name, current_user
-    %li.dashboard= link_to 'Dashboard', dashboard_path
-    %li.logout= link_to 'Logout', logout_path
-  - else
-    %li.register= link_to 'Register', register_path
-    %li.login= link_to 'Login', login_path
-%ul#site-toolbar.actions
-  %li.starred= link_to 'Starred', starred_path
-%header#marketplace
-  %h1= root? ? SITE_NAME : link_to(SITE_NAME, :root)
-  - unless flash.empty?
-    #flashes
-      - flash.each do |type, text|
-        %p{:class => type}= text
-  - if content_for? :top
-    #top
-      = yield :top
-  - else
-    - unless %w( pages categories users ).include? controller_name or action_name == 'search' or action_name == 'dashboard'
-      = search_form_for @search, {:id => :search_listings} do |f|
-        = field_set_tag nil, {:id => :search_order} do
-          %span.field
-            %span.label= label_tag :order, 'Sort'
-            %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
-        = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
-          %span.field
-            %span.label= f.label :details_or_description_cont, 'Word or phrase'
-            %span.input= f.text_field :details_or_description_cont, {:tabindex => autotab}
-        = field_set_tag nil, {:id => :search_categories} do
-          %span.field
-            %span.label= f.label :categories_id_positive_and_eq, 'Category'
-            %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
-        %ul.actions
-          %li.submit= f.submit 'Search', {:tabindex => autotab}
-          %li.advanced= link_to 'Advanced search', search_listings_path
+#toolbar.row
+  %ul#site-toolbar.sixcol
+    %li.starred= link_to 'Starred', starred_path
+  %ul#user-toolbar.sixcol.last
+    - if user_signed_in?
+      %li.show= link_to current_user.name, current_user
+      %li.dashboard= link_to 'Dashboard', dashboard_path
+      %li.logout= link_to 'Logout', logout_path
+    - else
+      %li.register= link_to 'Register', register_path
+      %li.login= link_to 'Login', login_path
+%header.row
+  %h1.twelvecol.last= root? ? SITE_NAME : link_to(SITE_NAME, :root)
+  #top.twelvecol.last
+    .container
+      - unless flash.empty?
+        #flashes
+          - flash.each do |type, text|
+            %p.flash{:class => type} <strong>#{type.capitalize}</strong>: #{text}
+      - if content_for? :top
+        = yield :top
+      - else
+        - unless %w( pages categories users ).include? controller_name or action_name == 'search' or action_name == 'dashboard'
+          = search_form_for @search, :html => { :id => 'simple_search', :class => 'row' } do |f|
+            = field_set_tag nil, {:id => :search_order} do
+              %span.field
+                %span.label= label_tag :order, 'Sort'
+                %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
+            = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
+              %span.field
+                %span.label= f.label :details_or_description_cont, 'Word or phrase'
+                %span.input= f.text_field :details_or_description_cont, {:tabindex => autotab}
+            = field_set_tag nil, {:id => :search_categories} do
+              %span.field
+                %span.label= f.label :categories_id_positive_and_eq, 'Category'
+                %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
+            %ul.actions
+              %li.submit= f.submit 'Search', {:tabindex => autotab}
+              %li.advanced= link_to 'Advanced search', search_listings_path

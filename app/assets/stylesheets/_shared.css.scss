@@ -38,24 +38,3 @@ $sidebar-width:     26%;
 @mixin sans-serif { font-family: Helvetica, Arial, Verdana, sans-serif; }
 
 @mixin kreon { font-family: 'Kreon', Helvetica, Arial, Verdana, sans-serif; }
-
-@mixin layout-clear {
-  clear : both;
-  overflow : hidden;
-  width : 100%;
-}
-
-@mixin layout-left {
-  @media all and (min-width: 768px) {
-    margin: 0;
-    display: inline-block;
-    float: left;
-  }
-}
-
-@mixin layout-right {
-  @media all and (min-width: 768px) {
-    margin: 0;
-    display: inline-block;
-  }
-}
