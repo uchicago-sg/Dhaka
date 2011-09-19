@@ -7,23 +7,28 @@ gem 'cancan'        # User authorization
 gem 'rdiscount'     # Markdown processor
 gem 'high_voltage'  # Easy static pages
 gem 'paperclip'     # Easy file attachments
-gem 'sprockets'     # The asset pipline
-gem 'sass-rails'    # Like CSS, but better
-gem 'coffee-script' # Like JavaScript, but better
-gem 'coffee-filter' # Use CoffeeScript in HAML
-gem 'jquery-rails'  # You know what it is
-gem 'uglifier'      # Minifier for production
-gem 'haml'          # Slim and sexy templates
-gem 'haml-rails'    # Use HAML in generators
+
+
 gem 'paper_trail'   # For versioning, undo
 gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
 
-gem 'tinymce-rails'
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari' # Dead-simple pagination
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31' # Hotsauce
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'   # Dead-simple tagging
+
+group :assets do
+  gem 'sprockets'     # The asset pipline
+  gem 'sass-rails'    # Like CSS, but better
+  gem 'coffee-script' # Like JavaScript, but better
+  gem 'coffee-filter' # Use CoffeeScript in HAML
+  gem 'jquery-rails'  # You know what it is
+  gem 'uglifier'      # Minifier for production
+  gem 'haml'          # Slim and sexy templates
+  gem 'haml-rails'    # Use HAML in generators
+  gem 'tinymce-rails' # Simple WYSIWYG editor
+end
 
 group :development, :test do
   gem 'sqlite3'
