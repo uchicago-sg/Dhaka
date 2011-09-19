@@ -6,11 +6,12 @@ $(document).ready ->
     $(this).attr('href', $(this).attr('href') + '?' + $('#listing_search .input > *').serialize())
 
   # Create an image carousel
-  $('.show .images').bxSlider
-    infiniteLoop: false
-    hideControlOnEnd: true
-    displaySlideQty: if $('.image').length > 3 then 3 else $('.image').length
-    moveSlideQty: 1
+  if $(window).width() > 480
+    $('.show .images').bxSlider
+      infiniteLoop: false
+      hideControlOnEnd: true
+      displaySlideQty: if $('.image').length > 3 then 3 else $('.image').length
+      moveSlideQty: 1
 
   # Open an image in the Fancybox
   $('a.fancybox-image').fancybox

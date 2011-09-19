@@ -1,11 +1,16 @@
-%tr.row.listing{:id => listing.permalink, :class => listing.seller.signed? ? 'signed' : ''}
+- classes = []
+- classes << (listing.seller.signed? ? 'signed' : '')
+- classes << (listing.expired? ? 'expired' : '')
+
+%tr.row.listing{:id => listing.permalink, :class => classes.join(' ')}
   %td.starred.onecol
-    = render 'listings/listing_star', :listing => listing
+    - unless listing.expired?
+      = render 'listings/listing_star', :listing => listing
   %td.image.twocol
-    -unless listing.images.empty?
+    - unless listing.expired? or listing.images.empty?
       .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
   %td.description_and_details.fivecol
-    .description= link_to listing.description, listing
+    .description= listing.readable? ? link_to(listing.description, listing) : listing.description
     .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
     .extras
       .details= listing.details.markdown

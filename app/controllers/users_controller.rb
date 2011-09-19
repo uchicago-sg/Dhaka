@@ -31,7 +31,12 @@ class UsersController < ApplicationController
   # GET /dashboard
   def dashboard
     @user     = current_user
-    @listings = @user.listings.order(Listing::DEFAULT_ORDER).page(params[:page])
+    if @user.admin?
+      @listings = Listing
+    else
+      @listings = @user.listings
+    end
+    @listings = @listings.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @user
   end
 end

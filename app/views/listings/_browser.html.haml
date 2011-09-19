@@ -11,8 +11,5 @@
         %td.price.twocol.last Price
     %tbody.container
       - listings.each do |listing|
-        - if listing.expired?
-          = render 'listings/expired_row', :listing => listing
-        - else
-          = render 'listings/row', :listing => listing
+        = render 'listings/row', :listing => listing
   = paginate listings

@@ -24,6 +24,8 @@
       padding-top: 0.5em;
       border-top: 1px solid #ddd;
       text-align: center;
+
+      .publicize { display: none; }
     }
   }
 
@@ -65,8 +67,5 @@
 
 
 @media all and (min-width: 768px) {
-  #listings.show article > footer {
-    #metadata { text-align: right; }
-    .actions  { text-align: left; }
-  }
+  #listings.show article > footer { text-align: right; }
 }

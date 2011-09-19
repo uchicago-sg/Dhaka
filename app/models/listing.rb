@@ -52,6 +52,11 @@ class Listing < ActiveRecord::Base
     false
   end
 
+  def readable?
+    return true if published and renewed_at >= 1.week.ago
+    false
+  end
+
   def self.searchable
     self.published.available
   end

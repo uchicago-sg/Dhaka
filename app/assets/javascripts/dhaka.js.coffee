@@ -52,11 +52,12 @@ $(document).ready ->
         '
 
   # Add search form behavior
-  listing_search_form = $('form#listing_search')
+  listing_search_form = $('#simple_search')
   listing_search_form.find('.inside_label').each ->
     input = $(this).find 'input'
     label = $(this).find 'label'
     input.data 'default_text', label.text()
+    console.log( label.text() )
 
     input.focus ->
       if $(this).val() is $(this).data('default_text')
@@ -89,7 +90,7 @@ $(document).ready ->
   # Ajaxify "starred" links
   # TODO Add notifications (part of notifications system, perhaps?)
   $('.starred').delegate 'a.star', 'ajax:success', ->
-    $(this).removeClass('star').addClass('unstar').text('Unstar this listing').attr('data-method', 'put')
+    $(this).removeClass('star').addClass('unstar').text('Unstar this listing').data('method', 'put')
     $.sticky 'Successfully starred listing'
 
   $('.starred').delegate 'a.unstar', 'ajax:success', ->
@@ -98,13 +99,26 @@ $(document).ready ->
       $(this).closest('.listing').slideUp().remove()
       if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
     else
-      $(this).removeClass('unstar').addClass('star').text('Star this listing').attr('data-method', 'post')
+      $(this).removeClass('unstar').addClass('star').text('Star this listing').data('method', 'post')
     $.sticky 'Successfully unstarred listing'
+
+  $.fn.extend
+    addListingLink: ->
+      # Reanimate the listing's link
+      listing = $(this).closest('.listing')
+      desc    = listing.find('.description')
+      desc.html "<a href='/#{listing.attr('id')}'>#{desc.text()}</a>"
+    removeListingLink: ->
+      # Close the listing's link
+      listing = $(this).closest('.listing')
+      desc    = listing.find('.description')
+      desc.html desc.text()
 
   # Notify of successful renewal and disallow another renewal by removing the link
   $('.renew').bind 'ajax:success', ->
     $.sticky 'Successfully renewed listing'
     $(this).html $(this).find('a').text()
+    $(this).addListingLink()
 
   # Notify of publicize or unpublicize
   $('.publish').closest('.listing').find('.renew').hide()
@@ -114,6 +128,7 @@ $(document).ready ->
     publish = $(this).attr 'href'
     $(this).attr('href', $(this).attr('data-unpublish')).attr('data-publish', publish)
     $(this).closest('.listing').find('.renew').show()
+    $(this).addListingLink()
 
   $('.publicize').delegate 'a.unpublish', 'ajax:success', ->
     $.sticky 'Successfully unpublished listing'
@@ -122,7 +137,9 @@ $(document).ready ->
     $(this).attr('href', $(this).attr('data-publish')).attr('data-unpublish', unpublish)
     listing = $(this).closest('.listing')
     listing.find('.renew').hide()
-    unless $('#users.dashboard').exists()
+    if $('#users.dashboard').exists()
+      $(this).removeListingLink()
+    else
       listing.slideUp().remove()
       if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
 

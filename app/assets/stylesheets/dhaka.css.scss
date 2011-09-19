@@ -229,11 +229,12 @@ body > footer {
   td.created_at, td.price { text-align: right; }
 
   tr.listing {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+
     &:nth-child(odd) { background-color: #f6f6f6; }
 
     &.signed { background-color: lighten($blue, 50%); }
-
-    td, .image { padding: 0.25em 0; }
 
     .description_and_details {
       text-align: left;
@@ -297,9 +298,6 @@ body > footer {
 
     .seller { text-align: right; }
     .description_and_details > div { width: 100%; }
-    .truncated-details { display: none; }
-    .extras { display: block !important; }
-    .toggle, .actions { display: none; }
     tr + tr { margin-top: 1em; }
   }
 }
@@ -355,7 +353,11 @@ body > footer {
       }
     }
 
-    .listing + .listing { border-top: 1px solid #ddd; }
+    tr.listing {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      & + .listing { border-top: 1px solid #ddd; }
+    }
   }
 
   body > footer {

@@ -31,10 +31,3 @@ namespace :passenger do
     run "touch #{current_path}/tmp/restart.txt"
   end
 end
-
-# after 'deploy:update_code', 'deploy:compile_assets'
-# namespace :deploy do
-#   task :compile_assets do
-#     run "cd #{current_path}; RAILS_ENV=production rake assets:precompile"
-#   end
-# end
