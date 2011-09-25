@@ -11,10 +11,16 @@ gem 'paper_trail'   # For versioning, undo
 gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
+
+gem 'sqlite3'
+gem 'rspec-rails'
+gem 'ruby-debug19'
+gem 'timecop'
 gem 'therubyracer'
-gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari' # Dead-simple pagination
 gem 'compass'
-gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'   # Dead-simple tagging
+
+gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git' # Dead-simple tagging
+gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari'                            # Dead-simple pagination
 
 group :assets do
   gem 'sprockets'     # The asset pipline
@@ -28,13 +34,6 @@ group :assets do
   gem 'tinymce-rails' # Simple WYSIWYG editor
 end
 
-group :development, :test do
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'ruby-debug19'
-  gem 'timecop'
-end
-
 group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
@@ -42,8 +41,4 @@ group :test do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'turn', :require => false
-end
-
-group :production do
-  gem 'pg'
 end
