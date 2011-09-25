@@ -11,10 +11,5 @@ test: &test
 cucumber:
   <<: *test
 
-production: &postgres
-  adapter: postgresql
-  database: dhaka
-  username: postgres
-  password: NL}2%/3 q-NgaKX[_cqf
-  encoding: utf8
-  pool: 5
+production: &sqlite
+  database: /var/www/Dhaka/shared/db/production.sqlite3
