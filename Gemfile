@@ -7,15 +7,13 @@ gem 'cancan'        # User authorization
 gem 'rdiscount'     # Markdown processor
 gem 'high_voltage'  # Easy static pages
 gem 'paperclip'     # Easy file attachments
-
-
 gem 'paper_trail'   # For versioning, undo
 gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
 
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari' # Dead-simple pagination
-gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31' # Hotsauce
+gem 'compass'
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'   # Dead-simple tagging
 
 group :assets do

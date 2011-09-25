@@ -4,22 +4,21 @@ require 'bundler/capistrano'
 
 set :codename, 'Dhaka'
 set :application, 'ScheduleSpy'
-set :domain, 'schedulespy.com'
-set :hostname, 'saluki'
-set :port, 6132
-set :user, 'deploy'
+set :domain, 'sg.uchicago.edu'
+set :user, 'sclemmer'
 set :use_sudo, false
-ssh_options[:forward_agent] = true
 
 set :scm, :git
 set :branch, 'develop'
-set :repository, "git@github.com:sczizzo/#{codename}.git"
-set :rvm_ruby_string, "1.9.2@#{codename.downcase}"
+set :repository, "git://github.com/sczizzo/#{codename}.git"
+
+set :rvm_ruby_string, "1.9.2"
+set :rvm_type, :user
 
 set :stage, 'production'
 set :rails_env, stage
 set :deploy_via, :remote_cache
-set :deploy_to, "/var/deploy/#{codename}/#{stage}"
+set :deploy_to, "/var/www/#{codename}/"
 
 server domain, :app, :web
 role :db, domain, :primary => true
