@@ -11,7 +11,7 @@ gem 'paper_trail'   # For versioning, undo
 gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
-
+gem 'therubyracer'
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari' # Dead-simple pagination
 gem 'compass'
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'   # Dead-simple tagging
