@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails'         # Only the latest, baby
+gem 'rails', '3.1.1rc1'         # Only the latest, baby
 gem 'capistrano'    # Deploying to Saluki for now
 gem 'foreman'       # Simple process management
 gem 'cancan'        # User authorization
