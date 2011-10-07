@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rails', '3.1.1rc1'        
+gem 'rails'	            
 gem 'capistrano'    # Deploying to Saluki for now
 gem 'foreman'       # Simple process management
 gem 'cancan'        # User authorization
@@ -17,7 +17,7 @@ gem 'rspec-rails'
 gem 'ruby-debug19'
 gem 'timecop'
 gem 'therubyracer'
-gem 'compass', :git => "git://github.com/chriseppstein/compass.git"
+gem 'compass'
 
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git' # Dead-simple tagging
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari'                            # Dead-simple pagination
