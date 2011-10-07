@@ -32,6 +32,7 @@ group :assets do
   gem 'haml'          # Slim and sexy templates
   gem 'haml-rails'    # Use HAML in generators
   gem 'tinymce-rails' # Simple WYSIWYG editor
+  gem 'compass', '~> 0.12.alpha'
 end
 
 group :test do
