@@ -6,17 +6,8 @@ GIT
       railties (>= 3.0.0)
 
 GIT
-  remote: git://github.com/chriseppstein/compass.git
-  revision: bd204a4f58df50db3f050f38138bfda8725896ab
-  specs:
-    compass (0.12.alpha.0.bd204a4)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
-
-GIT
   remote: https://github.com/mbleigh/acts-as-taggable-on.git
-  revision: e69c95e42189aa8aa4d3631002336db9950dec8f
+  revision: dcc0c62af7c185414daea08a8beb536e8d95dd9b
   specs:
     acts-as-taggable-on (2.1.1)
       rails
@@ -24,40 +15,40 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    actionmailer (3.1.1.rc1)
-      actionpack (= 3.1.1.rc1)
+    actionmailer (3.1.1)
+      actionpack (= 3.1.1)
       mail (~> 2.3.0)
-    actionpack (3.1.1.rc1)
-      activemodel (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    actionpack (3.1.1)
+      activemodel (= 3.1.1)
+      activesupport (= 3.1.1)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       i18n (~> 0.6)
       rack (~> 1.3.2)
-      rack-cache (~> 1.0.3)
+      rack-cache (~> 1.1)
       rack-mount (~> 0.8.2)
       rack-test (~> 0.6.1)
-      sprockets (~> 2.0.0)
-    activemodel (3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+      sprockets (~> 2.0.2)
+    activemodel (3.1.1)
+      activesupport (= 3.1.1)
       builder (~> 3.0.0)
       i18n (~> 0.6)
-    activerecord (3.1.1.rc1)
-      activemodel (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    activerecord (3.1.1)
+      activemodel (= 3.1.1)
+      activesupport (= 3.1.1)
       arel (~> 2.2.1)
       tzinfo (~> 0.3.29)
-    activeresource (3.1.1.rc1)
-      activemodel (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
-    activesupport (3.1.1.rc1)
+    activeresource (3.1.1)
+      activemodel (= 3.1.1)
+      activesupport (= 3.1.1)
+    activesupport (3.1.1)
       multi_json (~> 1.0)
     ansi (1.3.0)
     archive-tar-minitar (0.5.2)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
-    cancan (1.6.5)
+    cancan (1.6.7)
     capistrano (2.9.0)
       highline
       net-scp (>= 1.0.0)
@@ -83,15 +74,19 @@ GEM
       execjs
     coffee-script-source (1.1.2)
     columnize (0.3.4)
+    compass (0.11.5)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
     cucumber (1.1.0)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.2)
       gherkin (~> 2.5.0)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.6)
-    cucumber-rails (1.0.6)
+    cucumber-rails (1.1.1)
       capybara (>= 1.1.1)
-      cucumber (>= 1.0.6)
+      cucumber (>= 1.1.0)
       nokogiri (>= 1.5.0)
     database_cleaner (0.6.7)
     devise (1.4.7)
@@ -99,7 +94,7 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.3)
-    digestion (1.2)
+    digestion (1.2.1)
       actionpack (~> 3.1.0)
     erubis (2.7.0)
     execjs (1.2.9)
@@ -110,7 +105,7 @@ GEM
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
-    foreman (0.22.0)
+    foreman (0.24.0)
       term-ansicolor (~> 1.0.5)
       thor (>= 0.13.6)
     fssm (0.2.7)
@@ -149,9 +144,9 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.0)
     orm_adapter (0.0.5)
-    paper_trail (2.3.3)
+    paper_trail (2.4.0)
       rails (~> 3)
-    paperclip (2.4.2)
+    paperclip (2.4.3)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
@@ -160,7 +155,7 @@ GEM
       activerecord (~> 3.0)
     polyglot (0.3.2)
     rack (1.3.4)
-    rack-cache (1.0.3)
+    rack-cache (1.1)
       rack (>= 0.4)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
@@ -168,17 +163,17 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rails (3.1.1.rc1)
-      actionmailer (= 3.1.1.rc1)
-      actionpack (= 3.1.1.rc1)
-      activerecord (= 3.1.1.rc1)
-      activeresource (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+    rails (3.1.1)
+      actionmailer (= 3.1.1)
+      actionpack (= 3.1.1)
+      activerecord (= 3.1.1)
+      activeresource (= 3.1.1)
+      activesupport (= 3.1.1)
       bundler (~> 1.0)
-      railties (= 3.1.1.rc1)
-    railties (3.1.1.rc1)
-      actionpack (= 3.1.1.rc1)
-      activesupport (= 3.1.1.rc1)
+      railties (= 3.1.1)
+    railties (3.1.1)
+      actionpack (= 3.1.1)
+      activesupport (= 3.1.1)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -214,14 +209,14 @@ GEM
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
-    sass (3.1.7)
-    sass-rails (3.1.2)
+    sass (3.1.10)
+    sass-rails (3.1.4)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
       sass (>= 3.1.4)
       sprockets (~> 2.0.0)
       tilt (~> 1.3.2)
-    selenium-webdriver (2.7.0)
+    selenium-webdriver (2.8.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
       json_pure
@@ -232,13 +227,13 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.4)
     term-ansicolor (1.0.6)
-    therubyracer (0.9.4)
+    therubyracer (0.9.8)
       libv8 (~> 3.3.10)
     thor (0.14.6)
     tilt (1.3.3)
     timecop (0.3.5)
-    tinymce-rails (3.4.5)
-      digestion (~> 1.0)
+    tinymce-rails (3.4.5.0.1)
+      digestion (~> 1.2.1)
       railties (~> 3.1.0)
     treetop (1.4.10)
       polyglot
@@ -249,7 +244,7 @@ GEM
     uglifier (1.0.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    warden (1.0.5)
+    warden (1.0.6)
       rack (>= 1.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
@@ -264,7 +259,7 @@ DEPENDENCIES
   capybara
   coffee-filter
   coffee-script
-  compass!
+  compass
   cucumber
   cucumber-rails
   database_cleaner
@@ -279,12 +274,12 @@ DEPENDENCIES
   nokogiri
   paper_trail
   paperclip
-  rails (= 3.1.1rc1)
+  rails
   ransack
   rdiscount
   rspec-rails
   ruby-debug19
-  sass-rails
+  sass-rails (>= 3.1.4)
   sprockets
   sqlite3
   therubyracer
