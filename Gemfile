@@ -17,7 +17,6 @@ gem 'rspec-rails'
 gem 'ruby-debug19'
 gem 'timecop'
 gem 'therubyracer'
-gem 'compass'
 
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git' # Dead-simple tagging
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari'                            # Dead-simple pagination
