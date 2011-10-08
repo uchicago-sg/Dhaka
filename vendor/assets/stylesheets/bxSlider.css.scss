@@ -7,7 +7,7 @@
   width: 30px;
   height: 30px;
   text-indent: -999999px;
-  background: url(image_path("gray_next.png")) no-repeat 0 -30px;
+  background: url(image-path("gray_next.png")) no-repeat 0 -30px;
 }
 
 // Previous button
@@ -19,7 +19,7 @@
   width: 30px;
   height: 30px;
   text-indent: -999999px;
-  background: url(image_path("gray_prev.png")) no-repeat 0 -30px;
+  background: url(image-path("gray_prev.png")) no-repeat 0 -30px;
 }
 
 .bx-next:hover, .bx-prev:hover {
@@ -33,7 +33,7 @@
   padding: 3px 8px 3px 6px;
   font-size: 12px;
   zoom: 1;
-  background: url(image_path("gray_pager.png")) no-repeat 0 -20px;
+  background: url(image-path("gray_pager.png")) no-repeat 0 -20px;
 }
 
 .bx-pager .pager-active, .bx-pager a:hover {
