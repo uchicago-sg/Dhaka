@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  MAX_IMAGES    = 9 # Maximum number of uploadable images
+  MAX_IMAGES    = 5 # Maximum number of uploadable images
 
   # Available options for sorting
   ORDER_BY      = [['Most Recent', 'created_at DESC'], ['Lowest Price', 'listings.price ASC, created_at DESC'], ['Highest Price', 'listings.price DESC, created_at DESC']]
