@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
+    @search   = Listing.available.search params[:q]
     @listings = @search.result(:distinct => true).order(@order).page(params[:page])
     respond_with @listings
   end
@@ -101,8 +102,8 @@ class ListingsController < ApplicationController
     @include_expired = params[:include_expired].present? and ( params[:include_expired] == '1' or params[:include_expired] == 'on' )
     @images_present  = params[:images_present].present?  and ( params[:images_present]  == '1' or params[:images_present]  == 'on' )
 
-    listings  = Listing.searchable
-    listings  = listings.unexpired unless @include_expired
+    listings  = Listing.readable
+    listings  = listings.available unless @include_expired
     listings  = listings.with_images if @images_present
     @search   = listings.search params[:q]
     @listings = @search.result(:distinct => true).order(@order).page(params[:page])
@@ -123,9 +124,9 @@ private
   # If a listing is published, great! Everyone can read it
   # If not, it's only accessible to those with publisher rights
   def find_readable_listing
-    scope    = Listing.searchable
+    scope    = Listing.readable
     scope    = Listing.unexpired if user_signed_in?
-    @listing = scope.searchable.find_by_permalink params[:id]
+    @listing = scope.find_by_permalink params[:id]
 
     # Should probably be 404s, but whatever...
     raise CanCan::AccessDenied.new(nil, :show, Listing) unless @listing

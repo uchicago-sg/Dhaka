@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    @listings = @user.listings.searchable.order(Listing::DEFAULT_ORDER).page(params[:page])
+    @listings = @user.listings.available.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @user
   end
 

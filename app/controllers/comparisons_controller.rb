@@ -20,7 +20,7 @@ class ComparisonsController < ApplicationController
   # GET /compare
   def show
     @listings = []
-    @listings = Listing.searchable.order(Listing::DEFAULT_ORDER).find_all_by_permalink(session[:starred].uniq) if session[:starred]
+    @listings = Listing.available.order(Listing::DEFAULT_ORDER).find_all_by_permalink(session[:starred].uniq) if session[:starred]
     session[:starred] = @listings.map &:permalink
     @listings = Kaminari.paginate_array(@listings).page(params[:page])
   end

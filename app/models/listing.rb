@@ -31,20 +31,25 @@ class Listing < ActiveRecord::Base
   scope :with_images, joins(:images)
   scope :signed, joins(:seller).where('users.signed = ?', true)
 
+  def unpublished?
+    not published?
+  end
+
   # Listing lifecycle
   scope :published,   where(:published => true)
   scope :unpublished, where(:published => false)
-  scope :available,   where('listings.renewed_at >= ?', 1.week.ago)  # Less than a week old
-  scope :renewable,   where(:renewed_at => 2.weeks.ago..1.week.ago)  # Between one and two weeks old
+  scope :available,   where('listings.renewed_at >= ?', 1.week.ago).where(:published => true)  # Less than a week old
+  scope :renewable,   where(:renewed_at => 2.weeks.ago..1.week.ago).where(:published => true)  # Between one and two weeks old
   scope :unexpired,   where('listings.renewed_at >= ?', 2.weeks.ago) # Less than two weeks old
   scope :expired,     where('listings.renewed_at < ?', 2.weeks.ago)  # More than two weeks old
 
-  def expired?
-    renewed_at < 2.weeks.ago
+  def self.readable
+    self.unexpired.published
   end
 
-  def unpublished?
-    not published?
+  def available?
+    return true if published? and renewed_at >= 1.week.ago
+    false
   end
 
   def renewable?
@@ -52,14 +57,14 @@ class Listing < ActiveRecord::Base
     false
   end
 
-  def readable?
-    return true if published and renewed_at >= 1.week.ago
-    false
+  def expired?
+    renewed_at < 2.weeks.ago
   end
 
-  def self.searchable
-    self.published.available
+  def unexpired?
+    not expired?
   end
+
 
   def renew
     self.renewed_at = Time.now

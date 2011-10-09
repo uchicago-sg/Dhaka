@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
 protected
   def load_sidebar_and_search_resources
     @categories = Category.all
-    @search     = Listing.searchable.search params[:q]
+    @search     = Listing.available.search params[:q]
   end
 end

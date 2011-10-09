@@ -1,4 +1,4 @@
-// Next button
+/* Next button */
 .bx-next {
   position: absolute;
   top: 40%;
@@ -7,10 +7,10 @@
   width: 30px;
   height: 30px;
   text-indent: -999999px;
-  background: url("/assets/images/gray_next.png") no-repeat 0 -30px;
+  background: image-url("gray_next.png") no-repeat 0 -30px;
 }
 
-// Previous button
+/* Previous button */
 .bx-prev {
   position: absolute;
   top: 40%;
@@ -19,28 +19,28 @@
   width: 30px;
   height: 30px;
   text-indent: -999999px;
-  background: url("/assets/images/gray_prev.png") no-repeat 0 -30px;
+  background: image-url("gray_prev.png") no-repeat 0 -30px;
 }
 
 .bx-next:hover, .bx-prev:hover {
   background-position: 0 0;
 }
 
-// Pager links
+/* Pager links */
 .bx-pager a {
   margin-right: 5px;
   color: #fff;
   padding: 3px 8px 3px 6px;
   font-size: 12px;
   zoom: 1;
-  background: url("/assets/images/gray_pager.png") no-repeat 0 -20px;
+  background: image-url("gray_pager.png") no-repeat 0 -20px;
 }
 
 .bx-pager .pager-active, .bx-pager a:hover {
   background-position: 0 0;
 }
 
-// Pager wrapper
+/* Pager wrapper */
 .bx-pager {
   text-align: center;
   padding-top: 7px;
