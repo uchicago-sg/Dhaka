@@ -5,4 +5,6 @@ class Image < ActiveRecord::Base
     :small => "200x200#",
     :thumb => "100x100#"
   }
+  validates_attachment_size :photo, :less_than => 3.megabytes
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 end
