@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'rails'
+gem 'rack', '1.3.3' # Fix 'already initialized constant WFKV_' warnings
 gem 'capistrano'
 gem 'sqlite3'
 gem 'rspec-rails'
@@ -32,7 +33,7 @@ group :assets do
   gem 'tinymce-rails' # Simple WYSIWYG editor
 
   gem 'sass-rails', '>= 3.1.4'
-  gem 'compass'
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :tag => 'v0.12.alpha.0'
 end
 
 group :test do
