@@ -90,11 +90,8 @@ class Listing < ActiveRecord::Base
   end
   
   def self.remove_expired_images
-    Listing.expired.each do |listing| # for each listing
-      listing.images.each do |image|  # for each image of that listing
-        image.photo = nil             # this is the paperclip way of removing attached files ( which are called :photo )
-        image.save                    # and save it to make it all change!
-      end
+    Listing.expired.each do |listing| 
+      listing.images.each { |i| i.destroy } # Remove the db entry AND image, so phantom image references are removed
     end
   end
 end
