@@ -51,6 +51,7 @@ class String
   end
 end
 
+
 # Add custom date formatters
 Time::DATE_FORMATS.merge!({
   :default => '%b %d, %Y at %H:%M'

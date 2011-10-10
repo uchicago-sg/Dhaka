@@ -88,4 +88,13 @@ class Listing < ActiveRecord::Base
   def as_json options={}
     self.attributes.keep_if { |k,v| k != 'id' }
   end
+  
+  def self.remove_expired_images
+    Listing.expired.each do |listing| # for each listing
+      listing.images.each do |image|  # for each image of that listing
+        image.photo = nil             # this is the paperclip way of removing attached files ( which are called :photo )
+        image.save                    # and save it to make it all change!
+      end
+    end
+  end
 end
