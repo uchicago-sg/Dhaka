@@ -10,13 +10,8 @@
       &:active, &:hover.unstar { background-position: 0 -32px; }
     }
 
-    .images { width: 200px; }
-
-    .bx-wrapper { margin: 0 auto; }
-
-    .slider {
-      text-align: center;
-      margin: 0 auto;
+    .thumbs {
+      img { border: 1px solid #EAEAEA;}
     }
 
     article > footer {

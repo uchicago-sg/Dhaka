@@ -3,11 +3,16 @@
     %p.starred= render 'listings/listing_star', :listing => listing
     %h1.description= listing.description
   - unless listing.images.empty?
-    .slider
-      %ul.images
+    .row.image_container
+      .slider.eightcol
+        %ul.images
+          - listing.images.each do |image|
+            .image
+              %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:large)
+      .thumbs.twocol
         - listing.images.each do |image|
-          .image
-            %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:small)
+          %a{:href => ""}= image_tag image.photo.url(:thumb)
+        
   %div.details= listing.details.markdown
   %footer
     %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
