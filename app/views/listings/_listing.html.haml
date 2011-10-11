@@ -11,8 +11,8 @@
       .thumbs
         - listing.images.each do |image|
           %a{:href => ""}= image_tag image.photo.url(:thumb)  
-      .row.image_container
-        .slider.eightcol
+      .row
+        .slider
           %ul.images
             - listing.images.each do |image|
               .image

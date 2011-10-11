@@ -5,7 +5,7 @@ $(document).ready ->
   $('#subscribe-to-search a').click ->
     $(this).attr('href', $(this).attr('href') + '?' + $('#listing_search .input > *').serialize())
   
-  # Create slider ish
+  # Create slider
   slider = $(".show .images").bxSlider(controls: false)
   $(".thumbs a").click ->
     thumbIndex = $(".thumbs a").index(this)
