@@ -17,7 +17,11 @@ Dhaka::Application.routes.draw do
 
   resource :starred, :controller => 'comparisons', :only => %w( create show update )
 
-  resources :users,      :only => %w( show edit update )
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :change_password
+    end
+  end
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
     collection do

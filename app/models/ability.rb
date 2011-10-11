@@ -6,6 +6,7 @@ class Ability
     can [:manage, :renew, :publish, :unpublish], :all if user.admin?
     can [:read, :search], :all
     can :create, User
+    can :change_password, User, _id: user.id
 
     if user.has_role? 'seller'
       can :create, Listing

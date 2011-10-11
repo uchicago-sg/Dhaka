@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # custom_actions :resource => :change_password
   load_resource :find_by => :permalink
   authorize_resource
   respond_to :html, :json
@@ -16,7 +17,15 @@ class UsersController < ApplicationController
 
   # POST /users/:id
   def update
-    if @user.update_attributes params[:user]
+    if params[:user][:password]
+      if @user.update_with_password(params[:user])
+        sign_in(@user, bypass: true)
+        flash[:notice] = 'Password successfully updated'
+        respond_with @user, :status => :ok, :location => dashboard_path
+      else
+        render :change_password
+      end
+    elsif @user.update_attributes params[:user]
       flash[:notice] = 'User successfully edited'
       respond_with @user, :status => :ok, :location => dashboard_path
     else

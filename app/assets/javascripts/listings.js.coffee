@@ -4,15 +4,8 @@ $(document).ready ->
   # Redirect the user to the Atom feed by passing in the serialized advanced search form
   $('#subscribe-to-search a').click ->
     $(this).attr('href', $(this).attr('href') + '?' + $('#listing_search .input > *').serialize())
-
-  # Create an image carousel
-  # if $(window).width() > 480
-  #   $('.show .images').bxSlider
-  #     infiniteLoop: false
-  #     hideControlOnEnd: true
-  #     displaySlideQty: if $('.image').length > 3 then 3 else $('.image').length
-  #     moveSlideQty: 1
-  #     
+  
+  # Create slider ish
   slider = $(".show .images").bxSlider(controls: false)
   $(".thumbs a").click ->
     thumbIndex = $(".thumbs a").index(this)
@@ -20,7 +13,6 @@ $(document).ready ->
     $(".thumbs a").removeClass "pager-active"
     $(this).addClass "pager-active"
     false
-  
   $(".thumbs a:first").addClass "pager-active"
 
   # Open an image in the Fancybox
@@ -32,7 +24,7 @@ $(document).ready ->
     selected_category = $('select#q_categories_id_positive_and_eq option[selected=selected]').text()
     $('#sidebar .category').each ->
       $(this).addClass('selected') if $(this).find('a').text() is selected_category
-
+      
   # Limit the price input
   $('.currency').autoNumeric()
 

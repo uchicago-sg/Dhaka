@@ -13,27 +13,29 @@ document.createElement 'time'
 
 jQuery.fn.exists = -> jQuery(this).length > 0
 
-jQuery.timeago.settings.strings =
-  prefixAgo: null
-  prefixFromNow: null
-  suffixAgo: 'ago'
-  suffixFromNow: null
-  seconds: 'Less than a minute'
-  minute: 'About a minute'
-  minutes: '%d minutes'
-  hour: 'About an hour'
-  hours: 'About %d hours'
-  day: 'A day'
-  days: '%d days'
-  month: 'About a month'
-  months: '%d months'
-  year: 'About a year'
-  years: '%d years'
-  numbers: []
-
 $(document).ready ->
   # Hide mechanism for flashes and debug
   $('#debug').click -> $(this).fadeOut()
+
+  unless $('#listings.show').exists()
+    jQuery.timeago.settings.strings =
+      prefixAgo: null
+      prefixFromNow: null
+      suffixAgo: 'ago'
+      suffixFromNow: null
+      seconds: 'Less than a minute'
+      minute: 'About a minute'
+      minutes: '%d minutes'
+      hour: 'About an hour'
+      hours: 'About %d hours'
+      day: 'A day'
+      days: '%d days'
+      month: 'About a month'
+      months: '%d months'
+      year: 'About a year'
+      years: '%d years'
+      numbers: []
+
   $('.time-ago').attr('title', '').timeago()
 
   # First-time visitor welcome splash
@@ -57,7 +59,6 @@ $(document).ready ->
     input = $(this).find 'input'
     label = $(this).find 'label'
     input.data 'default_text', label.text()
-    console.log( label.text() )
 
     input.focus ->
       if $(this).val() is $(this).data('default_text')

@@ -2,18 +2,20 @@
   %header
     %p.starred= render 'listings/listing_star', :listing => listing
     %h1.description= listing.description
-  - unless listing.images.empty?
-    .row.image_container
-      .slider.eightcol
-        %ul.images
-          - listing.images.each do |image|
-            .image
-              %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:large)
-      .thumbs.twocol
-        - listing.images.each do |image|
-          %a{:href => ""}= image_tag image.photo.url(:thumb)
   .price_seller
-    %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
     %p.created_at Posted <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time> in #{listing.categories.map { |c| categories_search_link(c) }.to_sentence.html_safe}
-    %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})      
+    %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})  
+    %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+  - unless listing.images.empty?
+    .image_container
+      .thumbs
+        - listing.images.each do |image|
+          %a{:href => ""}= image_tag image.photo.url(:thumb)  
+      .row.image_container
+        .slider.eightcol
+          %ul.images
+            - listing.images.each do |image|
+              .image
+                %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:large)
+
   %div.details= listing.details.markdown
