@@ -24,14 +24,14 @@ server domain, :app, :web
 role :db, domain, :primary => true
 after :deploy, 'passenger:restart'
 
-# From railscast on cron jobs
-after "deploy:symlink", "deploy:update_crontab"
-namespace :deploy do
-  desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
-  end
-end
+# # From railscast on cron jobs
+# after "deploy:symlink", "deploy:update_crontab"
+# namespace :deploy do
+#   desc "Update the crontab file"
+#   task :update_crontab, :roles => :db do
+#     run "cd #{release_path} && whenever --update-crontab #{application}"
+#   end
+# end
 
 namespace :passenger do
   desc "Restart #{codename}."
