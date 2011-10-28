@@ -22,20 +22,23 @@ set :deploy_to, "/var/www/#{codename}/"
 
 server domain, :app, :web
 role :db, domain, :primary => true
-after :deploy, 'passenger:restart'
+after 'deploy:update_code', 'deploy:symlink_shared'
+# after "deploy:symlink_shared", "deploy:update_crontab"
 
-# # From railscast on cron jobs
-# after "deploy:symlink", "deploy:update_crontab"
-# namespace :deploy do
-#   desc "Update the crontab file"
-#   task :update_crontab, :roles => :db do
-#     run "cd #{release_path} && whenever --update-crontab #{application}"
-#   end
-# end
-
-namespace :passenger do
+namespace :deploy do
   desc "Restart #{codename}."
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  desc "Symlink shared configurations."
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/initializers/secrets.rb #{release_path}/config/initializers/secrets.rb"
+  end
+
+  desc "Update the crontab."
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
   end
 end
