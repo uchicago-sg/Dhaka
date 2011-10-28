@@ -9,30 +9,22 @@
       &:hover, &.unstar  { background-position: 0 -16px; }
       &:active, &:hover.unstar { background-position: 0 -32px; }
     }
+
     .thumbs {
-      a { float: left; }
-      a.pager-active { 
+      a.pager-active {
         img { border: 1px solid #888; }
       }
-      img { 
-        border: 1px solid #EAEAEA;
-        width: 70px;
-        margin-right: 0.5em;
+
+      img {
+        border: 1px solid #eaeaea;
+        max-width: 70px;
         padding: 0.25em;
+        margin-right: 0.5em;
       }
     }
 
-    .price_seller {
-//      margin-top: 0.5em;
-//      padding-top: 0.5em;
-//      border-top: 1px solid #ddd;
-//      text-align: center;
-      margin-bottom: 0.5em;
-      padding-bottom: 0.5em;
-      text-align: left !important;
-//      border-bottom: 1px solid #ddd;
-      
-      .publicize { display: none; }
+    .image_container {
+      margin-top: 0.25em;
     }
   }
 

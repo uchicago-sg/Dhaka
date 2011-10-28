@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  MAX_IMAGES    = 5 # Maximum number of uploadable images
+  MAX_IMAGES = 5 # Maximum number of uploadable images
 
   # Available options for sorting
   ORDER_BY      = [['Most Recent', 'created_at DESC'], ['Lowest Price', 'listings.price ASC, created_at DESC'], ['Highest Price', 'listings.price DESC, created_at DESC']]
@@ -38,10 +38,10 @@ class Listing < ActiveRecord::Base
   # Listing lifecycle
   scope :published,   where(:published => true)
   scope :unpublished, where(:published => false)
-  scope :available,   where('listings.renewed_at >= ?', 1.week.ago).where(:published => true)  # Less than a week old
-  scope :renewable,   where(:renewed_at => 2.weeks.ago..1.week.ago).where(:published => true)  # Between one and two weeks old
-  scope :unexpired,   where('listings.renewed_at >= ?', 2.weeks.ago) # Less than two weeks old
-  scope :expired,     where('listings.renewed_at < ?', 2.weeks.ago)  # More than two weeks old
+  scope :available,   where('listings.renewed_at >= ?', 1.week.ago).where(:published => true) # Less than a week old
+  scope :renewable,   where(:renewed_at => 2.weeks.ago..1.week.ago).where(:published => true) # Between one and two weeks old
+  scope :unexpired,   where('listings.renewed_at >= ?', 2.weeks.ago)                          # Less than two weeks old
+  scope :expired,     where('listings.renewed_at < ?', 2.weeks.ago)                           # More than two weeks old
 
   def self.readable
     self.unexpired.published
@@ -68,6 +68,7 @@ class Listing < ActiveRecord::Base
 
   def renew
     self.renewed_at = Time.now
+    self.renewals  += 1
     self
   end
 
@@ -88,9 +89,9 @@ class Listing < ActiveRecord::Base
   def as_json options={}
     self.attributes.keep_if { |k,v| k != 'id' }
   end
-  
+
   def self.remove_expired_images
-    Listing.expired.each do |listing| 
+    Listing.expired.each do |listing|
       listing.images.each { |i| i.destroy } # Remove the db entry AND image, so phantom image references are removed
     end
   end
