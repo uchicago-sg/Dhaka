@@ -4,6 +4,7 @@
 .project
 .sass-cache/
 .rvmrc
+secrets.rb
 webrat.log
 db/*.sqlite3
 log/*.log

@@ -1,0 +1,1 @@
+ADMIN_PASSWORD = 'e7sg ^*v[T{_xR9nz2JzH:c]h2e9w@69V-B'

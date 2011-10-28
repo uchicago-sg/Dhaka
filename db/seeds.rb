@@ -25,7 +25,7 @@ end
 admin = User.new({
   :name     => 'admin',
   :email    => 'admin@marketplace.uchicago.edu',
-  :password => '123456'
+  :password => ADMIN_PASSWORD
 })
 
 admin.roles = %w( admin )
