@@ -23,7 +23,7 @@ set :deploy_to, "/var/www/#{codename}/"
 server domain, :app, :web
 role :db, domain, :primary => true
 after 'deploy:update_code', 'deploy:symlink_shared'
-# after "deploy:symlink_shared", "deploy:update_crontab"
+after "deploy:symlink_shared", "deploy:update_crontab"
 
 namespace :deploy do
   desc "Restart #{codename}."
