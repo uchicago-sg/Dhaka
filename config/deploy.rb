@@ -5,7 +5,7 @@ require 'bundler/capistrano'
 set :codename, 'Dhaka'
 set :application, 'ScheduleSpy'
 set :domain, 'sg.uchicago.edu'
-set :user, 'sclemmer'
+set :user, SERVER_ACCOUNT
 set :use_sudo, false
 
 set :scm, :git
