@@ -41,17 +41,17 @@ $(document).ready ->
   # First-time visitor welcome splash
   unless $.cookie('visited')
     $.cookie 'visited', true, {publishs: 730, expires: 4} # Add expiration so people see it periodically until launch
-      $(document).ready ->
-        $.fancybox
-          centerOnScroll: true
-          content: '
-            <div id="splash">
-              <h1>Welcome to the Marketplace</h1>
-              <h2>Looks like it&#8217;s your first time visiting the beta</h2>
-              <p>Take a moment to <a href="/welcome" title="The New Marketplace">read about the new design</a> and remember we are still testing, so you may also want to list items on the <a href="http://marketplace.uchicago.edu" title="The Current Marketplace"> current Marketplace</a>. You can leave feedback using the orange button near the bottom-right corner of the page.</p>
-            </div>
-          '
-  
+    $(document).ready ->
+      $.fancybox
+        centerOnScroll: true
+        content: '
+          <div id="splash">
+            <h1>Welcome to the Marketplace</h1>
+            <h2>Looks like it&#8217;s your first time visiting the beta</h2>
+            <p>Take a moment to <a href="/welcome" title="The New Marketplace">read about the new design</a> and remember we are still testing, so you may also want to list items on the <a href="http://marketplace.uchicago.edu" title="The Current Marketplace"> current Marketplace</a>. You can leave feedback using the orange button near the bottom-right corner of the page.</p>
+          </div>
+        '
+
   # Add search form behavior
   listing_search_form = $('#simple_search')
   listing_search_form.find('.inside_label').each ->

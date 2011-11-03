@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
   belongs_to :listing
   has_attached_file :photo, :styles => {
-    :large => "640x480",
+    :large => "400x400>", # If either width or height > 400px, it will be scaled down proportional to original
     :small => "200x200#",
     :thumb => "100x100#"
   }
