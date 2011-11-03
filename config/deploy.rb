@@ -1,5 +1,6 @@
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path
 require 'rvm/capistrano'                               # Load RVM's capistrano plugin
+require 'whenever/capistrano'
 require 'bundler/capistrano'
 require './config/initializers/secrets.rb'
 
@@ -14,17 +15,18 @@ set :branch, 'develop'
 set :repository, "git://github.com/sczizzo/#{codename}.git"
 
 set :rvm_ruby_string, "1.9.2"
-set :rvm_type, 'sclemmer'
+set :rvm_type, :user
 
 set :stage, 'production'
 set :rails_env, stage
 set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/#{codename}/"
 
+set :whenever_command, 'bundle exec whenever'
+
 server domain, :app, :web
 role :db, domain, :primary => true
 after 'deploy:update_code', 'deploy:symlink_shared'
-after "deploy:symlink_shared", "deploy:update_crontab"
 
 namespace :deploy do
   desc "Restart #{codename}."
@@ -36,10 +38,5 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/initializers/secrets.rb #{release_path}/config/initializers/secrets.rb"
-  end
-
-  desc "Update the crontab."
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
   end
 end
