@@ -1,6 +1,7 @@
 Dhaka::Application.routes.draw do
   root :to => 'listings#index', :via => :get
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
+  get 'index'     => 'listings#index'
   get 'feeds'     => 'categories#index', :as => 'feeds'
   get 'dashboard' => 'users#dashboard',  :as => 'dashboard'
 
@@ -22,6 +23,7 @@ Dhaka::Application.routes.draw do
       get :change_password
     end
   end
+
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
     collection do

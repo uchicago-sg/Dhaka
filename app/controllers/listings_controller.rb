@@ -125,7 +125,7 @@ private
   # If not, it's only accessible to those with publisher rights
   def find_readable_listing
     scope    = Listing.readable
-    scope    = Listing.unexpired if user_signed_in?
+    scope    = Listing.available if user_signed_in?
     @listing = scope.find_by_permalink params[:id]
 
     # Should probably be 404s, but whatever...
