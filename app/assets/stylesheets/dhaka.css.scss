@@ -83,8 +83,8 @@ body {
 #site-toolbar a {
   padding-left: 24px;
   background: image-url('star.png') left top no-repeat;
-  &:hover  { background-position: 0 -20px; }
-  &:active { background-position: 0 -40px; }
+  &:hover  { background-position: 0 -40px; }
+  &:active { background-position: 0 -20px; }
 }
 
 #user-toolbar li + li { margin-left: 0.5em; }
@@ -276,8 +276,8 @@ body > footer {
       overflow: hidden;
     }
 
-    .starred a.unstar { background-position: 0 -20px; }
-    .starred a:hover, .starred a:active { background-position: 0 -40px; }
+    .starred a.unstar { background-position: 0 -40px; }
+    .starred a:hover, .starred a:active { background-position: 0 -20px; }
 
     .actions, .toggle { margin-top: 0.5em; }
 

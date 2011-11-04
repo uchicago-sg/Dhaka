@@ -40,7 +40,7 @@ $(document).ready ->
 
   # First-time visitor welcome splash
   unless $.cookie('visited')
-    $.cookie 'visited', true, {publishs: 730, expires: 4} # Add expiration so people see it periodically until launch
+    $.cookie 'visited', true
     $(document).ready ->
       $.fancybox
         centerOnScroll: true
@@ -48,7 +48,7 @@ $(document).ready ->
           <div id="splash">
             <h1>Welcome to the Marketplace</h1>
             <h2>Looks like it&#8217;s your first time visiting the beta</h2>
-            <p>Take a moment to <a href="/welcome" title="The New Marketplace">read about the new design</a> and remember we are still testing, so you may also want to list items on the <a href="http://marketplace.uchicago.edu" title="The Current Marketplace"> current Marketplace</a>. You can leave feedback using the orange button near the bottom-right corner of the page.</p>
+            <p>Take a moment to <a href="/welcome" title="Welcome Message">read about the new design</a> and remember we are still testing, so you may also want to list items on the <a href="http://marketplace.uchicago.edu/" title="The Marketplace"> current Marketplace</a>. You can leave feedback using the orange button near the bottom-right corner of the page.</p>
           </div>
         '
 

@@ -6,8 +6,8 @@
     header .starred a {
       background: image-url('star_small.png') left top no-repeat;
       padding-left: 20px;
-      &:hover, &.unstar  { background-position: 0 -16px; }
-      &:active, &:hover.unstar { background-position: 0 -32px; }
+      &:hover, &.unstar  { background-position: 0 -32px; }
+      &:active, &:hover.unstar { background-position: 0 -16px; }
     }
 
     .thumbs {
@@ -22,7 +22,7 @@
         margin-right: 0.5em;
       }
     }
-    
+
     .image_container {
       margin-top: 0.25em;
     }
