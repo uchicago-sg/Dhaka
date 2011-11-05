@@ -43,6 +43,8 @@ class Listing < ActiveRecord::Base
   scope :unexpired,   where('listings.renewed_at >= ?', 2.weeks.ago)                          # Less than two weeks old
   scope :expired,     where('listings.renewed_at < ?', 2.weeks.ago)                           # More than two weeks old
 
+  scope :almost_renewable, where(:renewed_at => 6.days.ago.beginning_of_day..6.days.ago.end_of_day).where(:published => true)
+
   def self.readable
     self.unexpired.published
   end
@@ -63,6 +65,11 @@ class Listing < ActiveRecord::Base
 
   def unexpired?
     not expired?
+  end
+
+
+  def self.notify_almost_renewable
+    Listing.almost_renewable.each { |l| Notifier.renew l }
   end
 
 

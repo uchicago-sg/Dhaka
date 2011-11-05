@@ -26,10 +26,13 @@ Dhaka::Application.routes.draw do
 
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
-    collection do
+    member do
       match ':id/renew'     => 'listings#renew',     :as => :renew
       get   ':id/publish'   => 'listings#publish',   :as => :publish
       get   ':id/unpublish' => 'listings#unpublish', :as => :unpublish
+    end
+
+    collection do
       match 'search' => 'listings#search', :via => [:get, :post], :as => :search
     end
   end
