@@ -9,7 +9,7 @@ Dhaka::Application.routes.draw do
     match page => 'high_voltage/pages#show', :id => page, :as => "#{page}_page"
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => 'sessions' }
   devise_scope :user do
     get "register" => "devise/registrations#new", :as => 'register'
     get "login"    => "devise/sessions#new",      :as => 'login'
