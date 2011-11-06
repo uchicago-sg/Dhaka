@@ -26,7 +26,7 @@ class ListingsController < ApplicationController
       flash[:notice] = 'Listing successfully created'
       respond_with @listing, :status => :created, :location => @listing
     else
-      respond_with @listing.errors, :status => :unprocessable_entity do |format|
+      respond_with @listing, :status => :unprocessable_entity do |format|
         format.html do
           render :action => :new
         end

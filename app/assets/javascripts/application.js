@@ -1,3 +1,4 @@
+//= require 'analytics'
 //= require mediaqueries
 //= require uservoice
 //= require jquery
