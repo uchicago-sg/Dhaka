@@ -11,7 +11,7 @@
       .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
   %td.description_and_details.fivecol
     .description= listing.available? ? link_to(listing.description, listing) : listing.description
-    .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
+    .truncated-details= truncate strip_tags_and_spaces(listing.details.markdown), :length => 125, :omission =>"..."
     .extras
       .details= listing.details.markdown
       .seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
