@@ -27,4 +27,8 @@ Ransack.configure do |config|
     :arel_predicate => 'eq',
     :validator      => proc {|v| v.to_i > 0},
     :type           => :integer
+  
+  config.add_predicate 'cont_any',
+    :arel_predicate => 'matches_any',
+    :formatter      => proc {|v| v.split(" ").map { |u| "%#{u}%" }}  
 end

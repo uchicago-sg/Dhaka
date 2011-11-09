@@ -28,8 +28,8 @@
                 %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
             = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
               %span.field
-                %span.label= f.label :details_or_description_cont, 'Word or phrase'
-                %span.input= f.text_field :details_or_description_cont, {:tabindex => autotab}
+                %span.label= f.label :details_or_description_cont_any, 'Word or phrase'
+                %span.input= f.text_field :details_or_description_cont_any, {:tabindex => autotab}
             = field_set_tag nil, {:id => :search_categories} do
               %span.field
                 %span.label= f.label :categories_id_positive_and_eq, 'Category'

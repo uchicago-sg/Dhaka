@@ -1,6 +1,6 @@
 module ListingsHelper
   def strip_tags_and_spaces(string)
-    strip_tags string.gsub!("&nbsp;", " ")
+    strip_tags string.gsub("&nbsp;", " ")
   end
   
   def show_more
