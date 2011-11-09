@@ -9,14 +9,11 @@ Dhaka::Application.routes.draw do
     match page => 'high_voltage/pages#show', :id => page, :as => "#{page}_page"
   end
 
-  devise_for :users, :controllers => { :sessions => 'sessions' }
-  devise_scope :user do
+  devise_for :users do
     get "register" => "devise/registrations#new", :as => 'register'
     get "login"    => "devise/sessions#new",      :as => 'login'
     get "logout"   => "devise/sessions#destroy",  :as => 'logout'
   end
-
-  resource :starred, :controller => 'comparisons', :only => %w( create show update )
 
   resources :users, :only => %w( show edit update ) do
     member do
@@ -24,6 +21,7 @@ Dhaka::Application.routes.draw do
     end
   end
 
+  resource  :starred,    :controller => 'comparisons', :only => %w( create show update )
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
     member do

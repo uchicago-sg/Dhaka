@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   def ability
     @ability ||= Ability.new(self)
   end
+
   delegate :can?, :cannot?, :to => :ability
 
   def to_param
@@ -53,6 +54,8 @@ class User < ActiveRecord::Base
   end
 
   def as_json options={}
-    self.attributes.keep_if { |k,v| k != 'id' }
+    result = self.attributes.keep_if { |k,v| k == 'email' or k == 'name' or k == 'permalink' or k == 'signed' }
+    result[:listings] = self.listings
+    result
   end
 end
