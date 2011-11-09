@@ -1,5 +1,10 @@
 - if listings.empty?
-  %h1.sorry No results found
+  - case controller_name
+  - when 'users'
+    %p.sorry You have no listings posted
+    %p= link_to 'Place your first listing', new_listing_path
+  - else
+    %h2.sorry No listings found
 - else
   %table#listings-browser
     %thead.container
