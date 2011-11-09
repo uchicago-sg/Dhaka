@@ -14,6 +14,7 @@
     = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'
     .input= f.text_area :details, {:tabindex => autotab}
   .field.images
+    %p You may upload at most five images. Each image must be formatted as a JPEG or PNG less than three megabytes in size.
     = f.fields_for :images do |image|
       - if image.object.new_record?
         .subfield.image-upload

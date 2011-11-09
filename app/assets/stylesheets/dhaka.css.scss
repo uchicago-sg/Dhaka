@@ -224,15 +224,6 @@ body > footer {
   text-align: left;
 }
 
-#beta-message {
-  background-color: $yellow;
-  width: 100%;
-  text-align: center;
-  margin: -2px auto 0.5em;
-  line-height: 2em;
-  font-weight: 500;
-  font-size: 1.2em;
-}
 
 #listings-browser {
   width: 100%;
@@ -294,9 +285,19 @@ body > footer {
 }
 
 
+article {
+  p + p { margin-top: 1em; }
+  p + ul { margin-top: 0.5em; }
+}
+
+
 
 @media all and (max-width: 480px) {
   #uvTab, #user-toolbar .show { display: none !important; }
+
+  article {
+    h1, h2, h3, h4, h5, h6 { text-align: center; }
+  }
 }
 
 

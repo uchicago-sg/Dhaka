@@ -1,39 +1,27 @@
 - title 'Welcome'
-%section#changes
-  %h1 Whats new with Marketplace?
+%article
+  %h1 Notes on the new Marketplace
+
   %hr
-  %article.welcome-info
-    %h2 Listings
-    %p Listings on Marketplace have undergone a big shift, but still maintain the simplicity that makes Marketplace easy to use. While every listing still has all the basics (title, price, description, seller contact) they now have easy to upload images and many other features.
-    %h3 Search 
-    %p There are two types of search added to the new marketplace, a simple keyword search bar which appears at the top of every page on the site, and an advanced search you can access by clicking the link on the simple search bar. Advanced search provides not only keyword search, but allows users to select search by specific categories, user, price range, date posted and whether or not a listing has an image.
-    %h3 Image Uploads
-    %p The new marketplace allows users to upload up to 5 images from their computer to accompany their listing. This was one of the most requested features in polls about the Marketplace, and we are glad to be able to provide it.
-    %ul
-      %li 5 images per listing
-      %li 3 megabytes maximum size per image
-      %li JPEG and PNG format only
-    %h3 Expiration and Renewal
-    %p Everyone hates finding the item they are looking for and having the seller tell them it was sold a week ago. Stale listings slow down the transaction and browsing process, and are generally a nuisance for everyone. So we have implemented a new expiration and renewal system:
-    %ul
-      %li Every listing will have a 1 week live lifetime, which means your listing will appear on the general site for only 1 week.
-      %li After 1 week, your listing will go into a sort of limbo where you may renew it if your item hasn't sold. During this 1 week period your listing will not appear on the site until you renew it.
-      %li If 2 weeks pass with no user intervention (1 week live, 1 week waiting for renewal), your listing will officially expire. Expired listings <em>cannot be renewed</em> and have their images stripped.
-    %h3 Starring
-    %p We wanted a better way to keep track of the listings you are interested in. Instead of having to open every listing in a new tab and sort through them, now you can simply star each listing of interest and visit this list by clicking the Starred link at the top right. This list persists as long as your cookies are not cleared.
+  %h2 Expiration and Renewal
+  %p The new Marketplace implements an expiration and renewal system:
+  %ul
+    %li Each listing is publicly available for one week.
+    %li After one week, the listing will be renewable (making it available for another week) but not public. These listings will still appear on the original seller&#8217;s #{link_to 'Dashboard', dashboard_path}.
+    %li After two weeks without renewal, the listing automatically expires. Expired listings are not public and <em>cannot be renewed</em>.
+
   %hr
-  %article.welcome-info
-    %h2 Accounts
-    %p User accounts have been added to the new marketplace because we want to be able to guarantee students that listings here are posted by members of the University community. Also, responding to incidents of abuse in the past, there will now be the capability to ban users posting material others find offensive or do not comply with the <a href="/terms" alt="Terms of Service">Terms of Service.</a> 
-    %h3 Sellers  
-    %p At this point, only those with University email addresses may sign up for an account to post listings. We know this adds a little bit of friction to the process, but it is a one time step to ensure the on going safety and security of marketplace.
-    %h3 Community
-    %p We still welcome members of the Hyde Park community and others to browse the listings and contact sellers. Students should be able to sell not only to other students but also the larger Hyde Park area. However, this means that students have to be safe about selling online, and we encourage anyone posting here to read our <a href="/safety" alt="Safety and Security Guide">common sense guide to selling</a>
+  %h2 Starred Listings
+  %p The #{link_to 'starring mechanism', starred_path} allows users to keep track of arbitrary listings, much like a shopping cart. This operation <em>does not</em> require a user account. Starred listings generally persist until the browser is closed or cookies are cleared.
+
   %hr
-  %article.welcome-info
-    %h2 Help and Feedback
-    %h3 UserVoice
-    %p One of the features we are very excited about is our new feedback system. If you need support, for any reason, please just click the button on the lower right hand corner. Tell us whats on your mind and we will get on it immediately. 
-    %p Developing this new site is an on going process, and we really want you to be involved in it! If you have any thoughts about the new design, or just something you want to point out, please use the feedback mechanism to tell the developers about it.
-    %h3 Email Support
-    %p As always if you need to get in touch with the moderators for any reason, contact <a href="mailto:plkap74@uchicago.edu" alt="plkap74@uchicago.edu"> Paul Kaplan </a>
+  %h2 Search
+  %p The Marketplace offers both a simple search bar that appears at the top of most pages and an #{link_to 'advanced search page', search_listings_path} also accessible from the simple search bar. Advanced search allows users to find listings by specific keywords, categories, sellers, prices, dates, and more. Users may also subscribe to an advanced search as an Atom feed.
+
+  %hr
+  %h2 User Accounts
+  %p #{link_to 'User Accounts', register_path} guarantee that Marketplace listings are posted by members of the University community and that those members are held accountable for offensive or inappropriate material. Currently only those with University email addresses may sign up for a seller account, but we welcome members of the greater Hyde Park community to browse listings and contact sellers.
+
+  %hr
+  %h2 Help and Feedback
+  %p If you have any concerns, criticisms, or complaints about the new design, you may leave feedback by clicking the orange &#8220;Feedback&#8221; button on the lower right hand corner of the page. You may also contact the moderators, developers, and maintainers directly by sending an email to the <a href="mailto:marketplace@lists.uchicago.edu" alt="UChicago Marketplace">Marketplace List</a>. This list is private, and your message will not be published.
