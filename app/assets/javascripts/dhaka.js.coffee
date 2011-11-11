@@ -88,18 +88,19 @@ $(document).ready ->
         $(this).removeClass('show-less').addClass('show-more').html('More &#187;')
 
   # Ajaxify "starred" links
-  # TODO Add notifications (part of notifications system, perhaps?)
   $('.starred').delegate 'a.star', 'ajax:success', ->
-    $(this).removeClass('star').addClass('unstar').text('Unstar this listing').data('method', 'put')
+    $(this).removeClass('available')
+    $(this).parent().find('a.unstar').addClass('available')
     $.sticky 'Successfully starred listing'
 
   $('.starred').delegate 'a.unstar', 'ajax:success', ->
     # Hide the listing when unstarred on /starred, otherwise rework the link
-    if $('#comparisons.show').exists()
+    if $('#comparisons.index').exists()
       $(this).closest('.listing').slideUp().remove()
       if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
     else
-      $(this).removeClass('unstar').addClass('star').text('Star this listing').data('method', 'post')
+      $(this).removeClass('available')
+      $(this).parent().find('a.star').addClass('available')
     $.sticky 'Successfully unstarred listing'
 
   $.fn.extend

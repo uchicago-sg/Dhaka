@@ -1,6 +1,6 @@
 Dhaka::Application.routes.draw do
   root :to => 'listings#index', :via => :get
-  post "versions/:id/revert" => "versions#revert", :as => "revert_version"
+  post 'versions/:id/revert' => 'versions#revert', :as => 'revert_version'
   get 'index'     => 'listings#index'
   get 'feeds'     => 'categories#index', :as => 'feeds'
   get 'dashboard' => 'users#dashboard',  :as => 'dashboard'
@@ -10,9 +10,9 @@ Dhaka::Application.routes.draw do
   end
 
   devise_for :users do
-    get "register" => "devise/registrations#new", :as => 'register'
-    get "login"    => "devise/sessions#new",      :as => 'login'
-    get "logout"   => "devise/sessions#destroy",  :as => 'logout'
+    get 'register' => 'devise/registrations#new', :as => 'register'
+    get 'login'    => 'devise/sessions#new',      :as => 'login'
+    get 'logout'   => 'devise/sessions#destroy',  :as => 'logout'
   end
 
   resources :users, :only => %w( show edit update ) do
@@ -21,7 +21,10 @@ Dhaka::Application.routes.draw do
     end
   end
 
-  resource  :starred,    :controller => 'comparisons', :only => %w( create show update )
+  get 'starred'             => 'comparisons#index',  :as => 'starred'
+  post 'starred'            => 'comparisons#star',   :as => 'star'
+  get  'starred/:permalink' => 'comparisons#unstar', :as => 'unstar'
+
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
     member do

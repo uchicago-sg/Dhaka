@@ -262,9 +262,11 @@ body > footer {
       height: 20px;
       width: 20px;
       margin: 0 0.5em;
-      display: block;
+      display: none;
       text-indent: 10000%;
       overflow: hidden;
+
+      &.available { display: block; }
     }
 
     .starred a.unstar { background-position: 0 -40px; }
