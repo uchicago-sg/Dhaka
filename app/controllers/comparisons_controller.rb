@@ -1,27 +1,31 @@
 class ComparisonsController < ApplicationController
-  # GET /starred
+  respond_to :html, :only => :index
+  before_filter :ensure_starred_session_variable_exists
+
   def index
     @listings = []
-    @listings = Listing.available.order(Listing::DEFAULT_ORDER).find_all_by_permalink(session[:starred].uniq) if session[:starred]
+    @listings = Listing.available.order(Listing::DEFAULT_ORDER).find_all_by_permalink(session[:starred].uniq)
     session[:starred] = @listings.map &:permalink
     @listings = Kaminari.paginate_array(@listings).page(params[:page])
+    respond_with @listings
   end
 
-  # POST /starred
   def star
-    session[:starred] ||= []
     session[:starred] << params[:permalink]
-    flash[:notice] = 'Successfully starred listing'
-    redirect_to :back
+    respond_to do |format|
+      format.json { render :json => {:status => :ok, :message => session[:starred] } }
+    end
   end
 
-  # GET /starred/:permalink
   def unstar
-    if session[:starred].delete params[:permalink]
-      flash[:notice] = 'Successfully unstarred listing'
-    else
-      flash[:notice] = 'No such listing to unstar'
+    session[:starred].delete params[:permalink]
+    respond_to do |format|
+      format.json { render :json => {:status => :ok, :message => params[:permalink] } }
     end
-    redirect_to :back
+  end
+
+protected
+  def ensure_starred_session_variable_exists
+    session[:starred] ||= []
   end
 end

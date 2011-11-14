@@ -309,7 +309,7 @@ article {
       text-indent: 0 !important;
       background: transparent !important;
       margin: 0 !important;
-      display: inline !important;
+      &.available { display: inline !important; }
     }
 
     .seller { text-align: right; }
