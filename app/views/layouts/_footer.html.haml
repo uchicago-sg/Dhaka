@@ -5,7 +5,7 @@
     ['Privacy Policy', privacy_page_path]
   ]
   second_column_links = [
-    ['Welcome Notes', welcome_page_path],
+    ['About the developers', about_page_path],
     ['Place a Listing', user_signed_in? ? new_listing_path : register_path],
     ['Atom Feeds', feeds_path]
   ]
@@ -13,7 +13,7 @@
 %footer.row
   .spacer.fivecol
   %ul#copyright.left.threecol
-    %li A <a href="http://sg.uchicago.edu/" title="UChicago Student Government">Student Government</a> initiative
+    %li= link_to 'Welcome Notes', welcome_page_path
     %li &#169; 2011 The University of Chicago
     %li All rights reserved
   %ul.center.twocol

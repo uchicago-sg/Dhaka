@@ -265,12 +265,11 @@ body > footer {
       display: none;
       text-indent: 10000%;
       overflow: hidden;
-
       &.available { display: block; }
     }
 
-    .starred a.unstar { background-position: 0 -40px; }
     .starred a:hover, .starred a:active { background-position: 0 -20px; }
+    .starred a.unstar { background-position: 0 -40px; }
 
     .actions, .toggle { margin-top: 0.5em; }
 
@@ -307,9 +306,12 @@ article {
   #listings-browser {
     .starred a {
       text-indent: 0 !important;
-      background: transparent !important;
-      margin: 0 !important;
+      background-image: image-url('star_small.png') !important;
+      padding-left: 20px;
+      margin-left: 0 !important;
       &.available { display: inline !important; }
+      &:hover, &.unstar  { background-position: 0 -32px !important; }
+      &:active, &:hover.unstar { background-position: 0 -16px !important; }
     }
 
     .seller { text-align: right; }
