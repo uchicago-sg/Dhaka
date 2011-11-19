@@ -13,11 +13,11 @@
         %span.label= f.label :seller_name_eq, 'Seller Username'
         %span.label= f.text_field :seller_name_eq, {:tabindex => autotab}
       %span.field
-        %span.label= f.label :price_to_f_gt, 'More than $'
-        %span.input= f.text_field :price_to_f_gt, {:tabindex => autotab, :class => 'currency'}
+        %span.label= f.label :price_to_f_gteq, 'More than $'
+        %span.input= f.text_field :price_to_f_gteq, {:tabindex => autotab, :class => 'currency'}
       %span.field
-        %span.label= f.label :price_to_f_lt, 'Less than $'
-        %span.input= f.text_field :price_to_f_lt, {:tabindex => autotab, :class => 'currency'}
+        %span.label= f.label :price_to_f_lteq, 'Less than $'
+        %span.input= f.text_field :price_to_f_lteq, {:tabindex => autotab, :class => 'currency'}
     = field_set_tag nil, {:id => :search_options} do
       %span.field
         %span.input= f.check_box :seller_signed_true, {:tabindex => autotab}

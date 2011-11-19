@@ -15,20 +15,20 @@ Ransack.configure do |config|
   #                      # (Default: use type from DB column)
   #                      :type => :string
 
-  config.add_predicate 'to_f_gt',
-    :arel_predicate => 'gt',
+  config.add_predicate 'to_f_gteq',
+    :arel_predicate => 'gteq',
     :type           => :float
 
-  config.add_predicate 'to_f_lt',
-    :arel_predicate => 'lt',
+  config.add_predicate 'to_f_lteq',
+    :arel_predicate => 'lteq',
     :type           => :float
 
   config.add_predicate 'positive_and_eq',
     :arel_predicate => 'eq',
     :validator      => proc {|v| v.to_i > 0},
     :type           => :integer
-  
+
   config.add_predicate 'cont_any',
     :arel_predicate => 'matches_any',
-    :formatter      => proc {|v| v.split(" ").map { |u| "%#{u}%" }}  
+    :formatter      => proc {|v| v.split(" ").map { |u| "%#{u}%" }}
 end
