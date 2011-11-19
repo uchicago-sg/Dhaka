@@ -1,5 +1,6 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
+require 'rails_rinku'
 
 module Kaminari
   module Helpers
@@ -47,7 +48,7 @@ end
 # Run a string through the Markdown filter and return for output
 class String
   def markdown
-    RDiscount.new(self).to_html.html_safe
+    Rinku.auto_link(RDiscount.new(self).to_html).html_safe
   end
 end
 

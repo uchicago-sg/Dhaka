@@ -16,5 +16,4 @@
             - listing.images.each do |image|
               .image
                 %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:large)
-
   %div.details= listing.details.markdown
