@@ -1,4 +1,12 @@
-- title "#{@user.name}'s Listings"
+- title @user.name
 - content_for :top do
-  %h2 #{@user.name}&#8217;s Listings
-= render 'listings/browser', :listings => @listings
+  - if can? :manage, @user
+    %h1 Your Dashboard
+  - else
+    %h1 #{@user.name}&#8217;s Listings
+= render 'sidebar', :user => @user
+- if can? :manage, @user
+  %p.sorry You have no listings posted
+  %p= link_to 'Place your first listing', new_listing_path
+- else
+  = render 'listings/browser', :listings => @listings

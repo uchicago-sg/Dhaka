@@ -80,7 +80,7 @@ body {
   }
 }
 
-#site-toolbar a {
+#user-toolbar .starred a {
   padding-left: 24px;
   background: image-url('star.png') left top no-repeat;
   &:hover  { background-position: 0 -40px; }
@@ -101,6 +101,7 @@ body > header {
     line-height: 1.25em;
     letter-spacing: -0.05em;
     margin-bottom: 0.25em;
+    margin-top: 0.25em;
     @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
 
     a {
@@ -303,6 +304,8 @@ article {
 
 
 @media all and (max-width: 767px) {
+  #simple_search .advanced { text-align: right; }
+
   #listings-browser {
     .starred a {
       text-indent: 0 !important;
@@ -322,9 +325,6 @@ article {
 
 
 @media all and (min-width: 768px) {
-  ul#user-toolbar { text-align: right; }
-  ul#site-toolbar { text-align: left; }
-
   #simple_search {
     #search_order, #search_keywords, #search_categories, .actions {
       padding-right: 1%;
@@ -336,12 +336,12 @@ article {
       input, select { width: 100%; }
     }
 
-    #search_order      { width: 15%; padding-left: 1%; padding-right: 0.5%; }
-    #search_keywords   { width: 40%; }
+    #search_keywords   { width: 39.5%; padding-left: 1%; padding-right: 1.5%; }
+    #search_order      { width: 15%; }
     #search_categories { width: 15%; }
 
     .actions {
-      width: 25.5%;
+      width: 25%;
 
       input { width: 100%; }
 

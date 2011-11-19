@@ -1,0 +1,6 @@
+- content_for :sidebar do
+  - if can? :manage, user
+    %ul.actions
+      %li.profile= link_to 'View your profile', user
+      %li.edit= link_to 'Edit your account', edit_user_path(user)
+      %li.create= link_to 'Place a listing', new_listing_path
