@@ -8,8 +8,8 @@
       background: image-url('star_small.png') left top no-repeat;
       padding-left: 20px;
       &.available { display: inline; }
-      &:hover, &.unstar  { background-position: 0 -32px; }
-      &:active, &:hover.unstar { background-position: 0 -16px; }
+      &:hover, &:active { background-position: 0 -16px; }
+      &.unstar { background-position: 0 -32px; }
     }
 
     .thumbs {

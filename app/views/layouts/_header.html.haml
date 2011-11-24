@@ -1,5 +1,6 @@
-#toolbar.row
-  %ul#user-toolbar.twelvecol.last
+%header.row
+  %h1#marketplace-logo.sixcol.last= root? ? SITE_NAME : link_to(SITE_NAME, :root)
+  %ul#user-toolbar.sixecol.last
     %li.starred= link_to 'Starred', starred_path
     - if user_signed_in?
       %li.show= link_to current_user.name, current_user
@@ -7,8 +8,6 @@
     - else
       %li.register= link_to 'Register', register_path
       %li.login= link_to 'Login', login_path
-%header.row
-  %h1.twelvecol.last= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   #top.twelvecol.last
     .container
       - unless flash.empty?
@@ -16,7 +15,9 @@
           - flash.each do |type, text|
             %p.flash{:class => type} <strong>#{type.capitalize}</strong>: #{text}
       - if content_for? :top
-        = yield :top
+        .threecol
+        .ninecol.last
+          = yield :top
       - else
         - unless %w( pages categories users ).include? controller_name or action_name == 'search' or action_name == 'dashboard'
           = search_form_for @search, :html => { :id => 'simple_search', :class => 'row' } do |f|
