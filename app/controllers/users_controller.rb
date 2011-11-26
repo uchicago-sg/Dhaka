@@ -6,7 +6,13 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    @listings = @user.listings.available.order(Listing::DEFAULT_ORDER).page(params[:page])
+    if user_signed_in? and @user.id == current_user.id
+      @listings = @user.listings
+    else
+      @listings = @user.listings.available
+    end
+
+    @listings = @listings.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @user
   end
 
@@ -35,17 +41,5 @@ class UsersController < ApplicationController
         end
       end
     end
-  end
-
-  # GET /dashboard
-  def dashboard
-    @user     = current_user
-    if @user.admin?
-      @listings = Listing
-    else
-      @listings = @user.listings
-    end
-    @listings = @listings.order(Listing::DEFAULT_ORDER).page(params[:page])
-    respond_with @user
   end
 end

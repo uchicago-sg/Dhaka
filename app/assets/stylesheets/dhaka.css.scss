@@ -124,6 +124,10 @@ body > header {
   clear: both;
   text-align: left;
 
+  .devise-links {
+    margin-top: 0.5em;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.5em;
     font-weight: bold;
@@ -146,17 +150,18 @@ body > header {
 }
 
 #sidebar {
+  font-size: 0.85em;
+
   > .categories, > .pages, > .actions {
     background-color: $yellow;
 
     a {
-      display:block;
+      display: block;
       padding: 0.1em 0.7em;
-      &:first-child { padding-top: 0.2em; }
-      &:last-child { padding-bottom: 0.2em; }
-
-      &:hover { background-color: darken($yellow, 20%); }
+      &:hover { background-color: darken($yellow, 10%); }
     }
+
+    li:first-child a { border-top: 0; }
 
     .selected a {
       font-weight: bold;
@@ -224,6 +229,7 @@ body > footer {
   background-color: #f6f6f6;
   padding: 0.5em 0;
   text-align: left;
+  font-size: 12px;
 }
 
 
@@ -293,6 +299,17 @@ article {
   p + ul { margin-top: 0.5em; }
 }
 
+body > footer, body > header {
+  a {
+    color: $blue;
+    text-decoration: none;
+    &, &:visited { color: $blue; }
+    &:hover { color: $green; }
+    &:active { color: $red; }
+    &:hover, &:active { text-decoration: underline; }
+  }
+}
+
 
 
 @media all and (max-width: 480px) {
@@ -305,11 +322,35 @@ article {
 
 
 @media all and (max-width: 767px) {
+  // There's still some rendering issue in Chrome, but alas...
+  #simple_search {
+    .label, .input {
+      display: block;
+      float: left;
+      width: 30%;
+    }
+
+    .label { text-align: right; padding-right: 1.5%; }
+    .input { width: 68%; }
+
+    .actions {
+      padding-top: 0.5em;
+      li { float: right; }
+      .submit { margin: 0 0.25em 0.25em; }
+    }
+  }
+
   #simple_search .advanced { text-align: right; }
 
   #user-toolbar, body > header, #top .ninecol.last { text-align: center; }
 
   #user-toolbar { margin-bottom: 1em; }
+
+  h2.sorry { text-align: center; }
+
+  #sidebar ul.categories, #sidebar ul.pages { display: none; }
+
+  #categories.index #main ul.categories { text-align: center; }
 
   #listings-browser {
     tr.listing .starred a {
@@ -332,6 +373,10 @@ article {
 
 @media all and (min-width: 768px) {
   #simple_search {
+    .label, .input {
+      display: inline;
+    }
+
     #search_order, #search_keywords, #search_categories, .actions {
       padding-right: 1%;
       display: inline-block;

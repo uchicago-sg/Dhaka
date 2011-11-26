@@ -97,7 +97,7 @@ $(document).ready ->
     # Hide the listing when unstarred on /starred, otherwise rework the link
     if $('#comparisons.index').exists()
       $(this).closest('.listing').slideUp().remove()
-      if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
+      if $('.listing').size() is 0 then $('#main').html('<h2 class="sorry">No results found</h2>')
     else
       $(this).removeClass('available')
       $(this).parent().find('a.star').addClass('available')
@@ -142,7 +142,7 @@ $(document).ready ->
       $(this).removeListingLink()
     else
       listing.slideUp().remove()
-      if $('.listing').size() is 0 then $('#main').html('<h1>No results found</h1>')
+      if $('.listing').size() is 0 then $('#main').html('<h2 class="sorry">No results found</h2>')
 
   # Slick new flashes mechanism with Sticky
   $('.flash').hide().each -> $(this).sticky()

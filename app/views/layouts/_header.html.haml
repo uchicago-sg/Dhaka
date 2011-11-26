@@ -31,7 +31,7 @@
                 %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
             = field_set_tag nil, {:id => :search_order} do
               %span.field
-                %span.label= label_tag :order, 'Sort'
+                %span.label= label_tag :order, 'Sort by'
                 %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
             %ul.actions
               %li.submit= f.submit 'Search', {:tabindex => autotab}

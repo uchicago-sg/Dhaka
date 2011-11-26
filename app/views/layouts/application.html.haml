@@ -35,5 +35,5 @@
       %section#main.ninecol.last
         = yield
     = render 'layouts/footer'
-    - if Rails.env.development?
-      #debug.row><= debug params
+    / - if Rails.env.development?
+    /   #debug.row><= debug params

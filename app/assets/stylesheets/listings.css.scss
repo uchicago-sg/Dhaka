@@ -3,7 +3,7 @@
 
 #listings {
   &.show {
-    header .starred a {
+    #content header .starred a {
       display: none;
       background: image-url('star_small.png') left top no-repeat;
       padding-left: 20px;

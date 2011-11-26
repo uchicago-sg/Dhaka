@@ -1,12 +1,15 @@
 - title @user.name
 - content_for :top do
-  - if can? :manage, @user
+  - if user_signed_in? and @user.id == current_user.id
     %h1 Your Dashboard
   - else
     %h1 #{@user.name}&#8217;s Listings
-= render 'sidebar', :user => @user
-- if can? :manage, @user
-  %p.sorry You have no listings posted
-  %p= link_to 'Place your first listing', new_listing_path
+- if user_signed_in? and @user.id == current_user.id
+  = render 'sidebar', :user => @user
+  - if @listings.empty?
+    %p.sorry You have no listings posted
+    %p= link_to 'Place your first listing', new_listing_path
+  - else
+    = render 'listings/browser', :listings => @listings
 - else
-  = render 'listings/browser', :listings => @listings
+  = render 'listings/browser', :listings => @listings unless @listings.empty?
