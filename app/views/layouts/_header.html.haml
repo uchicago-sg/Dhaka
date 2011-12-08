@@ -1,6 +1,5 @@
 %header.row
-  %h1#marketplace-logo.sixcol.last= root? ? SITE_NAME : link_to(SITE_NAME, :root)
-  %ul#user-toolbar.sixecol.last
+  %ul#user-toolbar.twelvecol.last
     %li.starred= link_to 'Starred', starred_path
     - if user_signed_in?
       %li.show= link_to current_user.name, current_user
@@ -8,31 +7,32 @@
     - else
       %li.register= link_to 'Register', register_path
       %li.login= link_to 'Login', login_path
-  #top.twelvecol.last
-    .container
-      - unless flash.empty?
-        #flashes
-          - flash.each do |type, text|
-            %p.flash{:class => type} <strong>#{type.capitalize}</strong>: #{text}
-      - if content_for? :top
-        .threecol
-        .ninecol.last
-          = yield :top
-      - else
-        - unless %w( pages categories users ).include? controller_name or action_name == 'search' or action_name == 'dashboard'
-          = search_form_for @search, :html => { :id => 'simple_search', :class => 'row' } do |f|
-            = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
-              %span.field
-                %span.label= f.label :details_or_description_cont_any, 'Word or phrase'
-                %span.input= f.text_field :details_or_description_cont_any, {:tabindex => autotab}
-            = field_set_tag nil, {:id => :search_categories} do
-              %span.field
-                %span.label= f.label :categories_id_positive_and_eq, 'Category'
-                %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
-            = field_set_tag nil, {:id => :search_order} do
-              %span.field
-                %span.label= label_tag :order, 'Sort by'
-                %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
-            %ul.actions
-              %li.submit= f.submit 'Search', {:tabindex => autotab}
-              %li.advanced= link_to 'Advanced search', search_listings_path
+
+  - if action_name == 'search'
+    %h1#marketplace-logo.threecol.last= root? ? SITE_NAME : link_to(SITE_NAME, :root)
+  - elsif content_for? :top
+    %h1#marketplace-logo.threecol= root? ? SITE_NAME : link_to(SITE_NAME, :root)
+    %div#top.ninecol.last
+      = yield :top
+  - else
+    %h1#marketplace-logo.threecol= root? ? SITE_NAME : link_to(SITE_NAME, :root)
+    %div#marketplace-search.ninecol.last
+      = search_form_for @search, :html => { :id => 'simple_search', :class => 'row' } do |f|
+        = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
+          %span.field
+            %span.label= f.label :details_or_description_cont_any, 'Word or phrase'
+            %span.input= f.text_field :details_or_description_cont_any, {:tabindex => autotab}
+        = field_set_tag nil, {:id => :search_categories} do
+          %span.field
+            %span.label= f.label :categories_id_positive_and_eq, 'Category'
+            %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
+        %ul.actions
+          = hidden_field_tag :mode, params[:mode]
+          = hidden_field_tag :order, params[:order]
+          %li.submit= f.submit 'Search', {:tabindex => autotab}
+          %li.advanced= link_to 'Advanced search', search_listings_path
+
+  - unless flash.empty?
+    #flashes.twelvecol.last
+      - flash.each do |type, text|
+        %p.flash{:class => type} <strong>#{type.capitalize}</strong>: #{text}

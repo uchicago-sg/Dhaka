@@ -9,6 +9,13 @@ class Listing < ActiveRecord::Base
   end
   DEFAULT_ORDER = ORDER_BY[0][1] # Most recent
 
+  # Available modes for sorting
+  MODES = %w( Detailed Compact )
+  MODE_OPTIONS = []
+  MODES.each_with_index do |e, i|
+    MODE_OPTIONS << [e, i]
+  end
+
   attr_accessible :description, :details, :price, :status, :images_attributes, :category_ids
   belongs_to :seller, :class_name => 'User'
   has_and_belongs_to_many :categories

@@ -3,13 +3,32 @@
 - else
   %table#listings-browser
     %thead.container
+      - if controller_name == 'listings' and action_name != 'search'
+        %tr.config
+          %td.mode
+            %span.field
+              %span.label= label_tag :meta_mode, 'View'
+              %span.input= select_tag :meta_mode, options_for_select( Listing::MODE_OPTIONS, params[:mode]), {:tabindex => autotab}
+          %td.order
+            %span.field
+              %span.label= label_tag :meta_order, 'Sort by'
+              %span.input= select_tag :meta_order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
       %tr.row
-        %td.starred.onecol Star
-        %td.image.twocol Image
-        %td.description_and_details.fivecol Details
-        %td.created_at.twocol Posted
-        %td.price.twocol.last Price
+        - unless @compact_mode
+          %td.starred.onecol Star
+          %td.image.twocol Image
+          %td.description_and_details.fivecol Details
+          %td.created_at.twocol Posted
+          %td.price.twocol.last Price
+        - else
+          %td.starred.onecol Star
+          %td.description_and_details.sixcol Details
+          %td.created_at.threecol Posted
+          %td.price.twocol.last Price
     %tbody.container
       - listings.each do |listing|
-        = render 'listings/row', :listing => listing
+        - unless @compact_mode
+          = render 'listings/row', :listing => listing
+        - else
+          = render 'listings/row_compact', :listing => listing
   = paginate listings

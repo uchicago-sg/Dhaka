@@ -73,6 +73,7 @@ body {
 #user-toolbar {
   text-align: right;
   list-style-type: none;
+  margin-bottom: 0.25em;
 
   li, li a {
     line-height: 1.5em;
@@ -100,7 +101,7 @@ body > header {
     line-height: 1.25em;
     letter-spacing: -0.05em;
     margin-bottom: 0.25em;
-    margin-top: 0.25em;
+    text-align: center;
     @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
 
     a {
@@ -113,10 +114,7 @@ body > header {
 }
 
 #top {
-  text-align: center;
-  margin-bottom: 0.25em;
-
-  .ninecol.last { text-align: left; }
+  margin-top: 1em;
 }
 
 
@@ -238,6 +236,21 @@ body > footer {
   thead { display: none; }
   tr, td { display: block; }
   td.created_at, td.price { text-align: right; }
+
+  tr.config {
+    float: left;
+    width: 100%;
+    border: 0;
+    margin-bottom: 0.5em;
+    clear: both;
+
+    td {
+      float: left;
+      width: 50%;
+    }
+
+    .order { text-align: right; }
+  }
 
   tr.listing {
     padding-top: 0.75em;
@@ -373,6 +386,8 @@ body > footer, body > header {
 
 @media all and (min-width: 768px) {
   #simple_search {
+    margin-top: 0.75em;
+
     .label, .input {
       display: inline;
     }
@@ -387,8 +402,7 @@ body > footer, body > header {
       input, select { width: 100%; }
     }
 
-    #search_keywords   { width: 39.5%; padding-left: 1%; padding-right: 1.5%; }
-    #search_order      { width: 15%; }
+    #search_keywords   { width: 54.5%; padding-left: 1.5%; padding-right: 1.5%; }
     #search_categories { width: 15%; }
 
     .actions {

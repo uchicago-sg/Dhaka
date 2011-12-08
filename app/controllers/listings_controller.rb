@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_filter :process_order_param, :only   => %w( index search )
+  before_filter :process_mode_param,  :only   => %w( index search )
   before_filter :find_readable_listing, :only => %w( show )
   load_resource :find_by => :permalink, :except => %w( show search )
   authorize_resource
@@ -115,6 +116,12 @@ class ListingsController < ApplicationController
 
 
 private
+  def process_mode_param
+    i  = params[:mode].to_i || 0
+    i %= Listing::MODES.length
+    @compact_mode = action_name != 'search' && Listing::MODES[i] == 'Compact'
+  end
+
   def process_order_param
     i  = params[:order].to_i || 0
     i %= Listing::ORDER_BY.length

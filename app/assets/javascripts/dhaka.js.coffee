@@ -161,3 +161,13 @@ $(document).ready ->
   b = Math.random() * 75
   c = Math.floor((a + b) % tips.length)
   if a < b then $.sticky('<strong>Tip:</strong> ' + tips[c])
+
+
+  # Submit the search form again when user interacts with "View" or "Sort by" selects
+  $('#meta_mode').change ->
+    $('#mode').val $(this).val()
+    $('#simple_search').submit()
+
+  $('#meta_order').change ->
+    $('#order').val $(this).val()
+    $('#simple_search').submit()
