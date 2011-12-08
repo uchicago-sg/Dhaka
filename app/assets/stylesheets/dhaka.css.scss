@@ -150,6 +150,8 @@ body > header {
 #sidebar {
   font-size: 0.85em;
 
+  ul + ul { margin-top: 1.5em; }
+
   > .categories, > .pages, > .actions {
     background-color: $yellow;
 
@@ -174,6 +176,17 @@ body > header {
     &:visited { color: $blue; }
     &:hover { color: $red; }
     &:active { color: $green; }
+  }
+
+  .actions {
+    a {
+      background-color: lighten($lgreen, 10%);
+      &:hover { background-color: $lgreen; }
+    }
+
+    .selected a {
+      background-color: lighten($rust, 15%) !important;
+    }
   }
 
   form .actions {

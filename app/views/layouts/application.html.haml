@@ -23,10 +23,28 @@
     = render 'layouts/header'
     #content.row
       %aside#sidebar.threecol
+        :ruby
+          def c state
+            return 'selected' if state
+            return ''
+          end
+        %ul.actions
+          %li.starred{:class => c(controller_name == 'comparisons' && action_name == 'index')}= link_to 'Starred Listings', starred_path
+          %li.create{:class  => c(controller_name == 'listings' && action_name == 'new')}= link_to 'Place a listing', new_listing_path
+          - if user_signed_in?
+            %li.profile{:class => c(controller_name == 'users'    && action_name == 'show')}= link_to 'View your profile', current_user
+            %li.edit{:class    => c(controller_name == 'users'    && action_name == 'edit')}= link_to 'Edit your account', edit_user_path(current_user)
+            %li.logout= link_to 'Logout', logout_path
+          - else
+            %li.register{:class => c(controller_name == 'registrations' && action_name == 'new')}= link_to 'Register', register_path
+            %li.login{:class => c(controller_name == 'sessions' && action_name == 'new')}= link_to 'Login', login_path
+
         - if content_for? :sidebar
           = yield :sidebar
         - elsif controller_name == 'pages'
           = render 'pages/sidebar'
+        - elsif controller_name == 'users'
+        - elsif action_name == 'new' && controller_name == 'listings'
         - else
           %ul.categories
             %li.category.all= categories_search_link
@@ -35,5 +53,5 @@
       %section#main.ninecol.last
         = yield
     = render 'layouts/footer'
-    / - if Rails.env.development?
-    /   #debug.row><= debug params
+    - if Rails.env.development?
+      #debug.row><= debug params

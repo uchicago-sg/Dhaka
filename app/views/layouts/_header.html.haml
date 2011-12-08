@@ -1,13 +1,4 @@
 %header.row
-  %ul#user-toolbar.twelvecol.last
-    %li.starred= link_to 'Starred', starred_path
-    - if user_signed_in?
-      %li.show= link_to current_user.name, current_user
-      %li.logout= link_to 'Logout', logout_path
-    - else
-      %li.register= link_to 'Register', register_path
-      %li.login= link_to 'Login', login_path
-
   - if action_name == 'search'
     %h1#marketplace-logo.threecol.last= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   - elsif content_for? :top

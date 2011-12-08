@@ -1,7 +1,6 @@
 - title 'New Listing'
 - content_for :top do
   %h2 New Listing
-= render 'users/sidebar', :user => current_user
 = render 'form'
 %ul.actions
   %li.back= link_to 'Back to List', listings_path
