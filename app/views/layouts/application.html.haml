@@ -32,7 +32,7 @@
           %li.starred{:class => c(controller_name == 'comparisons' && action_name == 'index')}= link_to 'Starred Listings', starred_path
           %li.create{:class  => c(controller_name == 'listings' && action_name == 'new')}= link_to 'Place a listing', new_listing_path
           - if user_signed_in?
-            %li.profile{:class => c(controller_name == 'users'    && action_name == 'show')}= link_to 'View your profile', current_user
+            %li.profile{:class => c(controller_name == 'users'    && action_name == 'show' && @user.id == current_user.id)}= link_to 'View your profile', current_user
             %li.edit{:class    => c(controller_name == 'users'    && action_name == 'edit')}= link_to 'Edit your account', edit_user_path(current_user)
             %li.logout= link_to 'Logout', logout_path
           - else

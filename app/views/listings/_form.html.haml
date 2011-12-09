@@ -1,14 +1,14 @@
 = form_for @listing, :html => { :multipart => true } do |f|
   = render 'shared/form_errors', :resource => @listing
-  .field.category
-    .label= f.label :category_ids, 'Category'
-    .input= f.collection_select :category_ids, Category.all, :id, :description, {}, {:tabindex => autotab}
   .field.description
     .label= f.label :description
     .input= f.text_field :description, {:tabindex => autotab}
   .field.price
     .label= f.label :price
     .input= f.text_field :price, {:class => 'currency', :tabindex => autotab}
+  .field.category
+    .label= f.label :category_ids, 'Category'
+    .input= f.collection_select :category_ids, Category.all, :id, :description, {}, {:tabindex => autotab}
   .field.details
     .label= f.label :details
     = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'

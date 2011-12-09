@@ -1,7 +1,7 @@
 - title @user.name
 - content_for :top do
   - if user_signed_in? and @user.id == current_user.id
-    %h1 Your Dashboard
+    %h1 Your Profile
   - else
     %h1 #{@user.name}&#8217;s Listings
 - if user_signed_in? and @user.id == current_user.id

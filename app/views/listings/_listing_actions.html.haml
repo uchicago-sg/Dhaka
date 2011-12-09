@@ -1,4 +1,4 @@
-- if can? :edit, listing or can? :destroy, listing
+- if can?(:edit, listing)
   %ul.actions
     - if can? :edit, listing
       %li.edit= link_to 'Edit', edit_listing_path(listing)

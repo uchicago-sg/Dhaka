@@ -8,8 +8,6 @@
       = render 'listings/listing_star', :listing => listing
   %td.description_and_details.sixcol
     .description= listing.available? ? link_to(listing.description, listing) : listing.description
-    .extras
-      .details= listing.details.markdown
-      .seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
+    = render 'listings/listing_actions', :listing => listing
   %td.created_at.threecol <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
   %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)

@@ -43,7 +43,7 @@ body {
   font-size: 1.2em;
   line-height: 1.5em;
   font-weight: normal;
-  margin-bottom: 2.5em;
+  margin-bottom: 1.25em;
 }
 
 
@@ -70,26 +70,6 @@ body {
 }
 
 
-#user-toolbar {
-  text-align: right;
-  list-style-type: none;
-  margin-bottom: 0.25em;
-
-  li, li a {
-    line-height: 1.5em;
-    display: inline-block;
-  }
-}
-
-#user-toolbar .starred a {
-  padding-left: 24px;
-  background: image-url('star.png') left top no-repeat;
-  &:hover  { background-position: 0 -40px; }
-  &:active { background-position: 0 -20px; }
-}
-
-#user-toolbar li + li { margin-left: 0.5em; }
-
 
 body > header {
   h1, h2, h3, h4, h5, h6 { @include kreon; }
@@ -100,7 +80,7 @@ body > header {
     font-size: $header-size;
     line-height: 1.25em;
     letter-spacing: -0.05em;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.1em;
     text-align: center;
     @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
 
@@ -113,9 +93,7 @@ body > header {
   }
 }
 
-#top {
-  margin-top: 1em;
-}
+#top { margin-top: 1em; }
 
 
 #content {
@@ -135,6 +113,8 @@ body > header {
     display: block;
     padding: 0.25em 0;
   }
+
+  thead .field, thead .subfield { padding: 0; }
 }
 
 #sidebar, #main {
@@ -150,7 +130,7 @@ body > header {
 #sidebar {
   font-size: 0.85em;
 
-  ul + ul { margin-top: 1.5em; }
+  ul + ul, ul + form { margin-top: 1em; }
 
   > .categories, > .pages, > .actions {
     background-color: $yellow;
@@ -178,7 +158,7 @@ body > header {
     &:active { color: $green; }
   }
 
-  .actions {
+  > .actions {
     a {
       background-color: lighten($lgreen, 10%);
       &:hover { background-color: $lgreen; }
@@ -199,6 +179,11 @@ body > header {
   }
 }
 
+#main .pagination {
+  text-align: center;
+  line-height: 2em;
+}
+
 #main ol, #main ul {
   list-style: disc outside none;
 
@@ -207,17 +192,13 @@ body > header {
 
 
 body > footer {
+  color: #666;
   padding-top: 0.5em;
   margin-top: 0.5em;
   text-align: center;
   border-top: 1px solid #ccc;
-
-  ul {
-    font-size: 0.8em;
-    list-style-type: none;
-  }
-
-  .spacer { display: none; }
+  font-size: 0.8em;
+  list-style-type: none;
 }
 
 
@@ -317,6 +298,15 @@ body > footer {
   }
 
   tr.expired * { color: #999 !important; }
+
+  tr.compact .actions {
+    width: 100%;
+
+    li {
+      display: inline-block;
+      & + li { padding-left: 0.25em; }
+    }
+  }
 }
 
 
@@ -457,13 +447,12 @@ body > footer, body > header {
   }
 
   body > footer {
-    border-top: none;
-    text-align: right;
+    text-align: left;
+    #links { text-align: right; }
 
-    .spacer {
-      display: block;
-      min-height: 58px;
-      background: image-url('wordmark.png') left top no-repeat;
+    li {
+      display: inline-block;
+      margin-left: 0.5em;
     }
   }
 }

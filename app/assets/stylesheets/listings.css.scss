@@ -2,6 +2,12 @@
 
 
 #listings {
+  &.new {
+    .field.images {
+      margin: 0.5em 0;
+    }
+  }
+
   &.show {
     #content header .starred a {
       display: none;

@@ -1,24 +1,14 @@
 :ruby
-  first_column_links = [
+  links = [
+    ['About Marketplace', about_page_path],
     ['Safety & Security', safety_page_path],
     ['Terms of Service', terms_page_path],
-    ['Privacy Policy', privacy_page_path]
-  ]
-  second_column_links = [
-    ['About Marketplace', about_page_path],
-    ['Place a Listing', user_signed_in? ? new_listing_path : register_path],
+    ['Privacy Policy', privacy_page_path],
     ['Atom Feeds', feeds_path]
   ]
 
 %footer.row
-  .spacer.fivecol
-  %ul#copyright.left.threecol
-    %li= link_to 'Welcome Notes', welcome_page_path
-    %li &#169; 2011 The University of Chicago
-    %li All rights reserved
-  %ul.center.twocol
-    - second_column_links.each do |link|
-      %li= link_to link[0], link[1]
-  %ul.right.twocol.last
-    - first_column_links.each do |link|
+  #copyright.sixcol &#169; 2011 The University of Chicago. All rights reserved.
+  %ul#links.sixcol.last
+    - links.each do |link|
       %li= link_to link[0], link[1]

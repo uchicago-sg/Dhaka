@@ -48,7 +48,7 @@ $(document).ready ->
           <div id="splash">
             <h1>Welcome to the Marketplace</h1>
             <h2>Looks like it&#8217;s your first time visiting the beta</h2>
-            <p>Take a moment to <a href="/welcome" title="Welcome Notes">read about the new design</a> and remember we are still testing, so you may also want to list items on the <a href="http://marketplace.uchicago.edu/" title="The Marketplace"> current Marketplace</a>. You can leave feedback using the orange button near the bottom-right corner of the page.</p>
+            <p>Take a moment to <a href="/about" title="About Marketplace">read about the new design</a> and remember we are still testing, so you may also want to list items on the <a href="http://marketplace.uchicago.edu/" title="The Marketplace"> current Marketplace</a>. You can leave feedback using the orange button near the bottom-right corner of the page.</p>
           </div>
         '
 
