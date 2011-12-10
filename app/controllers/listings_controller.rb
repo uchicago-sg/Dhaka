@@ -39,6 +39,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/:id
   def show
+    impressionist(@listing)
     respond_with @listing
   end
 

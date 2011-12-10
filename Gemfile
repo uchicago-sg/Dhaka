@@ -9,15 +9,16 @@ gem 'ruby-debug19'
 gem 'timecop'
 gem 'therubyracer'
 
-gem 'foreman'      # Simple process management
-gem 'cancan'       # User authorization
-gem 'rdiscount'    # Markdown processor
-gem 'high_voltage' # Easy static pages
-gem 'paperclip'    # Easy file attachments
-gem 'paper_trail'  # For versioning, undo
-gem 'nokogiri'     # Scraping old marketplace
-gem 'devise'       # User authentication
-gem 'ransack'      # Successor to MetaSearch
+gem 'foreman'        # Simple process management
+gem 'cancan'         # User authorization
+gem 'rdiscount'      # Markdown processor
+gem 'high_voltage'   # Easy static pages
+gem 'paperclip'      # Easy file attachments
+gem 'paper_trail'    # For versioning, undo
+gem 'nokogiri'       # Scraping old marketplace
+gem 'devise'         # User authentication
+gem 'ransack'        # Successor to MetaSearch
+gem 'impressionist'  # Simple page view counter
 
 gem 'whenever', :require => false
 gem 'htmlentities'

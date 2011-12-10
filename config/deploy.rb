@@ -5,7 +5,7 @@ require 'bundler/capistrano'
 require './config/initializers/secrets.rb'
 
 set :codename, 'Dhaka'
-set :application, 'ScheduleSpy'
+set :application, 'Marketplace'
 set :domain, 'sg.uchicago.edu'
 set :user, SERVER_ACCOUNT
 set :use_sudo, false

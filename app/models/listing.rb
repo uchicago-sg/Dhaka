@@ -23,7 +23,8 @@ class Listing < ActiveRecord::Base
   accepts_nested_attributes_for :images, :allow_destroy => :true
   has_paper_trail
   acts_as_taggable
-
+  is_impressionable
+  
   attr_readonly :permalink
   @@permalink_field = :description
 
@@ -95,6 +96,10 @@ class Listing < ActiveRecord::Base
     self.published = false
     self
   end
+  
+  def views
+    self.impressionist_count(:filter=>:session_hash)
+  end
 
   def to_param
     permalink
@@ -109,4 +114,5 @@ class Listing < ActiveRecord::Base
       listing.images.each { |i| i.destroy } # Remove the db entry AND image, so phantom image references are removed
     end
   end
+  
 end
