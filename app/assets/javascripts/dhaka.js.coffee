@@ -93,7 +93,6 @@ $(document).ready ->
     $.sticky 'Successfully starred listing'
 
   $('td.starred').delegate 'a.unstar', 'ajax:success', ->
-    alert "Success on a.unstar"
     # Hide the listing when unstarred on listings/starred, otherwise rework the link
     if $('#listings.starred').exists()
       $(this).parent().find('.listing').slideUp().remove()

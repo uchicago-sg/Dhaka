@@ -11,7 +11,7 @@ private
   def generate_permalink_for record
     model      = record.class
     permalink  = record.send(model.class_variable_get :@@permalink_field).to_slug
-    permalink  = 'listing' if permalink.length <= 2
+    permalink  = @@permalink_field.to_s if permalink.length <= 2
     permalink += '-1' if reserved_permalink? permalink, model
     permalink  = permalink.next while reserved_permalink? permalink, model
     permalink

@@ -2,7 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
   unauthorized:
     create:
-        listing: "Must be a logged in user to create a listing"
+        listing: "You must login before creating a new listing."

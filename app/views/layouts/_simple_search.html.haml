@@ -1,0 +1,14 @@
+= search_form_for search, :html => { :id => 'simple_search', :class => 'row' } do |f|
+  = field_set_tag nil, {:id => :search_keywords, :class => :inside_label} do
+    %span.field
+      %span.label= f.label :details_or_description_cont_any, 'Word or phrase'
+      %span.input= f.text_field :details_or_description_cont_any, {:tabindex => autotab}
+  = field_set_tag nil, {:id => :search_categories} do
+    %span.field
+      %span.label= f.label :categories_id_positive_and_eq, 'Category'
+      %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
+  %ul.actions
+    = hidden_field_tag :mode, params[:mode]
+    = hidden_field_tag :order, params[:order]
+    %li.submit= f.submit 'Search', {:tabindex => autotab}
+    %li.advanced= link_to 'Advanced search', search_listings_path

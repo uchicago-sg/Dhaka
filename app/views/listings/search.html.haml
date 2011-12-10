@@ -1,4 +1,6 @@
 - title 'Advanced Search'
+- content_for :top do
+  %h2 Advanced Search
 - content_for :sidebar do
   = search_form_for @search, :url => search_listings_path, :html => {:method => :post} do |f|
     = field_set_tag nil, {:id => :search_categories} do

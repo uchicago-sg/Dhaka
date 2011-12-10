@@ -24,7 +24,7 @@
     #content.row
       %aside#sidebar.threecol
         %ul.actions
-          %li.starred{:class => selected_if(@action == 'comparisons#index')}= link_to 'Starred Listings', starred_listings_path
+          %li.starred{:class => selected_if(@action == 'listings#starred')}= link_to 'Starred Listings', starred_listings_path
           %li.create{:class  => selected_if(@action == 'listings#new')}= link_to 'Place a listing', new_listing_path
           - if user_signed_in?
             %li.profile{:class => selected_if(@action == 'users#show' && @user.id == current_user.id)}= link_to 'View your profile', current_user

@@ -286,8 +286,7 @@ body > footer {
     .starred a:hover, .starred a:active { background-position: 0 -20px; }
     .starred a.unstar { background-position: 0 -40px; }
 
-    .actions, .toggle { margin-top: 0.5em; }
-
+    .actions, .toggle { font-size: 0.9em; margin-top: 0.25em; }
     .toggle { text-align: right; }
 
     .actions, .actions + .toggle {
@@ -333,6 +332,12 @@ body > footer, body > header {
 
   article {
     h1, h2, h3, h4, h5, h6 { text-align: center; }
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 900px) {
+  body > header h1 {
+    font-size: $smaller-header-size;
   }
 }
 
@@ -395,7 +400,7 @@ body > footer, body > header {
       display: inline;
     }
 
-    #search_order, #search_keywords, #search_categories, .actions {
+    #search_keywords, #search_categories, .actions {
       padding-right: 1%;
       display: inline-block;
       float: left;
@@ -405,21 +410,19 @@ body > footer, body > header {
       input, select { width: 100%; }
     }
 
-    #search_keywords   { width: 54.5%; padding-left: 1.5%; padding-right: 1.5%; }
-    #search_categories { width: 15%; }
+    #search_keywords   { width: 45.5%; padding-left: 1.5%; padding-right: 2%; }
+    #search_categories { width: 19%; }
 
     .actions {
-      width: 25%;
-
-      input { width: 100%; }
+      width: 30%;
 
       .submit, .advanced {
         display: inline-block;
         float: left;
-        width: 25%;
+        width: 32%;
       }
 
-      .advanced { text-align: right; width: 75%; }
+      .advanced { text-align: right; width: 68%; }
     }
   }
 
