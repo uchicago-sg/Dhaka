@@ -310,7 +310,7 @@ body > footer {
 
 
 article {
-  p + p { margin-top: 1em; }
+  header p { margin: 0.25em 0; }
   p + ul { margin-top: 0.5em; }
 }
 

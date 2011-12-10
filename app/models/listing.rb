@@ -75,11 +75,9 @@ class Listing < ActiveRecord::Base
     not expired?
   end
 
-
   def self.notify_almost_renewable
     Listing.almost_renewable.each { |l| Notifier.renew l }
   end
-
 
   def renew
     self.renewed_at = Time.now
@@ -98,7 +96,7 @@ class Listing < ActiveRecord::Base
   end
   
   def views
-    self.impressionist_count(:filter=>:session_hash)
+    self.impressionist_count :filter => :session_hash
   end
 
   def to_param
@@ -114,5 +112,4 @@ class Listing < ActiveRecord::Base
       listing.images.each { |i| i.destroy } # Remove the db entry AND image, so phantom image references are removed
     end
   end
-  
 end
