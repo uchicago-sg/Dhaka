@@ -2,9 +2,11 @@ class ListingsController < ApplicationController
   before_filter :process_order_param, :only   => %w( index search )
   before_filter :process_mode_param,  :only   => %w( index search )
   before_filter :find_readable_listing, :only => %w( show )
+  before_filter :ensure_starred_session_variable_exists
+
   load_resource :find_by => :permalink, :except => %w( show search )
   authorize_resource
-  respond_to :html, :json
+  respond_to :html, :json, :except => %w( star unstar publish unpublish )
 
 
   # GET /listings
@@ -69,14 +71,14 @@ class ListingsController < ApplicationController
     respond_with @listing
   end
 
-  # GET /listings/renew/:id
+  # GET /listings/:id/renew
   def renew
     @listing.renew.save
     flash[:notice] = 'Listing successfully renewed'
     redirect_to :back
   end
 
-  # GET /listings/publish/:id
+  # GET /listings/:id/publish
   def publish
     @listing.publish.save
     flash[:notice] = 'Listing successfully published'
@@ -87,7 +89,7 @@ class ListingsController < ApplicationController
     end
   end
 
-  # POST /listings/publish/:id
+  # GET /listings/:id/unpublish
   def unpublish
     @listing.unpublish.save
     flash[:notice] = 'Listing successfully unpublished'
@@ -95,6 +97,31 @@ class ListingsController < ApplicationController
       redirect_to :back
     else
       redirect_to :root
+    end
+  end
+
+  # GET /listings/starred
+  def starred
+    @listings = []
+    @listings = Listing.available.order(Listing::DEFAULT_ORDER).find_all_by_permalink(session[:starred].uniq)
+    session[:starred] = @listings.map &:permalink
+    @listings = Kaminari.paginate_array(@listings).page(params[:page])
+    respond_with @listings
+  end
+
+  # GET /listing/:id/star
+  def star
+    session[:starred] << @listing.permalink
+    respond_to do |format|
+      format.json { render :json => {:status => :ok, :message => session[:starred] } }
+    end
+  end
+
+  # GET /listing/:id/unstar
+  def unstar
+    session[:starred].delete @listing.permalink
+    respond_to do |format|
+      format.json { render :json => {:status => :ok, :message => @listing.permalink } }
     end
   end
 
@@ -138,5 +165,9 @@ private
     # Should probably be 404s, but whatever...
     raise CanCan::AccessDenied.new(nil, :show, Listing) unless @listing
     raise CanCan::AccessDenied.new(nil, :show, Listing) if @listing.unpublished? and cannot? :publish, @listing
+  end
+
+  def ensure_starred_session_variable_exists
+    session[:starred] ||= []
   end
 end

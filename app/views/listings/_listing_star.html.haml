@@ -3,5 +3,5 @@
 - if session[:starred] and session[:starred].include?(listing.permalink)
   - star_classes   = 'star'
   - unstar_classes = 'unstar available'
-= link_to 'Star this listing',   star_path(:permalink => listing.permalink),   :method => :post, :class => star_classes,   :remote => true
-= link_to 'Unstar this listing', unstar_path(:permalink => listing.permalink), :method => :get,  :class => unstar_classes, :remote => true
+= link_to 'Star this listing',   star_listing_path(listing),   :remote => true, :class => star_classes
+= link_to 'Unstar this listing', unstar_listing_path(listing), :remote => true, :class => unstar_classes

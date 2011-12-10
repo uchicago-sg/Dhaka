@@ -14,8 +14,7 @@ document.createElement 'time'
 jQuery.fn.exists = -> jQuery(this).length > 0
 
 $(document).ready ->
-  # Hide mechanism for flashes and debug
-  $('#debug').click -> $(this).fadeOut()
+  $('#debug').click -> $(this).fadeOut() # Hide mechanism for flashes and debug
 
   unless $('#listings.show').exists()
     jQuery.timeago.settings.strings =
@@ -88,15 +87,16 @@ $(document).ready ->
         $(this).removeClass('show-less').addClass('show-more').html('More &#187;')
 
   # Ajaxify "starred" links
-  $('.starred').delegate 'a.star', 'ajax:success', ->
+  $('td.starred').delegate 'a.star', 'ajax:success', ->
     $(this).removeClass('available')
     $(this).parent().find('a.unstar').addClass('available')
     $.sticky 'Successfully starred listing'
 
-  $('.starred').delegate 'a.unstar', 'ajax:success', ->
-    # Hide the listing when unstarred on /starred, otherwise rework the link
-    if $('#comparisons.index').exists()
-      $(this).closest('.listing').slideUp().remove()
+  $('td.starred').delegate 'a.unstar', 'ajax:success', ->
+    alert "Success on a.unstar"
+    # Hide the listing when unstarred on listings/starred, otherwise rework the link
+    if $('#listings.starred').exists()
+      $(this).parent().find('.listing').slideUp().remove()
       if $('.listing').size() is 0 then $('#main').html('<h2 class="sorry">No results found</h2>')
     else
       $(this).removeClass('available')

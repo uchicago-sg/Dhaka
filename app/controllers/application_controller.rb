@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   layout proc {|controller| controller.request.xhr? ? false : 'application' }
-  before_filter :load_sidebar_and_search_resources
+  before_filter :load_resources
   protect_from_forgery
 
   # Force CanCan to fail gracefully
@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
 protected
-  def load_sidebar_and_search_resources
+  def load_resources
+    @action     = "#{controller_name}##{action_name}"
     @categories = Category.all
     @search     = Listing.available.search params[:q]
   end

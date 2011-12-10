@@ -7,7 +7,7 @@ module ApplicationHelper
     APP_RESOURCES.include? controller_name
   end
 
-  def title(new_title=nil)
+  def title new_title=nil
     if new_title
       content_for :title, new_title.html_safe
     else
@@ -44,5 +44,10 @@ module ApplicationHelper
   def autotab
     @current_tab ||= 0
     @current_tab += 1
+  end
+
+  def selected_if state
+    return 'selected' if state
+    return ''
   end
 end
