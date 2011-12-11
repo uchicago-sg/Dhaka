@@ -114,7 +114,7 @@ class ListingsController < ApplicationController
   def star
     session[:starred] << @listing.permalink
     respond_to do |format|
-      format.json { render :json => {:status => :ok, :message => session[:starred] } }
+      format.json { render :json => { :status => :ok, :message => session[:starred] } }
     end
   end
 
@@ -122,7 +122,7 @@ class ListingsController < ApplicationController
   def unstar
     session[:starred].delete @listing.permalink
     respond_to do |format|
-      format.json { render :json => {:status => :ok, :message => @listing.permalink } }
+      format.json { render :json => { :status => :ok, :message => @listing.permalink } }
     end
   end
 

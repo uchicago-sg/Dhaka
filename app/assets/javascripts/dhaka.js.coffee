@@ -95,7 +95,7 @@ $(document).ready ->
   $('td.starred').delegate 'a.unstar', 'ajax:success', ->
     # Hide the listing when unstarred on listings/starred, otherwise rework the link
     if $('#listings.starred').exists()
-      $(this).parent().find('.listing').slideUp().remove()
+      $(this).closest('.listing').slideUp().remove()
       if $('.listing').size() is 0 then $('#main').html('<h2 class="sorry">No results found</h2>')
     else
       $(this).removeClass('available')

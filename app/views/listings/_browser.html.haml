@@ -3,7 +3,7 @@
 - else
   %table#listings-browser
     %thead.container
-      - if controller_name == 'listings' && action_name != 'search'
+      - unless @action == 'listings#search' || @action == 'listings#starred'
         %tr.config
           %td.mode
             %span.field

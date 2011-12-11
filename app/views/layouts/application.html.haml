@@ -39,7 +39,7 @@
         - elsif controller_name == 'pages'
           = render 'pages/sidebar'
         - elsif controller_name == 'users'
-        - elsif action_name == 'new' && controller_name == 'listings'
+        - elsif @action == 'listings#new'
         - else
           %ul.categories
             %li.category.all= categories_search_link
