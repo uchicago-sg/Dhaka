@@ -17,7 +17,7 @@ class Listing < ActiveRecord::Base
   end
 
   attr_accessible :description, :details, :price, :status, :images_attributes, :category_ids
-  belongs_to :seller, :class_name => 'User'
+  belongs_to :seller, :class_name => 'User' 
   has_and_belongs_to_many :categories
   has_many :images, :dependent => :destroy
   accepts_nested_attributes_for :images, :allow_destroy => :true
@@ -27,7 +27,8 @@ class Listing < ActiveRecord::Base
   
   attr_readonly :permalink
   @@permalink_field = :description
-
+  
+  validates_uniqueness_of :description, :scope => :seller_id
   validates :description, :presence => true
   validates :details, :presence => true
   validates :price,

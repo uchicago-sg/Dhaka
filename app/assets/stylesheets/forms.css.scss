@@ -20,3 +20,14 @@ input.undisturbed { color: #888; }
   padding: 1em;
   width: 80%;
 }
+
+.disabled-button {
+    color: #ACA899;
+    background-color: #EFEFEF;
+    border: solid 1px #c0c0c0;
+}
+
+.wait-text {
+  font-size: 0.75em;
+  color: #ACA899;
+}

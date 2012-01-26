@@ -49,5 +49,7 @@ $(document).ready ->
 
   # Before submitting, strip the number formatting added by autoNumeric
   $('form#new_listing, form.edit_listing').submit ->
+    $('.submit input').addClass('disabled-button')
+    $('.submit').append("<div class='wait-text'> Uploading listing... </div>")
     input = $(this).find('input.currency')
     input.val input.val().replace(',','')
