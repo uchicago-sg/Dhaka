@@ -6,21 +6,21 @@ require './config/initializers/secrets.rb'
 
 set :codename, 'Dhaka'
 set :application, 'Marketplace'
-set :domain, 'sg.uchicago.edu'
+set :domain, 'delphi.uchicago.edu'
 set :user, SERVER_ACCOUNT
 set :use_sudo, false
 
 set :scm, :git
-set :branch, 'develop'
+set :branch, 'deploy-delphi'
 set :repository, "git://github.com/sczizzo/#{codename}.git"
 
-set :rvm_ruby_string, "1.9.2"
+set :rvm_ruby_string, "1.9.3"
 set :rvm_type, :user
 
 set :stage, 'production'
 set :rails_env, stage
 set :deploy_via, :remote_cache
-set :deploy_to, "/var/www/#{codename}/"
+set :deploy_to, "/home/#{user}/#{codename}/"
 
 set :whenever_command, 'bundle exec whenever'
 
