@@ -50,3 +50,14 @@ namespace :db do
     run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=#{stage}"
   end
 end
+
+namespace :app do
+  task :console do
+    input = ''
+    run "cd #{current_path} && rails console #{stage}" do |channel, stream, data|
+      next if data.chomp == input.chomp || data.chomp == ''
+      print data
+      channel.send_data(input = $stdin.gets) if data =~ /:\d{3}:\d+(\*|>)/
+    end
+  end
+end

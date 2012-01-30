@@ -52,8 +52,13 @@ Dhaka::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # For Devise (change later)
-  # FIXME : change the :3000 in prod prod
-  config.action_mailer.default_url_options = { :host => 'marketplace.uchicago.edu:3000' }
-  config.action_mailer.smtp_settings       = { :enable_starttls_auto => false }
+  # Mail configuration
+  config.action_mailer.delivery_method       = :sendmail
+  config.action_mailer.perform_deliveries    = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options   = { :host => 'marketplace.uchicago.edu' }
+  config.action_mailer.sendmail_settings     = { 
+    :location  => '/usr/sbin/sendmail',
+    :arguments => '-i'
+  }
 end

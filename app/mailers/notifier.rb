@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "notifications@marketplace.uchicago.edu"
+  default :from => "no-reply@marketplace.uchicago.edu"
 
   def renew listing
     @listing  = listing
