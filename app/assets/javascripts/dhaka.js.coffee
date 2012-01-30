@@ -87,12 +87,12 @@ $(document).ready ->
         $(this).removeClass('show-less').addClass('show-more').html('More &#187;')
 
   # Ajaxify "starred" links
-  $('td.starred').delegate 'a.star', 'ajax:success', ->
+  $('.starred').delegate 'a.star', 'ajax:success', ->
     $(this).removeClass('available')
     $(this).parent().find('a.unstar').addClass('available')
     $.sticky 'Successfully starred listing'
 
-  $('td.starred').delegate 'a.unstar', 'ajax:success', ->
+  $('.starred').delegate 'a.unstar', 'ajax:success', ->
     # Hide the listing when unstarred on listings/starred, otherwise rework the link
     if $('#listings.starred').exists()
       $(this).closest('.listing').slideUp().remove()

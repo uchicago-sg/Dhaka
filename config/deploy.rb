@@ -6,21 +6,21 @@ require './config/initializers/secrets.rb'
 
 set :codename, 'Dhaka'
 set :application, 'Marketplace'
-set :domain, 'delphi.uchicago.edu'
+set :domain, 'delphi.uchicago.edu:61527'
 set :user, SERVER_ACCOUNT
 set :use_sudo, false
 
 set :scm, :git
-set :branch, 'deploy-delphi'
+set :branch, 'develop'
 set :repository, "git://github.com/sczizzo/#{codename}.git"
 
 set :rvm_ruby_string, "1.9.3"
-set :rvm_type, :user
+set :rvm_type, :system
 
 set :stage, 'production'
 set :rails_env, stage
 set :deploy_via, :remote_cache
-set :deploy_to, "/home/#{user}/#{codename}/"
+set :deploy_to, "/var/www/#{codename}/"
 
 set :whenever_command, 'bundle exec whenever'
 
@@ -38,5 +38,15 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/initializers/secrets.rb #{release_path}/config/initializers/secrets.rb"
+  end
+end
+
+namespace :db do
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{stage}"
+  end
+
+  task :migrate do
+    run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=#{stage}"
   end
 end
