@@ -26,5 +26,4 @@ Dhaka::Application.configure do
 
   # Do not compress assets
   config.assets.compress    = false
-  config.assets.precompile += %w( analytics.js categories.js dhaka.js listings.js users.js versions.js )
 end

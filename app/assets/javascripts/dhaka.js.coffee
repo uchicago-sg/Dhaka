@@ -46,8 +46,8 @@ $(document).ready ->
         content: '
           <div id="splash">
             <h1>Welcome to the Marketplace</h1>
-            <h2>Looks like it&#8217;s your first time visiting the beta</h2>
-            <p>Take a moment to <a href="/about" title="About Marketplace">read about the new design</a> and remember we are still testing, so you may also want to list items on the <a href="http://marketplace.uchicago.edu/" title="The Marketplace"> current Marketplace</a>. You can leave feedback using the orange button near the bottom-right corner of the page.</p>
+            <h2>Looks like it&#8217;s your first time visiting since the update</h2>
+            <p>Take a moment to <a href="/about" title="About Marketplace">read about the new design</a>. You can leave feedback using the orange button near
           </div>
         '
 
@@ -148,19 +148,17 @@ $(document).ready ->
 
   # Throw in a tip every once in a while
   tips = [
-    'Listings with light blue backgrounds were created by signed sellers',
-    'Star listings to save them for review later',
-    'Subscribe to any Advanced Search to get real-time updates',
-    'Visit the <a href="/feeds" title="Atom Feeds">Atom Feeds</a> page to subscribe to categories',
-    'Look out for scams. Visit our <a href="/safety" title="Safety & Security">Safety &amp; Security</a> page.',
-    'See the <a href="/welcome" title="Welcome Notes">Welcome Notes</a> for more information on the new design'
+    'Star listings to save them for review later, and unstar them when you&#8217;re done'
+    'Subscribe to any Advanced Search to get real-time updates via an Atom feed'
+    'Visit the <a href="/feeds" title="Atom Feeds">Atom Feeds</a> page to subscribe to categories'
+    'Look out for scams. Visit our <a href="/safety" title="Safety & Security">Safety &amp; Security</a> page.'
+    'See the <a href="/about" title="About Marketplace">About Marketplace</a> page for more information on the new design'
   ]
 
   a = Math.random() * 1000
   b = Math.random() * 75
   c = Math.floor((a + b) % tips.length)
   if a < b then $.sticky('<strong>Tip:</strong> ' + tips[c])
-
 
   # Submit the search form again when user interacts with "View" or "Sort by" selects
   $('#meta_mode').change ->

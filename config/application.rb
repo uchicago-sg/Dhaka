@@ -3,11 +3,14 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 # Bundler.require(:default, Rails.env) if defined?(Bundler)
-Bundler.require *Rails.groups(:assets) if defined?(Bundler)
-
+# Bundler.require *Rails.groups(:assets) if defined?(Bundler)
+Bundler.require(:default, :assets, Rails.env) if defined?(Bundler)
 
 module Dhaka
   class Application < Rails::Application
+    # Load in Compass's files for use with SASS
+    config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -37,7 +40,8 @@ module Dhaka
     config.filter_parameters += [:password, :password_confirmation]
 
     # Enable the asset pipeline
-    config.assets.enabled = true
+    config.assets.enabled     = true
+    config.assets.precompile += %w( analytics.js categories.js dhaka.js listings.js users.js )
 
     # Configure generator defaults
     config.generators do |g|

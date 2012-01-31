@@ -4,4 +4,4 @@
 en:
   unauthorized:
     create:
-        listing: "You must login before creating a new listing."
+      listing: "You must login before creating a new listing."

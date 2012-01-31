@@ -18,9 +18,6 @@ Dhaka::Application.configure do
   # Specify the default JavaScript compressor
   config.assets.js_compressor  = :uglifier
 
-  # Fix some broken-ness on new server
-  config.assets.precompile += %w( analytics.js categories.js dhaka.js listings.js users.js versions.js )
-
   # Specifies the header that your server uses for sending files
   config.action_dispatch.x_sendfile_header = nil # For Heroku
 

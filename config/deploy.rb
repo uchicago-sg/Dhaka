@@ -40,24 +40,3 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/initializers/secrets.rb #{release_path}/config/initializers/secrets.rb"
   end
 end
-
-namespace :db do
-  task :seed do
-    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{stage}"
-  end
-
-  task :migrate do
-    run "cd #{current_path}; bundle exec rake db:migrate RAILS_ENV=#{stage}"
-  end
-end
-
-namespace :app do
-  task :console do
-    input = ''
-    run "cd #{current_path} && rails console #{stage}" do |channel, stream, data|
-      next if data.chomp == input.chomp || data.chomp == ''
-      print data
-      channel.send_data(input = $stdin.gets) if data =~ /:\d{3}:\d+(\*|>)/
-    end
-  end
-end
