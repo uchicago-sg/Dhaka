@@ -25,5 +25,6 @@ Dhaka::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   # Do not compress assets
-  config.assets.compress = false
+  config.assets.compress    = false
+  config.assets.precompile += %w( analytics.js categories.js dhaka.js listings.js users.js versions.js )
 end
