@@ -8,7 +8,7 @@
     .input= f.text_field :price, {:class => 'currency', :tabindex => autotab}
   .field.category
     .label= f.label :category_ids, 'Category'
-    .input= f.collection_select :category_ids, Category.all, :id, :description, {}, {:tabindex => autotab}
+    .input= f.collection_select :category_ids, Category.all, :id, :description, {:prompt => 'Uncategorized'}, {:tabindex => autotab}
   .field.details
     .label= f.label :details
     = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'
