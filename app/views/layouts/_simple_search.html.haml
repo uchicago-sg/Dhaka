@@ -7,8 +7,8 @@
     %span.field
       %span.label= f.label :categories_id_positive_and_eq, 'Category'
       %span.input= f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab}
+  = hidden_field_tag :mode, params[:mode]
+  = hidden_field_tag :order, params[:order]
   %ul.actions
-    = hidden_field_tag :mode, params[:mode]
-    = hidden_field_tag :order, params[:order]
     %li.submit= f.submit 'Search', {:tabindex => autotab}
     %li.advanced= link_to 'Advanced search', search_listings_path

@@ -144,18 +144,6 @@ class ListingsController < ApplicationController
 
 
 private
-  def process_mode_param
-    i  = params[:mode].to_i || 0
-    i %= Listing::MODES.length
-    @compact_mode = action_name != 'search' && Listing::MODES[i] == 'Compact'
-  end
-
-  def process_order_param
-    i  = params[:order].to_i || 0
-    i %= Listing::ORDER_BY.length
-    @order = Listing::ORDER_BY[i][1]
-  end
-
   # If a listing is published, great! Everyone can read it
   # If not, it's only accessible to those with publisher rights
   def find_readable_listing
