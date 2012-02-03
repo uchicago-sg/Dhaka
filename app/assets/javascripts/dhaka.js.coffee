@@ -26,7 +26,7 @@ $(document).ready ->
       minute: 'About a minute'
       minutes: '%d minutes'
       hour: 'About an hour'
-      hours: 'About %d hours'
+      hours: '%d hours'
       day: 'A day'
       days: '%d days'
       month: 'About a month'
@@ -36,20 +36,6 @@ $(document).ready ->
       numbers: []
 
   $('.time-ago').attr('title', '').timeago()
-
-  # # First-time visitor welcome splash
-  # unless $.cookie('visited')
-  #   $.cookie 'visited', true
-  #   $(document).ready ->
-  #     $.fancybox
-  #       centerOnScroll: true
-  #       content: '
-  #         <div id="splash">
-  #           <h1>Welcome to the Marketplace</h1>
-  #           <h2>Looks like it&#8217;s your first time visiting since the update</h2>
-  #           <p>Take a moment to <a href="/about" title="About Marketplace">read about the new design</a>. You can leave feedback using the orange button near
-  #         </div>
-  #       '
 
   # Add search form behavior
   listing_search_form = $('#simple_search')
