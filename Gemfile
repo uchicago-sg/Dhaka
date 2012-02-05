@@ -19,6 +19,7 @@ gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
 gem 'impressionist' # Simple page view counter
+gem 'newrelic_rpm'  # Performance and monitoring
 
 gem 'whenever', :require => false
 gem 'htmlentities'
