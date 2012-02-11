@@ -3,11 +3,12 @@ source :rubygems
 gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'rack'
 gem 'capistrano'
-gem 'sqlite3'
 gem 'rspec-rails'
 gem 'ruby-debug19'
-gem 'timecop'
 gem 'therubyracer'
+gem 'timecop'
+gem 'sqlite3'
+gem 'pg'
 
 gem 'foreman'       # Simple process management
 gem 'cancan'        # User authorization
@@ -27,6 +28,7 @@ gem 'rinku'
 
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari'
+
 
 group :assets do
   gem 'sprockets'     # The asset pipline
