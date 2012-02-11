@@ -1,6 +1,5 @@
 //= require 'analytics'
 //= require mediaqueries
-//= require uservoice
 //= require jquery
 //= require jquery_ujs
 //= require cookie

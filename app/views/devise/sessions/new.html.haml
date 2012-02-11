@@ -1,6 +1,8 @@
 - title 'Login'
 - content_for :top do
   %h2 Login
+%p You may have noticed we are missing the few pages of listings we had. Large amounts of traffic have forced us to upgrade our databases, and in the process we have lost the data from the past few weeks, so unfortunately we must ask that you #{link_to "re-register", new_registration_path(User)} and re-list your listings. We apologize for the inconvenience.
+
 = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
   %span.field
     %span.label= f.label :email
