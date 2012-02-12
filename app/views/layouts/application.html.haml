@@ -18,8 +18,26 @@
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Kreon:400,700'
     = csrf_meta_tags
     = yield :head
-    %script(src='http://sg.uchicago.edu/sg-header/sg-header.js' type='text/javascript')
+    /%script(src='http://sg.uchicago.edu/sg-header/sg-header.js' type='text/javascript')
   %body(id=controller_name class="container #{action_name}")<
+    #sg-header
+      #sg-header-inner
+        %ul
+          %li.sg-header-logo
+          %li
+            %a(href="http://sg.uchicago.edu") SG
+          %li
+            %a(href="http://marketplace.uchicago.edu") Marketplace
+          %li
+            %a(href="http://ubazaar.uchicago.edu") uBazaar
+          %li
+            %a(href="http://uchicagoapartments.com") Apartments
+          %li
+            %a(href="http://committees.uchicago.edu") Committees
+          %li
+            %a(href="http://uncommonfund.uchicago.edu") Uncommon Fund
+          %li
+            %a(href="https://studentactivities.uchicago.edu/orgs/financial.shtml") Funding
     = render 'layouts/header'
     #content.row
       %aside#sidebar.threecol
@@ -31,7 +49,6 @@
             %li.edit{:class    => selected_if(@action == 'users#edit')}= link_to 'Edit your account', edit_user_path(current_user)
             %li.logout= link_to 'Logout', logout_path
           - else
-            %li.create{:class  => selected_if(@action == 'listings#new')}= link_to 'Place a listing', new_listing_path
             %li.register{:class => selected_if(@action == 'registrations#new')}= link_to 'Register', register_path
             %li.login{:class => selected_if(@action == 'sessions#new')}= link_to 'Login', login_path
 

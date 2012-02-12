@@ -1,7 +1,7 @@
 - title 'Register'
 - content_for :top do
   %h2 Register
-%p.explanation Due to security concerns, users must create an account using their <b>University email address</b> (<em>uchicago.edu</em> or subdomains) before posting a listing. Other members of the community are welcome to browse and even create accounts, but cannot post listings at this time.
+%p.explanation Due to security concerns, users must create an account using their <b>University email address</b> (<em>uchicago.edu</em> or subdomains) before posting a listing. Other members of the community are welcome to browse and even create accounts, but cannot post listings at this time. If you have a cNetID but no University address, register here and <a href="mailto:marketplace@lists.uchicago.edu" alt="UChicago Marketplace">email the moderators</a> with your cNetID and full name for verification and promotion to seller.
 = form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
   = devise_error_messages!
   %span.field
