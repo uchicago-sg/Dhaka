@@ -1,4 +1,5 @@
 $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path
+require 'capistrano/ext/multistage'                    # Capistrano Multistage extension
 require 'rvm/capistrano'                               # Load RVM's capistrano plugin
 require 'whenever/capistrano'
 require 'bundler/capistrano'
@@ -9,19 +10,14 @@ set :application, 'Marketplace'
 set :domain, 'delphi.uchicago.edu:61527'
 set :user, SERVER_ACCOUNT
 set :use_sudo, false
-
 set :scm, :git
 set :branch, 'develop'
 set :repository, "git://github.com/sczizzo/#{codename}.git"
-
 set :rvm_ruby_string, "1.9.3"
 set :rvm_type, :system
-
-set :stage, 'production'
-set :rails_env, stage
+set :default_stage, 'production'
+set :stages, %w( staging production )
 set :deploy_via, :remote_cache
-set :deploy_to, "/var/www/#{codename}/"
-
 set :whenever_command, 'bundle exec whenever'
 
 server domain, :app, :web

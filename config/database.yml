@@ -11,6 +11,10 @@ test: &test
 cucumber:
   <<: *test
 
+staging:
+  <<: *sqlite
+  database: db/staging.sqlite3
+
 production:
   <<: *sqlite
-  database: /var/www/Dhaka/shared/db/production.sqlite3
+  database: db/production.sqlite3

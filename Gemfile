@@ -3,6 +3,7 @@ source :rubygems
 gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'rack'
 gem 'capistrano'
+gem 'capistrano-ext'
 gem 'rspec-rails'
 gem 'ruby-debug19'
 gem 'therubyracer'
