@@ -63,7 +63,12 @@
 #sg-connect-icons ul li.last{ margin-bottom:0; height:24px;}
 
 
-#sg-connect-icons { display: none !important; }
+#sg-connect-icons {
+  background-color: #666 !important;
+  img {
+//    width: 20px; height: 20px;
+  }
+}
 
 #sg-header {
   margin: 0 !important;
