@@ -6,7 +6,7 @@
   %td.starred.onecol
     - unless listing.expired?
       = render 'listings/listing_star', :listing => listing
-  %td.image.onecol= listing.images.empty? ? 'Yes' : 'No'
+  %td.image.onecol= listing.images.empty? ? 'No' : 'Yes'
   %td.description_and_details.fivecol
     .description= listing.available? ? link_to(listing.description, listing) : listing.description
     = render 'listings/listing_actions', :listing => listing
