@@ -54,7 +54,7 @@ paul.save!
 
 
 listing1 = Listing.new({
-  :description => 'Bicycle Seat',
+  :description => 'Bicycle Seat1',
   :details     => 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed pretium tincidunt nisi at auctor. Proin vehicula pulvinar augue, vel laoreet erat dapibus et.',
   :price       => 40000
 })

@@ -18,9 +18,10 @@ protected
   end
 
   def process_mode_param
-    i  = params[:mode].to_i || 0
-    i %= Listing::MODES.length
-    @compact_mode = action_name != 'search' && Listing::MODES[i] == 'Compact'
+    # i  = params[:mode].to_i || 0
+    # i %= Listing::MODES.length
+    # @compact_mode = action_name != 'search' && Listing::MODES[i] == 'Compact'
+    @compact_mode = true
   end
 
   def process_order_param

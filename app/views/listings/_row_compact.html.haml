@@ -6,7 +6,8 @@
   %td.starred.onecol
     - unless listing.expired?
       = render 'listings/listing_star', :listing => listing
-  %td.description_and_details.sixcol
+  %td.image.onecol= listing.images.empty? ? 'Yes' : 'No'
+  %td.description_and_details.fivecol
     .description= listing.available? ? link_to(listing.description, listing) : listing.description
     = render 'listings/listing_actions', :listing => listing
   %td.created_at.threecol <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>

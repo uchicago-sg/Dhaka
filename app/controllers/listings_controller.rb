@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_filter :process_order_param, :only   => %w( index search )
-  before_filter :process_mode_param,  :only   => %w( index search )
+  before_filter :process_mode_param
   before_filter :find_readable_listing, :only => %w( show )
   before_filter :ensure_starred_session_variable_exists
 
