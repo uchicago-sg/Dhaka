@@ -16,7 +16,7 @@ Dhaka::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method       = :test
-  config.action_mailer.default_url_options = { :host => 'marketplace.uchicago.edu:3000' } # For Devise
+  config.action_mailer.default_url_options   = { :host => 'marketplace.uchicago.edu:3000' } # For Devise
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -25,5 +25,5 @@ Dhaka::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   # Do not compress assets
-  config.assets.compress    = false
+  config.assets.compress = false
 end
