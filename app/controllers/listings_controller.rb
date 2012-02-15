@@ -68,7 +68,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     undo_link      = view_context.link_to "undo", revert_version_path(@listing.versions.last), :method => :post
-    flash[:notice] = "Listing successfully destroyed, #{undo_link}".html_safe
+    flash[:notice] = "Listing successfully deleted, #{undo_link}".html_safe
     respond_with @listing
   end
 

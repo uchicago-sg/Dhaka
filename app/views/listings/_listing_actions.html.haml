@@ -7,4 +7,4 @@
     - if can? :publish, listing and can? :unpublish, listing
       %li.publicize= listing.published? ? link_to('Unpublish', unpublish_listing_path(listing), :remote => true, :class => 'unpublish', 'data-publish' =>  publish_listing_path(listing)) : link_to('Publish', publish_listing_path(listing), :remote => true, :class => 'publish', 'data-unpublish' =>  unpublish_listing_path(listing))
     - if can? :destroy, listing
-      %li.destroy= link_to 'Destroy', listing, :method => :delete
+      %li.destroy= link_to 'Delete', listing, :method => :delete
