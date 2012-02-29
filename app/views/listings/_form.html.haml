@@ -9,12 +9,12 @@
   .field.category
     .label= f.label :category_ids, 'Category'
     .input= f.collection_select :category_ids, Category.all, :id, :description, {:prompt => 'Uncategorized'}, {:tabindex => autotab}
+    %p.note You may choose exactly one category. <strong>Do not</strong> duplicate the listing to place it in multiple categories.
   .field.details
     .label= f.label :details
     = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'
     .input= f.text_area :details, {:tabindex => autotab}
   .field.images
-    %p You may upload at most five images. Each image must be formatted as a JPEG or PNG less than three megabytes in size.
     = f.fields_for :images do |image|
       - if image.object.new_record?
         .subfield.image-upload
@@ -25,4 +25,5 @@
           .preview= link_to image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original)
           .remove #{image.check_box :_destroy} Remove image
     #add-image= link_to 'Add Another Image'
+    %p.note You may upload at most five images. Each image must be formatted as a JPEG or PNG less than three megabytes in size.
   .submit= f.submit :tabindex => autotab

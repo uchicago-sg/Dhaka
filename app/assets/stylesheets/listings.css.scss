@@ -2,9 +2,13 @@
 
 
 #listings {
-  &.new {
-    .field.images {
-      margin: 0.5em 0;
+  &.new, &.edit {
+    .field {
+      margin: 1em 0;
+    }
+
+    .submit {
+      margin-top: 1em;
     }
   }
 

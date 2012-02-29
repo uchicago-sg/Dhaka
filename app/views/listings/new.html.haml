@@ -1,4 +1,6 @@
 - title 'New Listing'
 - content_for :top do
   %h2 New Listing
+
+%p.explanation <b>Never</b> duplicate listings. You can update your listing at any time by visiting #{link_to 'your profile page', user_path(current_user)} and using the &#8220;edit&#8221; links. Similarly you can &#8220;unpublish&#8221; a listing if you want to remove it from public view. We treat duplication of listings as a form of spam, which means you could lose your ability to sell on the site as a result.
 = render 'form'
