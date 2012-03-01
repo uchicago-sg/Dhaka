@@ -27,13 +27,13 @@ class UsersController < ApplicationController
       if @user.update_with_password(params[:user])
         sign_in(@user, bypass: true)
         flash[:notice] = 'Password successfully updated'
-        respond_with @user, :status => :ok, :location => dashboard_path
+        respond_with @user, :status => :ok, :location => user_path(@user)
       else
         render :change_password
       end
     elsif @user.update_attributes params[:user]
       flash[:notice] = 'User successfully edited'
-      respond_with @user, :status => :ok, :location => dashboard_path
+      respond_with @user, :status => :ok, :location => user_path(@user)
     else
       respond_with @category.errors, :status => :unprocessable_entity do |format|
         format.html do

@@ -13,6 +13,17 @@
   }
 
   &.show {
+    .listing .actions {
+      padding: 0.25em 0.5em;
+      margin-bottom: 1em;
+      background-color: lighten($lgreen, 10%);
+
+      li  {
+        display: inline;
+        margin-right: 0.25em;
+      }
+    }
+
     #content header .starred a {
       display: none;
       background: image-url('star_small.png') left top no-repeat;
