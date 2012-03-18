@@ -59,6 +59,6 @@ Dhaka::Application.configure do
   config.action_mailer.default_url_options   = { :host => 'marketplace.uchicago.edu' }
   config.action_mailer.sendmail_settings     = { 
     :location  => '/usr/sbin/sendmail',
-    :arguments => '-i'
+    :arguments => '-i -t -f noreply@marketplace.uchicago.edu'
   }
 end
