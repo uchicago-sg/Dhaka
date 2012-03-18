@@ -5,9 +5,6 @@ class Notifier < ActionMailer::Base
 
   def renew listing
     @listing  = listing
-    mail {
-      :subject  => 'Marketplace: Listing expires tomorrow'
-      :to       => @listing.seller.email,
-    }
+    mail subject: 'Marketplace: Listing expires tomorrow', to: @listing.seller.email
   end
 end
