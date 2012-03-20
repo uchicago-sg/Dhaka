@@ -13,7 +13,7 @@ set :use_sudo, false
 set :scm, :git
 set :branch, 'develop'
 set :repository, "git://github.com/sczizzo/#{codename}.git"
-set :rvm_ruby_string, "1.9.3"
+set :rvm_ruby_string, "1.9.3-p0"
 set :rvm_type, :system
 set :default_stage, 'production'
 set :stages, %w( staging production )
