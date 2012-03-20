@@ -31,3 +31,8 @@ input.undisturbed { color: #888; }
   font-size: 0.75em;
   color: #ACA899;
 }
+
+#listings.new .field .label,
+#listings.edit .field .label {
+  font-weight: bold;
+}

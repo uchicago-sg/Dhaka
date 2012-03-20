@@ -48,7 +48,7 @@ end
 # Run a string through the Markdown filter and return for output
 class String
   def markdown
-    Rinku.auto_link(RDiscount.new(self).to_html).html_safe
+    Rinku.auto_link(RDiscount.new(self).to_html, :urls).html_safe
   end
 end
 

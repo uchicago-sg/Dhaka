@@ -95,8 +95,6 @@ class ListingsController < ApplicationController
     @listing.unpublish.save
     flash[:notice] = 'Listing successfully unpublished'
     if request.env['HTTP_REFERER']
-      redirect_to :back
-    else
       redirect_to :root
     end
   end

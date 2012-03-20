@@ -123,7 +123,7 @@ $(document).ready ->
     $(this).attr('href', $(this).attr('data-publish')).attr('data-unpublish', unpublish)
     listing = $(this).closest('.listing')
     listing.find('.renew').hide()
-    if $('#users.dashboard').exists()
+    if $('#users.show').exists()
       $(this).removeListingLink()
     else
       listing.slideUp().remove()

@@ -234,6 +234,9 @@ body > footer {
   tr, td { display: block; }
   td.created_at, td.price { text-align: right; }
 
+  .images-message { display: inline; }
+  .images-answer  { display: none; }
+
   tr.config {
     float: left;
     width: 100%;
@@ -396,6 +399,9 @@ body > footer, body > header {
 
 
 @media all and (min-width: 768px) {
+  #listings-browser .images-message { display: none; }
+  #listings-browser .images-answer  { display: inline; }
+
   #simple_search {
     margin-top: 0.75em;
 

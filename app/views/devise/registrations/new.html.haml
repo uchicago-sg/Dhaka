@@ -6,15 +6,15 @@
   = devise_error_messages!
   %span.field
     %span.label= f.label :name
-    %span.input= f.text_field :name
+    %span.input= f.text_field :name, :tabindex => autotab
   %span.field
     %span.label= f.label :email
-    %span.input= f.email_field :email
+    %span.input= f.email_field :email, :tabindex => autotab
   %span.field
     %span.label= f.label :password
-    %span.input= f.password_field :password
+    %span.input= f.password_field :password, :tabindex => autotab
   %span.field
     %span.label= f.label :password_confirmation
-    %span.input= f.password_field :password_confirmation
-  %span.submit= f.submit "Sign up"
+    %span.input= f.password_field :password_confirmation, :tabindex => autotab
+  %span.submit= f.submit "Sign up", :tabindex => autotab
 = render :partial => "devise/shared/links"

@@ -1,8 +1,9 @@
-- title @user.name
 - content_for :top do
   - if user_signed_in? and @user.id == current_user.id
-    %h1 Your Profile
+    - title "Your Listings"
+    %h1 Your Listings
   - else
+    - title "#{@user.name}'s Listings"
     %h1 #{@user.name}&#8217;s Listings
 
 %p.explanation Member since #{@user.created_at.to_s :day_month_and_year}. Get in contact with <strong>#{@user.name}</strong> via email at #{mail_to @user.email, @user.email, :encode => 'javascript'}.

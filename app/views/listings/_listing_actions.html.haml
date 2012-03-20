@@ -4,7 +4,9 @@
       %li.edit= link_to 'Edit', edit_listing_path(listing)
     - if can? :renew, listing
       %li.renew= !listing.renewable? ? 'Renew' : link_to('Renew', renew_listing_path(listing), :remote => true)
-    - if can? :publish, listing and can? :unpublish, listing
+    - if @action == 'listings#show' and can? :publish, listing
+      %li.publicize= link_to('Unpublish', unpublish_listing_path(listing), :class => 'unpublish')
+    - if @action != 'listings#show' and can? :publish, listing
       %li.publicize= listing.published? ? link_to('Unpublish', unpublish_listing_path(listing), :remote => true, :class => 'unpublish', 'data-publish' =>  publish_listing_path(listing)) : link_to('Publish', publish_listing_path(listing), :remote => true, :class => 'publish', 'data-unpublish' =>  unpublish_listing_path(listing))
     - if can? :destroy, listing
       %li.destroy= link_to 'Delete', listing, :method => :delete
