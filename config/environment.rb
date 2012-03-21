@@ -1,6 +1,18 @@
 # Load the rails application
+require File.expand_path('../secrets', __FILE__)
 require File.expand_path('../application', __FILE__)
 require 'rails_rinku'
+
+# Configure Gmail support
+ActionMailer::Base.smtp_settings = {
+  :address              => 'smtp.gmail.com',
+  :port                 => 587,
+  :domain               => 'marketplace.uchicago.edu',
+  :user_name            => GMAIL_ACCOUNT,
+  :password             => GMAIL_PASSWORD,
+  :authentication       => 'plain',
+  :enable_starttls_auto => true
+}
 
 module Kaminari
   module Helpers

@@ -32,7 +32,8 @@ namespace :deploy do
 
   desc "Symlink shared configurations."
   task :symlink_shared do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/initializers/secrets.rb #{release_path}/config/initializers/secrets.rb"
+    run "ln -nfs #{shared_path}/config/secrets.rb #{release_path}/config/secrets.rb"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
 end
