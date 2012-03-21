@@ -5,8 +5,10 @@
 .sass-cache/
 .rvmrc
 secrets.rb
+mailjet.rb
 webrat.log
 db/*.sqlite3
+log/*
 log/*.log
 tmp/**/*
 tmp/

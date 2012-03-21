@@ -3,12 +3,11 @@ require 'capistrano/ext/multistage'                    # Capistrano Multistage e
 require 'rvm/capistrano'                               # Load RVM's capistrano plugin
 require 'whenever/capistrano'
 require 'bundler/capistrano'
-require './config/initializers/secrets.rb'
 
 set :codename, 'Dhaka'
 set :application, 'Marketplace'
 set :domain, 'delphi.uchicago.edu:61527'
-set :user, SERVER_ACCOUNT
+set :user, 'delphi'
 set :use_sudo, false
 set :scm, :git
 set :branch, 'develop'
@@ -22,7 +21,7 @@ set :whenever_command, 'bundle exec whenever'
 
 server domain, :app, :web
 role :db, domain, :primary => true
-after 'deploy:update_code', 'deploy:symlink_shared'
+before 'deploy:assets:precompile', 'deploy:symlink_shared'
 
 namespace :deploy do
   desc "Restart #{codename}."
@@ -33,7 +32,7 @@ namespace :deploy do
   desc "Symlink shared configurations."
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/initializers/secrets.rb #{release_path}/config/initializers/secrets.rb"
-    run "ln -nfs #{shared_path}/config/secrets.rb #{release_path}/config/secrets.rb"
+    run "ln -nfs #{shared_path}/config/mailjet.rb #{release_path}/config/mailjet.rb"
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
 end
