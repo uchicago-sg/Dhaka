@@ -39,6 +39,7 @@
           = render 'pages/sidebar'
         - elsif controller_name == 'users'
         - elsif @action == 'listings#new'
+        - elsif @action == 'listings#edit'
         - else
           %ul.categories
             %li.category.all= categories_search_link

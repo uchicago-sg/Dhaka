@@ -22,9 +22,9 @@ input.undisturbed { color: #888; }
 }
 
 .disabled-button {
-    color: #ACA899;
-    background-color: #EFEFEF;
-    border: solid 1px #c0c0c0;
+  color: #ACA899;
+  background-color: #EFEFEF;
+  border: solid 1px #c0c0c0;
 }
 
 .wait-text {
@@ -36,3 +36,5 @@ input.undisturbed { color: #888; }
 #listings.edit .field .label {
   font-weight: bold;
 }
+
+.field:nth-child(2) { margin-top: 0 !important; }

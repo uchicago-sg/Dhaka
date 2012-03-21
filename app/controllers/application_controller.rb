@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  layout proc {|controller| controller.request.xhr? ? false : 'application' }
   before_filter :load_resources, :process_mode_param, :process_order_param
   protect_from_forgery
 

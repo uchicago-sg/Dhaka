@@ -2,7 +2,7 @@ class Listing < ActiveRecord::Base
   MAX_IMAGES = 5 # Maximum number of uploadable images
 
   # Available options for sorting
-  ORDER_BY      = [['Most Recent', 'created_at DESC'], ['Lowest Price', 'listings.price ASC, created_at DESC'], ['Highest Price', 'listings.price DESC, created_at DESC']]
+  ORDER_BY      = [['Most Recent', 'renewed_at DESC'], ['Lowest Price', 'listings.price ASC, renewed_at DESC'], ['Highest Price', 'listings.price DESC, renewed_at DESC']]
   ORDER_OPTIONS = []
   ORDER_BY.each_with_index do |e, i|
     ORDER_OPTIONS << [e[0], i]

@@ -146,11 +146,8 @@ $(document).ready ->
   c = Math.floor((a + b) % tips.length)
   if a < b then $.sticky('<strong>Tip:</strong> ' + tips[c])
 
-  # Submit the search form again when user interacts with "View" or "Sort by" selects
-  $('#meta_mode').change ->
-    $('#mode').val $(this).val()
-    $('#simple_search').submit()
-
+  # Submit the search form when user interacts with the "Sort by" select
   $('#meta_order').change ->
     $('#order').val $(this).val()
     $('#simple_search').submit()
+    $('#starred_search').submit()

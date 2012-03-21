@@ -32,7 +32,7 @@ Dhaka::Application.routes.draw do
 
     collection do
       match 'search' => 'listings#search', :via => [:get, :post], :as => :search
-      get  'starred' => 'listings#starred', :as => :starred
+      match 'starred' => 'listings#starred', :as => :starred
     end
   end
 end

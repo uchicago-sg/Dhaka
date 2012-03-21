@@ -1,5 +1,4 @@
 - title 'Edit Listing'
+- content_for :top do
+  %h2 Edit Listing
 = render 'form'
-%ul.actions
-  %li.show= link_to 'Show', @listing
-  %li.index= link_to 'View All', listings_path

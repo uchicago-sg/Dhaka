@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_filter :process_order_param, :only   => %w( index search )
+  before_filter :process_order_param, :only => %w( index search starred )
   before_filter :process_mode_param
   before_filter :find_readable_listing, :only => %w( show )
   before_filter :ensure_starred_session_variable_exists
@@ -102,7 +102,7 @@ class ListingsController < ApplicationController
   # GET /listings/starred
   def starred
     @listings = []
-    @listings = Listing.available.order(Listing::DEFAULT_ORDER).find_all_by_permalink(session[:starred].uniq)
+    @listings = Listing.available.order(@order).find_all_by_permalink(session[:starred].uniq)
     session[:starred] = @listings.map &:permalink
     @listings = Kaminari.paginate_array(@listings).page(params[:page])
     respond_with @listings

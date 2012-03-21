@@ -3,7 +3,7 @@
     = render 'listings/listing_actions', :listing => listing
     %p.starred= render 'listings/listing_star', :listing => listing
     %h1.description= listing.description
-    %p.created_at Posted <time datetime="#{listing.created_at.iso8601}">#{listing.created_at}</time> #{('in ' + listing.categories.map { |c| categories_search_link(c) }.to_sentence).html_safe unless listing.categories.empty?}
+    %p.created_at Posted <time datetime="#{listing.created_at.iso8601}">#{listing.created_at}</time> #{"(Renewed <time datetime=\"#{listing.created_at.iso8601}\">#{listing.created_at}</time>)".html_safe unless listing.renewals.zero?} #{('in ' + listing.categories.map { |c| categories_search_link(c) }.to_sentence).html_safe unless listing.categories.empty?}
     %p.impressions Viewed #{pluralize listing.views, 'time' }
     %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
     %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)

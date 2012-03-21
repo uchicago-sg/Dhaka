@@ -1,6 +1,8 @@
 @import 'shared';
 
 
+#starred_search { display: none; }
+
 #listings {
   &.new, &.edit {
     .field {

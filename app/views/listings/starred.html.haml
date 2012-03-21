@@ -1,4 +1,7 @@
 - title 'Your Starred Listings'
 - content_for :top do
   %h2 Your Starred Listings
+  = form_tag starred_listings_path, :id => 'starred_search' do |f|
+    = hidden_field_tag :order, params[:order]
+    = submit_tag 'Search'
 = render 'listings/browser', :listings => @listings
