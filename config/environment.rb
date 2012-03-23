@@ -89,7 +89,7 @@ SITE_NAME      = 'Marketplace'
 APP_RESOURCES  = %w( listings users categories )
 STATIC_PAGES   = %w( terms privacy safety issues about faqs status welcome )
 DEVISE_PAGES   = %w( register login logout )
-RESERVED_PATHS = STATIC_PAGES + DEVISE_PAGES + \
+RESERVED_PATHS = CATEGORIES.map(&:first).map(&:downcase) + STATIC_PAGES + DEVISE_PAGES + \
   %w( versions browse search users categories listings starred dashboard index show new create edit update delete ) # Special routes
 
 # Wrap errors in <span>s instead of <div>s
