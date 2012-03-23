@@ -1,0 +1,25 @@
+%aside#sidebar.threecol
+  %ul.actions
+    %li.starred{:class => selected_if(@action == 'listings#starred')}= link_to 'Starred Listings', starred_listings_path          
+    - if user_signed_in?
+      %li.create{:class  => selected_if(@action == 'listings#new')}= link_to 'Place a listing', new_listing_path if current_user.can? :create, Listing
+      %li.profile{:class => selected_if(@action == 'users#show' && @user.id == current_user.id)}= link_to 'Your listings', current_user
+      %li.edit{:class    => selected_if(@action == 'users#edit')}= link_to 'Edit your account', edit_user_path(current_user)
+      %li.logout= link_to 'Logout', logout_path
+    - else
+      %li.register{:class => selected_if(@action == 'registrations#new')}= link_to 'Register', register_path
+      %li.login{:class => selected_if(@action == 'sessions#new')}= link_to 'Login', login_path
+  - if content_for? :sidebar
+    = yield :sidebar
+  - elsif controller_name == 'pages'
+    = render 'pages/sidebar'
+  - elsif controller_name == 'users'
+  - elsif @action == 'listings#new'
+  - elsif @action == 'listings#edit'
+  - else
+    %ul.categories
+      %li.category.all= categories_search_link
+      - @categories.each do |category|
+        %li.category= link_to category.description, category.description.downcase
+      %li.category.free= link_to 'Free', free_listings_path
+

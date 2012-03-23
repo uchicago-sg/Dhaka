@@ -8,6 +8,11 @@ Dhaka::Application.routes.draw do
     match page => 'high_voltage/pages#show', :id => page, :as => "#{page}_page"
   end
 
+  CATEGORIES.each do |c|
+    category = c[0].downcase
+    match category => 'listings#index', :category => category, :as => "#{category}_page"
+  end
+
   devise_for :users do
     get 'register' => 'devise/registrations#new', :as => :register
     get 'login'    => 'devise/sessions#new',      :as => :login
@@ -31,7 +36,8 @@ Dhaka::Application.routes.draw do
     end
 
     collection do
-      match 'search' => 'listings#search', :via => [:get, :post], :as => :search
+      match 'search'  => 'listings#search', :via => [:get, :post], :as => :search
+      match 'free'    => 'listings#free', :via => [:get], :as => :free
       match 'starred' => 'listings#starred', :as => :starred
     end
   end

@@ -11,6 +11,10 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
+    if params.has_key? :category
+      category = Category.find_by_description params[:category].capitalize
+      params[:q] = { :categories_id_positive_and_eq => category.id } if category
+    end
     @search   = Listing.available.search params[:q]
     @listings = @search.result(:distinct => true).order(@order).page(params[:page])
     respond_with @listings
@@ -126,6 +130,7 @@ class ListingsController < ApplicationController
 
   # GET|POST /listings/search
   def search
+    params[:q] = { :price_to_f_lteq => 0 } if session.delete :free
     @include_expired = params[:include_expired].present? and ( params[:include_expired] == '1' or params[:include_expired] == 'on' )
     @images_present  = params[:images_present].present?  and ( params[:images_present]  == '1' or params[:images_present]  == 'on' )
 
@@ -140,6 +145,10 @@ class ListingsController < ApplicationController
     end
   end
 
+  def free
+    session[:free] = true
+    redirect_to :search_listings
+  end
 
 private
   # If a listing is published, great! Everyone can read it

@@ -64,6 +64,20 @@ class String
   end
 end
 
+CATEGORIES = [
+  ['Apartments',    'Apartments'],
+  ['Subleases',     'Subleases'],
+  ['Appliances',    'Appliances'],
+  ['Bikes',         'Bikes'],
+  ['Books',         'Hardbacks, paperbacks, textbooks'],
+  ['Cars',          'Cars, motorcycles'],
+  ['Electronics',   'Computers, TVs, personal electronics'],
+  ['Employment',    'Job opportunities'],
+  ['Furniture',     'Couches, chairs, bookshelves'],
+  ['Miscellaneous', 'Catch-all'],
+  ['Services',      'Odd jobs, advertisements'],
+  ['Wanted',        'Looking for...']
+]
 
 # Add custom date formatters
 Time::DATE_FORMATS.merge!({
