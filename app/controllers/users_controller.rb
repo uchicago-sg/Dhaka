@@ -42,4 +42,10 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  # GET /users
+  def moderate
+    @users = User.all
+  end
+  
 end

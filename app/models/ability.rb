@@ -4,9 +4,10 @@ class Ability
   def initialize(user)
     user ||= User.new
     can [:categories, :index, :read, :search, :free, :starred, :star, :unstar], :all
-    can [:manage, :renew, :publish, :unpublish], :all if user.admin?
+    can [:manage, :moderate, :renew, :publish, :unpublish], :all if user.admin?
     can :create, User
     can [:manage, :change_password], User, :id => user.id
+    cannot [:index], User unless user.admin? # User index is for user moderation
 
     if user.has_role? 'seller'
       can :create, Listing

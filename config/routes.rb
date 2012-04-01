@@ -19,7 +19,7 @@ Dhaka::Application.routes.draw do
     get 'logout'   => 'devise/sessions#destroy',  :as => :logout
   end
 
-  resources :users, :only => %w( show edit update ) do
+  resources :users, :only => %w( index show edit update ) do
     member do
       get :change_password
     end

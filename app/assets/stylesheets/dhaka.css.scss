@@ -228,7 +228,7 @@ body > footer {
 }
 
 
-#listings-browser {
+#listings-browser, #users-browser{
   width: 100%;
   thead { display: none; }
   tr, td { display: block; }
@@ -252,7 +252,7 @@ body > footer {
     .order { text-align: right; }
   }
 
-  tr.listing {
+  tr.listing, tr.user{
     padding-top: 0.75em;
     padding-bottom: 0.75em;
 
