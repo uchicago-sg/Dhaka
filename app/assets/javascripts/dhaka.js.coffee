@@ -151,3 +151,17 @@ $(document).ready ->
     $('#order').val $(this).val()
     $('#simple_search').submit()
     $('#starred_search').submit()
+  
+  # User admin panel actions
+  $('.is-admin').delegate 'a.admin', 'ajax:success', ->
+    $.sticky 'Successfully adjusted permissions'
+    $(this).text ->
+      return if $(this).text() is 'Revoke' then 'Grant' else 'Revoke'
+  $('.is-seller').delegate 'a.seller', 'ajax:success', ->
+    $.sticky 'Successfully adjusted permissions'
+    $(this).text ->
+      return if $(this).text() is 'Revoke' then 'Grant' else 'Revoke'
+  $('.remove').delegate 'a.delete-user', 'ajax:success', (el)-> 
+    $.sticky 'Successfully removed user'
+    console.log($(this).attr('id'))
+    $('tr#'+$(this).attr('id')).remove()

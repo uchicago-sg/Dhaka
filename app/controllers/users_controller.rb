@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   # custom_actions :resource => :change_password
   load_resource :find_by => :permalink
   authorize_resource
-  respond_to :html, :json
+  respond_to :html, :json, :except => %w( update_roles )
+ 
+  # GET /users 
+  def index
+    respond_with @users
+  end
 
   # GET /users/:id
   def show
@@ -43,9 +48,21 @@ class UsersController < ApplicationController
     end
   end
   
-  # GET /users
-  def moderate
-    @users = User.all
+  # DELETE /users/:id
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.json { render :json => { :status => :ok, :message => 'Removed user' } }
+    end
   end
   
+  # GET /users/:id/update_roles
+  def update_roles
+    @user.toggle_role params[:role]
+    if @user.save
+      respond_to do |format|
+        format.json { render :json => { :status => :ok, :message => @user.roles } }
+      end
+    end
+  end
 end

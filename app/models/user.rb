@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :reference_id, :name, :email, :password, :password_confirmation, :remember_me
-  has_many :listings, :foreign_key => 'seller_id'
+  has_many :listings, :foreign_key => 'seller_id', :dependent => :destroy
   acts_as_tagger
 
   attr_readonly :permalink
@@ -32,9 +32,17 @@ class User < ActiveRecord::Base
   def has_role? role
     roles.include? role
   end
-
+  
+  def toggle_role role
+    self.roles_mask = self.roles_mask^(role.to_role)
+  end
+  
   def admin?
     has_role? 'admin'
+  end
+  
+  def seller?
+    has_role? 'seller'
   end
 
   def signed?
