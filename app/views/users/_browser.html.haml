@@ -1,12 +1,9 @@
 %table#users-browser
   %thead.container
     %tr.row
-      %td.remove.onecol
-      %td.email.fourcol Email
       %td.name.twocol Name
-      %td.created_at.twocol Created on
-      %td.is-seller.onecol Seller
-      %td.is-admin.onecol.last Admin
+      %td.email.sevencol Email
+      %td.created_at.threecol.last Created
   %tbody.container
     - users.each do |user|
       = render 'users/row', :user => user

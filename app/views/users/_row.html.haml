@@ -1,7 +1,9 @@
-%tr.row.user{:id => user.permalink}
-  %td.remove.onecol= link_to image_tag('remove.png'), user, :class=>'delete-user', :id=>user.permalink, :method => :delete, :confirm=>"Are you sure you want to remove #{user.email}? This action cannot be undone.",:remote => true
-  %td.email.fourcol=user.email
+%tr.row.compact.user{:id => user.permalink}
   %td.name.twocol= user.name
-  %td.created_at.twocol= user.created_at.strftime('%b %d, %Y')
-  %td.is-seller.onecol= update_roles_link(user, 'seller', user.seller? ? 'Revoke':'Grant')
-  %td.is-admin.onecol.last=  update_roles_link(user, 'admin',  user.admin?  ? 'Revoke':'Grant')
+  %td.email_and_actions.sevencol
+    .email= user.email
+    %ul.actions
+      %li.is-seller= update_roles_link(user, 'seller', user.seller? ? 'Revoke Seller Rights' : 'Grant Seller Rights')
+      - unless user.id == current_user.id
+        %li.is-admin= update_roles_link(user, 'admin',  user.admin?  ? 'Revoke Admin Rights' : 'Grant Admin Rights')
+  %td.created_at.threecol.last= user.created_at.to_s :db

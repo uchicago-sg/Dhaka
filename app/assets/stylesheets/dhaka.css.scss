@@ -227,7 +227,7 @@ body > footer {
   font-size: 12px;
 }
 
-#listings-browser, #users-browser{
+#listings-browser, #users-browser {
   width: 100%;
   thead { display: none; }
   tr, td { display: block; }
@@ -251,7 +251,7 @@ body > footer {
     .order { text-align: right; }
   }
 
-  tr.listing, tr.user{
+  tr.listing, tr.user {
     padding-top: 0.75em;
     padding-bottom: 0.75em;
 
@@ -275,8 +275,6 @@ body > footer {
 
     .extras { display: none; }
 
-    .seller { margin-top: 0.5em; }
-    .remove a { margin: 0 0.5em; }
     .starred a {
       background: image-url('star.png') left top no-repeat;
       height: 20px;
@@ -313,7 +311,6 @@ body > footer {
   }
 }
 
-tr.user td.email{ overflow: hidden; }
 
 article {
   header p { margin: 0.25em 0; }

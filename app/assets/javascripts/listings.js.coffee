@@ -46,6 +46,19 @@ $(document).ready ->
       theme_advanced_buttons1: 'undo,redo,separator,bold,italic,underline,separator,bullist,numlist,outdent,indent,separator,link,unlink'
       theme_advanced_buttons2: ''
       theme_advanced_buttons3: ''
+      plugins: 'paste'
+      paste_text_sticky: true
+      setup: (ed) ->
+        ed.onInit.add (ed) ->
+          ed.pasteAsPlainText = true
+      valid_elements: "
+        a[href|title],
+        #p,strong/b,em/i,strike,u,-sub,-sup,
+        -ol[type|compact],-ul[type|compact],-li,
+        -blockquote,caption,-div,-span,
+        -code,-pre,samp,tt,var,address,
+        -h1,-h2,-h3,-h4,-h5,-h6,hr,br,
+        dd,dl,dt,cite,abbr,acronym,dfn,q[cite]"
 
   # Before submitting, strip the number formatting added by autoNumeric
   $('form#new_listing, form.edit_listing').submit ->

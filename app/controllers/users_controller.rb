@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # custom_actions :resource => :change_password
   load_resource :find_by => :permalink
   authorize_resource
-  respond_to :html, :json, :except => %w( update_roles )
+  respond_to :html, :json
  
   # GET /users 
   def index
@@ -48,19 +48,15 @@ class UsersController < ApplicationController
     end
   end
   
-  # DELETE /users/:id
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.json { render :json => { :status => :ok, :message => 'Removed user' } }
-    end
-  end
-  
   # GET /users/:id/update_roles
   def update_roles
     @user.toggle_role params[:role]
     if @user.save
       respond_to do |format|
+        format.html {
+          flash[:notice] = 'Successfully updated permissions'
+          redirect_to users_path
+        }
         format.json { render :json => { :status => :ok, :message => @user.roles } }
       end
     end
