@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   attr_readonly :permalink
   @@permalink_field = :name
 
-  devise :token_authenticatable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :token_authenticatable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, 
+         :lockable, :unlock_strategy => :none, :lock_strategy => :none
   # before_save :ensure_authentication_token
 
   validates :name,
@@ -35,6 +36,10 @@ class User < ActiveRecord::Base
   
   def toggle_role role
     self.roles_mask = self.roles_mask^(role.to_role)
+  end
+  
+  def toggle_lock
+    access_locked? ? unlock_access! : lock_access!
   end
   
   def admin?

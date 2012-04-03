@@ -23,6 +23,7 @@ Dhaka::Application.routes.draw do
     member do
       get :change_password
       get :update_roles
+      get :lock
     end
   end
 

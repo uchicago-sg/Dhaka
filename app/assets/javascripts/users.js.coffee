@@ -8,3 +8,7 @@ $(document).ready ->
     $.sticky 'Successfully updated permissions'
     $(this).text ->
       return if $(this).text() is 'Revoke Seller Rights' then 'Grant Seller Rights' else 'Revoke Seller Rights'
+  $('.lock').delegate 'a.lock', 'ajax:success', ->
+    $.sticky 'Successfully locked/unlocked user'
+    $(this).text ->
+      return if $(this).text() is 'Unlock Account' then 'Lock Account' else 'Unlock Account'

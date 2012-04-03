@@ -6,4 +6,5 @@
       %li.is-seller= update_roles_link(user, 'seller', user.seller? ? 'Revoke Seller Rights' : 'Grant Seller Rights')
       - unless user.id == current_user.id
         %li.is-admin= update_roles_link(user, 'admin',  user.admin?  ? 'Revoke Admin Rights' : 'Grant Admin Rights')
+        %li.lock= link_to(user.access_locked? ? 'Unlock Account' : 'Lock Account', lock_user_path(user), :remote=> true, :class=>'lock')
   %td.created_at.threecol.last= user.created_at.to_s :db

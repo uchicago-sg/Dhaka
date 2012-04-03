@@ -61,4 +61,18 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  # GET /users/:id/lock
+  def lock
+    if @user.toggle_lock
+      respond_to do |format|
+        format.html {
+          flash[:notice] = 'Successfully locked/unlocked user'
+          redirect_to users_path
+        }
+        format.json { render :json => { :status => :ok, :message => @user.access_locked? } }
+      end
+    end
+  end
+  
 end
