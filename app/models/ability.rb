@@ -8,7 +8,7 @@ class Ability
 
     can :create, User
     can [:manage, :change_password], User, :id => user.id
-    cannot [:index, :update_role], User unless user.admin? # User index is for user moderation
+    cannot [:index, :update_role, :lock], User unless user.admin? # User index is for user moderation
 
     if user.has_role? 'seller'
       can :create, Listing
