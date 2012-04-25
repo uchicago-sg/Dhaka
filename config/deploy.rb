@@ -23,6 +23,9 @@ server domain, :app, :web
 role :db, domain, :primary => true
 before 'deploy:assets:precompile', 'deploy:symlink_shared'
 
+set :keep_releases, 3
+after 'deploy:update', 'deploy:cleanup'
+
 namespace :deploy do
   desc "Restart #{codename}."
   task :restart do

@@ -10,7 +10,7 @@ gem 'therubyracer'
 gem 'timecop'
 gem 'sqlite3'
 gem 'pg'
-
+gem 'multi_json'
 gem 'foreman'       # Simple process management
 gem 'cancan'        # User authorization
 gem 'rdiscount'     # Markdown processor

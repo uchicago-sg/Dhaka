@@ -301,6 +301,7 @@ DEPENDENCIES
   impressionist
   jquery-rails
   kaminari!
+  multi_json
   newrelic_rpm
   nokogiri
   paper_trail
