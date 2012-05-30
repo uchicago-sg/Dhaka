@@ -60,7 +60,8 @@ end
 # Run a string through the Markdown filter and return for output
 class String
   def markdown
-    Rinku.auto_link(RDiscount.new(self, :filter_styles, :no_image, :no_tables, :strict, :safelink, :no_pseudo_protocols).to_html).html_safe
+    sanitized_self = ActionController::Base.helpers.sanitize self, :tags => %w( a p strong b em i strike u sub sup ol ul li blockquote caption div span code pre samp tt var address h1 h2 h3 h4 h5 h6 hr br dd dl dt cite abbr acronym dfn q ), :attributes => %w( href title type compact cite )
+    Rinku.auto_link(RDiscount.new(sanitized_self, :filter_styles, :no_image, :no_tables, :strict, :safelink, :no_pseudo_protocols).to_html).html_safe
   end
 end
 

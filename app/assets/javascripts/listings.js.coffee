@@ -51,14 +51,6 @@ $(document).ready ->
       setup: (ed) ->
         ed.onInit.add (ed) ->
           ed.pasteAsPlainText = true
-      valid_elements: "
-        a[href|title],
-        #p,strong/b,em/i,strike,u,-sub,-sup,
-        -ol[type|compact],-ul[type|compact],-li,
-        -blockquote,caption,-div,-span,
-        -code,-pre,samp,tt,var,address,
-        -h1,-h2,-h3,-h4,-h5,-h6,hr,br,
-        dd,dl,dt,cite,abbr,acronym,dfn,q[cite]"
 
   # Before submitting, strip the number formatting added by autoNumeric
   $('form#new_listing, form.edit_listing').submit ->
