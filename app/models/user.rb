@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   # Simple roles setup for use with CanCan
   scope :with_role, lambda { |role|
-    { :conditions => "roles_mask & #{role.to_role} > 0" }
+    { :conditions => ["roles_mask & ? > 0", role.to_role] }
   }
 
   def roles= new_roles

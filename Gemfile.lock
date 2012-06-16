@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/amatsuda/kaminari
-  revision: 97d5f926f3b1cd1114254eff2a200c902b744683
+  revision: 27cc755efc82d157f8df0ad67e8d4b8e7c5fda73
   specs:
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
@@ -8,25 +8,25 @@ GIT
 
 GIT
   remote: git://github.com/chriseppstein/compass.git
-  revision: 9abb899e20ea7d291745a79d6beb4775f830748f
+  revision: e2b8409646c35e2cb47de3c0ab9d68bac5e9ddca
   branch: master
   specs:
-    compass (0.13.0.alpha.9abb899)
+    compass (0.13.alpha.0.e2b8409)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.2.0.alpha.93)
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: f09ae8538f3625468ee175d5a4d9782e0d5ba415
+  revision: 52d09638dfc07413956846a6319b145511a15757
   branch: 3-2-stable
   specs:
-    actionmailer (3.2.3)
-      actionpack (= 3.2.3)
+    actionmailer (3.2.6)
+      actionpack (= 3.2.6)
       mail (~> 2.4.4)
-    actionpack (3.2.3)
-      activemodel (= 3.2.3)
-      activesupport (= 3.2.3)
+    actionpack (3.2.6)
+      activemodel (= 3.2.6)
+      activesupport (= 3.2.6)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.1)
@@ -34,31 +34,31 @@ GIT
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
-    activemodel (3.2.3)
-      activesupport (= 3.2.3)
+    activemodel (3.2.6)
+      activesupport (= 3.2.6)
       builder (~> 3.0.0)
-    activerecord (3.2.3)
-      activemodel (= 3.2.3)
-      activesupport (= 3.2.3)
+    activerecord (3.2.6)
+      activemodel (= 3.2.6)
+      activesupport (= 3.2.6)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.3)
-      activemodel (= 3.2.3)
-      activesupport (= 3.2.3)
-    activesupport (3.2.3)
+    activeresource (3.2.6)
+      activemodel (= 3.2.6)
+      activesupport (= 3.2.6)
+    activesupport (3.2.6)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    rails (3.2.3)
-      actionmailer (= 3.2.3)
-      actionpack (= 3.2.3)
-      activerecord (= 3.2.3)
-      activeresource (= 3.2.3)
-      activesupport (= 3.2.3)
+    rails (3.2.6)
+      actionmailer (= 3.2.6)
+      actionpack (= 3.2.6)
+      activerecord (= 3.2.6)
+      activeresource (= 3.2.6)
+      activesupport (= 3.2.6)
       bundler (~> 1.0)
-      railties (= 3.2.3)
-    railties (3.2.3)
-      actionpack (= 3.2.3)
-      activesupport (= 3.2.3)
+      railties (= 3.2.6)
+    railties (3.2.6)
+      actionpack (= 3.2.6)
+      activesupport (= 3.2.6)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -76,7 +76,7 @@ GIT
 
 GIT
   remote: https://github.com/mbleigh/acts-as-taggable-on.git
-  revision: ef93e7f051cd11573912b7b57e05874450489466
+  revision: e436da41edf87df3efb00351d81fe7095971c45e
   specs:
     acts-as-taggable-on (2.3.1)
       rails (~> 3.0)
@@ -89,6 +89,18 @@ GEM
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    brakeman (1.6.2)
+      activesupport
+      erubis (~> 2.6)
+      fastercsv (~> 1.5)
+      haml (~> 3.0)
+      highline (~> 1.6)
+      i18n
+      json_pure
+      ruby2ruby (~> 1.2)
+      ruby_parser (= 2.3.1)
+      sass (~> 3.0)
+      terminal-table (~> 1.4)
     builder (3.0.0)
     cancan (1.6.7)
     capistrano (2.12.0)
@@ -119,35 +131,36 @@ GEM
       execjs
     coffee-script-source (1.3.3)
     columnize (0.3.6)
-    cucumber (1.2.0)
+    cucumber (1.2.1)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
-      gherkin (~> 2.10.0)
+      gherkin (~> 2.11.0)
       json (>= 1.4.6)
     cucumber-rails (1.3.0)
       capybara (>= 1.1.2)
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
-    database_cleaner (0.7.2)
-    devise (2.1.0)
+    database_cleaner (0.8.0)
+    devise (2.1.1)
       bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.7)
+      orm_adapter (~> 0.1)
       railties (~> 3.1)
-      warden (~> 1.1.1)
+      warden (~> 1.2.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.3.0)
+    factory_girl (3.4.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (3.3.0)
-      factory_girl (~> 3.3.0)
+    factory_girl_rails (3.4.0)
+      factory_girl (~> 3.4.0)
       railties (>= 3.0.0)
+    fastercsv (1.5.5)
     ffi (1.0.11)
-    foreman (0.46.0)
+    foreman (0.47.0)
       thor (>= 0.13.6)
     fssm (0.2.9)
-    gherkin (2.10.0)
+    gherkin (2.11.0)
       json (>= 1.4.6)
     haml (3.1.6)
     haml-rails (0.3.4)
@@ -156,7 +169,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     high_voltage (1.1.1)
-    highline (1.6.12)
+    highline (1.6.13)
     hike (1.2.1)
     htmlentities (4.3.1)
     httpclient (2.2.5)
@@ -164,11 +177,12 @@ GEM
     impressionist (1.1.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
-    journey (1.0.3)
+    journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.7.3)
+    json_pure (1.7.3)
     libv8 (3.3.10.4)
     libwebsocket (0.1.3)
       addressable
@@ -187,13 +201,13 @@ GEM
     net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    newrelic_rpm (3.3.4.1)
-    nokogiri (1.5.2)
-    orm_adapter (0.0.7)
+    newrelic_rpm (3.4.0)
+    nokogiri (1.5.4)
+    orm_adapter (0.1.0)
     paper_trail (2.6.3)
       activerecord (~> 3.0)
       railties (~> 3.0)
-    paperclip (3.0.4)
+    paperclip (3.1.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -240,27 +254,34 @@ GEM
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby-debug-base19 (>= 0.11.19)
+    ruby2ruby (1.3.1)
+      ruby_parser (~> 2.0)
+      sexp_processor (~> 3.0)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    ruby_parser (2.3.1)
+      sexp_processor (~> 3.0)
     rubyzip (0.9.8)
-    sass (3.2.0.alpha.242)
-    selenium-webdriver (2.22.0)
+    sass (3.2.0.alpha.247)
+    selenium-webdriver (2.22.2)
       childprocess (>= 0.2.5)
       ffi (~> 1.0)
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+    sexp_processor (3.2.0)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
+    terminal-table (1.4.5)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
     thor (0.15.2)
     tilt (1.3.3)
     timecop (0.3.5)
-    tinymce-rails (3.5)
+    tinymce-rails (3.5.2)
       railties (>= 3.1.1)
     treetop (1.4.10)
       polyglot
@@ -271,7 +292,7 @@ GEM
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    warden (1.1.1)
+    warden (1.2.1)
       rack (>= 1.0)
     whenever (0.7.3)
       activesupport (>= 2.3.4)
@@ -284,6 +305,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on!
+  brakeman
   cancan
   capistrano
   capistrano-ext
@@ -317,6 +339,7 @@ DEPENDENCIES
   rinku
   rspec-rails
   ruby-debug19
+  sass
   sass-rails!
   sprockets
   sqlite3

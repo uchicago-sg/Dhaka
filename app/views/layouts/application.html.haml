@@ -28,7 +28,3 @@
       %section#main.ninecol.last
         = yield
     = render 'layouts/footer'
-    - if Rails.env.development?
-      #debug.row><= debug params
-      #debug.row><= debug session
-    %script(src='http://sg.uchicago.edu/sg-header/sg-header.js' type='text/javascript')

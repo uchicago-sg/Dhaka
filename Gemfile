@@ -8,8 +8,6 @@ gem 'rspec-rails'
 gem 'ruby-debug19'
 gem 'therubyracer'
 gem 'timecop'
-gem 'sqlite3'
-gem 'pg'
 gem 'multi_json'
 gem 'foreman'       # Simple process management
 gem 'cancan'        # User authorization
@@ -40,8 +38,18 @@ group :assets do
   gem 'haml-rails'    # Use HAML in generators
   gem 'tinymce-rails' # Simple WYSIWYG editor
 
+  gem 'sass'
   gem 'sass-rails', :git => 'git://github.com/rails/sass-rails.git', :branch => '3-2-stable'
   gem 'compass',    :git => 'git://github.com/chriseppstein/compass.git', :branch => :master
+end
+
+group :development do
+  gem 'sqlite3'
+  gem 'brakeman'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :test do
@@ -52,4 +60,3 @@ group :test do
   gem 'cucumber-rails'
   gem 'turn', :require => false
 end
-

@@ -11,7 +11,7 @@
 - if user_signed_in? and @user.id == current_user.id
   - if @listings.empty?
     %p.sorry You have no listings posted
-    %p= link_to 'Place your first listing', new_listing_path if @user.can? :create, Listing
+    %p= link_to 'Place a listing', new_listing_path if @user.can? :create, Listing
   - else
     = render 'listings/browser', :listings => @listings
 - else
