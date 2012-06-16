@@ -39,7 +39,11 @@ module ApplicationHelper
       link_to category.description, categories_search_path(category)
     end
   end
-
+  
+  def full_image_path asset, type
+    return root_url[0..-2] + asset.photo.url(type)
+  end
+  
   # See http://stackoverflow.com/questions/223984/automatic-method-to-set-the-tabindex-using-form-helpers
   def autotab
     @current_tab ||= 0

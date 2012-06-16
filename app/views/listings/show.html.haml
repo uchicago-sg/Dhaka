@@ -1,2 +1,5 @@
 - title @listing.description
+- content_for :head do
+  - unless @listing.images.empty?
+    =tag :meta, :property => 'og:image', :content => full_image_path(@listing.images.first, :thumb)
 = render @listing
