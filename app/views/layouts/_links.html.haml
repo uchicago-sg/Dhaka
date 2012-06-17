@@ -1,0 +1,10 @@
+- STATIC_PAGE_LINKS.each do |link|
+  - if link[1].gsub('/','') == params[:id]
+    %li.selected.page= link_to link[0], page_path(link[1])
+  - else
+    %li.page= link_to link[0], page_path(link[1])
+- OTHER_LINKS.each do |link|
+  - if link[1] == 'feeds' and controller_name == 'categories'
+    %li.selected.page= link_to link[0], ('/' + link[1])
+  - else
+    %li.page= link_to link[0], ('/' + link[1])

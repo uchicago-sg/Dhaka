@@ -7,5 +7,6 @@ class ListingObserver < ActiveRecord::Observer
     # Will come out doubly encoded by strip_tags if we don't decode
     coder = HTMLEntities.new
     record.details = coder.decode record.details
+    record.cached_details = record.details.markdown.strip
   end
 end

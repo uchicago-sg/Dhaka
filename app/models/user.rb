@@ -66,9 +66,18 @@ class User < ActiveRecord::Base
     permalink
   end
 
+  def as_simplified_json options={}
+    result = self.attributes.keep_if do |k,v|
+      k == 'email' or
+      k == 'name' or
+      k == 'permalink'
+    end
+    result
+  end
+
   def as_json options={}
-    result = self.attributes.keep_if { |k,v| k == 'email' or k == 'name' or k == 'permalink' or k == 'signed' }
-    result[:listings] = self.listings
+    result = as_simplified_json options
+    result[:listings] = self.listings.map &:as_simplified_json
     result
   end
 end

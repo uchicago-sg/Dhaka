@@ -16,7 +16,7 @@ class Listing < ActiveRecord::Base
     MODE_OPTIONS << [e, i]
   end
 
-  attr_accessible :description, :details, :price, :status, :images_attributes, :category_ids
+  attr_accessible :description, :details, :cached_details, :price, :status, :images_attributes, :category_ids
   belongs_to :seller, :class_name => 'User' 
   has_and_belongs_to_many :categories
   has_many :images, :dependent => :destroy
@@ -121,8 +121,28 @@ class Listing < ActiveRecord::Base
     permalink
   end
 
+  def as_simplified_json options={}
+    result = self.attributes.keep_if do |k,v|
+      k == 'description' or
+      k == 'details' or
+      k == 'price' or
+      k == 'created_at' or
+      k == 'updated_at' or
+      k == 'renewed_at' or
+      k == 'permalink'
+    end
+    result
+  end
+
+  def details_to_html
+    return details.markdown if cached_details.blank?
+    cached_details.html_safe
+  end
+
   def as_json options={}
-    self.attributes.keep_if { |k,v| k != 'id' }
+    result = as_simplified_json options
+    result[:seller] = self.seller.as_simplified_json
+    result
   end
 
   def self.remove_expired_images

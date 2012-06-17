@@ -88,7 +88,19 @@ Time::DATE_FORMATS.merge!({
 # Unfortunate but useful contstants
 SITE_NAME      = 'Marketplace'
 APP_RESOURCES  = %w( listings users categories )
-STATIC_PAGES   = %w( terms privacy safety issues about faqs status welcome )
+STATIC_PAGES   = %w( terms privacy terms_privacy safety issues about faqs status welcome )
+
+STATIC_PAGE_LINKS = [
+  ['About Marketplace',   'about'],
+  ['Seller Guide & FAQs', 'guide_and_faqs'],
+  ['Safety & Security',   'safety'],
+  ['Terms & Privacy',     'terms_and_privacy']
+]
+
+OTHER_LINKS = [
+  ['Atom Feeds', 'feeds']
+]
+
 DEVISE_PAGES   = %w( register login logout )
 RESERVED_PATHS = CATEGORIES.map(&:first).map(&:downcase) + STATIC_PAGES + DEVISE_PAGES + \
   %w( versions browse search users categories listings starred dashboard index show new create edit update delete ) # Special routes

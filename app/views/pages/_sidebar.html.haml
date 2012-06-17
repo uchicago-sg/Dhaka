@@ -1,15 +1,2 @@
-:ruby
-  page_links = [
-    ['About Marketplace', about_page_path],
-    ['Safety & Security', safety_page_path],
-    ['Terms of Service',  terms_page_path],
-    ['Privacy Policy',    privacy_page_path],
-    ['Atom Feeds',        feeds_path]
-  ]
-
 %ul.pages
-  - page_links.each do |link|
-    - if link[1].gsub('/','') == params[:id] or ( link[1] == feeds_path and controller_name == 'categories')
-      %li.selected.page= link_to link[0], link[1]
-    - else
-      %li.page= link_to link[0], link[1]
+  = render 'layouts/links'

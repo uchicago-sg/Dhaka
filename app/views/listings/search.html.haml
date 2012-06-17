@@ -21,9 +21,9 @@
         %span.label= f.label :price_to_f_lteq, 'Less than $'
         %span.input= f.text_field :price_to_f_lteq, {:tabindex => autotab, :class => 'currency'}
     = field_set_tag nil, {:id => :search_options} do
-      %span.field
-        %span.input= f.check_box :seller_signed_true, {:tabindex => autotab}
-        %span.label= f.label :seller_signed_true, 'Limit to signed sellers'
+      / %span.field
+      /   %span.input= f.check_box :seller_signed_true, {:tabindex => autotab}
+      /   %span.label= f.label :seller_signed_true, 'Limit to signed sellers'
       %span.field
         %span.input= check_box_tag :images_present, params[:images_present], @images_present, {:tabindex => autotab}
         %span.label= label_tag :images_present, 'Listing must include image'
