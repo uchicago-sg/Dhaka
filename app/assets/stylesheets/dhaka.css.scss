@@ -314,8 +314,8 @@ body > footer {
 
 article {
   header p { margin: 0.25em 0; }
-  p + ul { margin-top: 0.5em; }
-  p + p { margin-top: 1em; }
+  .details p + ul { margin-top: 0.5em; }
+  .details p + p { margin-top: 1em; }
 }
 
 body > footer, body > header {
