@@ -6,8 +6,18 @@ class User < ActiveRecord::Base
   attr_readonly :permalink
   @@permalink_field = :name
 
-  devise :token_authenticatable, :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, 
-         :lockable, :unlock_strategy => :none, :lock_strategy => :none
+  devise :token_authenticatable,
+         :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable, 
+         :confirmable,
+         :lockable,
+         :unlock_strategy => :none,
+         :lock_strategy => :none
+
   # before_save :ensure_authentication_token
 
   validates :name,
