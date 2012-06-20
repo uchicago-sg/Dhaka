@@ -2,10 +2,11 @@
   = render 'shared/form_errors', :resource => @listing
   .field.description
     .label= f.label :description
-    .input= f.text_field :description, {:tabindex => autotab}
+    .input= f.text_field :description, {:size => 60, :tabindex => autotab}
   .field.price
     .label= f.label :price
-    .input= f.text_field :price, {:class => 'currency', :tabindex => autotab}
+    .input= f.text_field :price, {:size => 15, :class => 'currency', :tabindex => autotab}
+    %p.note <b>Note</b>: &#8220;Free&#8221; describes any listing with a price equal to zero.
   .field.category
     .label= f.label :category_ids, 'Category'
     %p.note You may choose exactly one category. <strong>Do not</strong> duplicate the listing to place it in multiple categories.
@@ -13,7 +14,7 @@
   .field.details
     .label= f.label :details
     = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'
-    .input= f.text_area :details, {:tabindex => autotab}
+    .input= f.text_area :details, {:cols => 60, :tabindex => autotab}
   .field.images
     = f.fields_for :images do |image|
       - if image.object.new_record?
@@ -28,5 +29,5 @@
     %p.note You may upload at most five images.
     %p.note Each image must be formatted as a JPEG or PNG less than three megabytes in size.
   
-  %p.explanation <b>Never</b> duplicate listings. You can update your listing at any time by visiting #{link_to 'your profile page', user_path(current_user)} and using the &#8220;edit&#8221; links. Similarly you can &#8220;unpublish&#8221; a listing if you want to remove it from public view. We treat duplication of listings as a form of spam, which means you could lose your ability to sell on the site as a result.
+  %p.explanation <b>Never</b> duplicate listings. You can update your listing at any time by visiting #{link_to 'your profile page', user_path(current_user)} and using the &#8220;edit&#8221; links. Similarly you can &#8220;unpublish&#8221; a listing if you want to remove it from public view. We treat duplication of listings as a form of spam, which means you could <em>lose your ability to sell</em> on the site as a result.
   .submit= f.submit :tabindex => autotab

@@ -100,7 +100,7 @@ body > header {
   text-align: left;
 
   .devise-links {
-    margin-top: 0.5em;
+    margin-top: 1em;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -111,6 +111,7 @@ body > header {
   .field, .subfield {
     display: block;
     padding: 0.25em 0;
+    margin-bottom: 0.25em;
   }
 
   thead .field, thead .subfield { padding: 0; }
@@ -311,6 +312,11 @@ body > footer {
   }
 }
 
+#pages #about * + h2 {
+  border-top: 1px solid #ccc;
+  margin-top: 0.5em;
+  padding-top: 0.25em;
+}
 
 article {
   header p { margin: 0.25em 0; }

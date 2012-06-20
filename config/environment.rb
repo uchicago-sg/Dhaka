@@ -91,10 +91,9 @@ APP_RESOURCES  = %w( listings users categories )
 STATIC_PAGES   = %w( terms privacy terms_privacy safety issues about faqs status welcome )
 
 STATIC_PAGE_LINKS = [
-  ['About Marketplace',   'about'],
-  ['Seller Guide & FAQs', 'guide_and_faqs'],
-  ['Safety & Security',   'safety'],
-  ['Terms & Privacy',     'terms_and_privacy']
+  ['About Marketplace', 'about'],
+  ['Safety & Security', 'safety'],
+  ['Terms & Privacy',   'terms_and_privacy']
 ]
 
 OTHER_LINKS = [

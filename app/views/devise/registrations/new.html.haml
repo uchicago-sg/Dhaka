@@ -7,12 +7,15 @@
   %span.field
     %span.label= f.label :name
     %span.input= f.text_field :name, :tabindex => autotab
+    %p.note Your username. Many sellers simply use their first and last name.
   %span.field
     %span.label= f.label :email
     %span.input= f.email_field :email, :tabindex => autotab
+    %p.note A confirmation link will be sent to this address. You must confirm your account before logging in.
   %span.field
     %span.label= f.label :password
     %span.input= f.password_field :password, :tabindex => autotab
+    %p.note To protect your account, create a unique password with a combination of numbers, letters, and symbols.
   %span.field
     %span.label= f.label :password_confirmation
     %span.input= f.password_field :password_confirmation, :tabindex => autotab
