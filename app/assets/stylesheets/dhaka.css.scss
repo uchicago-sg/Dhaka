@@ -46,6 +46,17 @@ body {
 }
 
 
+
+#system-notification {
+  display: none;
+  color: black;
+  margin-bottom: 1em;
+  background-color: $yellow;
+  text-align: center;
+  p { padding: 0.4em; }
+}
+
+
 #splash {
   text-align: justify;
   max-width: 400px;

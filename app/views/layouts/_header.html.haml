@@ -1,3 +1,8 @@
+- if controller_name != 'pages' || params[:id] != 'safety'
+  %div#system-notification.row
+    %p
+      <b>Warning</b>: Several Marketplace users have recently reported scams involving potential subletters. Visit our #{link_to 'Safety & Security page', safety_page_path} to learn more.
+      %a#dismiss-system-notification{:href => '#', :title => 'Dismiss this message'} Dismiss
 %header.row
   %h1#marketplace-logo.threecol= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   - if content_for? :top
