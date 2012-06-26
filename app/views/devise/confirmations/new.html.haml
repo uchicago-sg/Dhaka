@@ -1,6 +1,7 @@
 - title 'Resend confirmation'
 - content_for :top do
   %h2 Resend confirmation instructions
+%p.explanation <b>Please allow up to 24 hours</b> for the confirmation email to arrive. If you have not received a notification at that time, then use this form to resend the instructions.
 = form_for resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post } do |f|
   = devise_error_messages!
   %span.field

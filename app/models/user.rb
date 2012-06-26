@@ -27,6 +27,13 @@ class User < ActiveRecord::Base
       :message => 'may only contain on alphanumeric characters, spaces, dashes, and underscores'
     }
 
+  validates :email,
+    :presence => true,
+    :format => {
+      :with => /\A.+@(.+\.)*(uchicago\.edu|uchospitals\.edu|chicagobooth\.edu)\z/i,
+      :message => 'must be an @uchicago.edu, @uchospitals.edu, or @chicagobooth.edu address'
+    }
+
   # Simple roles setup for use with CanCan
   scope :with_role, lambda { |role|
     { :conditions => ["roles_mask & ? > 0", role.to_role] }
