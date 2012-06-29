@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # custom_actions :resource => :change_password
   load_resource :find_by => :permalink
   authorize_resource
   respond_to :html, :json
@@ -31,13 +30,13 @@ class UsersController < ApplicationController
     if params[:user][:password]
       if @user.update_with_password(params[:user])
         sign_in(@user, bypass: true)
-        flash[:notice] = 'Password successfully updated'
+        flash[:notice] = 'User and password successfully updated'
         respond_with @user, :status => :ok, :location => user_path(@user)
       else
-        render :change_password
+        render :edit
       end
     elsif @user.update_attributes params[:user]
-      flash[:notice] = 'User successfully edited'
+      flash[:notice] = 'User successfully updated'
       respond_with @user, :status => :ok, :location => user_path(@user)
     else
       respond_with @category.errors, :status => :unprocessable_entity do |format|
@@ -54,7 +53,7 @@ class UsersController < ApplicationController
     if @user.save
       respond_to do |format|
         format.html {
-          flash[:notice] = 'Successfully updated permissions'
+          flash[:notice] = 'Updated permissions successfully'
           redirect_to users_path
         }
         format.json { render :json => { :status => :ok, :message => @user.roles } }
@@ -67,7 +66,7 @@ class UsersController < ApplicationController
     if @user.toggle_lock
       respond_to do |format|
         format.html {
-          flash[:notice] = 'Successfully locked/unlocked user'
+          flash[:notice] = 'Toggled user lock successfully'
           redirect_to users_path
         }
         format.json { render :json => { :status => :ok, :message => @user.access_locked? } }
