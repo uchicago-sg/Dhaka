@@ -2,6 +2,21 @@
 @import 'shared';
 
 
+
+// Specials...
+#patricia-muller-email {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  margin: 0.5em 1em;
+  padding: 1em;
+
+  br {
+    padding: 0.5em 0;
+  }
+}
+
+
+
 .container .container, .container .container > * { padding: 0; }
 .row .row { min-width: 0; }
 
@@ -54,6 +69,12 @@ body {
   background-color: $yellow;
   text-align: center;
   p { padding: 0.4em; }
+}
+
+#dismiss-system-notification {
+  font-size: 0.75em;
+  font-family: 'Monaco', 'Menlo', 'Andale Mono', "Courier New", 'Courier', monospace;
+  margin-left: 1em;
 }
 
 
