@@ -1,8 +1,3 @@
-- if controller_name != 'pages' || params[:id] != 'safety'
-  %div#system-notification.row
-    %p
-      <b>July 6 Update</b>: We have isolated many complaints to a &#8220;Patricia Muller&#8221; (patriciamuller88@gmail.com). Visit our #{link_to 'Safety & Security page', safety_page_path} to learn more.
-      %a#dismiss-system-notification{:href => '#', :title => 'Dismiss this message'} [dismiss]
 %header.row
   %h1#marketplace-logo.threecol= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   - if content_for? :top

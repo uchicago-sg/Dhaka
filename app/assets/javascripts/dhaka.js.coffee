@@ -35,20 +35,6 @@ $(document).ready ->
       years: '%d years'
       numbers: []
 
-  if $('#pages.show').exists()
-    $.cookie 'dismiss-system-notification-01', '',
-      expires: 30
-      path: '/'
-
-  $('#system-notification').show() if $.cookie('dismiss-system-notification-01') is null
-
-  $('#dismiss-system-notification').click ->
-    $.cookie 'dismiss-system-notification-01', '',
-      expires: 30
-      path: '/'
-    $('#system-notification').slideUp()
-    false
-
   $('.time-ago').attr('title', '').timeago()
 
   # Add search form behavior
