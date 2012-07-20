@@ -28,8 +28,9 @@ class User < ActiveRecord::Base
     }
 
   validates :email,
+    :on       => :create,
     :presence => true,
-    :format => {
+    :format   => {
       :with => /\A.+@(.+\.)*(uchicago\.edu|uchospitals\.edu|chicagobooth\.edu)\z/i,
       :message => 'must be an @uchicago.edu, @uchospitals.edu, or @chicagobooth.edu address'
     }
