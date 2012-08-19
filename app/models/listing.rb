@@ -27,8 +27,7 @@ class Listing < ActiveRecord::Base
   
   attr_readonly :permalink
   @@permalink_field = :description
-  
-  validates_uniqueness_of :description, :scope => :seller_id
+
   validates :description, :presence => true
   validates :details, :presence => true
   validates :price,

@@ -27,9 +27,9 @@
       %span.field
         %span.input= check_box_tag :images_present, params[:images_present], @images_present, {:tabindex => autotab}
         %span.label= label_tag :images_present, 'Listing must include image'
-      %span.field
-        %span.input= check_box_tag :include_expired, params[:include_expired], @include_expired, {:tabindex => autotab}
-        %span.label= label_tag :include_expired, 'Include expired listings'
+      / %span.field
+      /   %span.input= check_box_tag :include_expired, params[:include_expired], @include_expired, {:tabindex => autotab}
+      /   %span.label= label_tag :include_expired, 'Include expired listings'
       %span.field
         %span.label= label_tag :order, 'Sort by '
         %span.input= select_tag :order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}

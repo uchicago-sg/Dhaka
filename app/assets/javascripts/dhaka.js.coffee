@@ -91,7 +91,6 @@ $(document).ready ->
   $('.starred').delegate 'a.star', 'ajax:success', ->
     $(this).removeClass('available')
     $(this).parent().find('a.unstar').addClass('available')
-    $.sticky 'Successfully starred listing'
 
   $('*:not(body).starred').delegate 'a.unstar', 'ajax:success', ->
     # Hide the listing when unstarred on listings/starred, otherwise rework the link
@@ -101,7 +100,6 @@ $(document).ready ->
     else
       $(this).removeClass('available')
       $(this).parent().find('a.star').addClass('available')
-    $.sticky 'Successfully unstarred listing'
 
   $.fn.extend
     addListingLink: ->

@@ -260,6 +260,12 @@ body > footer {
   font-size: 12px;
 }
 
+.reminder {
+  margin-bottom: 1em;
+  padding: 1em 1em 0.25em;
+  background-color: $yellow;
+}
+
 #listings-browser, #users-browser {
   width: 100%;
   thead { display: none; }
@@ -275,6 +281,8 @@ body > footer {
     border: 0;
     margin-bottom: 0.5em;
     clear: both;
+
+    .field { display: inline !important; }
 
     td {
       float: right;

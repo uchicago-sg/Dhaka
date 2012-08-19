@@ -1,9 +1,9 @@
 %table#users-browser
   %thead.container
     %tr.row
-      %td.name.twocol Name
-      %td.email.sevencol Email
+      %td.name.threecol Name
+      %td.email.sixcol Email
       %td.created_at.threecol.last Created
   %tbody.container
-    - @users.each do |user|
+    - @users.reverse.each do |user|
       = render 'users/row', :user => user

@@ -9,10 +9,20 @@
 %p.explanation Member since #{@user.created_at.to_s :day_month_and_year}. Get in contact with <strong>#{@user.name}</strong> via email at #{mail_to @user.email, @user.email, :encode => 'javascript'}.
 
 - if user_signed_in? and @user.id == current_user.id
+  %div.reminder
+    %p <b>Reminders</b>
+    %ul.explanation
+      %li Each listing is publicly available for one week.
+      %li After one week, the listing will be renewable but not public.
+      %li After two weeks without renewal, the listing automatically expires.
+      %li You cannot delete listings, but you may unpublish them to remove them from public view.
+      %li Duplicates refer only to public, published listings.
   - if @listings.empty?
     %p.sorry You have no listings posted
     %p= link_to 'Place a listing', new_listing_path if @user.can? :create, Listing
   - else
     = render 'listings/browser', :listings => @listings
 - else
+  - if @listings.empty?
+    %p.sorry No listings posted
   = render 'listings/browser', :listings => @listings unless @listings.empty?

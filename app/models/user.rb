@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
 
   validates :email,
     :on       => :create,
-    :presence => true,
     :format   => {
       :with => /\A.+@(.+\.)*(uchicago\.edu|uchospitals\.edu|chicagobooth\.edu)\z/i,
       :message => 'must be an @uchicago.edu, @uchospitals.edu, or @chicagobooth.edu address'
@@ -97,5 +96,37 @@ class User < ActiveRecord::Base
     result = as_simplified_json options
     result[:listings] = self.listings.map &:as_simplified_json
     result
+  end
+
+
+  # Override Devise's confirmation instructions
+  # Prevent users from submitting more than once in 24 hours
+  def send_confirmation_instructions
+    self.confirmation_token = nil if reconfirmation_required?
+    @reconfirmation_required = false
+
+    last_confirmation_sent_at = confirmation_sent_at || 0
+    diff = Time.now - last_confirmation_sent_at
+    if diff > 20.seconds and diff < 24.hours
+      self.errors.add(:email, :recently_confirmed)
+      return
+    end
+
+    generate_confirmation_token! if self.confirmation_token.blank?
+    send_devise_notification(:confirmation_instructions)
+  end
+
+  # Override Devise's password reset
+  # Prevent users from submitting more than once in 24 hours
+  def send_reset_password_instructions
+    generate_reset_password_token! if should_generate_reset_token?
+    send_devise_notification(:reset_password_instructions)
+
+    last_reset_sent_at = reset_password_sent_at || 0
+    diff = Time.now - last_reset_sent_at
+    if diff > 20.seconds and diff < 24.hours
+      self.errors.add(:email, :recently_reset)
+      return
+    end
   end
 end
