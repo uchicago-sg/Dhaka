@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    if user_signed_in? and @user.id == current_user.id or current_user.admin?
+    if user_signed_in? and (@user.id == current_user.id or current_user.admin?)
       @listings = @user.listings
     else
       @listings = @user.listings.available
