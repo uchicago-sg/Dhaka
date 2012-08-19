@@ -6,16 +6,22 @@ class ListingsController < ApplicationController
 
   load_resource :find_by => :permalink, :except => %w( show search )
   authorize_resource
-  respond_to :html, :json, :except => %w( star unstar publish unpublish )
+  respond_to :html, :json, :except => %w( all star unstar publish unpublish )
 
+  # GET /all
+  def all
+    respond_to do |format|
+      format.json { render :json => Listing.available.order(@order) }
+    end
+  end
 
-  # GET /listings
+  # GET /index
   def index
     if params.has_key? :category
       category = Category.find_by_description params[:category].capitalize
       params[:q] = { :categories_id_positive_and_eq => category.id } if category
     end
-    @search   = Listing.available.search params[:q]
+    @search = Listing.available.search params[:q]
     @listings = @search.result(:distinct => true).order(@order).page(params[:page])
     respond_with @listings
   end
