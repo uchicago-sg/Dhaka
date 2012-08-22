@@ -1,0 +1,33 @@
+#!/usr/bin/env bundle exec ruby
+require 'action_view'
+require 'open-uri'
+require 'amatch'
+require 'json'
+
+include Amatch
+
+ENV['RAILS_ENV'] = "development"
+require './config/environment.rb'
+include ActionView::Helpers::SanitizeHelper
+
+listings = []
+
+Listing.available.find_each do |l|
+  words = l.description + ' ' + l.details
+  words = strip_tags(strip_links words)
+  words = words.gsub(/[^\w ]+/, '').downcase
+  words = words.split(' ').keep_if do |w|
+    w.length > 3 and w.length < 15 and not w =~ /\A\d+\z/
+  end
+  listings << [l.permalink, words.sort.join(' ')]
+end
+
+mlistings = listings.map do |p1, w1|
+  matches = []
+  listings.each do |p2, w2|
+    matches << p2 if w1.jaro_similar(w2) > 0.8 and p1 != p2
+  end
+  [p1, matches]
+end.keep_if { |p,m| not m.empty? }
+
+puts mlistings.to_yaml

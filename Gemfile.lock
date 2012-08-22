@@ -85,6 +85,8 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.2.8)
+    amatch (0.2.10)
+      tins (~> 0.3)
     ansi (1.4.2)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
@@ -281,6 +283,7 @@ GEM
     thor (0.15.2)
     tilt (1.3.3)
     timecop (0.3.5)
+    tins (0.5.1)
     tinymce-rails (3.5.2)
       railties (>= 3.1.1)
     treetop (1.4.10)
@@ -305,6 +308,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on!
+  amatch
   brakeman
   cancan
   capistrano
