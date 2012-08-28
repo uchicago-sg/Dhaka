@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
 
   delegate :can?, :cannot?, :to => :ability
 
-  def self.confirmed ; where 'confirmed_at NOT NULL' end
+  def self.confirmed ; where 'confirmed_at IS NOT NULL' end
 
   def self.unconfirmed ; where 'confirmed_at IS NULL' end
 
