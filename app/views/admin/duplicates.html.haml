@@ -1,0 +1,7 @@
+- title 'Manage Duplicate Listings'
+- content_for :top do
+  %h2 Manage Duplicate Listings
+- if @listings.empty?
+  %h2 No duplicate listings
+- else
+  = render 'listings/browser', :listings => @listings

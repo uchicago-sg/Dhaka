@@ -1,0 +1,15 @@
+- title 'Manage Pending Confirmations'
+- content_for :top do
+  %h2 Manage Pending Confirmations
+- if @users.empty?
+  %h2 No pending confirmations
+- else
+  %table#users-browser
+    %thead.container
+      %tr.row
+        %td.name.threecol Name
+        %td.email.sixcol Email
+        %td.created_at.threecol.last Created
+    %tbody.container
+      - @users.reverse.each do |user|
+        = render 'confirmation', :user => user

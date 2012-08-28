@@ -1,0 +1,7 @@
+- title 'Administrative Console'
+- content_for :top do
+  %h2 Administrative Console
+%ul
+  %li= link_to 'Manage duplicate listings', admin_duplicates_path
+  %li= link_to 'Manage current users', admin_users_path
+  %li= link_to 'Manage pending confirmations', admin_confirmations_path

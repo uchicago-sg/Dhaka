@@ -47,41 +47,29 @@ class User < ActiveRecord::Base
     ROLES.reject { |r| ((self.roles_mask || 0) & r.to_role).zero? }
   end
 
-  def has_role? role
-    roles.include? role
-  end
+  def has_role? role ; roles.include? role end
   
-  def toggle_role role
-    self.roles_mask = self.roles_mask^(role.to_role)
-  end
+  def toggle_role role ; self.roles_mask = self.roles_mask ^ role.to_role end
   
-  def toggle_lock
-    access_locked? ? unlock_access! : lock_access!
-  end
+  def toggle_lock ; access_locked? ? unlock_access! : lock_access! end
   
-  def admin?
-    has_role? 'admin'
-  end
+  def admin? ; has_role? 'admin' end
   
-  def seller?
-    has_role? 'seller'
-  end
+  def seller? ; has_role? 'seller' end
 
-  def signed?
-    signed
-  end
+  def signed? ; signed end
 
   # Make can? available to models
   # See http://stackoverflow.com/questions/3293400/access-cancans-can-method-from-a-model
-  def ability
-    @ability ||= Ability.new(self)
-  end
+  def ability ; @ability ||= Ability.new(self) end
 
   delegate :can?, :cannot?, :to => :ability
 
-  def to_param
-    permalink
-  end
+  def self.confirmed ; where 'confirmed_at NOT NULL' end
+
+  def self.unconfirmed ; where 'confirmed_at IS NULL' end
+
+  def to_param ; permalink end
 
   def as_simplified_json options={}
     result = self.attributes.keep_if do |k,v|

@@ -164,7 +164,7 @@ body > header {
 
   ul + ul, ul + form { margin-top: 1em; }
 
-  > .categories, > .pages, > .actions {
+  > .categories, > .pages, > .actions, > .administration {
     background-color: $yellow;
 
     a {
@@ -200,6 +200,19 @@ body > header {
       background-color: lighten($rust, 15%) !important;
     }
   }
+
+
+  > .administration {
+    a {
+      background-color: lighten($blue, 49%);
+      &:hover { background-color: lighten($blue, 40%); }
+    }
+
+    .selected a {
+      background-color: lighten($plum, 35%);
+    }
+  }
+
 
   form .actions {
     display: inline-block;

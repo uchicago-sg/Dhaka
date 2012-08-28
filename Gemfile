@@ -1,6 +1,5 @@
 source :rubygems
 
-gem 'amatch'
 gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-2-stable'
 gem 'rack'
 gem 'capistrano'
@@ -22,6 +21,7 @@ gem 'ransack'       # Successor to MetaSearch
 gem 'impressionist' # Simple page view counter
 gem 'newrelic_rpm'  # Performance and monitoring
 
+gem 'amatch'
 gem 'whenever', :require => false
 gem 'htmlentities'
 gem 'rinku'

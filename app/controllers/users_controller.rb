@@ -3,11 +3,6 @@ class UsersController < ApplicationController
   authorize_resource
   respond_to :html, :json
  
-  # GET /users 
-  def index
-    respond_with @users
-  end
-
   # GET /users/:id
   def show
     if user_signed_in? and (@user.id == current_user.id or current_user.admin?)
@@ -43,33 +38,6 @@ class UsersController < ApplicationController
         format.html do
           render :action => :new
         end
-      end
-    end
-  end
-  
-  # GET /users/:id/update_roles
-  def update_roles
-    @user.toggle_role params[:role]
-    if @user.save
-      respond_to do |format|
-        format.html {
-          flash[:notice] = 'Updated permissions successfully'
-          redirect_to users_path
-        }
-        format.json { render :json => { :status => :ok, :message => @user.roles } }
-      end
-    end
-  end
-  
-  # GET /users/:id/lock
-  def lock
-    if @user.toggle_lock
-      respond_to do |format|
-        format.html {
-          flash[:notice] = 'Toggled user lock successfully'
-          redirect_to users_path
-        }
-        format.json { render :json => { :status => :ok, :message => @user.access_locked? } }
       end
     end
   end

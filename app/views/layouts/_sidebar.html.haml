@@ -1,4 +1,9 @@
 %aside#sidebar.threecol
+  - if user_signed_in? and current_user.admin?
+    %ul.administration
+      %li{:class  => selected_if(@action == 'admin#duplicates')}= link_to 'Manage duplicate listings', admin_duplicates_path
+      %li{:class  => selected_if(@action == 'admin#users')}= link_to 'Manage current users', admin_users_path
+      %li{:class  => selected_if(@action == 'admin#confirmations')}= link_to 'Manage pending confirmations', admin_confirmations_path
   %ul.actions
     %li.starred{:class => selected_if(@action == 'listings#starred')}= link_to 'Starred Listings', starred_listings_path          
     - if user_signed_in?
@@ -22,4 +27,3 @@
       - @categories.each do |category|
         %li.category= link_to category.description, category.description.downcase
       %li.category.free= link_to 'Free', free_listings_path
-

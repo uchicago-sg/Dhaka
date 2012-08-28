@@ -1,4 +1,6 @@
 Dhaka::Application.routes.draw do
+  get "admin/index"
+
   root :to => 'listings#index', :via => :get
   post 'versions/:id/revert' => 'versions#revert', :as => :revert_version
   get 'index' => 'listings#index'
@@ -20,13 +22,19 @@ Dhaka::Application.routes.draw do
     get 'logout'   => 'devise/sessions#destroy',  :as => :logout
   end
 
-  resources :users, :only => %w( index show edit update ) do
+  resources :users, :only => %w( show edit update ) do
     member do
       get :change_password
-      get :update_roles
-      get :lock
     end
   end
+
+  get 'admin' => 'admin#index', :as => :admin_console
+  get 'admin/users' => 'admin#users', :as => :admin_users
+  get 'admin/confirmations' => 'admin#confirmations', :as => :admin_confirmations
+  get 'admin/users/:user/update_roles' => 'admin#update_roles', :as => :admin_update_roles
+  get 'admin/users/:user/lock' => 'admin#lock', :as => :admin_lock_user
+  get 'admin/users/:user/confirm' => 'admin#confirm', :as => :admin_confirm_user
+  get 'admin/duplicates' => 'admin#duplicates', :as => :admin_duplicates
 
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
