@@ -17,13 +17,13 @@ class AdminController < ApplicationController
 
   # GET /admin/users
   def users
-    @users = User.confirmed.order :created_at
+    @users = User.confirmed.order(:created_at).page(params[:page])
     respond_with @users
   end
 
   # GET /admin/confirmations
   def confirmations
-    @users = User.unconfirmed.order :created_at
+    @users = User.unconfirmed.order(:created_at).page(params[:page])
     respond_with @users
   end
 

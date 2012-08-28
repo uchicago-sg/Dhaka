@@ -6,14 +6,7 @@ class ListingsController < ApplicationController
 
   load_resource :find_by => :permalink, :except => %w( show search )
   authorize_resource
-  respond_to :html, :json, :except => %w( all star unstar publish unpublish )
-
-  # GET /all
-  def all
-    respond_to do |format|
-      format.json { render :json => Listing.available.order(@order) }
-    end
-  end
+  respond_to :html, :json, :except => %w( star unstar publish unpublish )
 
   # GET /index
   def index

@@ -11,3 +11,4 @@
   %tbody.container
     - @users.reverse.each do |user|
       = render 'user', :user => user
+= paginate @users

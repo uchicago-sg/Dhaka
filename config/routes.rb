@@ -5,7 +5,6 @@ Dhaka::Application.routes.draw do
   post 'versions/:id/revert' => 'versions#revert', :as => :revert_version
   get 'index' => 'listings#index'
   get 'feeds' => 'categories#index', :as => :feeds
-  get 'all'   => 'listings#all'
 
   STATIC_PAGES.each do |page|
     match page => 'high_voltage/pages#show', :id => page, :as => "#{page}_page"
