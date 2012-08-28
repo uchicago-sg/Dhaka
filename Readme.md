@@ -1,5 +1,11 @@
 # UChicago Marketplace
+
 ## Changes
+
+### 2012-08-27
+- Integrated Duplicate Finder v0.0.1
+- First attempt at an administrative console
+
 ### 2012-08-18
 - Prevent resending confirmation/password instructions within 24 hours
 - Add better wording on confirmation/password instruction pages
