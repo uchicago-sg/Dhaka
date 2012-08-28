@@ -10,7 +10,7 @@ class AdminController < ApplicationController
 
   # GET /admin/duplicates
   def duplicates
-    permalinks = YAML.load(File.readlines('dupes.yml')[1..-1].join)
+    permalinks = YAML.load(File.readlines('dupes.yml')[1..-1].join) rescue []
     @listings  = Listing.where(:permalink => permalinks).order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @listings
   end
