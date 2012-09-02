@@ -11,6 +11,6 @@
         %td.email.sixcol Email
         %td.created_at.threecol.last Created
     %tbody.container
-      - @users.reverse.each do |user|
+      - @users.each do |user|
         = render 'confirmation', :user => user
   = paginate @users
