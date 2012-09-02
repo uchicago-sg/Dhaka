@@ -1,3 +1,7 @@
+require 'amatch'
+include Amatch
+include ActionView::Helpers::SanitizeHelper
+
 class Listing < ActiveRecord::Base
   MAX_IMAGES = 5 # Maximum number of uploadable images
 
@@ -148,5 +152,35 @@ class Listing < ActiveRecord::Base
     Listing.expired.each do |listing|
       listing.images.each { |i| i.destroy } # Remove the db entry AND image, so phantom image references are removed
     end
+  end
+
+
+  @@dupes
+  @@dupes_calculated_at
+  def self.dupes ; @@dupes ||= find_dupes end
+  def self.dupes_calculated_at ; @@dupes_calculated_at end
+  def self.find_dupes
+    listings = []
+    available.find_each do |l|
+      words = l.description + ' ' + l.details
+      words = strip_tags(strip_links words)
+      words = words.gsub(/[^\w ]+/, '').downcase
+      words = words.split(' ').keep_if do |w|
+        w.length > 3 and w.length < 15 and not w =~ /\A\d+\z/
+      end
+      listings << [l.permalink, words.sort.join(' ')]
+    end
+
+    permalinks = listings.map do |p1, w1|
+      matches = []
+      listings.each do |p2, w2|
+        matches << p2 if w1.jaro_similar(w2) > 0.85 and p1 != p2
+      end
+      [p1, matches]
+    end.keep_if { |p,m| not m.empty? }.map &:first
+
+    @@dupes = where(:permalink => permalinks)
+    @@dupes_calculated_at = Time.now
+    return @@dupes
   end
 end
