@@ -10,7 +10,7 @@ class AdminController < ApplicationController
 
   # GET /admin/duplicates
   def duplicates
-    @listings  = Listing.dupes.order(Listing::DEFAULT_ORDER).page(params[:page])
+    @listings = Listing.dupes.order(Listing::DEFAULT_ORDER).page(params[:page])
     respond_with @listings
   end
 

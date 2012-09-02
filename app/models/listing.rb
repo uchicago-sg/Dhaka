@@ -155,10 +155,19 @@ class Listing < ActiveRecord::Base
   end
 
 
-  @@dupes
-  @@dupes_calculated_at
-  def self.dupes ; @@dupes ||= find_dupes end
-  def self.dupes_calculated_at ; @@dupes_calculated_at end
+  @@dupes = nil
+  @@dupes_calculated_at = nil
+
+  def self.dupes
+    find_dupes if @@dupes.nil? or @@dupes_calculated_at.nil?
+    @@dupes
+  end
+
+  def self.dupes_calculated_at
+    find_dupes if @@dupes.nil? or @@dupes_calculated_at.nil?
+    @@dupes_calculated_at
+  end
+
   def self.find_dupes
     listings = []
     available.find_each do |l|

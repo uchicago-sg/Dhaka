@@ -88,12 +88,12 @@ Time::DATE_FORMATS.merge!({
 # Unfortunate but useful contstants
 SITE_NAME      = 'Marketplace'
 APP_RESOURCES  = %w( listings users categories )
-STATIC_PAGES   = %w( terms privacy terms_privacy safety issues about faqs status welcome )
+STATIC_PAGES   = %w( terms-privacy safety about )
 
 STATIC_PAGE_LINKS = [
   ['About Marketplace', 'about'],
   ['Safety & Security', 'safety'],
-  ['Terms & Privacy',   'terms_and_privacy']
+  ['Terms & Privacy',   'terms-privacy']
 ]
 
 OTHER_LINKS = [
@@ -102,7 +102,7 @@ OTHER_LINKS = [
 
 DEVISE_PAGES   = %w( register login logout )
 RESERVED_PATHS = CATEGORIES.map(&:first).map(&:downcase) + STATIC_PAGES + DEVISE_PAGES + \
-  %w( versions browse search users categories listings starred dashboard index show new create edit update delete ) # Special routes
+  %w( admin faqs status welcome issues terms privacy versions browse search users categories listings starred dashboard index show new create edit update delete ) # Special routes
 
 # Wrap errors in <span>s instead of <div>s
 ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "<span class='field_with_errors'>#{html_tag}</span>".html_safe }

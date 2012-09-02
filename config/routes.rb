@@ -7,7 +7,7 @@ Dhaka::Application.routes.draw do
   get 'feeds' => 'categories#index', :as => :feeds
 
   STATIC_PAGES.each do |page|
-    match page => 'high_voltage/pages#show', :id => page, :as => "#{page}_page"
+    match page => 'high_voltage/pages#show', :id => page, :as => "#{page.gsub('-','_')}_page"
   end
 
   CATEGORIES.each do |c|

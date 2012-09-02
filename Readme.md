@@ -2,6 +2,10 @@
 
 ## Changes
 
+### 2012-09-02
+- Better integration with Duplicate Finder
+- Fixes to sorting in administrative console
+
 ### 2012-08-27
 - Integrated Duplicate Finder v0.0.1
 - First attempt at an administrative console
