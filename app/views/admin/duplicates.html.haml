@@ -1,7 +1,6 @@
 - title 'Manage Duplicate Listings'
 - content_for :top do
   %h2 Manage Duplicate Listings
-%p.explanation Last updated <time datetime="#{Listing.dupes_calculated_at.iso8601}">#{Listing.dupes_calculated_at}</time>.
 - if @listings.empty?
   %h2 No duplicate listings
 - else

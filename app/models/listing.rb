@@ -154,42 +154,30 @@ class Listing < ActiveRecord::Base
     end
   end
 
-
-  @@dupes = nil
-  @@dupes_calculated_at = nil
-
   def self.dupes
-    find_dupes if @@dupes.nil? or @@dupes_calculated_at.nil?
-    @@dupes
-  end
-
-  def self.dupes_calculated_at
-    find_dupes if @@dupes.nil? or @@dupes_calculated_at.nil?
-    @@dupes_calculated_at
-  end
-
-  def self.find_dupes
-    listings = []
-    available.find_each do |l|
-      words = l.description + ' ' + l.details
-      words = strip_tags(strip_links words)
-      words = words.gsub(/[^\w ]+/, '').downcase
-      words = words.split(' ').keep_if do |w|
-        w.length > 3 and w.length < 15 and not w =~ /\A\d+\z/
+    permalinks = Rails.cache.fetch('duplicates', :expires_in => 30.minutes) do
+      listings = []
+      available.find_each do |l|
+        words = l.description + ' ' + l.details
+        words = strip_tags(strip_links words)
+        words = words.gsub(/[^\w ]+/, '').downcase
+        words = words.split(' ').keep_if do |w|
+          w.length > 3 and w.length < 15 and not w =~ /\A\d+\z/
+        end
+        listings << [l.permalink, words.join(' ')]
       end
-      listings << [l.permalink, words.sort.join(' ')]
+
+      listings.map do |p1, w1|
+        matches = []
+        listings.each do |p2, w2|
+          matches << p2 if w1.jaro_similar(w2) > 0.85 and p1 != p2
+        end
+        [p1, matches]
+      end.keep_if do |p,m|
+        not m.empty?
+      end.map(&:first)
     end
 
-    permalinks = listings.map do |p1, w1|
-      matches = []
-      listings.each do |p2, w2|
-        matches << p2 if w1.jaro_similar(w2) > 0.85 and p1 != p2
-      end
-      [p1, matches]
-    end.keep_if { |p,m| not m.empty? }.map &:first
-
-    @@dupes = where(:permalink => permalinks)
-    @@dupes_calculated_at = Time.now
-    return @@dupes
+    where(:permalink => permalinks)
   end
 end
