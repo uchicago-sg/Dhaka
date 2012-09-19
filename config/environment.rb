@@ -3,16 +3,6 @@ require File.expand_path('../mailjet', __FILE__)
 require File.expand_path('../application', __FILE__)
 require 'rails_rinku'
 
-# Configure Gmail support
-ActionMailer::Base.smtp_settings = {
-  :domain               => 'marketplace.uchicago.edu',
-  :address              => MAILJET_HOST,
-  :port                 => MAILJET_PORT,
-  :user_name            => MAILJET_ACCOUNT,
-  :password             => MAILJET_PASSWORD,
-  :authentication       => 'plain',
-  :enable_starttls_auto => true
-}
 
 module Kaminari
   module Helpers
