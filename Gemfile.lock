@@ -260,6 +260,8 @@ GEM
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
     rubyzip (0.9.8)
+    rvm-capistrano (1.2.7)
+      capistrano (>= 2.0.0)
     sass (3.2.0.alpha.247)
     selenium-webdriver (2.22.2)
       childprocess (>= 0.2.5)
@@ -344,6 +346,7 @@ DEPENDENCIES
   rinku
   rspec-rails
   ruby-debug19
+  rvm-capistrano
   sass
   sass-rails!
   sprockets
