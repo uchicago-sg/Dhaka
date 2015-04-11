@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 gem 'rails', '>= 3.2.11'
 gem 'rack'
@@ -6,7 +6,7 @@ gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
 gem 'rspec-rails'
-gem 'ruby-debug19'
+# gem 'ruby-debug19'
 gem 'therubyracer'
 gem 'timecop'
 gem 'multi_json'
@@ -41,7 +41,7 @@ group :assets do
   gem 'tinymce-rails' # Simple WYSIWYG editor
 
   gem 'sass'
-  gem 'sass-rails', :git => 'git://github.com/rails/sass-rails.git', :branch => '3-2-stable'
+  gem 'sass-rails', :git => 'git://github.com/rails/sass-rails.git', :branch => :master
   gem 'compass',    :git => 'git://github.com/chriseppstein/compass.git', :branch => :master
 end
 
