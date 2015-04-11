@@ -33,7 +33,7 @@ gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari'
 group :assets do
   gem 'sprockets'     # The asset pipline
   gem 'coffee-script' # Like JavaScript, but better
-  gem 'coffee-filter' # Use CoffeeScript in HAML
+  # gem 'coffee-filter' # Use CoffeeScript in HAML
   gem 'jquery-rails'  # You know what it is
   gem 'uglifier'      # Minifier for production
   gem 'haml'          # Slim and sexy templates
