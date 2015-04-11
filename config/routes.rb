@@ -7,12 +7,12 @@ Dhaka::Application.routes.draw do
   get 'feeds' => 'categories#index', :as => :feeds
 
   STATIC_PAGES.each do |page|
-    match page => 'high_voltage/pages#show', :id => page, :as => "#{page.gsub('-','_')}_page"
+    match page => 'high_voltage/pages#show', :id => page, :as => "#{page.gsub('-','_')}_page", :via => [:get, :post]
   end
 
   CATEGORIES.each do |c|
     category = c[0].downcase
-    match category => 'listings#index', :category => category, :as => "#{category}_page"
+    match category => 'listings#index', :category => category, :as => "#{category}_page", :via => [:get, :post]
   end
 
   devise_for :users do
@@ -38,7 +38,7 @@ Dhaka::Application.routes.draw do
   resources :categories, :path => 'browse'
   resources :listings,   :path => '' do
     member do
-      match 'renew'     => 'listings#renew',     :as => :renew
+      match 'renew'     => 'listings#renew',     :as => :renew, :via => [:get, :post]
       get   'publish'   => 'listings#publish',   :as => :publish
       get   'unpublish' => 'listings#unpublish', :as => :unpublish
       get   'star'      => 'listings#star',      :as => :star
@@ -47,8 +47,8 @@ Dhaka::Application.routes.draw do
 
     collection do
       match 'search'  => 'listings#search', :via => [:get, :post], :as => :search
-      match 'free'    => 'listings#free', :via => [:get], :as => :free
-      match 'starred' => 'listings#starred', :as => :starred
+      match 'free'    => 'listings#free', :via => [:get]
+      match 'starred' => 'listings#starred', :as => :starred, :via => [:get, :post]
     end
   end
 end

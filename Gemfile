@@ -21,6 +21,8 @@ gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
 gem 'impressionist' # Simple page view counter
 gem 'newrelic_rpm'  # Performance and monitoring
+gem 'rails-observers'
+gem 'protected_attributes'
 
 gem 'amatch'
 gem 'whenever', :require => false
