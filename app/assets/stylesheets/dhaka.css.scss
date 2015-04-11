@@ -1,4 +1,4 @@
-@import 'compass/reset';
+// @import 'compass/reset';
 @import 'shared';
 
 
@@ -113,7 +113,7 @@ body > header {
     letter-spacing: -0.05em;
     margin-bottom: 0.1em;
     text-align: center;
-    @include text-shadow(rgba(#000, 0.07) 0 0 0.15em);
+    text-shadow: rgba(#000, 0.07) 0 0 0.15em;
 
     a {
       color: black !important;

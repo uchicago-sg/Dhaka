@@ -1,4 +1,4 @@
-@import "compass/css3";
+// @import "compass/css3";
 
 
 $red:     #ac3324;
@@ -25,8 +25,8 @@ $page-width:     1200px;
 $sidebar-width:     26%;
 
 @mixin transition-preset-link {
-  @include transition-property(color);
-  @include transition-duration(0.2s);
+  transition-property: color;
+  transition-duration: 0.2s;
 }
 
 @mixin serif { font-family: 'Kreon', Georgia, 'Times New Roman', Times, serif; }
