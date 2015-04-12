@@ -51,7 +51,7 @@ module ApplicationHelper
   end
 
   def selected_if state
-    return 'selected' if state
+    return 'active' if state
     return ''
   end
 end

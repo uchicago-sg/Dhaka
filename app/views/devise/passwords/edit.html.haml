@@ -5,10 +5,10 @@
   = devise_error_messages!
   = f.hidden_field :reset_password_token
   %span.field
-    %span.label= f.label :password, "New password"
+    %span= f.label :password, "New password"
     %span.input= f.password_field :password
   %span.field
-    %span.label= f.label :password_confirmation, "Confirm new password"
+    %span= f.label :password_confirmation, "Confirm new password"
     %span.input= f.password_field :password_confirmation
-  %span.submit= f.submit "Change my password"
+  %span.submit= f.submit "Change my password", :class => "button"
 = render :partial => "devise/shared/links"

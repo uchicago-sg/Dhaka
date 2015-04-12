@@ -1,5 +1,5 @@
 - if listings.empty?
-  %h2.sorry No listings found
+  %div.alert-box.info No listings found
 - else
   %table#listings-browser
     %thead.container
@@ -7,7 +7,7 @@
         %tr.config
           %td.order(colspan=4)
             %span.field
-              %span.label= label_tag :meta_order, 'Sort by'
+              %span= label_tag :meta_order, 'Sort by'
               %span.input= select_tag :meta_order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
       %tr.row
         %td.starred.onecol Star

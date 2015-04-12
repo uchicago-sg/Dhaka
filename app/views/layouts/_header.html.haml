@@ -1,17 +1,19 @@
 - if controller_name != 'pages' || params[:id] != 'safety'
-  %div#system-notification.row
-    %p
-      There has been a recent increase in the number of scams reported to the Marketplace. Visit our #{link_to 'Safety & Security page', safety_page_path} to learn more.
-      %a#dismiss-system-notification{:href => '#', :title => 'Dismiss this message'} [dismiss]
+  %div.row#scam-warning
+    There has been a recent increase in the number of scams reported to the Marketplace. Visit our #{link_to 'Safety & Security page', safety_page_path} to learn more.
+    %a#dismiss-system-notification{:href => '#', :title => 'Dismiss this message'} [dismiss]
 %header.row
-  %h1#marketplace-logo.threecol= root? ? SITE_NAME : link_to(SITE_NAME, :root)
+  %h1.small-3.columns= root? ? SITE_NAME : link_to(SITE_NAME, :root)
   - if content_for? :top
-    %div#top.ninecol.last
+    %div.small-9.columns#header-adjacent
       = yield :top
   - else
-    %div#marketplace-search.ninecol.last
+    %div.small-9.columns#header-adjacent
       = render 'layouts/simple_search', :search => @search
-  - unless flash.empty?
-    #flashes.twelvecol.last
+
+- unless flash.empty?
+  %div.row
+    %div.small-3.columns
+    %div.small-9.columns
       - flash.each do |type, text|
-        %p.flash{:class => type} <strong>#{type.capitalize}</strong>: #{text}
+        %div{:class => "alert-box #{type}" } <strong>#{type.capitalize}</strong>: #{text}

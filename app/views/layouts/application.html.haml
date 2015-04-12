@@ -16,6 +16,8 @@
       = auto_discovery_link_tag :atom, {:controller => 'categories', :action => 'index', :format => 'atom'}
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name if resource? or controller_name == 'admin'
+    = stylesheet_link_tag 'normalize'
+    = stylesheet_link_tag 'foundation.min'
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag controller_name if resource?
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Kreon:400,700'
@@ -25,7 +27,7 @@
     = render 'layouts/header'
     #content.row
       = render 'layouts/sidebar'
-      %section#main.ninecol.last
+      %section.medium-9.columns
         = yield
     = render 'layouts/footer'
     - if Rails.env.development?

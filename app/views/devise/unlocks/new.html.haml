@@ -4,7 +4,7 @@
 = form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
   = devise_error_messages!
   %span.field
-    %span.label= f.label :email
+    %span= f.label :email
     %span.input= f.email_field :email
-  %span.submit= f.submit 'Resend unlock instructions'
+  %span.submit= f.submit 'Resend unlock instructions', :class => "button"
 = render :partial => "devise/shared/links"

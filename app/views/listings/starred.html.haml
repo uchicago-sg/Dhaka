@@ -3,5 +3,5 @@
   %h2 Your Starred Listings
   = form_tag starred_listings_path, :id => 'starred_search' do |f|
     = hidden_field_tag :order, params[:order]
-    = submit_tag 'Search'
+    = submit_tag 'Search', :class => "button"
 = render 'listings/browser', :listings => @listings
