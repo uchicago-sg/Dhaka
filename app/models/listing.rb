@@ -116,7 +116,7 @@ class Listing < ActiveRecord::Base
   end
   
   def views
-    self.impressionist_count :filter => :session_hash
+    0
   end
 
   def to_param
