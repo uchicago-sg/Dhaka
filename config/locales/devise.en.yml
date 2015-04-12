@@ -28,10 +28,10 @@ en:
       signed_out: 'Signed out successfully.'
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
+      updated: 'Your password was changed successfully.'
     confirmations:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      confirmed: 'Your account was successfully confirmed.'
     registrations:
       signed_up: 'Welcome! You have signed up successfully.'
       updated: 'You updated your account successfully.'
