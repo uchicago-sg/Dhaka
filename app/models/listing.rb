@@ -27,7 +27,6 @@ class Listing < ActiveRecord::Base
   accepts_nested_attributes_for :images, :allow_destroy => :true
   has_paper_trail
   acts_as_taggable
-  is_impressionable
   
   attr_readonly :permalink
   @@permalink_field = :description

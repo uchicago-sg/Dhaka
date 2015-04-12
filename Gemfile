@@ -2,9 +2,6 @@ source "https://rubygems.org"
 
 gem 'rails', '>= 3.2.11'
 gem 'rack'
-gem 'capistrano'
-gem 'capistrano-ext'
-gem 'rvm-capistrano'
 gem 'rspec-rails'
 # gem 'ruby-debug19'
 gem 'therubyracer'
@@ -15,11 +12,12 @@ gem 'cancan'        # User authorization
 gem 'rdiscount'     # Markdown processor
 gem 'high_voltage'  # Easy static pages
 gem 'paperclip'     # Easy file attachments
+gem 'aws-sdk'
 gem 'paper_trail'   # For versioning, undo
 gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
 gem 'ransack'       # Successor to MetaSearch
-gem 'impressionist' # Simple page view counter
+# gem 'impressionist' # Simple page view counter
 gem 'newrelic_rpm'  # Performance and monitoring
 gem 'rails-observers'
 gem 'protected_attributes'

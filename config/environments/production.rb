@@ -60,4 +60,14 @@ Dhaka::Application.configure do
     :location  => '/usr/sbin/sendmail', 
     :arguments => '-i -t -f notifications@marketplace.uchicago.edu'
   }
+  
+  # Add image uploads to S3.
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentails => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
