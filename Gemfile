@@ -21,6 +21,7 @@ gem 'ransack'       # Successor to MetaSearch
 gem 'newrelic_rpm'  # Performance and monitoring
 gem 'rails-observers'
 gem 'protected_attributes'
+gem 'puma'
 
 gem 'amatch'
 gem 'whenever', :require => false
