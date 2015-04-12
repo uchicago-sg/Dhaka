@@ -92,14 +92,9 @@ $(document).ready ->
     $(this).removeClass('available')
     $(this).parent().find('a.unstar').addClass('available')
 
-  $('*:not(body).starred').delegate 'a.unstar', 'ajax:success', ->
-    # Hide the listing when unstarred on listings/starred, otherwise rework the link
-    if $('#listings.starred').exists()
-      $(this).closest('.listing').slideUp().remove()
-      if $('.listing').size() is 0 then $('#main').html('<h2 class="sorry">No results found</h2>')
-    else
-      $(this).removeClass('available')
-      $(this).parent().find('a.star').addClass('available')
+  $('.starred').delegate 'a.unstar', 'ajax:success', ->
+    $(this).removeClass('available')
+    $(this).parent().find('a.star').addClass('available')
 
   $.fn.extend
     addListingLink: ->

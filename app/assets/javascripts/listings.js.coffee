@@ -5,20 +5,20 @@ $(document).ready ->
   $('#subscribe-to-search a').click ->
     $(this).attr('href', $(this).attr('href') + '?' + $('#listing_search .input > *').serialize())
   
-  # Create slider
-  slider = $(".show .images").bxSlider(controls: false)
-  $(".thumbs a").click ->
-    thumbIndex = $(".thumbs a").index(this)
-    slider.goToSlide thumbIndex
-    $(".thumbs a").removeClass "pager-active"
-    $(this).addClass "pager-active"
-    false
-  $(".thumbs a:first").addClass "pager-active"
-
-  # Open an image in the Fancybox
-  $('a.fancybox-image').fancybox
-    centerOnScroll: true
-
+  # # Create slider
+  # slider = $(".show .images").bxSlider(controls: false)
+  # $(".thumbs a").click ->
+  #   thumbIndex = $(".thumbs a").index(this)
+  #   slider.goToSlide thumbIndex
+  #   $(".thumbs a").removeClass "pager-active"
+  #   $(this).addClass "pager-active"
+  #   false
+  # $(".thumbs a:first").addClass "pager-active"
+  #
+  # # Open an image in the Fancybox
+  # $('a.fancybox-image').fancybox
+  #   centerOnScroll: true
+  
   # Highlight the current category in the sidebar if selected in simple search form
   if $('#listings.index').exists()
     selected_category = $('select#q_categories_id_positive_and_eq option[selected=selected]').text()
