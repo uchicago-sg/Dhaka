@@ -98,9 +98,13 @@ class User < ActiveRecord::Base
       self.errors.add(:email, :recently_confirmed)
       return
     end
+    
+    unless @raw_confirmation_token
+      generate_confirmation_token!
+    end
 
-    generate_confirmation_token! if self.confirmation_token.blank?
-    send_devise_notification(:confirmation_instructions)
+    opts = pending_reconfirmation? ? { to: unconfirmed_email } : { }
+    send_devise_notification(:confirmation_instructions, @raw_confirmation_token, opts)
   end
 
   # Override Devise's password reset

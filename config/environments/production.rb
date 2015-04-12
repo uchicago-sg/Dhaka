@@ -54,11 +54,14 @@ Dhaka::Application.configure do
   # Mail configuration
   config.action_mailer.default_url_options   = { :host => 'marketplace.uchicago.edu' }
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries    = true
-  config.action_mailer.delivery_method       = :sendmail
-  config.action_mailer.sendmail_settings     = { 
-    :location  => '/usr/sbin/sendmail', 
-    :arguments => '-i -t -f notifications@marketplace.uchicago.edu'
+  config.action_mailer.delivery_method       = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :user_name => ENV["SMTP_GMAIL_USERNAME"],
+    :password => ENV["SMTP_GMAIL_PASSWORD"],
+    :authentication => "plain",
+    :enable_starttls_auto => true
   }
   
   # Add image uploads to S3.
