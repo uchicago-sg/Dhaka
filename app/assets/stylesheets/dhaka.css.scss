@@ -266,13 +266,6 @@ body > footer {
   color: lighten($green, 10%);
 }
 
-#simple_search {
-  background-color: #f6f6f6;
-  padding: 0.5em 0;
-  text-align: left;
-  font-size: 12px;
-}
-
 .reminder {
   margin-bottom: 1em;
   padding: 1em 1em 0.25em;
@@ -406,26 +399,6 @@ body > footer, body > header {
 
 
 @media all and (max-width: 767px) {
-  // There's still some rendering issue in Chrome, but alas...
-  #simple_search {
-    .label, .input {
-      display: block;
-      float: left;
-      width: 30%;
-    }
-
-    .label { text-align: right; padding-right: 1.5%; }
-    .input { width: 68%; }
-
-    .actions {
-      padding-top: 0.5em;
-      li { float: right; }
-      .submit { margin: 0 0.25em 0.25em; }
-    }
-  }
-
-  #simple_search .advanced { text-align: right; }
-
   #user-toolbar, body > header, #top .ninecol.last { text-align: center; }
 
   #user-toolbar { margin-bottom: 1em; }
@@ -459,39 +432,6 @@ body > footer, body > header {
   #listings-browser .images-message { display: none; }
   #listings-browser .images-answer  { display: inline; }
 
-  #simple_search {
-    margin-top: 0.75em;
-
-    .label, .input {
-      display: inline;
-    }
-
-    #search_keywords, #search_categories, .actions {
-      padding-right: 1%;
-      display: inline-block;
-      float: left;
-      margin: 0;
-
-      label { display: none; }
-      input, select { width: 100%; }
-    }
-
-    #search_keywords   { width: 45.5%; padding-left: 1.5%; padding-right: 2%; }
-    #search_categories { width: 19%; }
-
-    .actions {
-      width: 30%;
-
-      .submit, .advanced {
-        display: inline-block;
-        float: left;
-        width: 32%;
-      }
-
-      .advanced { text-align: right; width: 68%; }
-    }
-  }
-
   #listings-browser, #users-browser {
     thead {
       display: table-header-group;
@@ -524,4 +464,47 @@ body > footer, body > header {
       margin-left: 0.5em;
     }
   }
+}
+
+/* The below added by Jeremy Archer ca. Apr 2015 because *damn* */
+fieldset {
+  border: 0;
+}
+
+#simple_search {
+  background-color: #fff9c3;
+  margin-top: 2em;
+  
+  .label {
+    display: none;
+  }
+  
+  fieldset, .actions li {
+    display: block;
+    float: left;
+    padding: 0.5em;
+  }
+  
+  input[type=text] {
+    font: 1.7em sans-serif;
+    padding: 0.3em;
+    width: 20em;
+  }
+  
+  input[type=hidden] {
+    display: none;
+  }
+  
+  a {
+    color: black;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+fieldset {
+  border: 0; /* Added by Jeremy Archer ca. Apr 2015 because *damn* */
 }
