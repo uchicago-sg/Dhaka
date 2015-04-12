@@ -12,7 +12,7 @@ gem 'cancan'        # User authorization
 gem 'rdiscount'     # Markdown processor
 gem 'high_voltage'  # Easy static pages
 gem 'paperclip'     # Easy file attachments
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'paper_trail'   # For versioning, undo
 gem 'nokogiri'      # Scraping old marketplace
 gem 'devise'        # User authentication
