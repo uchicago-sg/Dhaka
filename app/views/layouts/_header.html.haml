@@ -1,9 +1,11 @@
-- if controller_name != 'pages' || params[:id] != 'safety'
-  %div.row#scam-warning
-    There has been a recent increase in the number of scams reported to the Marketplace. Visit our #{link_to 'Safety & Security page', safety_page_path} to learn more.
-    %a#dismiss-system-notification{:href => '#', :title => 'Dismiss this message'} [dismiss]
+%div.row.beta
+  This is the beta version of Marketplace. Please visit
+  %a{:href => "http://marketplace.uchicago.edu"} the production
+  instance if you actually wish to buy or sell something.
 %header.row
-  %h1.small-3.columns= root? ? SITE_NAME : link_to(SITE_NAME, :root)
+  %h1.small-3.columns
+    = root? ? SITE_NAME : link_to(SITE_NAME, :root)
+    %span.version &beta;
   - if content_for? :top
     %div.small-9.columns#header-adjacent
       = yield :top
