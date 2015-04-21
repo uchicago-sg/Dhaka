@@ -7,7 +7,7 @@
   /  - unless listing.expired?
   /    = render 'listings/listing_star', :listing => listing
   / %td.image.onecol= listing.images.empty? ? '<span class="images-answer">No</span><span class="images-message">No Images</span>'.html_safe : '<span class="images-answer">Yes</span><span class="images-message">Images Provided</span>'.html_safe
-  %td.description_and_details.fivecol
+  %td.description_and_details
     .description= listing.available? ? link_to(listing.description, listing) : listing.description
     = render 'listings/listing_actions', :listing => listing
   %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)  

@@ -52,6 +52,10 @@ h1 a {
     overflow: hidden;
 }
 
+#listings-browser td.description_and_details {
+    max-width: 25%;
+}
+
 #q_details_or_description_cont_any {
     margin-bottom: 0.2em;
 }
