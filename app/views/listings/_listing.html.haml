@@ -1,20 +1,11 @@
 %article.listing
   %header
-    = render 'listings/listing_actions', :listing => listing
-    %p.starred= render 'listings/listing_star', :listing => listing
-    %h1.description= listing.description
-    %p.created_at Posted <time datetime="#{listing.created_at.iso8601}">#{listing.created_at}</time> #{"(Renewed <time datetime=\"#{listing.renewed_at.iso8601}\">#{listing.renewed_at}</time>)".html_safe unless listing.renewals.zero?} #{('in ' + listing.categories.map { |c| categories_search_link(c) }.to_sentence).html_safe unless listing.categories.empty?}
-    %p.seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
-    %p.price= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+    / %p.starred= render 'listings/listing_star', :listing => listing
+    %h2= listing.description
+    %p.created_at <strong>#{listing.price.zero? ? 'Free' : number_to_currency(listing.price)}.</strong> Posted <time datetime="#{listing.created_at.iso8601}">#{listing.created_at}</time> #{"(Renewed <time datetime=\"#{listing.renewed_at.iso8601}\">#{listing.renewed_at}</time>)".html_safe unless listing.renewals.zero?} #{('in ' + listing.categories.map { |c| categories_search_link(c) }.to_sentence).html_safe unless listing.categories.empty?} by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
   - unless listing.images.empty?
-    .image_container
-      .thumbs
-        - listing.images.each do |image|
-          %a{:href => ""}= image_tag image.photo.url(:thumb)
-      .row
-        .slider
-          %ul.images
-            - listing.images.each do |image|
-              .image
-                %a.fancybox-image{:href => image.photo.url(:original)}= image_tag image.photo.url(:large)
+    %p.thumbs
+      - listing.images.each do |image|
+        %a{:href => image.photo.url, :class => "th"}= image_tag image.photo.url(:thumb)
+  = render 'listings/listing_actions', :listing => listing
   %div.details= listing.details_to_html

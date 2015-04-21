@@ -13,4 +13,5 @@
   %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)  
   %td.images
     - listing.images.map do |image|
-      = image_tag image.photo.url(:large)
+      = link_to(listing.description) do
+        = image_tag image.photo.url(:large)

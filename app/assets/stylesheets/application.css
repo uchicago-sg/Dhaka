@@ -44,7 +44,12 @@ h1 a {
 }
 
 #listings-browser ul.actions {
-    font-size: 0.9em;
+    font-size: 0.8em;
+}
+
+#listings-browser td.images {
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #q_details_or_description_cont_any {
