@@ -5,15 +5,15 @@
   %h2 Login
 
 = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
-  %span.field
-    %span= f.label :email
-    %span.input= f.text_field :email, :tabindex => autotab
-  %span.field
-    %span= f.label :password
-    %span.input= f.password_field :password, :tabindex => autotab
+  %div
+    = f.label :email
+    = f.text_field :email, :tabindex => autotab
+  %div
+    = f.label :password
+    = f.password_field :password, :tabindex => autotab
   - if devise_mapping.rememberable?
-    %span.field
-      %span= f.label :remember_me
-      %span.input= f.check_box :remember_me, :tabindex => autotab
-  %span.submit= f.submit "Sign in", :tabindex => autotab, :class => "button"
+    %div
+      = f.check_box :remember_me, :tabindex => autotab
+      = f.label :remember_me
+  = f.submit "Sign in", :tabindex => autotab, :class => "button"
 = render :partial => "devise/shared/links"

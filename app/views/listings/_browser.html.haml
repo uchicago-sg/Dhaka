@@ -1,20 +1,14 @@
 - if listings.empty?
-  %div.alert-box.info No listings found
+  %div No listings found
 - else
   %table#listings-browser
     %thead.container
-      - if @action == 'listings#index' or @action == 'listings#starred'
-        %tr.config
-          %td.order(colspan=4)
-            %span.field
-              %span= label_tag :meta_order, 'Sort by'
-              %span.input= select_tag :meta_order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
       %tr.row
-        %td.starred.onecol Star
-        %td.image.onecol Images?
-        %td.description_and_details.fivecol Details
-        %td.created_at.threecol Renewed
+        / %td.starred.onecol Star
+        / %td.image.onecol Images?
+        %td.description_and_details.fivecol Name
         %td.price.twocol.last Price
+        %td.created_at.threecol Images
     %tbody.container
       - listings.each do |listing|
         = render 'listings/row_compact', :listing => listing

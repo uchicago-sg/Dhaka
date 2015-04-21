@@ -3,12 +3,14 @@
 - classes << (listing.expired? ? 'expired' : '')
 
 %tr.row.listing{:id => listing.permalink, :class => classes.join(' ')}
-  %td.starred.onecol
-    - unless listing.expired?
-      = render 'listings/listing_star', :listing => listing
-  %td.image.onecol= listing.images.empty? ? '<span class="images-answer">No</span><span class="images-message">No Images</span>'.html_safe : '<span class="images-answer">Yes</span><span class="images-message">Images Provided</span>'.html_safe
+  / %td.starred.onecol
+  /  - unless listing.expired?
+  /    = render 'listings/listing_star', :listing => listing
+  / %td.image.onecol= listing.images.empty? ? '<span class="images-answer">No</span><span class="images-message">No Images</span>'.html_safe : '<span class="images-answer">Yes</span><span class="images-message">Images Provided</span>'.html_safe
   %td.description_and_details.fivecol
     .description= listing.available? ? link_to(listing.description, listing) : listing.description
     = render 'listings/listing_actions', :listing => listing
-  %td.created_at.threecol <time datetime="#{listing.renewed_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.renewed_at} ago</time>
-  %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+  %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)  
+  %td.images
+    - listing.images.map do |image|
+      = image_tag image.photo.url(:large)
