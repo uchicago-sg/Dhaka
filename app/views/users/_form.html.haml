@@ -1,16 +1,16 @@
 = form_for(@user,  :as => @user, :html => { :method => :put }) do |f|
   = render 'shared/form_errors', :resource => @user
   .field.name
-    .label= f.label :name
+    = f.label :name
     .input= f.text_field :name
   .field.current_password
-    .label= f.label :current_password 
+    = f.label :current_password 
     .input= f.password_field :current_password
   .field.password
-    .label= f.label :password, "New password"
+    = f.label :password, "New password"
     .input= f.password_field :password 
   .field.password_confirmation
-    .label= f.label :password_confirmation, "Confirm new password"
+    = f.label :password_confirmation, "Confirm new password"
     .input= f.password_field :password_confirmation
 
   = f.submit "Change my password", :class => "button"

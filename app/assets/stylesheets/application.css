@@ -24,8 +24,13 @@
 
 h1 {
     font: bold 2.2em/1em Helvetica,sans-serif;
-    padding: 1.4em 0;
     white-space: nowrap;
+}
+
+@media only screen and (min-width: 40.063em) {
+    h1 {
+        padding: 1.4em 0;
+    }
 }
 
 h1 .version {

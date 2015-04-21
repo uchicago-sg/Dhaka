@@ -3,19 +3,19 @@
   %a{:href => "http://marketplace.uchicago.edu"} the production
   instance if you actually wish to buy or sell something.
 %header.row
-  %h1.small-3.columns
+  %h1.medium-3.columns
     = root? ? SITE_NAME : link_to(SITE_NAME, :root)
     %span.version &beta;
   - if content_for? :top
-    %div.small-9.columns#header-adjacent
+    %div.medium-9.columns#header-adjacent
       = yield :top
   - else
-    %div.small-9.columns#header-adjacent
+    %div.medium-9.columns#header-adjacent
       = render 'layouts/simple_search', :search => @search
 
 - unless flash.empty?
   %div.row
-    %div.small-3.columns
-    %div.small-9.columns
+    %div.medium-3.columns
+    %div.medium-9.columns
       - flash.each do |type, text|
         %div{:class => "alert-box #{type}" } <strong>#{type.capitalize}</strong>: #{text}

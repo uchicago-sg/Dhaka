@@ -5,7 +5,7 @@
 = form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post } do |f|
   = devise_error_messages!
   %span.field
-    %span= f.label :email
+    %span= f :email
     %span.input= f.email_field :email
   %span.submit= f.submit "Send reset password instructions", :class => "button"
 = render :partial => "devise/shared/links"

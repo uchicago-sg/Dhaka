@@ -26,9 +26,9 @@
   %body(id=controller_name class="container #{action_name}")<
     = render 'layouts/header'
     #content.row
-      = render 'layouts/sidebar'
-      %section.medium-9.columns
+      %section.medium-9.columns.medium-push-3
         = yield
+      = render 'layouts/sidebar'
     = render 'layouts/footer'
     - if Rails.env.development?
       #debug.row><= debug params

@@ -1,4 +1,4 @@
-%aside.medium-3.columns
+%aside.medium-3.columns.medium-pull-9
   %ul.side-nav
     - if user_signed_in? and current_user.admin?
       %li{:class  => selected_if(@action == 'admin#duplicates')}= link_to 'Manage duplicate listings', admin_duplicates_path
