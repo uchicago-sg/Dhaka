@@ -328,3 +328,6 @@ DEPENDENCIES
   turn
   uglifier
   whenever
+
+BUNDLED WITH
+   1.10.5
