@@ -74,12 +74,18 @@ GEM
       tins (~> 1.0)
     ansi (1.5.0)
     arel (4.0.2)
+    autoprefixer-rails (5.2.1.1)
+      execjs
+      json
     aws-sdk (1.64.0)
       aws-sdk-v1 (= 1.64.0)
     aws-sdk-v1 (1.64.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
+    bootstrap-sass (3.3.5.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.3.0)
     brakeman (3.0.2)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
@@ -286,6 +292,7 @@ DEPENDENCIES
   acts-as-taggable-on!
   amatch
   aws-sdk (< 2.0)
+  bootstrap-sass
   brakeman
   cancan
   capybara
