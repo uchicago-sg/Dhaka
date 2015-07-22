@@ -39,10 +39,10 @@ class Listing < ActiveRecord::Base
       :message => 'must be a number >= 0'
     }
 
-  scope :with_images, joins(:images)
-  scope :signed, joins(:seller).where('users.signed = ?', true)
-  scope :published,   where(:published => true)
-  scope :unpublished, where(:published => false)
+  scope :with_images, -> {joins(:images)}
+  scope :signed, -> { joins(:seller).where('users.signed = ?', true) }
+  scope :published, ->{ where(:published => true) }
+  scope :unpublished, -> { where(:published => false) }
 
   def unpublished?
     not published?
@@ -54,19 +54,19 @@ class Listing < ActiveRecord::Base
   # - "available" for the first week
   # - "renewable" for the second week (plus the last day of their "availability")
   # - "expired" afterwards
-  scope :available,   where('listings.renewed_at >= ?',  1.week.ago.beginning_of_day).where(:published => true)
-  scope :unexpired,   where('listings.renewed_at >= ?', 2.weeks.ago.beginning_of_day)
-  scope :expired,     where('listings.renewed_at  < ?', 2.weeks.ago.beginning_of_day)
+  scope :available, -> { where('listings.renewed_at >= ?',  1.week.ago.beginning_of_day).where(:published => true) }
+  scope :unexpired, -> { where('listings.renewed_at >= ?', 2.weeks.ago.beginning_of_day) }
+  scope :expired, -> { where('listings.renewed_at  < ?', 2.weeks.ago.beginning_of_day) }
 
-  scope :renewable, where(
+  scope :renewable, -> { where(
     'listings.renewed_at >= ? AND listings.renewed_at <= ?',
     2.weeks.ago.beginning_of_day, 6.days.ago.end_of_day
-  ).where(:published => true)
+  ).where(:published => true) }
 
-  scope :almost_renewable, where(
+  scope :almost_renewable, -> { where(
     'listings.renewed_at >= ? AND listings.renewed_at <= ?',
     6.days.ago.beginning_of_day, 6.days.ago.end_of_day
-  ).where(:published => true)
+  ).where(:published => true) }
 
   def self.readable
     self.unexpired.published

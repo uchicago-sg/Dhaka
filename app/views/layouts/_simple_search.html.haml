@@ -1,12 +1,42 @@
-= search_form_for search, :html => { :id => 'simple_search', :class => 'row' } do |f|
-  %div.medium-5.columns
-    = f.text_field :details_or_description_cont_any, {:tabindex => autotab, :title => "Word or phrase"}
-    = link_to 'Advanced search', search_listings_path
-  %div.medium-3.columns
-    = f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab, :title => "Category"}
-  %div.medium-3.columns
-    = select_tag :meta_order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
-  = hidden_field_tag :mode, params[:mode]
-  = hidden_field_tag :order, params[:order]
-  %div.medium-1.columns
-    = f.submit 'Search', {:tabindex => autotab, :class => 'button tiny'}
+-#= search_form_for search, :html => { :id => 'simple_search', :class => 'row' } do |f|
+-#  %div.medium-5.columns
+-#    = f.text_field :details_or_description_cont_any, {:tabindex => autotab, :title => "Word or phrase"}
+-#    = link_to 'Advanced search', search_listings_path
+-#  %div.medium-3.columns
+-#    = f.select :categories_id_positive_and_eq, options_for_select( [['All Categories', 0]].concat( Category.all.collect { |category| [category.description, category.id] } ), params[:q].present? ? params[:q][:categories_id_positive_and_eq] : 0 ), {}, {:tabindex => autotab, :title => "Category"}
+-#  %div.medium-3.columns
+-#    = select_tag :meta_order, options_for_select( Listing::ORDER_OPTIONS, params[:order] ), {:tabindex => autotab}
+-#  = hidden_field_tag :mode, params[:mode]
+-#  = hidden_field_tag :order, params[:order]
+-#  %div.medium-1.columns
+-#    = f.submit 'Search', {:tabindex => autotab, :class => 'button tiny'}
+
+
+%div.medium-5.columns
+  #adv-search.input-group
+    %input.form-control{:placeholder => "Search", :type => "text"}/
+    .input-group-btn
+      .btn-group{:role => "group"}
+        .dropdown.dropdown-lg
+          %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+            %span.caret
+          .dropdown-menu.dropdown-menu-right{:role => "menu"}
+            %form.form-horizontal{:role => "form"}
+              .form-group
+                %label{:for => "filter"} Filter by Category
+                %select.form-control
+                  %option{:selected => "", :value => "0"} All Snippets
+                  %option{:value => "1"} Featured
+                  %option{:value => "2"} Most popular
+                  %option{:value => "3"} Top rated
+                  %option{:value => "4"} Most commented
+              .form-group
+                %label{:for => "contain"} Author
+                %input.form-control{:type => "text"}/
+              .form-group
+                %label{:for => "contain"} Contains the words
+                %input.form-control{:type => "text"}/
+              %button.btn.btn-primary{:type => "submit"}
+                %span.glyphicon.glyphicon-search{"aria-hidden" => "true"}
+        %button.btn.btn-primary{:type => "button"}
+          %span.glyphicon.glyphicon-search{"aria-hidden" => "true"}

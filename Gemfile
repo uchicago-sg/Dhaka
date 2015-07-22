@@ -31,6 +31,8 @@ gem 'rinku'
 gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on.git'
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari'
 
+gem 'bootstrap-sass'
+
 group :assets do
   gem 'sprockets'     # The asset pipline
   gem 'coffee-script' # Like JavaScript, but better

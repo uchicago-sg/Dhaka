@@ -2,6 +2,7 @@
 //= require mediaqueries
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require cookie
 //= require easing
 //= require sticky
@@ -10,3 +11,4 @@
 //= require bxSlider
 //= require autoNumeric
 //= require 'dhaka'
+//= require_tree .

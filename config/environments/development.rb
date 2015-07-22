@@ -8,7 +8,9 @@ Dhaka::Application.configure do
   config.action_controller.perform_caching = true
 
   # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
+  # config.whiny_nils = true # Causing error. George delete
+  config.eager_loading = true
+
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
