@@ -1,15 +1,121 @@
-- if listings.empty?
-  %div No listings found
-- else
-  %table#listings-browser
-    %thead.container
-      %tr.row
-        / %td.starred.onecol Star
-        / %td.image.onecol Images?
-        %td.description_and_details.fivecol Name
-        %td.price.twocol.last Price
-        %td.created_at.threecol Images
-    %tbody.container
-      - listings.each do |listing|
-        = render 'listings/row_compact', :listing => listing
+.container
+  .row
+    .col-xs-10
+      %h4
+        Brought to you by Student Government
+  - if listings.empty?
+    .row
+      .col-xs-10
+        %h4
+          Oops...No listings found.
+  - else
+    -listings.each do |listing|
+      = render 'listings/row_compact', :listing => listing
+
+  -#%table#listings-browser
+  -#  %thead.container
+  -#    %tr.row
+  -#      / %td.starred.onecol Star
+  -#      / %td.image.onecol Images?
+  -#      %td.description_and_details.fivecol Name
+  -#      %td.price.twocol.last Price
+  -#      %td.created_at.threecol Images
+  -#  %tbody.container
+  -#    - listings.each do |listing|
+  -#      = render 'listings/row_compact', :listing => listing
+      / Begin of rows
+    .row.carousel-row
+      .col-xs-10.slide-row
+        #carousel-1.carousel.slide.slide-carousel{"data-ride" => "carousel"}
+          / Indicators
+          %ol.carousel-indicators
+            %li.active{"data-slide-to" => "0", "data-target" => "#carousel-1"}
+            %li{"data-slide-to" => "1", "data-target" => "#carousel-1"}
+            %li{"data-slide-to" => "2", "data-target" => "#carousel-1"}
+          / Wrapper for slides
+          .carousel-inner
+            .item.active
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=1"}
+            .item
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=2"}
+            .item
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=3"}
+        .slide-content
+          %h4 Example product
+          %p
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
+        .slide-footer
+          %span.pull-right.buttons
+            %button.btn.btn-sm.btn-default
+              %i.fa.fa-fw.fa-eye
+              Show
+            %button.btn.btn-sm.btn-primary
+              %i.fa.fa-fw.fa-shopping-cart
+              Buy
+    .row.carousel-row
+      .col-xs-10.slide-row
+        #carousel-2.carousel.slide.slide-carousel{"data-ride" => "carousel"}
+          / Indicators
+          %ol.carousel-indicators
+            %li.active{"data-slide-to" => "0", "data-target" => "#carousel-2"}
+            %li{"data-slide-to" => "1", "data-target" => "#carousel-2"}
+            %li{"data-slide-to" => "2", "data-target" => "#carousel-2"}
+          / Wrapper for slides
+          .carousel-inner
+            .item.active
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=4"}
+            .item
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=5"}
+            .item
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=6"}
+        .slide-content
+          %h4 Long text product
+          %p
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        .slide-footer
+          %span.pull-right.buttons
+            %button.btn.btn-sm.btn-default
+              %i.fa.fa-fw.fa-eye
+              Show
+            %button.btn.btn-sm.btn-primary
+              %i.fa.fa-fw.fa-shopping-cart
+              Buy
+    .row.carousel-row
+      .col-xs-10.slide-row
+        #carousel-3.carousel.slide.slide-carousel{"data-ride" => "carousel"}
+          / Indicators
+          %ol.carousel-indicators
+            %li.active{"data-slide-to" => "0", "data-target" => "#carousel-3"}
+            %li{"data-slide-to" => "1", "data-target" => "#carousel-3"}
+            %li{"data-slide-to" => "2", "data-target" => "#carousel-3"}
+          / Wrapper for slides
+          .carousel-inner
+            .item.active
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=7"}
+            .item
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=8"}
+            .item
+              %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=9"}
+        .slide-content
+          %h4 Example product
+          %p
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+        .slide-footer
+          %span.pull-right.buttons
+            %button.btn.btn-sm.btn-default
+              %i.fa.fa-fw.fa-eye
+              Show
+            %button.btn.btn-sm.btn-primary
+              %i.fa.fa-fw.fa-shopping-cart
+              Buy
   = paginate listings

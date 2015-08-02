@@ -1,11 +1,11 @@
-%aside.medium-3.columns.medium-pull-9
+-#%aside.medium-3.columns.medium-pull-9
   %ul.side-nav
     - if user_signed_in? and current_user.admin?
       %li{:class  => selected_if(@action == 'admin#duplicates')}= link_to 'Manage duplicate listings', admin_duplicates_path
       %li{:class  => selected_if(@action == 'admin#users')}= link_to 'Manage current users', admin_users_path
       %li{:class  => selected_if(@action == 'admin#confirmations')}= link_to 'Manage pending confirmations', admin_confirmations_path
       %li.divider
-    %li.starred{:class => selected_if(@action == 'listings#starred')}= link_to 'Starred Listings', starred_listings_path          
+    %li.starred{:class => selected_if(@action == 'listings#starred')}= link_to 'Starred Listings', starred_listings_path
     - if user_signed_in?
       %li.create{:class  => selected_if(@action == 'listings#new')}= link_to 'Place a listing', new_listing_path if current_user.can? :create, Listing
       %li.profile{:class => selected_if(@action == 'users#show' && @user.id == current_user.id)}= link_to 'Your listings', current_user
@@ -28,3 +28,104 @@
       %li.category.free= link_to 'Free', free_listings_path
     %li.divider
     = render 'pages/sidebar'
+
+%nav.navbar.navbar-default{:role => "navigation"}
+  / Brand and toggle get grouped for better mobile display
+  .navbar-header
+    .brand-wrapper
+      / Hamburger
+      %button.navbar-toggle{:type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      / Brand
+      .brand-name-wrapper
+        .navbar-brand
+          = root? ? SITE_NAME : link_to(SITE_NAME, :root)
+      / Search
+      %a#search-trigger.btn.btn-default{"data-toggle" => "collapse", :href => "#search"}
+        %span.glyphicon.glyphicon-search
+      / Search body
+      #search.panel-collapse.collapse
+        .panel-body
+          %form.navbar-form{:role => "search"}
+            .form-group
+              %input.form-control{:placeholder => "Search", :type => "text"}
+            %button.btn.btn-default{:type => "submit"}
+              %span.glyphicon.glyphicon-ok
+  / Main Menu
+  .side-menu-container
+    %ul.nav.navbar-nav
+      - if user_signed_in? and current_user.admin?
+        %li{:class  => selected_if(@action == 'admin#duplicates')}= link_to 'Manage duplicate listings', admin_duplicates_path
+        %li{:class  => selected_if(@action == 'admin#users')}= link_to 'Manage current users', admin_users_path
+        %li{:class  => selected_if(@action == 'admin#confirmations')}= link_to 'Manage pending confirmations', admin_confirmations_path
+        %li.divider
+      %li.starred{:class => selected_if(@action == 'listings#starred')}= link_to 'Starred Listings', starred_listings_path
+      - if user_signed_in?
+        %li.create{:class  => selected_if(@action == 'listings#new')}= link_to 'Place a listing', new_listing_path if current_user.can? :create, Listing
+        %li.profile{:class => selected_if(@action == 'users#show' && @user.id == current_user.id)}= link_to 'Your listings', current_user
+        %li.edit{:class    => selected_if(@action == 'users#edit')}= link_to 'Edit your account', edit_user_path(current_user)
+        %li.logout= link_to 'Logout', "/users/sign_out"
+        %li.divider
+      -else
+        %li.register{:class => selected_if(@action == 'registrations#new')}= link_to 'Register', "/users/sign_up"
+        %li.login{:class => selected_if(@action == 'sessions#new')}= link_to 'Login', "/users/sign_in"
+        %li.divider
+      - if content_for? :sidebar
+        =yield :sidebar
+      -elsif controller_name == 'users'
+      -elsif @action == 'listings#new'
+      -elsif @action == 'listings#edit'
+      -else
+        %li.category.all= categories_search_link
+        - @categories.each do |category|
+          %li.category= link_to category.description, category.description.downcase
+        %li.category.free= link_to 'Free', free_listings_path
+      %li.divider
+      = render 'pages/sidebar'
+
+      -#%li
+      -#  %a{:href => "#"}
+      -#    %span.glyphicon.glyphicon-send
+      -#    Link
+      -#%li.active
+      -#  %a{:href => "#"}
+      -#    %span.glyphicon.glyphicon-plane
+      -#    Active Link
+      -#%li
+      -#  %a{:href => "#"}
+      -#    %span.glyphicon.glyphicon-cloud
+      -#    Link
+      -#/ Dropdown
+      -#%li#dropdown.panel.panel-default
+      -#  %a{"data-toggle" => "collapse", :href => "#dropdown-lvl1"}
+      -#    %span.glyphicon.glyphicon-user
+      -#    Sub Level
+      -#    %span.caret
+      -#  / Dropdown level 1
+      -#  #dropdown-lvl1.panel-collapse.collapse
+      -#    .panel-body
+      -#      %ul.nav.navbar-nav
+      -#        %li
+      -#          %a{:href => "#"} Link
+      -#        %li
+      -#          %a{:href => "#"} Link
+      -#        %li
+      -#          %a{:href => "#"} Link
+      -#        / Dropdown level 2
+      -#        %li#dropdown.panel.panel-default
+      -#          %a{"data-toggle" => "collapse", :href => "#dropdown-lvl2"}
+      -#            %span.glyphicon.glyphicon-off
+      -#            Sub Level
+      -#            %span.caret
+      -#          #dropdown-lvl2.panel-collapse.collapse
+      -#            .panel-body
+      -#              %ul.nav.navbar-nav
+      -#                %li
+      -#                  %a{:href => "#"} Link
+      -#                %li
+      -#                  %a{:href => "#"} Link
+      -#                %li
+      -#                  %a{:href => "#"} Link

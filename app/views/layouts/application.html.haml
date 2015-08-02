@@ -16,19 +16,21 @@
       = auto_discovery_link_tag :atom, {:controller => 'categories', :action => 'index', :format => 'atom'}
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name if resource? or controller_name == 'admin'
-    = stylesheet_link_tag 'normalize'
-    = stylesheet_link_tag 'foundation.min'
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag controller_name if resource?
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Kreon:400,700'
     = csrf_meta_tags
     = yield :head
-  %body(id=controller_name class="container #{action_name}")<
+  %body.container-fluid
     = render 'layouts/header'
-    #content.row
-      %section.medium-9.columns.medium-push-3
+    .row
+      .side-menu
+        = render 'layouts/sidebar'
+      .container-fluid.side-body
         = yield
-      = render 'layouts/sidebar'
-    = render 'layouts/footer'
-    - if Rails.env.development?
-      #debug.row><= debug params
+        - if Rails.env.development?
+          #debug.row><= debug params
+      -#= render 'layouts/sidebar'
+        = render 'layouts/footer'
+        - if Rails.env.development?
+          #debug.row><= debug params

@@ -32,6 +32,7 @@ gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-
 gem 'kaminari', :git => 'git://github.com/amatsuda/kaminari'
 
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :assets do
   gem 'sprockets'     # The asset pipline

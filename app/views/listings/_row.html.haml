@@ -2,20 +2,50 @@
 - classes << (listing.seller.signed? ? 'signed' : '')
 - classes << (listing.expired? ? 'expired' : '')
 
-%tr.row.listing{:id => listing.permalink, :class => classes.join(' ')}
-  %td.starred.onecol
-    - unless listing.expired?
-      = render 'listings/listing_star', :listing => listing
-  %td.image.twocol
-    - unless listing.expired? or listing.images.empty?
-      .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
-  %td.description_and_details.fivecol
-    .description= listing.available? ? link_to(listing.description, listing) : listing.description
-    .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
-    .extras
-      .details= listing.details.markdown
-      .seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
-    = render 'listings/listing_actions', :listing => listing
-    .toggle= link_to 'More &#187;'.html_safe, "##{listing.permalink}", :class => 'show-more'
-  %td.created_at.twocol <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
-  %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+-#%tr.row.listing{:id => listing.permalink, :class => classes.join(' ')}
+-#  %td.starred.onecol
+-#    - unless listing.expired?
+-#      = render 'listings/listing_star', :listing => listing
+-#  %td.image.twocol
+-#    - unless listing.expired? or listing.images.empty?
+-#      .image= link_to( image_tag( listing.images.first.photo.url( :thumb ) ), listing )
+-#  %td.description_and_details.fivecol
+-#    .description= listing.available? ? link_to(listing.description, listing) : listing.description
+-#    .truncated-details= truncate strip_tags(listing.details.markdown), :length => 125, :omission =>"..."
+-#    .extras
+-#      .details= listing.details.markdown
+-#      .seller Listed by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
+-#    = render 'listings/listing_actions', :listing => listing
+-#    .toggle= link_to 'More &#187;'.html_safe, "##{listing.permalink}", :class => 'show-more'
+-#  %td.created_at.twocol <time datetime="#{listing.created_at.iso8601}" pubdate="pubdate" class="time-ago">#{time_ago_in_words listing.created_at} ago</time>
+-#  %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+
+.row.carousel-row
+  .col-xs-10.slide-row
+    #carousel-1.carousel.slide.slide-carousel{"data-ride" => "carousel"}
+      / Indicators
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#carousel-1"}
+        %li{"data-slide-to" => "1", "data-target" => "#carousel-1"}
+        %li{"data-slide-to" => "2", "data-target" => "#carousel-1"}
+      / Wrapper for slides
+      .carousel-inner
+        .item.active
+          %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=1"}
+        .item
+          %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=2"}
+        .item
+          %img{:alt => "Image", :src => "http://lorempixel.com/150/150?rand=3"}
+    .slide-content
+      %h4 Example product
+      %p
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
+    .slide-footer
+      %span.pull-right.buttons
+        %button.btn.btn-sm.btn-default
+          %i.fa.fa-fw.fa-eye
+          Show
+        %button.btn.btn-sm.btn-primary
+          %i.fa.fa-fw.fa-shopping-cart
+          Buy
