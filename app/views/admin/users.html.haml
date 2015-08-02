@@ -1,13 +1,18 @@
 - title 'Manage Current Users'
 - content_for :top do
   %h2 Manage Current Users
-%table#users-browser
-  %thead.container
-    %tr.row
-      %td.name.threecol Name
-      %td.email.sixcol Email
-      %td.created_at.threecol.last Created
-  %tbody.container
-    - @users.each do |user|
-      = render 'user', :user => user
-= paginate @users
+
+.container-fluid.row
+  %h2 Manage Current Users
+  .row
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th Created
+          %th Action
+      %tbody
+        - @users.each do |user|
+          = render 'user', :user => user
+    = paginate @users

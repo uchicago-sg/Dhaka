@@ -1,7 +1,10 @@
 - title 'Manage Duplicate Listings'
 - content_for :top do
   %h2 Manage Duplicate Listings
-- if @listings.empty?
-  %h2 No duplicate listings
-- else
-  = render 'listings/browser', :listings => @listings
+.container-fluid.row
+  %h2 Manage Duplicate Listings
+  .row
+    - if @listings.empty?
+      %h4 Yay! No duplicate listings....Go have some fun!
+    - else
+      = render 'listings/browser', :listings => @listings
