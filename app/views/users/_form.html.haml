@@ -1,16 +1,17 @@
+%h3 Your Profile
 = form_for(@user,  :as => @user, :html => { :method => :put }) do |f|
   = render 'shared/form_errors', :resource => @user
-  .field.name
+  .form-group.name
     = f.label :name
-    .input= f.text_field :name
-  .field.current_password
+    = f.text_field :name, class: "form-control"
+  .form-group.current_password
     = f.label :current_password 
-    .input= f.password_field :current_password
-  .field.password
+    = f.password_field :current_password, class:"form-control"
+  .form-group.password
     = f.label :password, "New password"
-    .input= f.password_field :password 
-  .field.password_confirmation
+    = f.password_field :password, class: "form-control"
+  .form-group.password_confirmation
     = f.label :password_confirmation, "Confirm new password"
-    .input= f.password_field :password_confirmation
+    = f.password_field :password_confirmation, class: "form-control"
 
-  = f.submit "Change my password", :class => "button"
+  = f.submit "Change my password", :class => "btn btn-primary"

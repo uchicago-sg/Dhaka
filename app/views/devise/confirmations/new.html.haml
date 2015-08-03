@@ -1,13 +1,13 @@
 - title 'Resend confirmation'
-- content_for :top do
-  %h2 Resend confirmation instructions
-%p.explanation <b>Please allow up to 24 hours</b> for the confirmation email to arrive. If you have not received a notification at that time, then use this form to resend the instructions. The account may also be confirmed manually if you <a href="mailto:marketplace@lists.uchicago.edu" alt="UChicago Marketplace">email the Marketplace List</a> <b>using the email address you registered with</b> (moderators must ensure you have control of the email address).
 
+%h2 Resend confirmation instructions
+%p.explanation <b>Please allow up to 24 hours</b> for the confirmation email to arrive. If you have not received a notification at that time, then use this form to resend the instructions. The account may also be confirmed manually if you <a href="mailto:marketplace@lists.uchicago.edu" alt="UChicago Marketplace">email the Marketplace List</a> <b>using the email address you registered with</b> (moderators must ensure you have control of the email address).
 
 = form_for resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post } do |f|
   = devise_error_messages!
-  %span.field
-    %span= f.label :email
-    %span.input= f.email_field :email
-  %span.submit= f.submit "Resend confirmation instructions", :class => "button"
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: "form-control"
+  = f.submit "Resend confirmation instructions", :class => "btn btn-primary"
+
 = render :partial => "devise/shared/links"

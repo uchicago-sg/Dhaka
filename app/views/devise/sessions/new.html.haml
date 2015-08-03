@@ -1,19 +1,21 @@
 - title 'Login'
-%p.explanation If you had an account with the Marketplace prior to <b>February 2012</b> and have not already done so, #{link_to 'visit the registration page', "/register" } to create a new account before logging in.
-%p.beta This is the beta version of Marketplace! Please visit <a href="http://marketplace.uchicago.edu">http://marketplace.uchicago.edu</a> for the full one.
 - content_for :top do
   %h2 Login
 
+%h2 Login
+%p.explanation If you had an account with the Marketplace prior to <b>February 2012</b> and have not already done so, #{link_to 'visit the registration page', "/register" } to create a new account before logging in.
+%p.beta This is the beta version of Marketplace! Please visit <a href="http://marketplace.uchicago.edu">http://marketplace.uchicago.edu</a> for the full one.
+
 = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
-  %div
+  .form-group
     = f.label :email
-    = f.text_field :email, :tabindex => autotab
-  %div
+    = f.text_field :email, :tabindex => autotab, class: "form-control"
+  .form-group
     = f.label :password
-    = f.password_field :password, :tabindex => autotab
+    = f.password_field :password, :tabindex => autotab, class: "form-control"
   - if devise_mapping.rememberable?
-    %div
+    .form-group
       = f.check_box :remember_me, :tabindex => autotab
       = f.label :remember_me
-  = f.submit "Sign in", :tabindex => autotab, :class => "button"
+  = f.submit "Sign in", :tabindex => autotab, :class => "btn btn-primary"
 = render :partial => "devise/shared/links"

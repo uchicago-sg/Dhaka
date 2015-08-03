@@ -1,24 +1,26 @@
 - title 'Register'
 - content_for :top do
   %h2 Register
+
+%h2 Register
 %p.explanation In an effort to prevent scams and keep the Marketplace local, users must create an account using their <b>@uchicago.edu</b>, <b>@uchospitals.edu</b>, or <b>@chicagobooth.edu</b> email address before posting a listing. If you have a University ID (cNetID, UCHAD, etc.) but no University email address, <a href="mailto:marketplace@lists.uchicago.edu" alt="UChicago Marketplace">email the moderators</a> with your ID and full name, and a moderator will help you set up an account. To reiterate: <em>If you do not have a University ID, then you are not eligible to post listings.</em>
 %p.beta This is the experimental version of Marketplace! Please visit <a href="http://marketplace.uchicago.edu">http://marketplace.uchicago.edu</a> for the real version.
 = form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
   = devise_error_messages!
-  %span.field
-    %span= f.label :name
-    %span.input= f.text_field :name, :tabindex => autotab
+  .form-groupp
+    = f.label :name
+    = f.text_field :name, :tabindex => autotab, class: "form-control"
     %p.note Your username. Many sellers simply use their first and last name.
-  %span.field
-    %span=  f.label :email
-    %span.input= f.email_field :email, :tabindex => autotab
+  .form-group
+    =  f.label :email
+    = f.email_field :email, :tabindex => autotab, class: "form-control"
     %p.note Within the next 24 hours a confirmation link will be sent to this address.<br />You must confirm your account before logging in.
-  %span.field
-    %span=  f.label :password
-    %span.input= f.password_field :password, :tabindex => autotab
+  .form-group
+    =  f.label :password
+    = f.password_field :password, :tabindex => autotab, class: "form-control"
     %p.note To protect your account, create a unique password with a combination of numbers, letters, and symbols.
-  %span.field
-    %span=  f.label :password_confirmation
-    %span.input= f.password_field :password_confirmation, :tabindex => autotab
-  = f.submit "Sign up", :tabindex => autotab, :class => "button"
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, :tabindex => autotab, class: "form-control"
+  = f.submit "Sign up", :tabindex => autotab, :class => "btn btn-primary"
 = render :partial => "devise/shared/links"
