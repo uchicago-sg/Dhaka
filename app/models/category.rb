@@ -2,9 +2,10 @@ class Category < ActiveRecord::Base
   attr_accessible :description, :details
   has_and_belongs_to_many :listings
 
-  validates :description,
-    :presence   => true,
-    :uniqueness => { :case_sensitive => false }
+
+  # validates :description,
+  #   :presence   => true,
+  #   :uniqueness => { :case_sensitive => false }
 
   # For sexier URLs
   attr_readonly :permalink

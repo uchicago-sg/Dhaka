@@ -16,3 +16,4 @@
         - @users.each do |user|
           = render 'user', :user => user
     = paginate @users
+  =link_to "Back to Admin Console", admin_index_path, class: "btn btn-link"

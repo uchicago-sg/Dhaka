@@ -13,7 +13,7 @@
     - if action_name == 'search'
       = auto_discovery_link_tag :atom, {:format => 'atom'}
     - elsif resource?
-      = auto_discovery_link_tag :atom, {:controller => 'categories', :action => 'index', :format => 'atom'}
+      -#= auto_discovery_link_tag :atom, {:controller => 'categories', :action => 'index', :format => 'atom'}
     = javascript_include_tag 'application'
     = javascript_include_tag controller_name if resource? or controller_name == 'admin'
     = stylesheet_link_tag 'application'

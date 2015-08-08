@@ -1,9 +1,10 @@
 = form_for @category do |f|
   = render 'shared/form_errors', :resource => @category
-  %span.field
-    %span= f.label :description
-    %span.input= f.text_field :description
-  %span.field
-    %span= f.label :details
-    %span.input= f.text_area :details
-  %span.submit= f.submit "Submit", :class => "button"
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: "form-control"
+  .form-groupp
+    = f.label :details
+    = f.text_area :details, class: "form-control"
+  %br
+  = f.submit "Submit", :class => "btn btn-primary"

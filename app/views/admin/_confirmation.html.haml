@@ -3,9 +3,9 @@
   %td.email_and_actions
     .email= mail_to user.email
   %td.created_at= user.created_at
-  %td
+  %td.ac
     %ul.actions
-      %li.seller-role= link_to (user.seller? ? 'Revoke Seller Rights' : 'Grant Seller Rights'), admin_update_roles_path(user.permalink, :params => { :role => 'seller' }), :remote => true, :class => 'seller'
+      =link_to (user.seller? ? 'Revoke Seller Rights' : 'Grant Seller Rights'), admin_update_roles_path(user.permalink, :params => { :role => 'seller' }), :remote => true, :class => 'seller'
       - unless user.id == current_user.id
-        %li.admin-role= link_to (user.admin?  ? 'Revoke Admin Rights' : 'Grant Admin Rights'), admin_update_roles_path(user.permalink, :params => { :role => 'admin' }), :remote => true, :class => 'admin'
-        %li.lock-user= link_to(user.access_locked? ? 'Unlock Account' : 'Lock Account', admin_lock_user_path(user.permalink), :remote => true, :class => 'lock')
+        = link_to (user.admin?  ? 'Revoke Admin Rights' : 'Grant Admin Rights'), admin_update_roles_path(user.permalink, :params => { :role => 'admin' }), :remote => true, :class => 'admin'
+        = link_to(user.access_locked? ? 'Unlock Account' : 'Lock Account', admin_lock_user_path(user.permalink), :remote => true, :class => 'lock')

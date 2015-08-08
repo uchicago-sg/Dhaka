@@ -8,3 +8,4 @@
       %h4 Yay! No duplicate listings....Go have some fun!
     - else
       = render 'listings/browser', :listings => @listings
+  =link_to "Back to Admin Console", admin_index_path, class: "btn btn-link"

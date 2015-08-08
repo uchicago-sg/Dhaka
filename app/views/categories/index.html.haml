@@ -1,11 +1,27 @@
-- title 'Atom Feeds'
-- content_for :top do
-  %h2 Atom Feeds
-- content_for :sidebar do
-  = render 'pages/sidebar'
-%ul.categories
-  %li= link_to 'All Categories'.html_safe, categories_path(:format => :atom)
-  = render @categories
-- if can? :create, Category
-  %ul.actions
-    %li.new= link_to 'New Category', new_category_path
+- title 'Manage Categories'
+-#%h2 Categories
+-#%ul.categories
+-#  %li= link_to 'All Categories'.html_safe, categories_path(:format => :atom)
+-#  = render @categories
+-#- if can? :create, Category
+-#  %ul.actions
+-#    %li.new= link_to 'New Category', new_category_path
+
+%p#notice= notice
+%h2 Categories
+= link_to 'New Category', new_category_path, class: "btn btn-primary"
+%table.table
+  %thead
+    %tr
+      %th Decription
+      %th Details
+      %th{:colspan => "2"}
+  %tbody
+    - @categories.each do |category|
+      %tr
+        %td= category.description
+        %td= category.details
+        -#%td= link_to 'Show', categories
+        %td= link_to 'Edit', edit_category_path(category)
+        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+=link_to "Back to Admin Console", admin_index_path, class: "btn btn-link"

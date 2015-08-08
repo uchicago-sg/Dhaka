@@ -166,6 +166,6 @@ private
   end
 
   def listings_params
-    params.required(:listing).permit(:name, :category_id, :description, :price,:image)
+    params.required(:listing).permit(:name, :description, :price,:image)
   end
 end

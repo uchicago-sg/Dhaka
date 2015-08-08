@@ -5,6 +5,7 @@
   %h2 Admin Console
   .row
     %ul
-      %li= link_to 'Manage duplicate listings', admin_duplicates_path
-      %li= link_to 'Manage current users', admin_users_path
-      %li= link_to 'Manage pending confirmations', admin_confirmations_path
+      %li= link_to 'Manage duplicate listings', admin_duplicates_path, class: "btn btn-link"
+      %li= link_to 'Manage current users', admin_users_path, class: "btn btn-link"
+      %li= link_to 'Manage pending confirmations', admin_confirmations_path, class: "btn btn-link"
+      %li= link_to 'Manage listings categories', categories_path, class: "btn btn-link"
