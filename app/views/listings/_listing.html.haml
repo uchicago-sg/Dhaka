@@ -1,11 +1,30 @@
 %article.listing
-  %header
-    / %p.starred= render 'listings/listing_star', :listing => listing
-    %h2= listing.description
-    %p.created_at <strong>#{listing.price.zero? ? 'Free' : number_to_currency(listing.price)}.</strong> Posted <time datetime="#{listing.created_at.iso8601}">#{listing.created_at}</time> #{"(Renewed <time datetime=\"#{listing.renewed_at.iso8601}\">#{listing.renewed_at}</time>)".html_safe unless listing.renewals.zero?} #{('in ' + listing.categories.map { |c| categories_search_link(c) }.to_sentence).html_safe unless listing.categories.empty?} by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
-  - unless listing.images.empty?
-    %p.thumbs
-      - listing.images.each do |image|
-        %a{:href => image.photo.url, :class => "th"}= image_tag image.photo.url(:thumb)
+  %h2= listing.description
   = render 'listings/listing_actions', :listing => listing
-  %div.details= listing.details_to_html
+  %p.created_at <strong>#{listing.price.zero? ? 'Free' : number_to_currency(listing.price)}.</strong> Posted <time datetime="#{listing.created_at.iso8601}">#{listing.created_at}</time> #{"(Renewed <time datetime=\"#{listing.renewed_at.iso8601}\">#{listing.renewed_at}</time>)".html_safe unless listing.renewals.zero?} #{('in ' + listing.categories.map { |c| categories_search_link(c) }.to_sentence).html_safe unless listing.categories.empty?} by #{link_to listing.seller.name, listing.seller} (#{mail_to listing.seller.email, listing.seller.email, :encode => 'javascript'})
+- unless listing.images.empty?
+  #carousel-example-generic.carousel.slide{ :style => "width: 400px; height: 300px;  margin: 0 auto", "data-ride" => "carousel"}
+    / Indicators
+    %ol.carousel-indicators
+      - listing.images.each_with_index do |image, i|
+        - if i == 0
+          %li.active{"data-slide-to" => i, "data-target" => "#carousel-example-generic"}
+        - else
+          %li{"data-slide-to" => i, "data-target" => "#carousel-example-generic"}
+    / Wrapper for slides
+    .carousel-inner
+      - listing.images.each_with_index do |image, i|
+        -if i == 0
+          .item.active
+            %a{:href => image.photo.url, :class => "th"}= image_tag image.photo.url()
+        - else
+          .item
+            %a{:href => image.photo.url, :class => "th"}= image_tag image.photo.url()
+    / Controls
+    %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic", :role => "button"}
+      %span.glyphicon.glyphicon-chevron-left
+    %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic", :role => "button"}
+      %span.glyphicon.glyphicon-chevron-right
+%br
+%div.details= listing.details_to_html
+

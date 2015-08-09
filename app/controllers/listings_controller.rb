@@ -164,4 +164,8 @@ private
   def ensure_starred_session_variable_exists
     session[:starred] ||= []
   end
+
+  def listings_params
+    params.required(:listing).permit(:name, :description, :price,:image)
+  end
 end

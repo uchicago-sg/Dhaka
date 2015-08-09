@@ -1,7 +1,7 @@
 require 'yaml'
 
 class AdminController < ApplicationController
-  before_filter :check_authorized
+  # before_filter :check_authorized
   respond_to :html, :json
 
   # GET /admin

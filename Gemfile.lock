@@ -291,6 +291,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on!
   amatch
+  autoprefixer-rails
   aws-sdk (< 2.0)
   bootstrap-sass
   brakeman

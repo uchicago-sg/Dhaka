@@ -1,11 +1,13 @@
 - title 'Forgot your password?'
 - content_for :top do
   %h2 Forgot your password?
+
+%h2 Forgot your password?
 %p.explanation Please allow some time for the password reset email to arrive. If you have not received a notification after 24 hours, then use this form to resend the instructions. The password may also be reset manually if you <a href="mailto:marketplace@lists.uchicago.edu" alt="UChicago Marketplace">email the Marketplace List</a> <b>using the email address you registered with</b> (moderators must ensure you have control of the email address).
 = form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post } do |f|
   = devise_error_messages!
-  %span.field
-    %span= f :email
-    %span.input= f.email_field :email
-  %span.submit= f.submit "Send reset password instructions", :class => "button"
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: "form-control"
+  = f.submit "Send reset password instructions", :class => "btn btn-primary`"
 = render :partial => "devise/shared/links"

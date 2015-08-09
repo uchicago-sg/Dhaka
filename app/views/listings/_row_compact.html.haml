@@ -2,19 +2,30 @@
 - classes << (listing.seller.signed? ? 'signed' : '')
 - classes << (listing.expired? ? 'expired' : '')
 
-%tr.row.listing{:id => listing.permalink, :class => classes.join(' ')}
-  / %td.starred.onecol
-  /  - unless listing.expired?
-  /    = render 'listings/listing_star', :listing => listing
-  / %td.image.onecol= listing.images.empty? ? '<span class="images-answer">No</span><span class="images-message">No Images</span>'.html_safe : '<span class="images-answer">Yes</span><span class="images-message">Images Provided</span>'.html_safe
-  %td.description_and_details
-    .description= listing.available? ? link_to(listing.description, listing) : listing.description
-    = render 'listings/listing_actions', :listing => listing
-  %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)  
-  %td.images
-    - listing.images.map do |image|
-      - if listing.available?
-        = link_to(listing) do
-          = image_tag image.photo.url(:large)
-      - else
-        = image_tag image.photo.url(:large)
+-#%tr.row.listing{:id => listing.permalink, :class => classes.join(' ')}
+-#  / %td.starred.onecol
+-#  /  - unless listing.expired?
+-#  /    = render 'listings/listing_star', :listing => listing
+-#  / %td.image.onecol= listing.images.empty? ? '<span class="images-answer">No</span><span class="images-message">No Images</span>'.html_safe : '<span class="images-answer">Yes</span><span class="images-message">Images Provided</span>'.html_safe
+-#  %td.description_and_details
+-#    .description= listing.available? ? link_to(listing.description, listing) : listing.description
+-#    = render 'listings/listing_actions', :listing => listing
+-#  %td.price.twocol.last= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+-#  %td.images
+-#    - listing.images.map do |image|
+-#      - if listing.available?
+-#        = link_to(listing) do
+-#          = image_tag image.photo.url(:large)
+-#      - else
+-#        = image_tag image.photo.url(:large)
+
+.row.listing{:id => listing.permalink, :class => classes.join(' '), :style => "text-align: center;"}
+  .col-md-3
+    .thumbnail
+      -listing.images.map do |image|
+        =image_tag image.photo.url
+        -break
+      .caption
+        %h3{:style => "text-align: center;"}= listing.description
+        %p{:style => "text-align: center;"}= listing.price.zero? ? 'Free' : number_to_currency(listing.price)
+        = link_to 'Show', listing,{ class: "btn btn-link"}

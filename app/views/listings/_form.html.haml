@@ -1,23 +1,65 @@
+-#= form_for @listing, :html => { :multipart => true } do |f|
+-#  = render 'shared/form_errors', :resource => @listing
+-#  .div
+-#    = f :description
+-#    = f.text_field :description, {:size => 60, :tabindex => autotab}
+-#  .price
+-#    = f :price
+-#    = f.text_field :price, {:size => 15, :class => 'currency', :tabindex => autotab}
+-#    %p.note <b>Note</b>: &#8220;Free&#8221; describes any listing with a price equal to zero.
+-#  .category
+-#    = f :category_ids, 'Category'
+-#    = f.collection_select :category_ids, Category.all, :id, :description, {:prompt => 'Uncategorized'}, {:tabindex => autotab}
+-#    %p.note You may choose exactly one category. <strong>Do not</strong> duplicate the listing to place it in multiple categories.
+-#  .details
+-#    = f :details
+-#    = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'
+-#    .input= f.text_area :details, {:cols => 60, :tabindex => autotab}
+-#  .images
+-#
+-#    = f :photo, 'Upload Images'
+-#    = f.fields_for :images do |image|
+-#      - if image.object.new_record?
+-#        .subfield.image-upload
+-#          .input= image.file_field :photo
+-#      - else
+-#        .subfield.image
+-#          .preview= link_to image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original)
+-#          .remove #{image.check_box :_destroy} Remove image
+-#    %p.note You may upload at most five images.
+-#    %p.note Each image must be formatted as a JPEG or PNG less than three megabytes in size.
+-#
+-#  %div.reminder
+-#    %p <b>Reminders</b>
+-#    %ul.explanation
+-#      %li Each listing is publicly available for one week.
+-#      %li After one week, the listing will be renewable but not public.
+-#      %li After two weeks without renewal, the listing automatically expires.
+-#      %li You cannot delete listings, but you may unpublish them to remove them from public view.
+-#    %p.explanation <strong>Do not duplicate listings.</strong> You can update your listing at any time by visiting #{link_to 'your profile page', user_path(current_user)} and using the &#8220;edit&#8221; links. Similarly you can &#8220;unpublish&#8221; a listing if you want to remove it from public view. We treat duplication of listings as a form of spam, which means you could <em>lose your ability to sell</em> on the site as a result.
+-#
+-#  .submit= f.submit :tabindex => autotab, :class => "button"
+
+%h3 Place a New Listing
 = form_for @listing, :html => { :multipart => true } do |f|
   = render 'shared/form_errors', :resource => @listing
-  .div
-    = f :description
-    = f.text_field :description, {:size => 60, :tabindex => autotab}
-  .price
-    = f :price
-    = f.text_field :price, {:size => 15, :class => 'currency', :tabindex => autotab}
-    %p.note <b>Note</b>: &#8220;Free&#8221; describes any listing with a price equal to zero.
-  .category
-    = f :category_ids, 'Category'
-    = f.collection_select :category_ids, Category.all, :id, :description, {:prompt => 'Uncategorized'}, {:tabindex => autotab}
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: "form-control"
+  .form-group
+    = f.label :category_id
+    .dropdown-toggle
+      = f.collection_select :category_id, Category.all, :id, :description, class: "btn btn-default form-control", prompt: "Chose a category"
     %p.note You may choose exactly one category. <strong>Do not</strong> duplicate the listing to place it in multiple categories.
-  .details
-    = f :details
-    = link_to 'Markdown Formatting', 'http://en.wikipedia.org/wiki/Markdown', :class => 'markdown-help'
-    .input= f.text_area :details, {:cols => 60, :tabindex => autotab}
-  .images
-
-    = f :photo, 'Upload Images'
+  .form-group
+    = f.label :price
+    = f.text_field :price, class: "form-control"
+    %p.note <b>Note</b>: &#8220;Free&#8221; describes any listing with a price equal to zero.
+  .form-group
+    = f.label :details
+    = f.text_area :details, {:cols => 60, :tabindex => autotab, class: "form-control"}
+  .form-group
+    = f.label :photo, 'Upload Images'
     = f.fields_for :images do |image|
       - if image.object.new_record?
         .subfield.image-upload
@@ -26,10 +68,9 @@
         .subfield.image
           .preview= link_to image_tag(image.object.photo.url(:thumb)), image.object.photo.url(:original)
           .remove #{image.check_box :_destroy} Remove image
-    %p.note You may upload at most five images.
-    %p.note Each image must be formatted as a JPEG or PNG less than three megabytes in size.
+    %p.note You may upload at most five images. Each image must be formatted as a JPEG or PNG less than three megabytes in size.
 
-  %div.reminder
+  .reminder
     %p <b>Reminders</b>
     %ul.explanation
       %li Each listing is publicly available for one week.
@@ -38,4 +79,4 @@
       %li You cannot delete listings, but you may unpublish them to remove them from public view.
     %p.explanation <strong>Do not duplicate listings.</strong> You can update your listing at any time by visiting #{link_to 'your profile page', user_path(current_user)} and using the &#8220;edit&#8221; links. Similarly you can &#8220;unpublish&#8221; a listing if you want to remove it from public view. We treat duplication of listings as a form of spam, which means you could <em>lose your ability to sell</em> on the site as a result.
 
-  .submit= f.submit :tabindex => autotab, :class => "button"
+  .submit= f.submit :tabindex => autotab, :class => "btn btn-primary"

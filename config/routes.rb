@@ -4,16 +4,16 @@ Dhaka::Application.routes.draw do
   root :to => 'listings#index', :via => :get
   post 'versions/:id/revert' => 'versions#revert', :as => :revert_version
   get 'index' => 'listings#index'
-  get 'feeds' => 'categories#index', :as => :feeds
+  # get 'feeds' => 'categories#index', :as => :feeds
 
   STATIC_PAGES.each do |page|
     match page => 'high_voltage/pages#show', :id => page, :as => "#{page.gsub('-','_')}_page", :via => [:get, :post]
   end
 
-  CATEGORIES.each do |c|
-    category = c[0].downcase
-    match category => 'listings#index', :category => category, :as => "#{category}_page", :via => [:get, :post]
-  end
+  # CATEGORIES.each do |c|
+  #   category = c[0].downcase
+  #   match category => 'listings#index', :category => category, :as => "#{category}_page", :via => [:get, :post]
+  # end
 
   devise_for :users do
     get 'register' => 'devise/registrations#new', :as => :register
@@ -35,7 +35,8 @@ Dhaka::Application.routes.draw do
   get 'admin/users/:user/confirm' => 'admin#confirm', :as => :admin_confirm_user
   get 'admin/duplicates' => 'admin#duplicates', :as => :admin_duplicates
 
-  resources :categories, :path => 'browse'
+  resources :categories
+
   resources :listings,   :path => '' do
     member do
       match 'renew'     => 'listings#renew',     :as => :renew, :via => [:get, :post]

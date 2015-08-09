@@ -1,28 +1,29 @@
 - title "Edit #{resource_name.to_s.humanize}"
 - content_for :top do
   %h2 Edit #{resource_name.to_s.humanize}
+
+%h2 Edit #{resource_name.to_s.humanize}
 = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put } do |f|
   = devise_error_messages!
-  %span.field
-    %span= f :name
-    %span.input= f.text_field :name
-  %span.field
-    %span= f :email
-    %span.input= f.email_field :email
-  %span.field
-    %span= f :password
-    %span.input= f.password_field :password
-    %span.help
-      %p Leave blank if you don't want to change it
-  %span.field
-    %span= f :password_confirmation
-    %span.input= f.password_field :password_confirmation
-  %span.field
-    %span= f :current_password
-    %span.input= f.password_field :current_password
-    %span.help
-      %p We need your current password to confirm your changes
-  %span.submit= f.submit "Update", :class => "button"
-%h1 Cancel my account
+  .form-group
+    =f.label :name
+    = f.text_field :name, class: "form-control"
+  .form-group
+    =f.label :email
+    = f.email_field :email, class: "form-control"
+  .form-group
+    = f.label :password
+    = f.password_field :password, class: "form-control"
+    %p Leave blank if you don't want to change it
+  .form-group
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, class: "form-group"
+  .form-group
+    = f.label :current_password
+    = f.password_field :current_password, class: "form-group"
+    %p We need your current password to confirm your changes
+  = f.submit "Update", :class => "btn btn-primary"
+
+%h2 Cancel my account
 %p Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}
 = link_to "Back", :back

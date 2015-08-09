@@ -29,8 +29,9 @@ class User < ActiveRecord::Base
   validates :email,
     :on       => :create,
     :format   => {
-      :with => /\A.+@(.+\.)*(uchicago\.edu|uchospitals\.edu|chicagobooth\.edu)\z/i,
-      :message => 'must be an @uchicago.edu, @uchospitals.edu, or @chicagobooth.edu address'
+        :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+      # :with => /\A.+@(.+\.)*(uchicago\.edu|uchospitals\.edu|chicagobooth\.edu)\z/i,
+      # :message => 'must be an @uchicago.edu, @uchospitals.edu, or @chicagobooth.edu address'
     }
 
   # Simple roles setup for use with CanCan
@@ -119,5 +120,11 @@ class User < ActiveRecord::Base
       self.errors.add(:email, :recently_reset)
       return
     end
+  end
+
+  # Temp Unconfirmable
+  protected
+  def confirmation_required?
+    false
   end
 end

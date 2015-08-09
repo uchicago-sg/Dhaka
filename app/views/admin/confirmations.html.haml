@@ -1,16 +1,19 @@
 - title 'Manage Pending Confirmations'
-- content_for :top do
+.container-fluid.row
   %h2 Manage Pending Confirmations
-- if @users.empty?
-  %h2 No pending confirmations
-- else
-  %table#users-browser
-    %thead.container
-      %tr.row
-        %td.name.threecol Name
-        %td.email.sixcol Email
-        %td.created_at.threecol.last Created
-    %tbody.container
-      - @users.each do |user|
-        = render 'confirmation', :user => user
-  = paginate @users
+  .row
+    - if @users.empty?
+      %h4 No pending confirmations
+    - else
+      %table.table
+        %thead
+          %tr
+            %th.name Name
+            %th.email Email
+            %th.created_at Created
+            %th Actions
+        %tbody
+          - @users.each do |user|
+            = render 'confirmation', :user => user
+      = paginate @users
+  =link_to "Back to Admin Console", admin_index_path, class: "btn btn-link"
