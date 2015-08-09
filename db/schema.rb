@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120619222711) do
+ActiveRecord::Schema.define(version: 20150808170832) do
 
   create_table "categories", force: true do |t|
     t.string   "description", null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20120619222711) do
     t.integer  "renewals",                               default: 0
     t.boolean  "published",                              default: true
     t.text     "cached_details"
+    t.integer  "category_id"
   end
 
   create_table "taggings", force: true do |t|

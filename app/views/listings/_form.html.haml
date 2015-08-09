@@ -49,7 +49,7 @@
   .form-group
     = f.label :category_id
     .dropdown-toggle
-      = f.collection_select :category_id, Category.all, :id, :name, class: "btn btn-default form-control", prompt: "Chose a category"
+      = f.collection_select :category_id, Category.all, :id, :description, class: "btn btn-default form-control", prompt: "Chose a category"
     %p.note You may choose exactly one category. <strong>Do not</strong> duplicate the listing to place it in multiple categories.
   .form-group
     = f.label :price
